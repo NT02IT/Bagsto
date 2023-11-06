@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'ico-bagsto';
+  src:  url('fonts/ico-bagsto.eot?1h8s1r');
+  src:  url('fonts/ico-bagsto.eot?1h8s1r#iefix') format('embedded-opentype'),
+    url('fonts/ico-bagsto.ttf?1h8s1r') format('truetype'),
+    url('fonts/ico-bagsto.woff?1h8s1r') format('woff'),
+    url('fonts/ico-bagsto.svg?1h8s1r#ico-bagsto') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ico-bagsto' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add_a_photo:before {
+  content: "\e900";
+}
+.icon-add_photo_alternate:before {
+  content: "\e901";
+}
+.icon-add_shopping_cart:before {
+  content: "\e902";
+}
+.icon-call:before {
+  content: "\e903";
+}
+.icon-cart:before {
+  content: "\e904";
+}
+.icon-check:before {
+  content: "\e905";
+}
+.icon-checkbox_indeterminate:before {
+  content: "\e906";
+}
+.icon-checkbox_on:before {
+  content: "\e907";
+}
+.icon-chevron_down:before {
+  content: "\e908";
+}
+.icon-chevron_left:before {
+  content: "\e909";
+}
+.icon-chevron_right:before {
+  content: "\e90a";
+}
+.icon-chevron_up:before {
+  content: "\e90b";
+}
+.icon-clock:before {
+  content: "\e90c";
+}
+.icon-clock_outline:before {
+  content: "\e90d";
+}
+.icon-close:before {
+  content: "\e90e";
+}
+.icon-dot:before {
+  content: "\e90f";
+}
+.icon-edit:before {
+  content: "\e910";
+}
+.icon-facebbook:before {
+  content: "\e911";
+}
+.icon-filter:before {
+  content: "\e912";
+}
+.icon-instagram:before {
+  content: "\e913";
+}
+.icon-linkedin:before {
+  content: "\e914";
+}
+.icon-location:before {
+  content: "\e915";
+}
+.icon-mail:before {
+  content: "\e916";
+}
+.icon-menu:before {
+  content: "\e917";
+}
+.icon-minus:before {
+  content: "\e918";
+}
+.icon-person:before {
+  content: "\e919";
+}
+.icon-plus:before {
+  content: "\e91a";
+}
+.icon-radio_off:before {
+  content: "\e91b";
+}
+.icon-radio_on:before {
+  content: "\e91c";
+}
+.icon-search:before {
+  content: "\e91d";
+}
+.icon-trash:before {
+  content: "\e91e";
+}
+.icon-trending_down:before {
+  content: "\e91f";
+}
+.icon-trending_up:before {
+  content: "\e920";
+}
+.icon-twitter:before {
+  content: "\e921";
+}
