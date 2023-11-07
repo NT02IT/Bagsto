@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bagsto</title>
+    <link rel="icon" type="image/x-icon" href="./assets/brand/logos/logo-icon.svg">
     <link rel="stylesheet" href="./assets/brand/icons/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +14,21 @@
 <body>
     <div id="header" class="section">
         <div class="section__container">
-            <div class="header__block--left">
-                <img src="assets\brand\logos\logo-full.svg" alt="" class="logo">
-                <input type="text" class="size-s header__search" value placeholder="Search">
+            <div class="row">
+                <div class="header__block--left col">
+                    <img src="assets\brand\logos\logo-full.svg" alt="" class="logo">
+                    <input type="text" class="size-s header__search" value placeholder="Search">
+                </div>
+                <div class="header__block--right col">
+                    <a href="#" class="tab-active">Balo</a>
+                    <a href="#" class="tab">Túi xách</a>
+                    <a href="#" class="tab">Ví nam, nữ</a>
+                    <button class="style-text type-primary size-m"><i class="icon-cart"></i>Giỏ hàng</button>
+                    <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                    <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
+                </div>
             </div>
-            <div class="header__block--right">
-                <a href="#" class="tab-active">Balo</a>
-                <a href="#" class="tab">Túi xách</a>
-                <a href="#" class="tab">Ví nam, nữ</a>
-                <button class="style-text type-primary size-m"><i class="icon-cart"></i>Giỏ hàng</button>
-                <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
-                <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
-            </div>
+
             <div class="mobile-nav collapsed" id="mobile-nav">
                 <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
                 <div class="hello-account" id="to-account-info">
@@ -58,8 +62,91 @@
     <!-- MAIN BODY HERE -->
 
     <div id="main-body" class="section">
-        <div class="section__container">
-            
+        <div class="section__container promotion__cont">
+            <div class="row">
+                <img src="./assets/img/header-banner-slider.png" alt="" class="col-8">
+                <img src="./assets/img/header-static-banner.png" alt="" class="col-4">
+            </div>
+        </div>
+        <div class="section__container products__cont">
+            <div class="heading row">
+                <div class="col-12 horizontal">
+                    <h4 class="col-fill">Tất cả sản phẩm</h4>
+                    <div class="action horizontal">
+                        <button class="action__filter type-inherit">Lọc<i class="icon-filter"></i></button>
+                        <button class="action__sort type-inherit">Sắp xếp<i class="icon-chevron_down"></i></button>
+                    </div>
+                </div>
+            </div>
+            <ul class="products__items row">
+                <!-- product-card -->
+                <!-- <li class="product-card col-3">
+                    <div class="product-card__cont">
+                        <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">
+                        <div class="product__info">
+                            <h6 class="product__name">Foundations Matte Flip Flop Foundations Matte Flip Flop</h6>
+                            <div class="stack">
+                                <div class="product__color-utility">
+                                    <div class="color-utility"></div>
+                                    <div class="color-utility"></div>
+                                    <div class="color-utility"></div>
+                                </div>
+                                <div class="product__price--raw subtitle1 font-line_through">60.000đ</div>
+                                <div class="product__price--sale subtitle1">30.000đ</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-card col-3">
+                    <div class="product-card__cont">
+                        <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">
+                        <div class="product__info">
+                            <h6 class="product__name">Foundations Matte Flip Flop Foundations Matte Flip Flop</h6>
+                            <div class="stack">
+                                <div class="product__color-utility">
+                                    <div class="color-utility"></div>
+                                    <div class="color-utility"></div>
+                                    <div class="color-utility"></div>
+                                </div>
+                                <div class="product__price--raw subtitle1 font-line_through">60.000đ</div>
+                                <div class="product__price--sale subtitle1">30.000đ</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="product-card col-3">
+                    <div class="product-card__cont">
+                        <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">
+                        <div class="product__info">
+                            <h6 class="product__name">Foundations Matte Flip Flop Foundations Matte Flip Flop</h6>
+                            <div class="stack">
+                                <div class="product__color-utility">
+                                    <div class="color-utility"></div>
+                                    <div class="color-utility"></div>
+                                    <div class="color-utility"></div>
+                                </div>
+                                <div class="product__price--raw subtitle1 font-line_through">60.000đ</div>
+                                <div class="product__price--sale subtitle1">30.000đ</div>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+                
+
+
+
+            </ul>
+
+            <div class="pagination_cont row">
+                <ul class="pagination col">
+                    <!-- <li class="pagination__btn-previous disable"><i class="icon-chevron_left"></i></li>
+                    <li class="pagination__item selected">1</li>
+                    <li class="pagination__item">2</li>
+                    <li class="pagination__item">3</li>
+                    <li class="pagination__more disable">...</li>
+                    <li class="pagination__btn-next"><i class="icon-chevron_right"></i></li> -->
+                </ul>   
+            </div>
         </div>
     </div>
 
@@ -101,3 +188,4 @@
 </html>
 
 <script src="./assets/scripts/app.js"></script>
+<script src="./assets/scripts/business.js"></script>
