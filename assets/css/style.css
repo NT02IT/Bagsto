@@ -32,9 +32,6 @@ ul{
 #root, #__next {
 isolation: isolate;
 }
-body{
-    overflow: hidden;
-}
 /*
 Reset CSS 
 */
@@ -636,7 +633,7 @@ On desktop
 .mobile-nav.collapsed{
     transform: translateX(100vw);
     animation: mobileNavCollapse 0.3s ease-in-out;
-    /* opacity: 0; */
+    display: none;
 }
 
 .account-popover{
@@ -690,6 +687,7 @@ On desktop
 }
 #footer .section__container{
     gap: 2.5rem;
+    flex-wrap: wrap;
 }
 #footer .copyright{
     width: 100%;
