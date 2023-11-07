@@ -21,11 +21,64 @@
                 <a href="#" class="tab-active">Balo</a>
                 <a href="#" class="tab">Túi xách</a>
                 <a href="#" class="tab">Ví nam, nữ</a>
-                <button class="style-text type-primary"><i class="icon-cart"></i>Giỏ hàng</button>
+                <button class="style-text type-primary size-m"><i class="icon-cart"></i>Giỏ hàng</button>
                 <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
             </div>
-            <div class="header__bugerbtn"><i class="icon-menu"></i></div>
+            <div class="mobile-nav collapsed" id="mobile-nav">
+                <input type="text" class="size-s" value placeholder="Search">
+                <button class="type-inherit style-text">Balo</button>
+                <button class="type-inherit style-text">Túi xách</button>
+                <button class="type-inherit style-text">Ví nam, nữ</button>
+            </div>
+            <div class="account-popover">
+                <div class="hello-account" id="to-account-info">
+                    <span>
+                        Xin chào,
+                        <p class="font-bold">Nguyễn Tuấn</p>
+                    </span>
+                    <button class="hello-account__button type-inherit style-text size-l">
+                        <i class="icon-chevron_right"></i>
+                    </button>
+                </div>
+                <button class="type-inherit">Đăng xuất</button>
+            </div>
         </div>
     </div>
+    
+    <div id="footer" class="section">
+        <div class="section__container">
+            <div class="footer__about-brand">
+                <img src="assets\brand\logos\logo-full.svg" alt="">
+                <p class="intro body2">Bagsto cung cấp các sản phẩm balo, ví, túi xách nam nữ. Chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng cao, thiết kế sang trọng, lịch lãm, phù hợp với mọi nhu cầu.</p>
+                <div class="socials">
+                    <a href="#" class="socials__item"><i class="icon-facebbook"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-instagram"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-linkedin"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Chính sách</li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li>         
+            </ul>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Liên hệ</li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li> 
+            </ul>
+        </div>
+        <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>
+    </div>
+
 </body>
 </html>
+
+<script src="./assets/scripts/app.js"></script>
