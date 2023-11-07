@@ -14,7 +14,7 @@
     <div id="header" class="section">
         <div class="section__container">
             <div class="header__block--left">
-                <img src="assets\brand\logos\logo-full.svg" alt="">
+                <img src="assets\brand\logos\logo-full.svg" alt="" class="logo">
                 <input type="text" class="size-s header__search" value placeholder="Search">
             </div>
             <div class="header__block--right">
@@ -26,16 +26,25 @@
                 <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
             </div>
             <div class="mobile-nav collapsed" id="mobile-nav">
-                <input type="text" class="size-s" value placeholder="Search">
+                <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
+                <div class="hello-account" id="to-account-info">
+                    <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                    <p class="font-bold account-name">Nguyễn Tuấn</p>
+                    <button class="hello-account__button type-inherit style-text size-m">
+                        <i class="icon-chevron_right"></i>
+                    </button>
+                </div>
                 <button class="type-inherit style-text">Balo</button>
                 <button class="type-inherit style-text">Túi xách</button>
                 <button class="type-inherit style-text">Ví nam, nữ</button>
+                <div class="space"></div>
+                <button class="type-inherit">Đăng xuất</button>
             </div>
             <div class="account-popover">
                 <div class="hello-account" id="to-account-info">
                     <span>
                         Xin chào,
-                        <p class="font-bold">Nguyễn Tuấn</p>
+                        <p class="font-bold account-name">Nguyễn Tuấn</p>
                     </span>
                     <button class="hello-account__button type-inherit style-text size-l">
                         <i class="icon-chevron_right"></i>
@@ -46,10 +55,20 @@
         </div>
     </div>
     
+    <!-- MAIN BODY HERE -->
+
+    <div id="main-body" class="section">
+        <div class="section__container">
+            
+        </div>
+    </div>
+
+    <!-- END MAIN BODY -->
+
     <div id="footer" class="section">
         <div class="section__container">
             <div class="footer__about-brand">
-                <img src="assets\brand\logos\logo-full.svg" alt="">
+                <img src="assets\brand\logos\logo-full.svg" alt="" class="logo">
                 <p class="intro body2">Bagsto cung cấp các sản phẩm balo, ví, túi xách nam nữ. Chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng cao, thiết kế sang trọng, lịch lãm, phù hợp với mọi nhu cầu.</p>
                 <div class="socials">
                     <a href="#" class="socials__item"><i class="icon-facebbook"></i></a>

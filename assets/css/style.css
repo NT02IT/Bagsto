@@ -572,18 +572,26 @@ On desktop
     width: 75rem;
     margin: auto;
     padding: 1.5rem;
+    height: 100%;
 }
 
 /* Header */
 #header{
+    position: fixed;
     background-color: var(--color-bg-default);
     box-shadow: var(--shadow-z8);
     height: 5.5rem;
+    z-index: 9;
 }
 .header__block--left{
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+.header__block--left .logo,
+.footer__about-brand .logo{
+    width: 8.75rem;
+    height: 2.5rem;
 }
 .header__block--right{
     display: flex;
@@ -617,18 +625,21 @@ On desktop
     max-width: 260px;
     padding: 1rem;
     box-shadow: var(--shadow-dialog);
+    background-color: var(--color-bg-default);
 }
 .mobile-nav > *{
     width: 100%;
 }
-.mobile-nav > :first-child{
-    margin: 1rem 0;
-}
 .mobile-nav.expanded{
+    display: flex;
+    flex-direction: column;
     right: 0;
     transform: translateX(0);
     animation: mobileNavExpand 0.3s ease-in-out;
     /* opacity: 1; */
+}
+.space{
+    flex-grow: 1;
 }
 .mobile-nav.collapsed{
     transform: translateX(100vw);
@@ -653,15 +664,17 @@ On desktop
 }
 .hello-account{
     display: flex;
+    gap: 0.5rem;
     align-items: center;
     position: relative;
     background-color: var(--color-grey-trans8);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
 }
 .hello-account p{
     color: var(--color-pri-main);
+    flex-grow: 1;
 }
 .hello-account span{
     flex-grow: 1;
@@ -669,7 +682,7 @@ On desktop
 .hello-account__button{
     /* position: absolute; */
     align-self: right;
-    width: 2.875rem;
+    width: 2rem;
     justify-content: center;
     border-radius: 50%;
 }
@@ -752,9 +765,14 @@ On desktop
     .header__block--right{
         gap: 1rem;
     }
-
+    .header__block--left .logo,
+    .footer__about-brand .logo{
+        width: 7rem;
+        height: 2rem;
+    }
     .header__block--right [class*="tab"],
-    .header__search {
+    .header__search,
+    .header__block--right .header__avatar {
         display: none;
         
     }
@@ -792,7 +810,15 @@ On tablet
 On mobile
 */
 @media only screen and (max-width: 800px){
-
+    #footer .section__container{
+        justify-content: center;
+        text-align: center;
+    }
+    .footer__about-brand{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     
 }
 /* 
