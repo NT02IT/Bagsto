@@ -31,6 +31,7 @@ function displayItems(currentPage, items) {
                             <div class="product__price--raw subtitle1 font-line_through">60.000đ</div>
                             <div class="product__price--sale subtitle1">30.000đ</div>
                         </div>
+                        <button class="btn-add-prd"><i class="icon-add_shopping_cart"></i>Thêm vào giỏ</button>
                     </div>
                 </div>
         `;
