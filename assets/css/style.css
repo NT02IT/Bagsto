@@ -296,6 +296,9 @@ html{
     display: flex;
     flex-direction: column;
 }
+.hidden{
+    display: none !important;
+}
 /* Grid */
 
 /* Font scale */
@@ -607,39 +610,92 @@ input[type="text"]{
     outline: none;
     border: 1px solid var(--color-grey-trans32);
     border-radius: 0.5rem;
-    font-family: 'Public Sans', sans-serif;
     font-size: 1rem;
-}
-input[type="text"].size-m{
-    height: 3.5rem;
-    padding: 1rem 0.875rem;     
-}
-input[type="text"].size-s{
     height: 2.5rem;
     padding: 0.5rem 0.875rem;
 }
+input[type="text"].size-l{
+    height: 3.5rem;
+    padding: 1rem 0.875rem;     
+}
+input[type="text"].size-m{
+    height: 2.5rem;
+    padding: 0.5rem 0.875rem;
+}
+input[type="text"].size-s{
+    font-size: 0.875rem;
+    height: 2rem;
+    padding: 0.5rem 0.52rem;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+label[for^="checkbox"],
+label[for^="color"]{
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    padding: 4px;
+    margin: 4px;
+}
+label[for^="color"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.3rem;
+    height: 2.3rem;
+}
+label[for^="checkbox"]:hover,
+label[for^="color"]:hover{
+    opacity: .75;
+}
+label[for^="checkbox"]::before,
+label[for^="color"]::before{
+    content: "";
+    display: inline-block;
+    width: 1.35rem;
+    height: 1.35rem;
+}
+label[for^="checkbox"]::before{
+    background-image: url("../brand/icons/svg/checkbox_off.svg");
+    object-fit: contain;
+    background-repeat: none;
+    background-position: center;
+}
+input[id^="checkbox"]:checked + label::before{
+    background-image: url("../brand/icons/svg/checkbox_on.svg");
+}
+label[for^="color"]::before{
+    border-radius: 50%;
+    background-color: #a70d0d;
+    /* border: 0 solid #fff; */
+    outline: 2px solid var(--color-common-black-trans8);
+}
+input[id^="color"]:checked + label::before{
+    width: 100%;
+    height: 100%;
+    /* border-width: 4px; */
+    background-image: url("../brand/icons/svg/checkmark.svg");
+    object-fit: contain;
+    background-size: 80%;
+    background-repeat: none;
+    background-position: center;
+    box-shadow: var(--shadow-z8);
+}
 /* Input */
 
-/* Animation */
-@keyframes mobileNavExpand {
-    0%{
-        transform: translateX(100vw);
-    }
-    100%{
-        transform: translateX(0);
-    }
+/* Popover */
+.popover{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-common-white);
+    box-shadow: var(--shadow-z8);
 }
-@keyframes mobileNavCollapse {
-    0%{
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(100vw);
-        display: none !important;
-    }
-}
-/* Animation */
-
+/* Popover */
 /* 
 Global CSS
 */
@@ -689,10 +745,12 @@ On desktop
     justify-content: center;
     border-radius: 50%;
     background-color: var(--color-grey-trans16);
+    cursor: pointer;
 }
 
 .mobile-nav{
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 100%;
     right: 0;
@@ -702,38 +760,32 @@ On desktop
     padding: 1rem;
     box-shadow: var(--shadow-dialog);
     background-color: var(--color-bg-default);
+    transform: translateX(0);
+    transition: ease-in-out 0.1s;
 }
 .mobile-nav > *{
     width: 100%;
 }
-.mobile-nav.expanded{
-    /* display: flex; */
-    flex-direction: column;
-    right: 0;
-    transform: translateX(0);
-    animation: mobileNavExpand 0.3s ease-in-out;
-    /* opacity: 1; */
+.mobile-nav.collapsed{
+    /* display: flex;
+    flex-direction: column; */
+    transform: translateX(100vw);
+    transition: ease-in-out 0.1s;
+    opacity: 0;
 }
 .space{
     flex-grow: 1;
 }
-.mobile-nav.collapsed{
-    transform: translateX(100vw);
-    animation: mobileNavCollapse 0.3s ease-in-out;
-    display: none;
-}
 
 .account-popover{
-    display: none;
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 1.5rem;
     width: 100%;
     max-width: 260px;
-    padding: 1rem;
-    box-shadow: var(--shadow-z8);
-    border-radius: 0.5rem;
-    background-color: var(--color-common-white);
+}
+.account-popover.collapsed{
+    display: none;
 }
 .account-popover > *{
     width: 100%;
@@ -746,7 +798,6 @@ On desktop
     background-color: var(--color-grey-trans8);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    margin: 0.5rem 0;
 }
 .hello-account p{
     color: var(--color-pri-main);
@@ -768,6 +819,88 @@ On desktop
     transition: ease-in-out 0.1s;
 }
 /* Header */
+
+/* Product filter */
+#product-filter{
+    display: flex;
+    padding-top: 5.5rem;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    width: 17.5rem;
+    max-width: 100%;
+    box-shadow: var(--shadow-dialog);
+    background-color: var(--color-bg-paper);
+    z-index: 2;
+    right: 0;
+    transform: translateX(0);
+    transition: ease-in-out 0.1s;
+}
+#product-filter.collapsed{
+    transform: translateX(100vw);
+    transition: ease-in-out 0.1s;
+    opacity: 0;
+}
+#product-filter .body-container{
+    padding-top: 1.5rem;
+    padding-bottom: 6rem;
+    overflow: scroll;
+}
+#product-filter [class^="filter__"]{
+    padding: 0 1.25rem;
+    width: 100%;
+}
+#product-filter > :first-child{
+    display: fixed;
+    top: 0;
+}
+#product-filter > :last-child{
+    display: flex;
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--color-bg-default);
+}
+#product-filter .btn-clear-all{
+    justify-content: center;
+}
+#product-filter .filter__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-grey-trans24);
+}
+#product-filter .filter__title button{
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+#product-filter .filter__color{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#product-filter .filter__color > :first-child{
+    width: 100%;
+}
+#product-filter .filter__price .price-line{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+#product-filter .filter__price label{
+    width: 4.5rem;
+}
+#product-filter .filter__price input{
+    width: 7.5rem;
+}
+
+/* Product filter */
 
 /* Footer */
 #footer{
@@ -829,10 +962,13 @@ On desktop
 
 /* Main body */
 #main-body{
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
     margin-bottom: 8.625rem;
 }
 
+.promotion__cont{
+    padding-top: calc(5.5rem + 1.5rem);
+}
 .promotion__cont img{
     border-radius: 0.5rem;
 }
@@ -840,9 +976,32 @@ On desktop
     flex-grow: 1;
     flex-direction: row-reverse;
 }
+.action__sort-cont{
+    position: relative;
+}
+.products__cont .sort-popover{
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    background-color: var(--color-common-white);
+    box-shadow: var(--shadow-z8); 
+    overflow: hidden;
+}
+.products__cont .sort-popover > button{
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+}
 .products__cont .col-12{
     flex-wrap: wrap;
     align-items: center;
+}
+.products__cont .heading{
+    position: relative;
+    z-index: 1;
 }
 .products__items{
     flex-wrap: wrap;
@@ -857,14 +1016,16 @@ On desktop
     border-radius: 1rem;
     background-color: var(--color-bg-paper);
     box-shadow: var(--shadow-card);
+    transition: ease-in-out 0.1s;
 }
 .product-card:hover{
     box-shadow: var(--shadow-z24);
+    transition: ease-in-out 0.1s;
     transform: scale(1.05);
 }
 .product-card:hover .product__thumbnail{
     aspect-ratio: 1.3;
-    filter: grayscale(50%);
+    /* filter: grayscale(50%); */
     /* width: 70%; */
 }
 .product-card:hover .btn-add-prd{
@@ -967,7 +1128,8 @@ On desktop
 /* Under desktop */
 @media only screen and (max-width: 1216px){
     .row{
-        margin: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     /* .col-fill{
         padding: 0, 12px;
@@ -1029,7 +1191,6 @@ On desktop
     .header__search,
     .header__block--right .header__avatar {
         display: none;
-        
     }
 
     .header__bugerbtn{
@@ -1043,13 +1204,13 @@ On desktop
     .account-popover{
         right: 5rem;
     }
-    .mobile-nav{
-        display: block;
-    }
-    .mobile-nav.expanded{
-        display: flex;
+    .hello-account{
+        margin: 0.5rem 0;
     }
 
+    .promotion__cont {
+        padding-top: calc(5.5rem + 1.5rem);
+    }
     .promotion__cont .row > :nth-child(2){
         display: none;
     }

@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="header__block--left col">
                     <img src="assets\brand\logos\logo-full.svg" alt="" class="logo">
-                    <input type="text" class="size-s header__search" value placeholder="Search">
+                    <input type="text" class="size-m header__search" value placeholder="Search">
                 </div>
                 <div class="header__block--right col">
                     <a href="#" class="tab-active">Balo</a>
@@ -44,7 +44,7 @@
                 <div class="space"></div>
                 <button class="type-inherit">Đăng xuất</button>
             </div>
-            <div class="account-popover">
+            <div class="popover account-popover collapsed">
                 <div class="hello-account" id="to-account-info">
                     <span>
                         Xin chào,
@@ -58,10 +58,62 @@
             </div>
         </div>
     </div>
-    
     <!-- MAIN BODY HERE -->
-
+    
     <div id="main-body" class="section">
+        <div id="product-filter" class="collapsed">
+            <div class="filter__title">
+                <span class="subtitle1">Lọc</span>
+                <button class="style-text type-inherit" id="btn-filter-close">
+                    <i class="icon-close"></i>
+                </button>
+            </div>
+            <div class="body-container">
+                <div class="filter__gender">
+                    <div class="block__title subtitle1">Giới tính</div>
+                    <input type="checkbox" name="" id="checkbox__gender-man">
+                    <label for="checkbox__gender-man" class="body2">Nam</label>
+                    <input type="checkbox" name="" id="checkbox__gender-woman">
+                    <label for="checkbox__gender-woman" class="body2">Nữ</label>
+                    <input type="checkbox" name="" id="checkbox__gender-child">
+                    <label for="checkbox__gender-child" class="body2">Trẻ em</label>
+                </div>
+                <div class="filter__brand">
+                    <div class="block__title subtitle1">Thương hiệu</div>
+                    <input type="checkbox" name="" id="checkbox__brand-1">
+                    <label for="checkbox__brand-1" class="body2">Gucci</label>
+                    <input type="checkbox" name="" id="checkbox__brand-2">
+                    <label for="checkbox__brand-2" class="body2">Chanel</label>
+                    <input type="checkbox" name="" id="checkbox__brand-3">
+                    <label for="checkbox__brand-3" class="body2">Louis Vuitton</label>
+                </div>
+                <div class="filter__color">
+                    <div class="block__title subtitle1">Màu sắc</div>
+                    <input type="checkbox" name="" id="color-1">
+                    <label for="color-1" class="body2"></label>
+                    <input type="checkbox" name="" id="color-2">
+                    <label for="color-2" class="body2"></label>
+                    <input type="checkbox" name="" id="color-3">
+                    <label for="color-3" class="body2"></label>
+                </div>
+                <div class="filter__price">
+                    <div class="block__title subtitle1">Giá</div>
+                    <div class="price-line">
+                        <label for="price-min" class="body2">Từ (kđ)</label>
+                        <input type="text" name="" id="price-min" class="size-s">
+                    </div>
+                    <div class="price-line">
+                        <label for="price-max" class="body2">Đến (kđ)</label>
+                        <input type="text" name="" id="price-max" class="size-s">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter__action">
+                <button class="filter type-primary"><i class="icon-filter"></i>Lọc</button>
+                <button class="delete type-inherit"><i class="icon-trash"></i>Xóa tất cả</button>
+            </div>
+        </div>
         <div class="section__container promotion__cont">
             <div class="row">
                 <img src="./assets/img/header-banner-slider.png" alt="" class="col-8">
@@ -74,7 +126,15 @@
                     <h4 class="col-fill">Tất cả sản phẩm</h4>
                     <div class="action horizontal">
                         <button class="action__filter type-inherit style-text">Lọc<i class="icon-filter"></i></button>
-                        <button class="action__sort type-inherit style-text">Sắp xếp<i class="icon-chevron_down"></i></button>
+                        <div class="action__sort-cont">
+                            <button class="action__sort type-inherit style-text">Sắp xếp<i class="icon-chevron_down"></i></button>
+                            <div class="sort-popover hidden">
+                                <button class="type-inherit style-text size-s">Từ A-Z</button>
+                                <button class="type-inherit style-text size-s">Từ Z-A</button>
+                                <button class="type-inherit style-text size-s">Từ cao đến thấp</button>
+                                <button class="type-inherit style-text size-s">Từ thấp đến cao</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,60 +157,17 @@
                         </div>
                         <button class="btn-add-prd"><i class="icon-add_shopping_cart"></i> Thêm vào giỏ</button>
                     </div>
-                </li>
-                <li class="product-card col-3">
-                    <div class="product-card__cont">
-                        <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">
-                        <div class="product__info">
-                            <h6 class="product__name">Foundations Matte Flip Flop Foundations Matte Flip Flop</h6>
-                            <div class="stack">
-                                <div class="product__color-utility">
-                                    <div class="color-utility"></div>
-                                    <div class="color-utility"></div>
-                                    <div class="color-utility"></div>
-                                </div>
-                                <div class="product__price--raw subtitle1 font-line_through">60.000đ</div>
-                                <div class="product__price--sale subtitle1">30.000đ</div>
-                            </div>
-                        </div>
-                        <button class="btn-add-prd"><i class="icon-add_shopping_cart"></i> Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <li class="product-card col-3">
-                    <div class="product-card__cont">
-                        <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">
-                        <div class="product__info">
-                            <h6 class="product__name">Foundations Matte Flip Flop Foundations Matte Flip Flop</h6>
-                            <div class="stack">
-                                <div class="product__color-utility">
-                                    <div class="color-utility"></div>
-                                    <div class="color-utility"></div>
-                                    <div class="color-utility"></div>
-                                </div>
-                                <div class="product__price--raw subtitle1 font-line_through">60.000đ</div>
-                                <div class="product__price--sale subtitle1">30.000đ</div>
-                            </div>
-                        </div>
-                        <button class="btn-add-prd"><i class="icon-add_shopping_cart"></i> Thêm vào giỏ</button>
-                    </div>
-                </li> -->
-                
-
-
+                </li>-->
 
             </ul>
 
             <div class="pagination_cont row">
-                <ul class="pagination col">
-                    <!-- <li class="pagination__btn-previous disable"><i class="icon-chevron_left"></i></li>
-                    <li class="pagination__item selected">1</li>
-                    <li class="pagination__item">2</li>
-                    <li class="pagination__item">3</li>
-                    <li class="pagination__more disable">...</li>
-                    <li class="pagination__btn-next"><i class="icon-chevron_right"></i></li> -->
+                <ul class="pagination col" id="index-pagination-products">
+                    <!-- PAGINATION JS RENDER -->
                 </ul>   
             </div>
         </div>
+        <script src="./assets/scripts/interface-index.js"></script>
     </div>
 
     <!-- END MAIN BODY -->
@@ -177,11 +194,9 @@
             </ul>
             <ul class="footer__nav">
                 <li class="nav__title overline">Liên hệ</li>
-                <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
-                <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
-                <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
-                <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
-                <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li> 
+                <li class="nav__item body2"><a href="mailto:cskh@bagsto.vn">cskh@bagsto.vn</a></li>
+                <li class="nav__item body2"><a href="tel:+84 9797 9797">+84 9797 9797</a></li>
+                <li class="nav__item body2"><a href="#">273 An Dương Vương, Quận 5, Tp.HCM</a></li>
             </ul>
         </div>
         <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>
@@ -190,5 +205,4 @@
 </body>
 </html>
 
-<script src="./assets/scripts/app.js"></script>
 <script src="./assets/scripts/business.js"></script>
