@@ -1,0 +1,39 @@
+.header-tab--selected{
+    border-bottom: 2px solid var(--color-pri-main);
+    padding: 13px 0 12px 0;  
+}
+
+.mainBody{
+}
+#main-body__header{
+
+}
+#main-body__searchBar{
+    
+}
+.main-body__productTable{
+    display: flex;
+    flex-direction: column;
+}
+input[type="checkbox"]{
+    display:block;
+}
+.productTable__title{
+    background-color: var(--color-grey-200);
+}
+.productTable__title__row{
+    height: 56px;
+}
+.Product__img{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+.productTable__row{
+    height: 72px;
+}
+
+.dividedIngredients{
+    display: flex;
+    justify-content: flex-end;
+}
