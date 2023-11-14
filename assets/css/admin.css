@@ -1,0 +1,80 @@
+[id$="-page"]{
+    padding-bottom: 8.265rem;
+}
+/* [id$="-page"] .section__container{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+} */
+[id$="-page"] > :first-child{
+    padding-top: calc(5.5rem + 1.5rem) !important;
+}
+[id$="-page"] .heading__cont{
+    margin-bottom: 1.5rem;
+}
+
+/* SIGNIN */
+/* SIGNIN */
+
+/* ANALYSIS */
+.overal-analysis{
+    margin-bottom: -1.5rem;
+}
+.analysis__cont{
+    justify-content: center;
+}
+.analysis__cont .analysis__block{
+    display: block;
+    min-width: 16rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--color-bg-paper);
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+}
+.analysis__cont .analysis__block .body2{
+    color: var(--color-grey-600);
+}
+.analysis__cont .analysis__block .stack{
+    display: flex;
+    gap: 0.5rem;
+}
+.analysis__cont .analysis__block i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: var(--color-success-trans16);
+    color: var(--color-success-main);
+    border-radius: 50%;
+}
+.analysis__cont .analysis__block.trend--down i{
+    background-color: var(--color-error-trans16);
+    color: var(--color-error-main);
+}
+.analysis__cont .total-number{
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.invoice-table__cont {
+    position: relative;
+}
+.invoice-table .invoice-table__cont {
+    overflow: auto;   
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+}
+/* ANALYSIS */
+
+/* Under desktop */
+@media only screen and (max-width: 1216px){
+    .analysis__cont{
+        flex-wrap: wrap;
+    }
+    .analysis__block{
+        
+    }
+}
+/* Under desktop */

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'ico-bagsto';
-  src:  url('fonts/ico-bagsto.eot?1h8s1r');
-  src:  url('fonts/ico-bagsto.eot?1h8s1r#iefix') format('embedded-opentype'),
-    url('fonts/ico-bagsto.ttf?1h8s1r') format('truetype'),
-    url('fonts/ico-bagsto.woff?1h8s1r') format('woff'),
-    url('fonts/ico-bagsto.svg?1h8s1r#ico-bagsto') format('svg');
+  src:  url('fonts/ico-bagsto.eot?1wvkpf');
+  src:  url('fonts/ico-bagsto.eot?1wvkpf#iefix') format('embedded-opentype'),
+    url('fonts/ico-bagsto.ttf?1wvkpf') format('truetype'),
+    url('fonts/ico-bagsto.woff?1wvkpf') format('woff'),
+    url('fonts/ico-bagsto.svg?1wvkpf#ico-bagsto') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-checkbox_off:before {
+  content: "\e922";
+  color: #637381;
+}
+.icon-checkmark:before {
+  content: "\e923";
+  color: #fff;
+}
+.icon-more:before {
+  content: "\e924";
+  color: #637381;
+}
 .icon-add_a_photo:before {
   content: "\e900";
 }
