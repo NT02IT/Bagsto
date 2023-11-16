@@ -1,13 +1,6 @@
 [id$="-page"]{
     padding-bottom: 8.265rem;
 }
-/* [id$="-page"] .section__container{
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-} */
-[id$="-page"] > :first-child{
-    padding-top: calc(5.5rem + 1.5rem) !important;
-}
 [id$="-page"] .heading__cont{
     margin-bottom: 1.5rem;
 }
@@ -68,13 +61,145 @@
 }
 /* ANALYSIS */
 
+/* INVOICE DETAIL */
+.invoice-detail .content{
+    margin-top: 1.5rem;
+}
+.invoice-detail-table{
+    /* width: 100%; */
+    overflow: auto;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+    height: fit-content;
+}
+.invoice-detail-table__cont{
+    min-width: 36rem;    
+}
+.invoice-detail-table table{
+    min-width: fit-content;
+    padding-bottom: 0;
+}
+.invoice-detail-table td.product{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.invoice-detail-table td.product img{
+    border-radius: 12px;
+}
+.invoice-detail-table tr > :last-child{
+    text-align: right;
+}
+.invoice-detail-table .quantity{
+    text-align: center;
+}
+
+
+[class$="-card"]{
+    background-color: var(--color-bg-paper);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+.buyer-card{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.buyer-card img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.buyer-card .client__info{
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.buyer-card .client__address{
+    width: 100%;
+    color: var(--color-text-sec); 
+}
+.buyer-card .client__id{
+    width: 100%;
+    color: var(--color-text-sec);  
+}
+
+.address-card{
+    margin-top: 1.5rem;
+}
+.address-card__phonenumber{
+    color: var(--color-text-sec);
+}
+.address-card__title{
+    padding-bottom: 1.5rem;
+}
+.address-card__receiver,
+.address-card__address,
+.address-card__phonenumber{
+    padding-bottom: 0.5rem;
+}
+.address-card > :last-child{
+    padding-bottom: 0;
+}
+
+.payment-card{
+    margin-top: 1.5rem;
+}
+.payment-card .stack{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.payment-card .stack:last-child{
+    margin-bottom: 0;
+}
+.payment-card__title{
+    padding-bottom: 1.5rem;
+}
+.payment-card__total{
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-grey-trans24);
+}
+.payment-card__total .value{
+    text-align: right;
+}
+.payment-card__total .total-label{
+    color: var(--color-error-main);
+}
+.payment-card .label{
+    color: var(--color-text-sec);
+}
+/* INVOICE DETAIL */
+
 /* Under desktop */
 @media only screen and (max-width: 1216px){
+
+
     .analysis__cont{
         flex-wrap: wrap;
     }
-    .analysis__block{
-        
+    .invoice-detail .content{
+        flex-direction: column-reverse;
     }
+    .invoice-detail .col-12,
+    .invoice-detail .col-8,
+    .invoice-detail .col-4{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .invoice-detail .invoice-detail-table,
+    .invoice-detail [class^="col-"]{
+        width: calc(100%);
+    }
+    .address-card,
+    .payment-card {
+        margin-top: 1rem;
+    }
+    .invoice-detail .invoice-detail-table{
+        margin-top: 1rem;
+    }
+
 }
 /* Under desktop */

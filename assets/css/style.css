@@ -206,6 +206,9 @@ html{
 .section{
     width: 100%;
 }
+[id$="-page"] > :first-child{
+    margin-top: 6.5rem;
+}
 .section__container{
     position: relative;
     display: flex;
@@ -717,8 +720,8 @@ input[id^="color"]:checked + label::before{
 /* Popover */
 
 /* Breadcrumb */
-.breadcrumb{
-    padding-top: calc(5.5rem + 1.5rem);
+.breadcrumb .title{
+    margin-bottom: 0.5rem;
 }
 .breadcrumb .breadcrumb__link{
     display: flex;
@@ -817,7 +820,13 @@ table .client__avatar .client__id{
     justify-content: center;
     border-radius: 50%;
 }
+table tr.canhover{
+    cursor: pointer;
+}
 table tr.selected{
+    background-color: var(--color-grey-trans16);
+}
+table tr.canhover:hover{
     background-color: var(--color-grey-trans16);
 }
 /* Table */

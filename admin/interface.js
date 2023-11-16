@@ -1,53 +1,52 @@
 // SIDE NAVIGATE
 const mainBody = document.getElementById('main-body');
-const sitesMainBody = document.querySelectorAll('[id$="-page"]');
 const headerLogo = document.getElementById('header-logo');
 const footerLogo = document.getElementById('footer-logo');
 const headerTab1 = document.getElementById('header-tab-admin1');
 const headerTab2 = document.getElementById('header-tab-admin2');
 const headerTab3 = document.getElementById('header-tab-admin3');
 
-const siteIndex = document.getElementById('index-page');
-const siteProduct = document.getElementById('product-page');
-
+const siteAnalysis = document.getElementById('analysis-page');
 headerLogo.addEventListener('click', () =>{
     resetNavbar();
     clearMainBody();
-    siteIndex.classList.remove('hidden');
+    siteAnalysis.classList.remove('hidden');
+    headerTab1.classList.add('active');
 })
 footerLogo.addEventListener('click', () =>{
     resetNavbar();
     clearMainBody();
-    siteIndex.classList.remove('hidden');
+    siteAnalysis.classList.remove('hidden');
+    headerTab1.classList.add('active');
 })
-var currentPageBaloProduct = 1;
 headerTab1.addEventListener('click', () =>{
     if(!headerTab1.classList.contains('active')){
         resetNavbar();
-        if(!headerTab1.classList.contains('active'))
-            headerTab1.classList.add('active');
         clearMainBody();
-        if(siteProduct.classList.contains('hidden')){
-            siteProduct.classList.remove('hidden');
-            siteProduct.classList.add('product-balo')
+        headerTab1.classList.add('active');
+        siteAnalysis.classList.remove('hidden');
+    }
+})
 
-            const prdItems_Product = document.querySelector("#product-page .products__items");
-            const pagination_Product = document.getElementById('product-pagination-products');
-            displayProducts(prdItems_Product, itemList, currentPageBaloProduct);
-            updatePaginationOfProducts(prdItems_Product, itemList, pagination_Product, currentPageBaloProduct);
-        }
+headerTab2.addEventListener('click', () =>{
+    const siteInvoiceDetail = document.getElementById('invoice-detail-page');
+    if(!headerTab2.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab2.classList.add('active');
+        siteInvoiceDetail.classList.remove('hidden');
     }
 })
 
 function resetNavbar(){
-    if(headerTab1.classList.contains('active'))
-        headerTab1.classList.remove('active');
-    if(headerTab2.classList.contains('active'))
-        headerTab2.classList.remove('active');
-    if(headerTab3.classList.contains('active'))
-        headerTab3.classList.remove('active');
+    const headerTabs = document.querySelectorAll('#header-admin .tab');
+    for(let i = 0; i < headerTabs.length; i++){
+        if(headerTabs[i].classList.contains('active'))
+        headerTabs[i].classList.remove('active');
+    }
 }
 function clearMainBody(){
+    const sitesMainBody = document.querySelectorAll('[id$="-page"]');
     for(let i = 0; i < sitesMainBody.length; i++){
         sitesMainBody[i].classList.add('hidden');
     }
@@ -77,4 +76,4 @@ document.addEventListener("click", function (event) {
     if (!headerClientAvatar.contains(event.target) && !accountPopover.contains(event.target)) {
       accountPopover.classList.add("collapsed");
     }
-  });
+});

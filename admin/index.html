@@ -22,7 +22,7 @@
                     <input type="text" class="size-m header__search" value placeholder="Search">
                 </div>
                 <div class="header__block--right col">
-                    <a href="#" class="tab" id="header-tab-admin1">Thống kê</a>
+                    <a href="#" class="tab active" id="header-tab-admin1">Thống kê</a>
                     <a href="#" class="tab" id="header-tab-admin2">Sản phẩm</a>
                     <a href="#" class="tab" id="header-tab-admin3">Khách hàng</a>
                     <img src="../assets/img/avatar-placeholder.png" alt="" class="header__avatar">
@@ -39,7 +39,6 @@
                         <i class="icon-chevron_right"></i>
                     </button>
                 </div>
-                <button class="type-inherit style-text">Thống kê</button>
                 <button class="type-inherit style-text">Sản phẩm</button>
                 <button class="type-inherit style-text">Khách hàng</button>
                 <div class="space"></div>
@@ -66,7 +65,7 @@
     <!-- SIGN IN -->
 
     <!-- ANALYSIS -->
-    <div id="analysis-page">
+    <div id="analysis-page" class="">
         <div class="overal-analysis section__container">
             <div class="heading__cont row">
                 <div class="heading col-12">
@@ -119,10 +118,10 @@
                 <div class="invoice-table__cont col-12">
                     <table>
                         <tr class="table__header subtitle1">
-                            <th class="data__checkbox" class="header__checkbox">
+                            <!-- <th class="data__checkbox" class="header__checkbox">
                                 <input type="checkbox" name="" id="checkbox-all-invoice">
                                 <label for="checkbox-all-invoice"></label>
-                            </th>
+                            </th> -->
                             <th>Khách hàng</th>
                             <th>Ngày mua</th>
                             <th>Hóa đơn</th>
@@ -130,11 +129,11 @@
                         </tr>
     
                         <!-- DATA -->
-                        <tr class="table__data">
-                            <td class="data__checkbox">
+                        <tr class="table__data canhover">
+                            <!-- <td class="data__checkbox">
                                 <input type="checkbox" name="" id="checkbox-invoice-1">
                                 <label for="checkbox-invoice-1"></label>
-                            </td>
+                            </td> -->
                             <td class="client__avatar">
                                 <img src="../assets/img/avatar-placeholder.png" alt="">
                                 <div class="client__info">
@@ -152,11 +151,11 @@
                                 <div class="subtitle2">$44.39</div>
                             </td>
                         </tr>
-                        <tr class="table__data">
-                            <td class="data__checkbox">
+                        <tr class="table__data canhover">
+                            <!-- <td class="data__checkbox">
                                 <input type="checkbox" name="" id="checkbox-invoice-2">
                                 <label for="checkbox-invoice-2"></label>
-                            </td>
+                            </td> -->
                             <td class="client__avatar">
                                 <img src="../assets/img/avatar-placeholder.png" alt="">
                                 <div class="client__info">
@@ -174,11 +173,11 @@
                                 <div class="subtitle2">$44.39</div>
                             </td>
                         </tr>
-                        <tr class="table__data">
-                            <td class="data__checkbox">
+                        <tr class="table__data canhover">
+                            <!-- <td class="data__checkbox">
                                 <input type="checkbox" name="" id="checkbox-invoice-3">
                                 <label for="checkbox-invoice-3"></label>
-                            </td>
+                            </td> -->
                             <td class="client__avatar">
                                 <img src="../assets/img/avatar-placeholder.png" alt="">
                                 <div class="client__info">
@@ -196,11 +195,11 @@
                                 <div class="subtitle2">$44.39</div>
                             </td>
                         </tr>
-                        <tr class="table__data selected">
-                            <td class="data__checkbox">
+                        <tr class="table__data canhover">
+                            <!-- <td class="data__checkbox">
                                 <input type="checkbox" name="" id="checkbox-invoice-4">
                                 <label for="checkbox-invoice-4"></label>
-                            </td>
+                            </td> -->
                             <td class="client__avatar">
                                 <img src="../assets/img/avatar-placeholder.png" alt="">
                                 <div class="client__info">
@@ -219,7 +218,6 @@
                             </td>
                         </tr>
                         <!-- DATA -->
-    
                     </table>
                     <div class="table__footer">
                         <div colspan="100%" class="table__footer--action">
@@ -237,6 +235,183 @@
     <!-- ANALYSIS -->
 
     <!-- INVOICE DETAIL -->
+    <div id="invoice-detail-page" class="hidden">
+        <div class="invoice-detail section__container">
+            <div class="row">
+                <div class="breadcrumb col-12">
+                    <h4 class="title">Chi tiết hóa đơn</h4>
+                    <div class="breadcrumb__links horizontal">
+                        <div class="breadcrumb__link body2">Trang chủ</div>
+                        <div class="breadcrumb__link body2">Thống kê</div>
+                        <div class="breadcrumb__link body2">Chi tiết hóa đơn</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content row">
+                <div class="invoice-detail-table col-8">
+                    <div class="invoice-detail-table__cont">
+                        <table>
+                            <tr class="table__header subtitle1">
+                                <th>Sản phẩm</th>
+                                <th>Đơn giá</th>
+                                <th class="quantity">Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+        
+                            <!-- DATA -->
+                            <tr class="table__data">
+                                <td class="product">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="product__info">
+                                        <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                        <span class="product__size body2">Kích thước: 9</span>
+                                        <span class="product__color body2">
+                                            Màu sắc:
+                                            <span class="color-utility"></span>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">$17.42</div>
+                                </td>
+                                <td>
+                                    <div class="quantity body2">1</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$17.42</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data">
+                                <td class="product">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="product__info">
+                                        <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                        <span class="product__size body2">Kích thước: 9</span>
+                                        <span class="product__color body2">
+                                            Màu sắc:
+                                            <span class="color-utility"></span>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">$17.42</div>
+                                </td>
+                                <td>
+                                    <div class="quantity body2">1</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$17.42</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data">
+                                <td class="product">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="product__info">
+                                        <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                        <span class="product__size body2">Kích thước: 9</span>
+                                        <span class="product__color body2">
+                                            Màu sắc:
+                                            <span class="color-utility"></span>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">$17.42</div>
+                                </td>
+                                <td>
+                                    <div class="quantity body2">1</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$17.42</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data">
+                                <td class="product">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="product__info">
+                                        <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                        <span class="product__size body2">Kích thước: 9</span>
+                                        <span class="product__color body2">
+                                            Màu sắc:
+                                            <span class="color-utility"></span>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">$17.42</div>
+                                </td>
+                                <td>
+                                    <div class="quantity body2">1</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$17.42</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data">
+                                <td class="product">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="product__info">
+                                        <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                        <span class="product__size body2">Kích thước: 9</span>
+                                        <span class="product__color body2">
+                                            Màu sắc:
+                                            <span class="color-utility"></span>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">$17.42</div>
+                                </td>
+                                <td>
+                                    <div class="quantity body2">1</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$17.42</div>
+                                </td>
+                            </tr>
+                            <!-- DATA -->
+        
+                        </table>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="buyer-card">
+                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                        <div class="client__info">
+                            <div class="client__name subtitle2">Nguyễn Tuấn</div>
+                            <div class="client__id body2">#CL01</div>
+                            <!-- <div class="client__address body2"><i class="icon-location"></i>967/58 Sư Vạn Hạnh, Quận 5, tp.Hồ Chí Minh</div> -->
+                        </div>
+                        <button class="size-s type-inherit">Chi tiết</button>
+                    </div>
+                    <div class="address-card">
+                        <h6 class="address-card__title">Địa chỉ giao hàng</h6>
+                        <div class="address-card__receiver subtitle2">Nguyễn Tuấn</div>
+                        <div class="address-card__address body2">1147 Rohan Drive Suite 819 - Burlington, VT / 82021</div>
+                        <div class="address-card__phonenumber body2">0327531105</div>
+                    </div>
+                    <div class="payment-card">
+                        <h6 class="payment-card__title">Thông tin đơn hàng</h6>
+                        <div class="payment-card__total-temp stack">
+                            <div class="label body2">Tạm tính</div>
+                            <div class="body2">500.000đ</div>
+                        </div>
+                        <div class="payment-card__shipping stack">
+                            <div class="label body2">Phí ship</div>
+                            <div class="body2">-</div>
+                        </div>
+                        <div class="payment-card__total stack">
+                            <div class="subtitle1">Tổng cộng</div>
+                            <div class="value"> 
+                                <div class="total-label subtitle1">500.000đ</div>
+                                <div class="caption"><i>(Đã bao gồm thuế VAT)</i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- INVOICE DETAIL -->
 
     <!-- PRODUCT -->
