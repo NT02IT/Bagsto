@@ -1,3 +1,31 @@
+// DATA INIT
+//----------------------------------------------------------------
+function writeToStorage(filename) {
+  fetch(filename)
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('users', JSON.stringify(data));
+    })
+    .catch(error => console.error('Error reading JSON file:', error));
+}
+
+function getFromStorage(key) {
+  const storedData = localStorage.getItem(key);
+  if (storedData) {
+    const users = JSON.parse(storedData);
+    console.log(users);
+  } else {
+    console.log('No data found in localStorage.');
+  }
+}
+writeToStorage('../../data/users.json');
+getFromStorage('users');
+//----------------------------------------------------------------
+// DATA INIT
+
+
+
+
 const itemList = [];
 for (let i = 1; i <= 100; i++) {
     itemList.push(`Item ${i}`);

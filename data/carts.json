@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "id_user": 1,
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        }]
+    },
+    {
+        "id": 2,
+        "id_user": 2,
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        }]
+    },
+    {
+        "id": 3,
+        "id_user": 3,
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        }]
+    }
+]

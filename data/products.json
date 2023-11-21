@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "name": "Balo 1",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Balo 2",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Balo 3",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Balo 4",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Balo 5",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Balo 6",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Balo 7",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Balo 8",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Balo 9",
+        "brand_name": "Nike",
+        "day_import": "19/11/2002",
+        "colors" : ["#000000", "#111111"],
+        "sizes" : ["S", "M", "L"],
+        "price_imported" : 500000,
+        "price_sell" : 600000,
+        "for_gender" : "Nam",
+        "description" : "Vải đẹp lắm",
+        "thumbnail_stack" : [
+            "https://", 
+            "https://"
+        ]
+    }
+]
