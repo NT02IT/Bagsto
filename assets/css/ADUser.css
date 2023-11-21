@@ -1,0 +1,252 @@
+#user-data{
+    display:none;
+}    
+.row{
+    width: 110%;
+    padding-right: 8%;
+}
+.header__block--left{
+    display: inline-block;
+    flex-grow: 100;
+}
+.header__block--right{
+    display: inline-flex;
+    flex-grow: 1;
+    padding-right: 10px;
+}
+.header-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;}
+.icon-plus{
+    display:block;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    padding:0;
+}
+.user-body-row-2{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-top:30px ;
+   
+}
+#status{
+    flex-grow: 1;
+    opacity: 0.5;
+}
+#status-selection{
+    align-items: center;
+    width: 90%;
+    height: 50px;
+    padding-left: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 1px solid;
+    opacity: 0.5;
+}
+#cus-search{
+    flex-grow: 3;
+    display: inline-block;
+}
+#search-input{
+    width: 95%;
+    height: 50px;
+    padding-left: 50px;
+    position: relative;
+    border: 1px solid ;
+    opacity:0.5;
+}
+.icon-search{
+    height: 50px;
+    width: 50px ;
+    position: absolute;
+    top: 125px;
+    left: 29%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-size: 30px;
+    opacity: 0.5;
+}
+.main-body__user-table{
+    display: flex;
+    flex-direction: column;
+}
+.user-table-title{
+  
+    margin-top: 1rem;
+    background-color:var(--color-grey-200) ;
+    margin-bottom: 20px;
+}
+.user-table-title-row{
+    height: 1.5rem;
+    background-color: var(--color-grey-200);
+}
+.user-table-title-status{
+   
+    padding-left: 1.1rem;   
+    background-color:  var(--color-grey-200);
+}
+.user-table-body-cell:nth-child(5){
+    width: 50px;
+    margin-right: 10px ;
+}
+.user-table-title-status:last-child{
+    width: 20px;
+    margin-right: 10px;
+}
+.user-table__row{
+   display: inline-block;
+    height: 70px;
+    
+}
+.user-table-body-cell{
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.user-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+
+}
+.user-table-body-cell__Name{
+    display:flex;
+}
+.user-name{
+    padding-top: 8px;
+    padding-left: 20px;
+}
+.user-table-body-cell:first-child{
+    width:15rem;
+}
+.user-table-body-cell :nth-child(3){
+    width: 20px;
+}
+.user-table-body-cell :nth-child(4){
+    width: 20px;
+}
+.user-table-body-cell__status{
+    width: 60px;
+}
+
+.dividedIngredients{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-user{
+    color:var(--color-divider);
+    background-color:var(--color-common-white);
+}
+
+.header-body-1{
+    display: block;  
+}
+.item-user{
+    display: inline-flex ;
+}
+li:first-child{
+    color:var(--color-grey-800);
+}
+li:nth-child(2) {
+    margin-left:  30px;
+}
+li:last-child{
+    margin-left: 30px;
+}
+#body-tab-3{    
+    list-style-type: none;
+}
+.body-tab{
+    position: relative;
+    color:var(--color-grey-800)
+}
+#body-tab-6{
+    color:var(--color-grey-500)
+}
+.icon-dot{
+    font-size: 16px;
+}
+#image-input{
+    display:none;
+    z-index: 1;
+}
+ #add-photo{
+    border: 1px solid black ;
+    height: 414px;
+    width: 368px;
+    margin-top: 10px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position:relative;
+    
+ }
+.window-add-photo {
+    position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      overflow: hidden;
+    
+  }
+
+  #image-input {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display:block;
+    transform: translate(-50%, -50%);
+    
+  }
+
+  .icon-add_a_photo {
+    font-size: 24px; /* Điều chỉnh kích thước của biểu tượng */
+    color: #333; /* Màu của biểu tượng */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Đưa biểu tượng về trung tâm */
+    font-size: 30px  ;
+    display: block  ;
+  }
+  .text-photo{
+    width: 100px;
+    font-size: 15px;
+   margin-left: 0;
+  }
+ .text-photo-1{
+    top: 70%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+ #preview-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    display: none;  
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+ }
