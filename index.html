@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/client.css">
+    <link rel="stylesheet" href="./assets/css/Account.css">
+
 </head>
 <body>
     <div id="header-client" class="section">
@@ -287,6 +289,101 @@
         <!-- PRODUCTS-DETAIL -->
 
     </div>~
+    <!--Account-->
+    <div id="account-page">
+        <div class="section__container">
+            <div class="row">
+                <div class="Breadcrumb">
+                    <h4>Thông tin của tôi</h4>
+                </div>  
+            </div>
+            <div class="my-info row">
+                <div class="User_Account_UploadAvatar col-4">
+                    <div class="avatar_text">
+                        <div class="avatar">
+                            <a href="#" class="socials__item"><i class="icon-add_a_photo"></i></a>
+                        </div>
+                        <span class="body2">Cho phép *.jpeg, *.jpg, *.png, *.gif</span>
+                    </div>
+                </div>
+                <div class="User_Account_NewUserForm col-8">
+                    <div class="User_Account_NewUserForm_editor">
+                        <label class="info-label" for="fullName">Họ tên</label>
+                        <input type="text" id="fullName" class="info-input" required>
+                    </div>
+    
+                    <div class="User_Account_NewUserForm_editor">
+                        <label class="info-label" for="fullName">Số điện thoại</label>
+                        <input type="text" id="fullName" class="info-input" required>
+                    </div>
+    
+                    <div class="User_Account_NewUserForm_editor">
+                        <label class="info-label" for="fullName">Địa chỉ</label>
+                        <input type="text" id="fullName" class="info-input" required>
+                    </div>
+    
+                    <div class="User_Account_NewUserForm_editor">
+                        <label class="info-label" for="fullName">Email</label>
+                        <input type="text" id="fullName" class="info-input" required>
+                    </div>
+    
+                    <div class="User_Account_NewUserForm_editor">
+                        <label class="info-label" for="fullName">Mật khẩu</label>
+                        <input type="text" id="fullName" class="info-input" required>
+                    </div>
+
+                    <div class="User_Account_NewUserForm_editor">
+                        <label class="info-label" for="fullName">Xác nhận mật khẩu</label>
+                        <input type="text" id="fullName" class="info-input" required>
+                    </div>
+
+                    <div class="User_Account_NewUserForm_editor">
+                        <input type="button" value="Cập nhật thông tin" class="Components_Button_Medium">
+                    </div>
+                </div>
+            </div> 
+            <div class="order-history row">
+                <div class="col-12">
+                    <div class="Breadcrumb">
+                        <h4>Lịch sử mua hàng</h4>
+                    </div>  
+                    <div class="Table_view_Invoice">
+                        <table id="Table-info" class="Table-info"> 
+                            <thead>
+                                <tr>
+                                    <th class="Table_Head_Invoice" style="width: 48px;">
+                                        <input type="checkbox" name="" id="Table_Row_Invoice_Checkbox">
+                                        <label for="checkbox__gender"></label></th>
+                                    <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
+                                    <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
+                                    <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
+                                    <th class="Table_Head_Invoice" style="width: 80px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Thêm các dòng khác nếu cần -->
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th class="Table_Pagination" style="width: 48px;"></th>
+                                    <th class="Table_Pagination" style="width: 180px;"></th>
+                                    <th class="Table_Pagination" style="width: 724px;"></th>
+                                    <th class="Table_Pagination" style="width: 120px;">trang</th>
+                                    <th class="Table_Pagination" style="width: 80px;"> <   ></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    
+    
+
+
+    <!--End-Account-->
 
     <!-- END MAIN BODY -->
 

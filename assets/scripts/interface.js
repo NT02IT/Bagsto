@@ -202,3 +202,178 @@ document.addEventListener("click", function (event) {
     }
   }
 });
+  // Account
+  document.getElementsByClassName("hello-account")[1].addEventListener("click",()=>{
+    var obj=document.getElementsByClassName("account-hidden")[0];
+    obj.style.display="block";
+})
+
+
+    // // Dữ liệu mới cần thêm vào
+    // var newData = [
+    //     { col1: 'x', col2: '21/11/2023', col3: 'ABCDXYZT', col4: '500$', col5: '...' },
+    //     { col1: 'x', col2: '30/11/2023', col3: 'ABCDXYZT', col4: '500$', col5: '...' },
+    //     { col1: 'x', col2: '30/11/2023', col3: 'ABCDXYZT', col4: '500$', col5: '...' },
+    //     { col1: 'x', col2: '30/11/2023', col3: 'ABCDXYZT', col4: '500$', col5: '...' },
+    //     { col1: 'x', col2: '30/11/2023', col3: 'ABCDXYZT', col4: '500$', col5: '...' },
+    //     // Thêm các dòng mới tùy ý
+    // ];
+
+    // // Lấy thẻ tbody của bảng
+    // var tbody = document.getElementById('Table-info').getElementsByTagName('tbody')[0];
+
+    // // Đọc dữ liệu từ mảng và thêm vào bảng
+    // for (var i = 0; i < newData.length; i++) {
+    //     var row = tbody.insertRow();
+    //     var cell1 = row.insertCell(0);
+    //     var cell2 = row.insertCell(1);
+    //     var cell3 = row.insertCell(2);
+    //     var cell4 = row.insertCell(3);
+    //     var cell5 = row.insertCell(4);
+
+    //     cell1.innerHTML = newData[i].col1;
+    //     cell2.innerHTML = newData[i].col2;
+    //     cell3.innerHTML = newData[i].col3;
+    //     cell4.innerHTML = newData[i].col4;
+    //     cell5.innerHTML = newData[i].col5;
+
+    //     cell1.className = 'Table_Row_Invoice';
+    //     cell2.className = 'Table_Row_Invoice';
+    //     cell3.className = 'Table_Row_Invoice';
+    //     cell4.className = 'Table_Row_Invoice';
+    //     cell5.className = 'Table_Row_Invoice';
+    // }
+    document.addEventListener('DOMContentLoaded', function () {
+      var tbody = document.getElementById('Table-info').getElementsByTagName('tbody')[0];
+      var productDetailsContainer = document.getElementById('ProductDetailsContainer');
+      var productDetailsContent = document.getElementById('ProductDetailsContent');
+      var account = document.getElementById('account'); // Thêm đoạn này để tham chiếu đến phần tử account
+  
+      // Mảng chứa dữ liệu đơn hàng
+      var newData = [
+          // ... (giữ nguyên phần dữ liệu)
+          { 
+            col1: 'x', 
+            col2: '20/11/2003', 
+            col3: 'ABCDXYZ', 
+            col4: '200$', 
+            col5: '...', 
+            shippingAddress: '123 Đường ABC, Thành phố XYZ', 
+            productList: [
+                { name: 'Sản phẩm 1', price: 100 },
+                { name: 'Sản phẩm 2', price: 50 }
+            ],
+        },
+        { 
+            col1: 'x', 
+            col2: '20/11/2003', 
+            col3: 'EBCDXYZ', 
+            col4: '200$', 
+            col5: '...', 
+            shippingAddress: '123 Đường ABC, Thành phố XYZ', 
+            productList: [
+                { name: 'Sản phẩm 1', price: 100 },
+                { name: 'Sản phẩm 1', price: 100 },
+                { name: 'Sản phẩm 1', price: 100 },
+                { name: 'Sản phẩm 1', price: 100 },
+                { name: 'Sản phẩm 2', price: 50 }
+            ],
+        },
+      ];
+  
+      // Hàm xử lý sự kiện cho nút "..."
+      function handleShowDetailClick(oder) {
+          productDetailsContainer.style.display = 'block';
+          
+      }
+  
+      // Đọc dữ liệu từ mảng và thêm vào bảng
+      for (var i = 0; i < newData.length; i++) {
+          var row = tbody.insertRow();
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+  
+          cell1.innerHTML = newData[i].col1;
+          cell2.innerHTML = newData[i].col2;
+          cell3.innerHTML = newData[i].col3;
+          cell4.innerHTML = newData[i].col4;
+  
+          cell1.className = 'Table_Row_Invoice';
+          cell2.className = 'Table_Row_Invoice';
+          cell3.className = 'Table_Row_Invoice';
+          cell4.className = 'Table_Row_Invoice';
+  
+          // Thêm nút "..."
+          var showDetailButton = document.createElement('div');
+          showDetailButton.className = 'Show_Detail';
+          showDetailButton.textContent = '...';
+          cell5.appendChild(showDetailButton);
+  
+          // Tạo sự kiện cho nút "..."
+          (function(i) {
+              showDetailButton.addEventListener('click', function () {
+
+                  account.style.display = 'none';
+                  // Tạo các div mới và thêm vào productDetailsContent
+                  // Tạo div chứa div1 và div2
+                  var containerDiv1 = document.createElement('div');
+                  containerDiv1.className = 'container-div1';
+
+                  // Tạo div chứa div3
+                  var containerDiv2 = document.createElement('div');
+                  containerDiv2.className = 'container-div2';
+
+
+                  var div1 = document.createElement('div');
+                  div1.textContent = 'Thông tin chi tiết sản phẩm cho đơn hàng ' + newData[i].col3;
+                  div1.className = 'custom-div1';
+  
+                  var div2 = document.createElement('div');
+                  div2.textContent = 'Địa chỉ giao hàng: ' + newData[i].shippingAddress;
+                  div2.className = 'custom-div2';
+  
+                  var div3 = document.createElement('div');
+                  div3.textContent = 'Danh sách sản phẩm:';
+                  div3.className = 'custom-div3';
+
+                  newData[i].productList.forEach(function(product) {
+                      var productDiv = document.createElement('div');
+                      productDiv.textContent = `${product.name} - Giá: ${product.price}$`;
+                      div3.appendChild(productDiv);
+                  });
+
+                  // Thêm div1 và div2 vào containerDiv1
+                    containerDiv1.appendChild(div1);
+                    containerDiv1.appendChild(div2);
+
+                    // Thêm div3 vào containerDiv2
+                    containerDiv2.appendChild(div3);
+
+                    // Thêm containerDiv1 và containerDiv2 vào body hoặc một phần tử khác trong DOM
+                    document.body.appendChild(containerDiv1);
+                    document.body.appendChild(containerDiv2);
+  
+                  // Xóa nội dung cũ của productDetailsContent và thêm các div mới
+                  productDetailsContent.innerHTML = '';
+                  productDetailsContent.appendChild(div1);
+                  productDetailsContent.appendChild(div2);
+                  productDetailsContent.appendChild(div3);
+  
+                  // Hiển thị chi tiết sản phẩm
+                  handleShowDetailClick();
+              });
+          })(i);
+      }
+  
+      // Đóng cửa sổ chi tiết sản phẩm khi click bên ngoài
+      productDetailsContainer.addEventListener('click', function (event) {
+          if (event.target === productDetailsContainer) {
+              productDetailsContainer.style.display = 'none';
+              account.style.display = 'block';
+          }
+      });
+  });
+  

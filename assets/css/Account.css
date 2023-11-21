@@ -1,0 +1,208 @@
+.account-hidden{
+    display: none;
+}
+.Breadcrumb{
+    padding: 20px;
+}
+.User_Account {
+    display: flex;
+    align-items: flex-start; /* Căn avatar và form về đầu trang */
+  }
+
+  
+  .User_Account_UploadAvatar {
+    margin-right: 20px; /* Khoảng cách giữa avatar và form */
+    height: 414px;
+    width: 368px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.User_Account_UploadAvatar .avatar_text {
+    width: 144px;
+    height: 204px;
+}
+  
+  .User_Account_UploadAvatar .avatar {
+    width: 128px;
+    height: 128px;
+    background-color: #ddd;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;  
+    margin: auto;
+  }
+  
+  .User_Account_UploadAvatar .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .User_Account_UploadAvatar .avatar span.body2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  .User_Account_NewUserForm {
+   
+    height: 414px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    grid-gap: 10px; /* Khoảng trắng giữa các ô */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .User_Account_NewUserForm_editor{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-label
+  {
+    order: -1;
+    margin-bottom: 5px;
+
+  }
+  .info-input {
+    padding: 8px;
+    box-sizing: border-box;
+    
+  }
+
+
+    /* .info-label:nth-child(odd),
+    .info-input:nth-child(odd) {
+    margin-bottom: 10px;
+}
+   */
+
+  
+  
+  /* .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block; 
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+   */
+  /* Định dạng 2 cột */
+  @media (min-width: 768px) {
+    .User_Account {
+      flex-direction: row;
+    }
+  
+    .User_Account_UploadAvatar
+    {
+        flex: 31.94%;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+    .User_Account_NewUserForm {
+      flex: 68.06%;
+      position: relative;
+      padding: 15px;
+    }
+  }
+
+  .Components_Button_Medium {
+    width: 155px;
+    height: 36px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 6px, 16px, 6px, 16px;
+    margin: 15px;
+    gap: 8px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #ffffff;
+    background-color: #00AB55; /* Màu xanh */
+    border-radius: 8px; /* Độ bo góc */
+}
+.Table-info{
+    padding: 0px;
+}
+
+.Table_view_Invoice{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.Table_Head_Invoice{
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    background-color: #F4F6F8;
+}
+.Table_Row_Invoice{
+    padding: 5px;
+    padding-left: 0px;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+}
+.Table_Pagination{
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+}
+
+.Product_Details {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 100;
+  
+}
+
+.Product_Details_Content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke ;/* Màu nền trắng cho nội dung */
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 80%;
+  display: flex;
+
+}
+.Product_Details_Content div{
+  width: 100%;
+}
+.custom-div1{
+  background-color: aqua;
+  width: 33.33%; /* Chiếm 1/3 chiều ngang */
+  height: 100%;
+  float: left; 
+}
+.custom-div2{
+background-color: bisque;
+width: 33.33%; /* Chiếm 1/3 chiều ngang */
+  height: 100%;
+  float: left; 
+}
+.custom-div3{
+  background-color: #00AB55;
+  width: 66.66%; /* Chiếm 1/3 chiều ngang */
+  height: 100%;
+  float: left; 
+}
+.container-div1{
+  background-color:  red;
+
+}
