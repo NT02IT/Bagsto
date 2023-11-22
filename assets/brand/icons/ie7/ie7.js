@@ -13,6 +13,9 @@
 		el.innerHTML = '<span style="font-family: \'ico-bagsto\'">' + entity + '</span>' + html;
 	}
 	var icons = {
+		'icon-checkbox_off': '&#xe922;',
+		'icon-checkmark': '&#xe923;',
+		'icon-more': '&#xe924;',
 		'icon-add_a_photo': '&#xe900;',
 		'icon-add_photo_alternate': '&#xe901;',
 		'icon-add_shopping_cart': '&#xe902;',

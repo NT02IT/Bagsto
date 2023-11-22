@@ -1,0 +1,205 @@
+[id$="-page"]{
+    padding-bottom: 8.265rem;
+}
+[id$="-page"] .heading__cont{
+    margin-bottom: 1.5rem;
+}
+
+/* SIGNIN */
+/* SIGNIN */
+
+/* ANALYSIS */
+.overal-analysis{
+    margin-bottom: -1.5rem;
+}
+.analysis__cont{
+    justify-content: center;
+}
+.analysis__cont .analysis__block{
+    display: block;
+    min-width: 16rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--color-bg-paper);
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+}
+.analysis__cont .analysis__block .body2{
+    color: var(--color-grey-600);
+}
+.analysis__cont .analysis__block .stack{
+    display: flex;
+    gap: 0.5rem;
+}
+.analysis__cont .analysis__block i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: var(--color-success-trans16);
+    color: var(--color-success-main);
+    border-radius: 50%;
+}
+.analysis__cont .analysis__block.trend--down i{
+    background-color: var(--color-error-trans16);
+    color: var(--color-error-main);
+}
+.analysis__cont .total-number{
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.invoice-table__cont {
+    position: relative;
+}
+.invoice-table .invoice-table__cont {
+    overflow: auto;   
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+}
+/* ANALYSIS */
+
+/* INVOICE DETAIL */
+.invoice-detail .content{
+    margin-top: 1.5rem;
+}
+.invoice-detail-table{
+    /* width: 100%; */
+    overflow: auto;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+    height: fit-content;
+}
+.invoice-detail-table__cont{
+    min-width: 36rem;    
+}
+.invoice-detail-table table{
+    min-width: fit-content;
+    padding-bottom: 0;
+}
+.invoice-detail-table td.product{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.invoice-detail-table td.product img{
+    border-radius: 12px;
+}
+.invoice-detail-table tr > :last-child{
+    text-align: right;
+}
+.invoice-detail-table .quantity{
+    text-align: center;
+}
+
+
+[class$="-card"]{
+    background-color: var(--color-bg-paper);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+.buyer-card{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.buyer-card img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.buyer-card .client__info{
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.buyer-card .client__address{
+    width: 100%;
+    color: var(--color-text-sec); 
+}
+.buyer-card .client__id{
+    width: 100%;
+    color: var(--color-text-sec);  
+}
+
+.address-card{
+    margin-top: 1.5rem;
+}
+.address-card__phonenumber{
+    color: var(--color-text-sec);
+}
+.address-card__title{
+    padding-bottom: 1.5rem;
+}
+.address-card__receiver,
+.address-card__address,
+.address-card__phonenumber{
+    padding-bottom: 0.5rem;
+}
+.address-card > :last-child{
+    padding-bottom: 0;
+}
+
+.payment-card{
+    margin-top: 1.5rem;
+}
+.payment-card .stack{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.payment-card .stack:last-child{
+    margin-bottom: 0;
+}
+.payment-card__title{
+    padding-bottom: 1.5rem;
+}
+.payment-card__total{
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-grey-trans24);
+}
+.payment-card__total .value{
+    text-align: right;
+}
+.payment-card__total .total-label{
+    color: var(--color-error-main);
+}
+.payment-card .label{
+    color: var(--color-text-sec);
+}
+/* INVOICE DETAIL */
+
+/* Under desktop */
+@media only screen and (max-width: 1216px){
+
+
+    .analysis__cont{
+        flex-wrap: wrap;
+    }
+    .invoice-detail .content{
+        flex-direction: column-reverse;
+    }
+    .invoice-detail .col-12,
+    .invoice-detail .col-8,
+    .invoice-detail .col-4{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .invoice-detail .invoice-detail-table,
+    .invoice-detail [class^="col-"]{
+        width: calc(100%);
+    }
+    .address-card,
+    .payment-card {
+        margin-top: 1rem;
+    }
+    .invoice-detail .invoice-detail-table{
+        margin-top: 1rem;
+    }
+
+}
+/* Under desktop */

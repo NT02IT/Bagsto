@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "id_user": 1,
+        "id_order_state": 1,
+        "id_receiver": 1,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2002",
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        },
+        {
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        }]
+    },
+    {
+        "id": 2,
+        "id_user": 2,
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2002",
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        }]
+    },
+    {
+        "id": 3,
+        "id_user": 3,
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2002",
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "sizes" : "S",
+            "price_sell" : 600000,
+            "quantity" : 2
+        }]
+    }
+]
