@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Vận chuyển tiêu chuẩn",
+        "price": 0
+    },
+    {
+        "id": 2,
+        "name": "Chuyển phát nhanh",
+        "price": 25000
+    }
+]

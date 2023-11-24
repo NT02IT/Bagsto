@@ -1,0 +1,80 @@
+[
+    {
+        "id_receiver": 1,
+        "id_user_create": 1,
+        "name": "Leanne Graham",
+        "address": "173 Võ Thị Sáu, Q.1, Tp.HCM",
+        "phone": "0327531105"
+    },
+    {
+        "id_receiver": 2,
+        "id_user_create": 2,
+        "name": "Ervin Howell",
+        "address": "98 Xuân Diệu, Mộ Đức, Quảng Ngãi",
+        "phone": "0523235565"
+    },
+    {
+        "id_receiver": 3,
+        "id_user_create": 3,
+        "name": "Clementine Bauch",
+        "address": "375 Võ Trường Toản, Ngô Mây, Bình Định",
+        "phone": "05467882326"
+    },
+    {
+        "id_receiver": 4,
+        "id_user_create": 4,
+        "name": "Patricia Lebsack",
+        "address": "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
+        "phone": "0567868323"
+    },
+    {
+        "id_receiver": 5,
+        "id_user_create": 5,
+        "name": "Chelsey Dietrich",
+        "address": "132 Võ Nguyên Giáp, Phù Mỹ, Bình Định",
+        "phone": "04365781223"
+    },
+    {
+        "id_receiver": 6,
+        "id_user_create": 6,
+        "name": "Mrs. Dennis Schulist",
+        "address": "02 Trần Bình Trọng, Hải Dương",
+        "phone": "0567876884"
+    },
+    {
+        "id_receiver": 7,
+        "id_user_create": 7,
+        "name": "Kurtis Weissnat",
+        "address": "187 Nguyễn Thị Minh Khai, Đống Đa, Hà Nội",
+        "phone": "05678832241"
+    },
+    {
+        "id_receiver": 8,
+        "id_user_create": 8,
+        "name": "Nicholas Runolfsdottir V",
+        "address": "72 Hồng Bàng, Q.10. Tp.HCM",
+        "phone": "04565782345"
+    },
+    {
+        "id_receiver": 9,
+        "id_user_create": 9,
+        "name": "Glenna Reichert",
+        "address": "128/6/12 Nguyễn Đình Chiểu, Q.5, Tp. HCM",
+        "phone": "04665753343"
+    },
+    {
+        "id_receiver": 10,
+        "id_ruser_create": 10,
+        "name": "Clementina DuBuque",
+        "address": "32 Bình Qưới, Thanh Đa, Q.Bình Thạnh, Tp.HCM",
+        "phone": "05643524454"
+    },
+    {
+        "id_receiver": 11,
+        "id_ruser_create": 11,
+        "name": "Nguyễn Anh Tuấn",
+        "address": "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
+        "phone": "0327431105"
+    }
+
+]
