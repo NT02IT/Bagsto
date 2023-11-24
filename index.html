@@ -286,9 +286,72 @@
                 </div>
             </div>
         </div>
-        <!-- PRODUCTS-DETAIL -->
+    </div>
+    <!-- PRODUCTS-DETAIL -->
+    <!-- SignIn User-->
+    <div id="LogInUser-page" class="section__container">
+        <div class="LogInUser col-4">
+            <h3>Đăng nhập</h3>
+            <div class="LogInUser__notice">
+                <p>Bạn chưa có tài khoản ?</p>
+                <div id="SignUp__button" >Đăng ký</div>
+            </div>
+            <div class="LogInUser__UserName">
+                <h6>Tên đăng nhập</h6>
+                <input type="text" id ="UserName-Usersingin" class="product-textField">
+            </div>
+            <div>
+                <h6>Mật khẩu</h6>
+                <input type="text" id ="Password-Usersingin" class="product-textField">
+            </div>
+            <button class="LogIn--button" id="btnLogin">
+                Đăng nhập
+            </button>
+        </div>
+    </div>
+    <!--End SignIn User-->
 
-    </div>~
+    <!--Signup User-->
+    <div id="SignupUser-page" class="section__container">
+        <div class="SignupUser col-4">
+            <h3>Đăng ký</h3>
+            <div class="SignupUser__notice">
+                <p>Bạn đã có tài khoản ?</p>
+                <div  id="SignIn__button" >Đăng nhập</div>
+            </div>
+            <div class="SignupUser__UserName">
+                <h6>Họ tên</h6>
+                <input type="text" id ="UserName-UserSignup" class="product-textField">
+            </div>
+            <div>
+                <h6>Số điện thoại</h6>
+                <input type="text" id ="SDT-UserSignup" class="product-textField">
+            </div>
+            <div>
+                <h6>Địa chỉ</h6>
+                <input type="text" id ="ADDRESS-UserSignup" class="product-textField">
+            </div>
+            <div>
+                <h6>Email</h6>
+                <input type="text" id ="EMAIL-UserSignup" class="product-textField">
+            </div>
+            <div>
+                <h6>Mật khẩu</h6>
+                <input type="text" id ="Password-UserSignup" class="product-textField">
+            </div>
+            <div>
+                <h6>Xác nhận mật khẩu</h6>
+                <input type="text" id ="CheckPassword-UserSignup" class="product-textField">
+            </div>
+            <button class="LogIn--button" id="btnsignup">
+                Đăng ký
+            </button>
+        </div>
+    </div>
+
+    <!--End Signup User-->
+
+
     <!--Account-->
     <div id="account-page">
         <div class="section__container">
@@ -299,11 +362,16 @@
             </div>
             <div class="my-info row">
                 <div class="User_Account_UploadAvatar col-4">
-                    <div class="avatar_text">
-                        <div class="avatar">
-                            <a href="#" class="socials__item"><i class="icon-add_a_photo"></i></a>
+                    <div id="create-Avatar-form">
+                        <div id="add-Avatar">
+                            <div class="window-add-Avatar">  
+                                <input type="file"   id="image-input-Avatar" accept="image/**" onchange="previewImageAvatar()"> </input>
+                                <i id="icon-add" class="icon-add_a_photo"><p class="text-Avatar">Update photo </p>  </i>
+                                <!-- <p>Upload photo</p> --> 
+                            </div>
+                            <p class="text-Avatar-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
+                            <img id="Avatar-image" src="" alt="">
                         </div>
-                        <span class="body2">Cho phép *.jpeg, *.jpg, *.png, *.gif</span>
                     </div>
                 </div>
                 <div class="User_Account_NewUserForm col-8">
@@ -352,8 +420,6 @@
                             <thead>
                                 <tr>
                                     <th class="Table_Head_Invoice" style="width: 48px;">
-                                        <input type="checkbox" name="" id="Table_Row_Invoice_Checkbox">
-                                        <label for="checkbox__gender"></label></th>
                                     <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
                                     <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
                                     <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
@@ -379,11 +445,34 @@
         </div>
     </div>
 
-    
-    
-
-
     <!--End-Account-->
+
+    <!--AccountOrder-->
+    <div class="AccountOrder">
+        <div class="section__container">
+            <div class="row">
+                <div class="Breadcrumb">
+                    <h4>chi tiết hóa đơn</h4>
+                </div>  
+            </div>
+            <div class="Oder row" id="oder">
+                <div class="Oderlish col-8">
+                    lish
+                </div>
+                <div class="OderAP col-4">
+                    <div class="Oder-Address">
+                        Address
+
+                    </div>
+                    <div class="Oder-Price">
+                        Price
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End-AccountOrder-->
 
     <!-- END MAIN BODY -->
 
