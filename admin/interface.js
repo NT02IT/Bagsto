@@ -29,7 +29,7 @@ headerTab1.addEventListener('click', () =>{
 })
 
 headerTab2.addEventListener('click', () =>{
-    const siteInvoiceDetail = document.getElementById('invoice-detail-page');
+    const siteInvoiceDetail = document.getElementById('product-page');
     if(!headerTab2.classList.contains('active')){
         resetNavbar();
         clearMainBody();
@@ -77,3 +77,13 @@ document.addEventListener("click", function (event) {
       accountPopover.classList.add("collapsed");
     }
 });
+
+//product-page
+const newProduct_Btn = document.getElementById('newProduct-btn');
+newProduct_Btn.addEventListener('click', ()=>{
+    var productCreatePage = document.getElementById('productCreate-page');
+    resetNavbar();
+    clearMainBody();
+    productCreatePage.classList.remove('hidden');
+})
+//product-page
