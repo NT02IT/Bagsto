@@ -149,24 +149,22 @@
 .item-user{
     display: inline-flex ;
 }
-li:first-child{
+#body-tab-4{
     color:var(--color-grey-800);
 }
-li:nth-child(2) {
+#body-tab-5 {
     margin-left:  30px;
 }
-li:last-child{
+#body-tab-6{
     margin-left: 30px;
+    color:var(--color-grey-500)
 }
 #body-tab-3{    
     list-style-type: none;
 }
 .body-tab{
     position: relative;
-    color:var(--color-grey-800)
-}
-#body-tab-6{
-    color:var(--color-grey-500)
+    color:var(--color-grey-800);
 }
 .icon-dot{
     font-size: 16px;
@@ -174,6 +172,9 @@ li:last-child{
 #image-input{
     display:none;
     z-index: 1;
+}
+#create-user-form{
+    display: flex;
 }
  #add-photo{
     border: 1px solid black ;
@@ -186,7 +187,7 @@ li:last-child{
     flex-direction: column;
     justify-content: center;
     position:relative;
-    
+    flex: 1;
  }
 .window-add-photo {
     position: absolute;
@@ -248,5 +249,45 @@ li:last-child{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
  }
+ #input-information-user{
+    border: solid 1px black;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 760px;   
+    padding: 24px;
+    border-radius: 16px;
+    height:414px;
+    gap: 24px;
+    flex: 2;
+    flex-wrap:wrap;
+    display: flex;
+    align-items: center;  
+ }
+ .input-information{
+    justify-content: space-between;
+    width: 344px;
+    height: 86px;
+   
+ }
+ #input-information-user label{
+    display: block;
+    margin-bottom: 5px;
+ }
+ #input-information-user input{
+    width: 344px;
+    height: 56px;
+    padding: 16px, 14px, 16px, 14px;
+    border-radius: 8px;
+    border: 1px solid #919EAB52;
+}
+#button-create-new-user{
+    margin-right: 10px ;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: right;
+}
+#create-new-user{
+
+}
