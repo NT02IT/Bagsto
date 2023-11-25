@@ -19,8 +19,11 @@ function getFromStorage(key) {
     return null;
   }
 }
-writeToStorage('products', '../../data/products.json');
+//writeToStorage('products', '../../data/products.json');
 let productList = getFromStorage('products');
+
+//writeToStorage('users', '../../data/users.json');
+
 //----------------------------------------------------------------
 // DATA INIT
 

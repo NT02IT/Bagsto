@@ -325,35 +325,130 @@ function previewImageAvatar() {
 }
 //chọn vào 1 đơn hàng xuất ra chi tiết đơn hàng
 
-var userdata = JSON.parse(localStorage.getItem("userdata"));
-if(!userdata)
-{
-  var userdata = [
-    {
-      userName: "dung",
-      passwordName: "123456",
-      islogin: false
-    },
-    {
-      userName: "hoang",
-      passwordName: "123456",
-      islogin: false
-    },
-  ]
+
+var userdata  = [
+  {
+      id: 1,
+      name: "Leanne Graham",
+      email: "Sincere@april.biz",
+      password: "1234567890",
+      address: "173 Võ Thị Sáu, Q.1, Tp.HCM",
+      phone: "0327531105",
+      avatar: ""
+  },
+  {
+      id: 2,
+      name: "Ervin Howell",
+      email: "Shanna@melissa.tv",
+      password: "1234567890",
+      address: "98 Xuân Diệu, Mộ Đức, Quảng Ngãi",
+      phone: "0523235565",
+      avatar: ""
+  },
+  {
+      id: 3,
+      name: "Clementine Bauch",
+      email: "Nathan@yesenia.net",
+      password: "1234567890",
+      address: "375 Võ Trường Toản, Ngô Mây, Bình Định",
+      phone: "05467882326",
+      avatar: ""
+  },
+  {
+      id: 4,
+      name: "Patricia Lebsack",
+      email: "Julianne.OConner@kory.org",
+      password: "1234567890",
+      address: "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
+      phone: "0567868323",
+      avatar: ""
+  },
+  {
+      id: 5,
+      name: "Chelsey Dietrich",
+      email: "Lucio_Hettinger@annie.ca",
+      password: "1234567890",
+      address: "132 Võ Nguyên Giáp, Phù Mỹ, Bình Định",
+      phone: "04365781223",
+      avatar: ""
+  },
+  {
+      id: 6,
+      name: "Mrs. Dennis Schulist",
+      email: "Karley_Dach@jasper.info",
+      password: "1234567890",
+      address: "02 Trần Bình Trọng, Hải Dương",
+      phone: "0567876884",
+      avatar: ""
+  },
+  {
+      id: 7,
+      name: "Kurtis Weissnat",
+      email: "Telly.Hoeger@billy.biz",
+      password: "1234567890",
+      address: "187 Nguyễn Thị Minh Khai, Đống Đa, Hà Nội",
+      phone: "05678832241",
+      avatar: ""
+  },
+  {
+      id: 8,
+      name: "Nicholas Runolfsdottir V",
+      email: "Sherwood@rosamond.me",
+      password: "1234567890",
+      address: "72 Hồng Bàng, Q.10. Tp.HCM",
+      phone: "04565782345",
+      avatar: ""
+  },
+  {
+      id: 9,
+      name: "Glenna Reichert",
+      email: "Chaim_McDermott@dana.io",
+      password: "1234567890",
+      address: "128/6/12 Nguyễn Đình Chiểu, Q.5, Tp. HCM",
+      phone: "04665753343",
+      avatar: ""
+  },
+  {
+      id: 10,
+      name: "Clementina DuBuque",
+      email: "Rey.Padberg@karina.biz",
+      password: "1234567890",
+      address: "32 Bình Qưới, Thanh Đa, Q.Bình Thạnh, Tp.HCM",
+      phone: "05643524454",
+      avatar: ""
+  },
+  {
+      id: 11,
+      name: "Nguyễn Anh Tuấn",
+      email: "lowtee.vn@gmail.com",
+      password: "1234567890",
+      address: "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
+      phone: "0327431105",
+      avatar: ""
+  }
+
+]
   localStorage.setItem("userdata", JSON.stringify(userdata));
-}
 
 const userName = document.querySelector("#UserName-Usersingin");
 const passwordName = document.querySelector("#Password-Usersingin");
 const btn = document.querySelector("#btnLogin");
 
 btn.addEventListener("click", () => {
-  const u = userdata.find((user) => user.userName == userName.value && user.passwordName == passwordName.value)
+  const u = userdata.find((user) => user.name == userName.value && user.password == passwordName.value)
   if (u) {
     alert("đăng nhập thành công")
     console.log("co user");
-    u.islogin = true;
-    localStorage.setItem("userdata", JSON.stringify(userdata));
+    document.getElementById("font-bold account-name").innerText = ` ${u.name} `;
+    localStorage.setItem("saveLogin",JSON.stringify(u));
+    // đọc thông tin vào ô thông tin user
+    document.getElementById("user_fullName").value = `${u.name} `;
+    document.getElementById("user_number").value = `${u.phone} `;
+    document.getElementById("user_address").value = `${u.address} `;
+    document.getElementById("user_email").value = `${u.email} `;
+    document.getElementById("user_pass").value = `${u.password} `;
+    document.getElementById("user_checkpass").value = `${u.password} `;
+    document.getElementById("Avatar-image").src= u.avatar ;
   }
   else {
     alert("không có tài khoản")
@@ -361,35 +456,65 @@ btn.addEventListener("click", () => {
   // console.log(userName.value);
   // console.log(passwordName.value);
 });
+
+// reload ko mất thông tin
+function checkSave(){
+  const saveLogin=JSON.parse(localStorage.getItem("saveLogin"));
+  if(saveLogin){
+    document.getElementById("font-bold account-name").innerText = ` ${saveLogin.name} `;
+    // ô thông tin
+    document.getElementById("user_fullName").value = `${saveLogin.name} `;
+    document.getElementById("user_number").value = `${saveLogin.phone} `;
+    document.getElementById("user_address").value = `${saveLogin.address} `;
+    document.getElementById("user_email").value = `${saveLogin.email} `;
+    document.getElementById("user_pass").value = `${saveLogin.password} `;
+    document.getElementById("user_checkpass").value = `${saveLogin.password} `;
+  }
+}
+checkSave();
+// hàm đăng xuất
+function checkLogout()
+{
+  localStorage.removeItem("saveLogin");
+}
+
+document.getElementById("logout_bt").addEventListener("click",()=>{
+  checkLogout()
+  window.location.reload();
+})
+
 //dang ki
 var userdata = JSON.parse(localStorage.getItem("userdata"));
 const btsup = document.querySelector("#btnsignup");
 btsup.addEventListener("click", () => {
-  const u = userdata.find((user) => user.userName == userName.value)
+  const usercheck = document.querySelector("#UserName-UserSignup");
+  const u = userdata.find((user) => user.name == usercheck.value)
   if (u) {
-    console.log("co user");
+    alert("đã có tên tài khoảng được sử dụng");
   }
   else { 
-    const userName = document.querySelector("#UserName-UserSignup");
-    const sdt = document.querySelector("#SDT-UserSignup");
-    const diachi = document.querySelector("#ADDRESS-UserSignup");
-    const email = document.querySelector("#EMAIL-UserSignup");
-    const passwordName = document.querySelector("#Password-UserSignup");
-    console.log(userName.value);
-    console.log(sdt.value);
-    console.log(diachi.value);
-    console.log(email.value);
-    // console.log(pass.value);
-    const newuser = {
-      userName: userName.value,
-      sdt: sdt.value,
-      diachi: diachi.value,
-      email: email.value,
-      passwordName: passwordName.value,
-      islogin: false
+    const newname = document.querySelector("#UserName-UserSignup").value;
+    const newphone = document.querySelector("#SDT-UserSignup").value;
+    const newaddress = document.querySelector("#ADDRESS-UserSignup").value;
+    const newemail = document.querySelector("#EMAIL-UserSignup").value;
+    const newpassword = document.querySelector("#Password-UserSignup").value;
+    const newcheckpassword = document.querySelector("#CheckPassword-UserSignup").value;
+    if(newpassword == newcheckpassword)
+    {
+      const newuser = {
+        name: newname,
+        phone: newphone,
+        address: newaddress,
+        email: newemail,
+        password: newpassword,
+      }
+      userdata.push(newuser);
+      localStorage.setItem("userdata",JSON.stringify(userdata));
+      alert("đăng ki thành công mời bạn đăng nhập");
     }
-    userdata.push(newuser);
-    localStorage.setItem("userdata",JSON.stringify(userdata));
+    else{
+      alert("xác nhận mật khẩu không đúng với mật khẩu");
+    }
   }
 
 });

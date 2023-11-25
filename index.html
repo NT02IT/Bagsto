@@ -36,7 +36,7 @@
                 <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
                 <div class="hello-account" id="to-account-info">
                     <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
-                    <p class="font-bold account-name">Nguyễn Tuấn</p>
+                    <p class="font-bold account-name" id="name">Nguyễn Tuấn</p>
                     <button class="hello-account__button type-inherit style-text size-m">
                         <i class="icon-chevron_right"></i>
                     </button>
@@ -51,13 +51,13 @@
                 <div class="hello-account" id="to-account-info">
                     <span>
                         Xin chào,
-                        <p class="font-bold account-name">Nguyễn Tuấn</p>
+                        <p class="font-bold account-name" id="font-bold account-name"></p>
                     </span>
                     <button class="hello-account__button type-inherit style-text size-l">
                         <i class="icon-chevron_right"></i>
                     </button>
                 </div>
-                <button class="type-inherit">Đăng xuất</button>
+                <button class="type-inherit" id="logout_bt">Đăng xuất</button>
             </div>
         </div>
     </div>
@@ -377,32 +377,32 @@
                 <div class="User_Account_NewUserForm col-8">
                     <div class="User_Account_NewUserForm_editor">
                         <label class="info-label" for="fullName">Họ tên</label>
-                        <input type="text" id="fullName" class="info-input" required>
+                        <input type="text" id="user_fullName" class="info-input" required>
                     </div>
     
                     <div class="User_Account_NewUserForm_editor">
                         <label class="info-label" for="fullName">Số điện thoại</label>
-                        <input type="text" id="fullName" class="info-input" required>
+                        <input type="text" id="user_number" class="info-input" required>
                     </div>
     
                     <div class="User_Account_NewUserForm_editor">
                         <label class="info-label" for="fullName">Địa chỉ</label>
-                        <input type="text" id="fullName" class="info-input" required>
+                        <input type="text" id="user_address" class="info-input" required>
                     </div>
     
                     <div class="User_Account_NewUserForm_editor">
                         <label class="info-label" for="fullName">Email</label>
-                        <input type="text" id="fullName" class="info-input" required>
+                        <input type="text" id="user_email" class="info-input" required>
                     </div>
     
                     <div class="User_Account_NewUserForm_editor">
                         <label class="info-label" for="fullName">Mật khẩu</label>
-                        <input type="text" id="fullName" class="info-input" required>
+                        <input type="text" id="user_pass" class="info-input" required>
                     </div>
 
                     <div class="User_Account_NewUserForm_editor">
                         <label class="info-label" for="fullName">Xác nhận mật khẩu</label>
-                        <input type="text" id="fullName" class="info-input" required>
+                        <input type="text" id="user_checkpass" class="info-input" required>
                     </div>
 
                     <div class="User_Account_NewUserForm_editor">
@@ -419,7 +419,7 @@
                         <table id="Table-info" class="Table-info"> 
                             <thead>
                                 <tr>
-                                    <th class="Table_Head_Invoice" style="width: 48px;">
+                                    <th class="Table_Head_Invoice" style="width: 48px;"></th>
                                     <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
                                     <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
                                     <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
@@ -450,14 +450,30 @@
     <!--AccountOrder-->
     <div class="AccountOrder">
         <div class="section__container">
-            <div class="row">
+            <div class="row col-12">
                 <div class="Breadcrumb">
                     <h4>chi tiết hóa đơn</h4>
                 </div>  
             </div>
             <div class="Oder row" id="oder">
                 <div class="Oderlish col-8">
-                    <div class="Oderlish_header"></div>
+                  <div>
+                    <table > 
+                        <thead>
+                            <tr>
+                                <th  ></th>
+                                <th  >Ngày mua</th>
+                                <th  >Hóa đơn</th>
+                                <th  >Giá trị</th>
+                                <th  ></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Thêm các dòng khác nếu cần -->
+                        </tbody>
+                    </table>
+
+                  </div>
                 </div>
                 <div class="OderAP col-4">
                     <div class="Oder-Address">

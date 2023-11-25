@@ -227,6 +227,31 @@
 .Product_Details_Content div{
   width: 100%;
 }
+.Oderlish{
+  background-color: green;
+}
+.Oderlish div {
+  width: 100%;
+  background-color: aqua;
+  height: 30px;
+}
+.Oderlish_table{
+  /* background-color: blue; */ 
+  width: 100%;
+}
+.table_Oderlish_Invoice{
+  background-color: red;
+}
+table{
+  width: 100%;
+}
+
+
+
+
+
+
+
 
 /* SignIn User */
 .LogInUser{
