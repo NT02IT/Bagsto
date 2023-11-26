@@ -280,7 +280,7 @@
 
 .product-info--1-2{
     width: 760px;
-    height: 738px;
+    min-height: 738px;
     padding: 24px;
     border-radius: 16px;
     gap: 15px;
@@ -291,6 +291,16 @@
 .product-image {
     display: flex;
     flex-direction: column;
+    gap:12px;
+}
+.product-image #fileInput{
+    display: none;
+}
+.containerProduct--img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 .icon-add_photo_alternate{
     font-size: 30px;
@@ -383,13 +393,23 @@
     height:160px;
     padding: 40px;
     border-radius: 8px;
-    border: 1px;
     border: 1px dashed #919EAB52;
     background-color: #F4F6F8;
     color: #00ab55;
     font-size: 15px;
 }
-
+.ProductId{
+    width: 320px;
+    height: 40px;
+    border: 1px solid #919EAB52;
+    text-indent: 10px;
+    border-radius: 8px;
+    padding-left: 7px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .product-info--checkBox{
     display: flex;
     gap: 24px;
@@ -398,7 +418,7 @@
 #product-info-category{
     width: 320px;
     height: 56px;
-    padding: 0px, 0px, 0px, 14px;
+    padding: 0 0 0 14px;
     border-radius: 8px;
     gap: 8px;
     text-indent: 10px;
@@ -407,7 +427,7 @@
 .product-textField{
     width: 320px;
     height: 56px;
-    padding: 16px, 14px, 16px, 14px;
+    padding: 16px 14px 16px 14px;
     border-radius: 8px;
     border: 1px;
     gap: 8px;
@@ -505,6 +525,30 @@ label.colorTable--checkBox {
   #Table__checkbox--12:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(171, 125, 0, 0.32);
   }
+  .saveProduct button{
+      margin-top: 24px;
+      margin-left: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      height:48px;
+  }
+  .saveProduct #saveProduct--button--delete{
+      margin-top: 5px;
+      background-color: rgb(252, 62, 72);
+  }
+  #saveProduct--button--delete:hover{
+      color: var(--color-common-white);
+      background-color: rgb(255, 16, 30);;
+      box-shadow: var(--shadow-color-pri);
+      transition: ease-in-out 0.1s;
+  }
+  .saveProduct--button{
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 600;
+  }
 /* PRODUCT CREATE */
 
 /* SignIn ADmin */
@@ -512,7 +556,7 @@ label.colorTable--checkBox {
     width:368px;
     height: 402px;
     padding: 24px;
-    padding-top: 0px;
+    padding-top: 0;
     border-radius: 16px;
     gap: 16px;
     margin: auto auto;
@@ -539,7 +583,7 @@ label.colorTable--checkBox {
 }
 #SignIn__button{
     color: rgba(0, 171, 85, 1);
-    font-family: Public Sans;
+    font-family: Public Sans, serif;
     font-weight: 600;
     line-height: 22px;
 }
@@ -547,7 +591,7 @@ label.colorTable--checkBox {
     font-size: 17px;
     width:320px;
     height:48px;
-    padding: 11px, 22px, 11px, 22px;
+    padding: 11px 22px 11px 22px;
     margin-top: 10px;
     border-radius: 8px;
     gap: 8px;
@@ -594,95 +638,104 @@ label.colorTable--checkBox {
     height: 360px;
     gap: 8px;
 }
-#DetailProduct-info__btn-img{
-    width:160px;
-    height:160px;
-    padding: 40px;
+.imageDetailProduct {
+    width: 160px;
+    height: 160px;
     border-radius: 8px;
-    border: 1px;
     border: 1px dashed #919EAB52;
     background-color: #F4F6F8;
+}
+
+.imageDetailProduct:not(:last-child):hover {
+    filter: brightness(40%);
+}
+
+#DetailProduct-info__btn-img{
+    padding: 40px;
     color: #00ab55;
     font-size: 15px;
+}
+#DetailProduct-info__btn-img:hover{
+    background-color: rgba(159, 156, 156, 0.32);;
 }
 
 #DetailProduct-info-category{
     width: 320px;
     height: 56px;
-    padding: 0px, 0px, 0px, 14px;
+    padding: 0 0 0 14px;
     border-radius: 8px;
     gap: 8px;
     text-indent: 10px;
     border: 1px solid #919EAB52
 }
 #DetailProduct__Table__checkbox--1 + label.colorTable--checkBox {
-    background-color: rgba(0, 171, 85, 1);
+    background-color: #00ab55;
 }
 #DetailProduct__Table__checkbox--1:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(0, 171, 85, 0.32);
 }
 #DetailProduct__Table__checkbox--2 + label.colorTable--checkBox {
-    background-color: rgba(0, 184, 217, 1);
+    background-color: #00b8d9;
 }
 #DetailProduct__Table__checkbox--2:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(0, 184, 217, 0.32);
 }
 #DetailProduct__Table__checkbox--3 + label.colorTable--checkBox {
-    background-color: rgba(0, 55, 104, 1);
+    background-color: #003768;
 }
 #DetailProduct__Table__checkbox--3:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(0, 55, 104, 0.32);
 }
 #DetailProduct__Table__checkbox--4 + label.colorTable--checkBox {
-    background-color: rgba(255, 171, 0, 1);
+    background-color: #ffab00;
 }
 #DetailProduct__Table__checkbox--4:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(255, 171, 0, 0.32);
 }
 #DetailProduct__Table__checkbox--5 + label.colorTable--checkBox {
-    background-color: rgba(255, 172, 130, 1);
+    background-color: #ffac82;
 }
 #DetailProduct__Table__checkbox--5:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(255, 172, 130, 0.32);
 }
 #DetailProduct__Table__checkbox--6 + label.colorTable--checkBox {
-    background-color: rgba(183, 29, 24, 1);
+    background-color: #b71d18;
 }
 #DetailProduct__Table__checkbox--6:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(183, 29, 24, 0.32);
 }
 #DetailProduct__Table__checkbox--7 + label.colorTable--checkBox {
-    background-color: rgba(22, 28, 36, 1);
+    background-color: #161c24;
 }
 #DetailProduct__Table__checkbox--7:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(22, 28, 36, 0.32);
 }
 #DetailProduct__Table__checkbox--8 + label.colorTable--checkBox {
-    background-color: rgb(133, 134, 132);
+    background-color: #858684;
 }
 #DetailProduct__Table__checkbox--8:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgb(133, 134, 132, 0.32);
 }
 #DetailProduct__Table__checkbox--9 + label.colorTable--checkBox {
-    background-color: rgb(241, 50, 82);
+    background-color: #f13252;
 }
 #DetailProduct__Table__checkbox--9:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgb(241, 50, 82, 0.32);
 }
 #DetailProduct__Table__checkbox--10 + label.colorTable--checkBox {
-    background-color: rgb(243, 107, 225)
+    background-color: #f36be1;
 }
 #DetailProduct__Table__checkbox--10:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgb(243, 107, 225, 0.32);
 }
 #DetailProduct__Table__checkbox--11 + label.colorTable--checkBox {
-    background-color: rgb(203, 211, 207);
+    background-color: #cbd3cf;
 }
 #DetailProduct__Table__checkbox--11:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgb(203, 211, 207, 0.32);
 }
 #DetailProduct__Table__checkbox--12 + label.colorTable--checkBox {
-    background-color: rgb(171, 125, 0);
+    background-color: #ab7d00;
 }
 #DetailProduct__Table__checkbox--12:checked + label.colorTable--checkBox {
     box-shadow: 5px 5px 10px rgba(171, 125, 0, 0.32);

@@ -579,6 +579,7 @@
                                 <label for="checkboxSize--L" class="checkboxSize__item">L</label>   
                             </div>
                         </div>
+
                     </div>
                     <div class="product-info--2-2">
                         <div>
@@ -593,16 +594,22 @@
                             <h6>Số lượng</h6>
                             <input type="text" id ="Amount-textField" class="product-textField">
                         </div>
+                        <div class="saveProduct">
+                            <button id ="saveProduct--button--create" class="saveProduct--button">
+                                Tạo sản phẩm
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- PRODUCT CREATE -->
 
     <!-- PRODUCT UPDATE -->
-    <div  id="DetailProduct-page">
+    <div  id="DetailProduct-page" class="hidden">
         <div class="section__container">
             <div class="Product-head__title">
                 <h4>Chi tiết sản phẩm</h4>
@@ -628,28 +635,37 @@
                         </div>
                         <div class="product-image">
                             <h6>Hình ảnh</h6>
-                            <button id="DetailProduct-info__btn-img">
-                                <i class="icon-add_photo_alternate"></i>
-                                Thêm ảnh
-                            </button>
+                            <div class="containerProduct--img" id = "containerDetailProduct--img">
+<!--                                <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+                                <button id="DetailProduct-info__btn-img" class="imageDetailProduct">
+                                    <i class="icon-add_photo_alternate"></i>
+                                    Thêm ảnh
+                                </button>
+                            </div>
+                            <input type="file" id="fileInput" onchange="showImage(this)" />
                         </div>
                     </div>
                 </div>
                 <div class="product-info--2">
                     <div class="product-info--2-1">
+                        <div class="ProductId">
+                            <p id="ProductId--detail">
+
+                            </p>
+                        </div>
                         <div>
                             <h6>Giới tính</h6>
                             <ul class="product-info--checkBox">
                                 <li>
-                                    <input type="radio" name="product-checkBox--group">
+                                    <input type="radio" name="product-checkBox--group" id="Detailproduct--radio1">
                                     Men
                                 </li>
                                 <li>       
-                                    <input type="radio" name="product-checkBox--group">
+                                    <input type="radio" name="product-checkBox--group" id="Detailproduct--radio2">
                                     Women
                                 </li>
                                 <li>
-                                    <input type="radio" name="product-checkBox--group">
+                                    <input type="radio" name="product-checkBox--group" id="Detailproduct--radio3">
                                     Kid
                                 </li>
                             </ul>
@@ -658,7 +674,7 @@
                             <h6>Danh mục</h6>
                             <select name="" id="DetailProduct-info-category">
                                 <option value="Balo">Balo</option>
-                                <option value="tuiXach">Túi xách</option>
+                                <option value="TuiXach">Túi xách</option>
                                 <option value="PhuKien">Phụ kiện</option>
                             </select>
                         </div>
@@ -695,17 +711,17 @@
                                 <label for="DetailProduct__Table__checkbox--12" class="colorTable--checkBox"></label>
                             </div>
                         </div>
-                        <div>
-                            <h6>Size</h6>
-                            <div class="checkboxSize">
-                                <input type="checkbox" id ="DetailProduct__checkboxSize--S">
-                                <label for="DetailProduct__checkboxSize--S" class="checkboxSize__item">S</label>
-                                <input type="checkbox" id ="DetailProduct__checkboxSize--M">
-                                <label for="DetailProduct__checkboxSize--M"  class="checkboxSize__item">M</label>
-                                <input type="checkbox" id ="DetailProduct__checkboxSize--L">
-                                <label for="DetailProduct__checkboxSize--L" class="checkboxSize__item">L</label>   
-                            </div>
-                        </div>
+<!--                        <div>-->
+<!--                            <h6>Size</h6>-->
+<!--                            <div class="checkboxSize">-->
+<!--                                <input type="checkbox" id ="checkboxSizeS&#45;&#45;Detail">-->
+<!--                                <label for="checkboxSizeS&#45;&#45;Detail" class="checkboxSize__item">S</label>-->
+<!--                                <input type="checkbox" id ="checkboxSizeM&#45;&#45;Detail">-->
+<!--                                <label for="checkboxSizeM&#45;&#45;Detail"  class="checkboxSize__item">M</label>-->
+<!--                                <input type="checkbox" id ="checkboxSizeL&#45;&#45;Detail">-->
+<!--                                <label for="checkboxSizeL&#45;&#45;Detail" class="checkboxSize__item">L</label>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="product-info--2-2">
                         <div>
@@ -719,6 +735,16 @@
                         <div>
                             <h6>Số lượng</h6>
                             <input type="text" id ="DetailProduct__Amount-textField" class="product-textField">
+                        </div>
+                        <div class="saveProduct">
+                            <button id ="saveProduct--button--repair" class="saveProduct--button">
+                                Lưu sửa đổi
+                            </button>
+                        </div>
+                        <div class="saveProduct">
+                            <button id ="saveProduct--button--delete" class="saveProduct--button">
+                                Xóa sản phẩm
+                            </button>
                         </div>
                     </div>
                 </div>
