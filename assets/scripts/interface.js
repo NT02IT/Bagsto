@@ -202,3 +202,199 @@ document.addEventListener("click", function (event) {
     }
   }
 });
+
+
+
+
+
+//checkout//
+    
+// })
+document.addEventListener('DOMContentLoaded', function() {
+  let data;
+  function showCustomerAddresses() {
+    var listAddresses = document.getElementById('listAddresses');
+    listAddresses.innerHTML = '';
+
+    fetch('data/receivers.json')
+      .then(response => response.json())
+      .then(data => {
+        var isFirstDefaultAdded = false;
+
+        data.slice(0, 4).forEach(function(customer, index) {
+          var customerDiv = document.createElement('div');
+          customerDiv.classList.add('customer-address');
+
+          var namePara = document.createElement('p');
+          namePara.classList.add('customer-info', 'customer-name');
+          namePara.textContent = `${customer.name}`;
+
+          var addressPara = document.createElement('p');
+          addressPara.classList.add('customer-info', 'customer-address-text');
+          addressPara.textContent = `${customer.address}`;
+
+          var phonePara = document.createElement('p');
+          phonePara.classList.add('customer-info', 'customer-phone');
+          phonePara.textContent = `${customer.phone}`;
+
+          var buttonContainer = document.createElement('div');
+          buttonContainer.classList.add('button-on-address');
+
+          var confirmButton = document.createElement('button');
+          confirmButton.classList.add('confirmButton')
+          confirmButton.textContent = 'Giao đến địa chỉ này';
+        
+          var defaultLabel = document.createElement('span');
+          defaultLabel.classList.add('default-label');
+          defaultLabel.textContent = 'Mặc định';
+          if (customer.default && !isFirstDefaultAdded) {
+            defaultLabel.style.color = 'lightblue';
+            namePara.appendChild(defaultLabel);
+            isFirstDefaultAdded = true;
+          }
+
+          var deleteButton = document.createElement('button');
+          deleteButton.classList.add('deleteButton');
+          deleteButton.textContent = 'Xóa';
+          deleteButton.addEventListener('click', function() {
+            var addressToDelete = this.closest('.customer-address');
+            addressToDelete.remove();
+          }); 
+
+          buttonContainer.appendChild(deleteButton);
+          buttonContainer.appendChild(confirmButton);
+          customerDiv.appendChild(namePara);
+          customerDiv.appendChild(addressPara);
+          customerDiv.appendChild(phonePara);
+          customerDiv.appendChild(buttonContainer);
+
+          listAddresses.appendChild(customerDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+
+  showCustomerAddresses();
+  
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const checkoutAddress = document.getElementById('checkoutAddress');
+  const checkoutPayment = document.getElementById('checkoutPayment');
+  const checkoutSuccess = document.getElementById('checkoutSuccess');
+  const mainbody = document.querySelector("#index-page");
+  const bodyCheckout = document.querySelector("#checkoutPayment");
+  const buttonBackMain = document.querySelector("#backHomePageButton");
+  const continueShoppingButton = document.querySelector("#paymentSuccessButton");
+  const backToAddressButton = document.getElementById('backButton');
+
+  document.getElementById('listAddresses').addEventListener('click', function (event) {
+    if (event.target.classList.contains('confirmButton')) {
+      checkoutAddress.classList.add('hidden');
+      checkoutPayment.classList.remove('hidden');
+      document.querySelector('.step-two .step-circle').classList.add('step-circle-active');
+    }
+  });
+
+  const paymentButton = document.getElementById('paymentButton');
+  paymentButton.addEventListener('click', function() {
+    checkoutPayment.classList.add('hidden');
+    checkoutSuccess.classList.remove('hidden');
+  });
+
+  buttonBackMain.addEventListener('click', () =>{
+    mainbody.classList.remove('hidden');
+    bodyCheckout.classList.add('hidden');
+    checkoutSuccess.classList.add('hidden'); 
+  });
+
+  continueShoppingButton.addEventListener('click', () => {
+    mainbody.classList.remove('hidden');
+    checkoutSuccess.classList.add('hidden'); 
+  });
+  backToAddressButton.addEventListener('click', function () {
+    checkoutPayment.classList.add('hidden');
+    checkoutAddress.classList.remove('hidden');
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const optionTransports = document.querySelectorAll('.option-transport');
+
+  optionTransports.forEach(option => {
+      option.addEventListener('click', function(event) {
+          const radioBtn = option.querySelector('input[type="radio"]');
+          if (!radioBtn.checked) {
+              radioBtn.checked = true;
+          }
+      });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const optionTransports = document.querySelectorAll('.option-payment');
+
+  optionTransports.forEach(option => {
+      option.addEventListener('click', function(event) {
+          const radioBtn = option.querySelector('input[type="radio"]');
+          if (!radioBtn.checked) {
+              radioBtn.checked = true;
+          }
+      });
+  });
+});
+
+
+
+
+
+//checkout//
+
+
+
+
+/*checkoutpayment*/
+document.addEventListener('DOMContentLoaded', function() {
+  const customRadios = document.querySelectorAll('.custom-radio');
+
+  customRadios.forEach(customRadio => {
+    customRadio.addEventListener('change', function() {
+      const radioLabel = this.nextElementSibling.querySelector('label');
+      if (this.checked) {
+        radioLabel.style.backgroundColor = '#4CAF50'; 
+      } else {
+        radioLabel.style.backgroundColor = ''; 
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const listAddresses = document.getElementById('listAddresses');
+  const contentAddress = document.getElementById('contentAddress');
+  const editAddressButton = document.querySelector('.edit-address .edit-button');
+
+  // Lấy danh sách các địa chỉ
+  const addresses = listAddresses.querySelectorAll('.customer-address');
+
+  // Kiểm tra xem danh sách có địa chỉ hay không và lấy địa chỉ đầu tiên
+  if (addresses.length > 0) {
+      const firstAddressData = addresses[0].innerHTML;
+
+      // Gán dữ liệu vào contentAddress
+      contentAddress.innerHTML = firstAddressData;
+
+      // Thêm sự kiện khi click vào nút "Chỉnh sửa"
+      editAddressButton.addEventListener('click', function() {
+          // Hiển thị địa chỉ đầu tiên khi click vào nút "Chỉnh sửa"
+          contentAddress.innerHTML = firstAddressData;
+      });
+  }
+});
+
+
+
+/*checkoutpayment*/
