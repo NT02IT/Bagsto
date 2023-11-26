@@ -203,3 +203,54 @@
 
 }
 /* Under desktop */
+/* SignIn ADmin */
+/* .LogInAD{
+    width:368px;
+    height: 402px;
+    padding: 24px;
+    padding-top: 0px;
+    border-radius: 16px;
+    gap: 16px;
+    margin: auto auto;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.LogInAD__notice{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.LogInAD__notice button{
+    color: black;
+    background-color: transparent;
+}
+.LogInAD .subtitle2{
+    color: var(--color-text-sec);
+}
+.LogInAD__UserName{
+    margin-top: 10px;
+}
+#SignIn__button{
+    color: rgba(0, 171, 85, 1);
+    font-family: Public Sans;
+    font-weight: 600;
+    line-height: 22px;
+}
+.LogIn--button{
+    font-size: 17px;
+    width:320px;
+    height:48px;
+    padding: 11px, 22px, 11px, 22px;
+    margin-top: 10px;
+    border-radius: 8px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+/* SignIn ADmin */
