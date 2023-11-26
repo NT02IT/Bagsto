@@ -132,7 +132,6 @@ On desktop
     position: relative;
     margin: 12px;
     min-width: 14rem;
-    max-width: 16.5rem;
     border-radius: 1rem;
     background-color: var(--color-bg-paper);
     box-shadow: var(--shadow-card);

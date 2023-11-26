@@ -914,7 +914,7 @@ On desktop
 .header__block--right{
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 .header__avatar{
     width: 2.5rem;
@@ -1229,7 +1229,13 @@ On desktop
     }
     .hello-account{
         margin: 0.5rem 0;
-    }     
+    }  
+    .header-signin-signup{
+        margin: 0.5rem 0;
+    }   
+    .header__block--right .header-signin-signup{
+        display: none;
+    }
 }
 /* Under desktop */
 

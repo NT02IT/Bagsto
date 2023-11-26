@@ -27,14 +27,16 @@
                     <a href="#" class="tab" id="header-tab-2">Túi xách</a>
                     <a href="#" class="tab" id="header-tab-3">Ví nam, nữ</a>
                     <button class="style-text type-primary size-m" id="header-cart"><i class="icon-cart"></i>Giỏ hàng</button>
-                    <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                    <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar hidden">
+                    <button class="type-primary size-m hidden header-signin-signup" id="">Đăng nhập/ Đăng ký</button>
                     <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
                 </div>
             </div>
 
             <div class="mobile-nav collapsed" id="mobile-nav">
                 <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
-                <div class="hello-account" id="to-account-info">
+                <button class="type-primary size-m hidden header-signin-signup" id="">Đăng nhập/ Đăng ký</button>
+                <div class="hello-account hidden" id="to-account-info">
                     <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
                     <p class="font-bold account-name" id="name">Nguyễn Tuấn</p>
                     <button class="hello-account__button type-inherit style-text size-m">
@@ -45,7 +47,7 @@
                 <button class="type-inherit style-text">Túi xách</button>
                 <button class="type-inherit style-text">Ví nam, nữ</button>
                 <div class="space"></div>
-                <button class="type-inherit">Đăng xuất</button>
+                <button class="type-inherit logout_button">Đăng xuất</button>
             </div>
             <div class="popover account-popover collapsed">
                 <div class="hello-account" id="to-account-info">
@@ -57,7 +59,7 @@
                         <i class="icon-chevron_right"></i>
                     </button>
                 </div>
-                <button class="type-inherit" id="logout_bt">Đăng xuất</button>
+                <button class="type-inherit logout_button" id="">Đăng xuất</button>
             </div>
         </div>
     </div>

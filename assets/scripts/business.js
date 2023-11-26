@@ -52,7 +52,7 @@ function displayProducts(htmlContainer, productList, currentPage){
 
     for (const item of itemsToDisplay) {
         const prdItem = document.createElement("li");
-        prdItem.classList.add("product-card"); //, "col-3"
+        prdItem.classList.add("product-card", "col-3");
         prdItem.innerHTML = `
             <div class="product-card__cont">
                 <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">

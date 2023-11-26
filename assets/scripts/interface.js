@@ -79,6 +79,7 @@ const headerTab1 = document.getElementById('header-tab-1');
 const headerTab2 = document.getElementById('header-tab-2');
 const headerTab3 = document.getElementById('header-tab-3');
 
+const loginIndex = document.querySelector('#login-page.client');
 const siteIndex = document.getElementById('index-page');
 const siteProduct = document.getElementById('product-page');
 
@@ -129,6 +130,10 @@ function clearMainBody() {
 // HEADER INTERFACE
 const burgerBtn = document.getElementById('burger-btn')
 const mobileNav = document.getElementById('mobile-nav')
+const accountsName = document.querySelectorAll(".hello-account p")
+const helloAccounts = document.querySelectorAll(".hello-account")
+const logoutButtons = document.querySelectorAll(".logout_button")
+const signinSignupBtns = document.querySelectorAll('.header-signin-signup')
 const headerClientAvatar = document.querySelector('#header-client .header__avatar')
 const accountPopover = document.querySelector('.account-popover')
 burgerBtn.addEventListener('click', function () {
@@ -138,8 +143,54 @@ burgerBtn.addEventListener('click', function () {
 headerClientAvatar.addEventListener('click', function () {
   accountPopover.classList.toggle('collapsed');
 });
+
+for(let i = 0; i < signinSignupBtns.length; i++) {
+  signinSignupBtns[i].addEventListener('click', function(){
+    clearMainBody();
+    loginIndex.classList.remove('hidden')
+  });
+}
+
+clearMainBody();
+siteIndex.classList.remove('hidden');
+let userLogin = JSON.parse(localStorage.getItem("currentUser"));
+function isLoggedIn() {
+  headerClientAvatar.classList.remove('hidden');
+  for(let i = 0; i < signinSignupBtns.length; i++){
+    signinSignupBtns[i].classList.add('hidden');
+  }
+  for(let i = 0; i < accountsName.length; i++) {
+    accountsName[i].textContent = userLogin.name;
+  }
+  for(let i = 0; i < logoutButtons.length; i++) {
+    logoutButtons[i].classList.remove('hidden');
+  }
+  for(let i = 0; i < helloAccounts.length; i++) {
+    helloAccounts[i].classList.remove('hidden');
+  }
+}
+function doNotLogin(){
+  headerClientAvatar.classList.add('hidden');
+  for(let i = 0; i < signinSignupBtns.length; i++){
+    signinSignupBtns[i].classList.remove('hidden');
+  }
+  for(let i = 0; i < logoutButtons.length; i++) {
+    logoutButtons[i].classList.add('hidden');
+  }
+  for(let i = 0; i < helloAccounts.length; i++) {
+    helloAccounts[i].classList.add('hidden');
+  }
+}
+
+if(userLogin){ 
+  isLoggedIn();
+}
+else{
+  doNotLogin();
+}
 // HEADER INTERFACE
 
+// COMMON HANDLER
 const filterProductBtns = document.querySelectorAll('.action__filter');
 // const filterCloseBtn = document.getElementById('btn-filter-close');
 const filterPopover = document.getElementById('product-filter');
@@ -275,6 +326,17 @@ document.addEventListener("click", function (event) {
   }
 });
 
+for(let i = 0; i < logoutButtons.length; i++){
+  logoutButtons[i].addEventListener("click",()=>{
+    localStorage.removeItem("currentUser");
+    clearMainBody();
+    siteIndex.classList.remove('hidden');
+    window.location.reload();
+  })
+}
+// Log out
+// COMMON HANDLER
+
 //SIGNIN SITE
 document.querySelector("#login-page .login__signup--btn").addEventListener("click", function () {
   clearMainBody();
@@ -357,6 +419,11 @@ signinSubmit.addEventListener("click", () => {
     clearMainBody();
     siteIndex.classList.remove('hidden');
     localStorage.setItem("currentUser",JSON.stringify(u));
+
+    for(let i = 0; i < accountsName.length; i++) {
+      accountsName[i].textContent = u.name;
+    }
+    isLoggedIn();
   }
   else {
     alert("Không có tài khoản")
@@ -500,9 +567,13 @@ signupSubmit.addEventListener("click", () => {
       usersList.push(newuser);
       localStorage.setItem("users",JSON.stringify(usersList));
       
+      isLoggedIn();
       clearMainBody();
       siteIndex.classList.remove('hidden');
       localStorage.setItem("currentUser",JSON.stringify(newuser));
+      for(let i = 0; i < accountsName.length; i++) {
+        accountsName[i].textContent = u.name;
+      }
   }
 
 });
@@ -621,14 +692,6 @@ function previewImageAvatar() {
 
 
 // hàm đăng xuất
-function checkLogout()
-{
-  localStorage.removeItem("saveLogin");
-}
 
-document.getElementById("logout_bt").addEventListener("click",()=>{
-  checkLogout()
-  window.location.reload();
-})
 
 //dang ki
