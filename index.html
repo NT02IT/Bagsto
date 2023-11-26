@@ -116,6 +116,81 @@
                 <button class="delete type-inherit"><i class="icon-trash"></i>Xóa tất cả</button>
             </div>
         </div>
+
+        <!-- SIGN IN -->
+        <div id="login-page" class="section__container client">
+            <div class="row">
+                <div class="login__container col-4">
+                    <div class="login__header">
+                        <h4 class="login__title">Đăng nhập</h4>
+                        <div class="login__notice">
+                            <span class="subtitle2">Bạn chưa có tài khoản?</span>
+                            <a href="#" class="login__signup--btn subtitle2">Đăng ký</a>
+                        </div>
+                    </div>
+                    <div class="login__form--item">
+                        <div class="subtitle2">Tên đăng nhập</div>
+                        <input type="email" id ="login-email" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signin__email"></ul>
+                    <div class="login__form--item">
+                        <div class="subtitle2">Mật khẩu</div>
+                        <input type="password" id ="login-password" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signin__password"></ul>
+                    <input type="submit" value="Đăng nhập" class="login__form--item login__sigin--btn size-l">
+                </div>
+            </div>
+        </div>
+        <!-- SIGN IN -->
+
+        <!-- SIGN UP -->
+        <div id="signup-page" class="section__container client hidden">
+            <div class="row">
+                <form class="signup__container col-4">
+                    <div class="signup__header">
+                        <h4 class="signup__title">Đăng ký</h4>
+                        <div class="signup__notice">
+                            <span class="subtitle2">Bạn đã có tài khoản?</span>
+                            <a href="#" class="signup__login--btn subtitle2">Đăng nhập</a>
+                        </div>
+                    </div>
+                    <div class="signup__form--item">
+                        <div class="subtitle2">Họ tên</div>
+                        <input type="text" id ="signup-fullname" class="product-textField">
+                    </div>
+                    <ul class="input-requirements for-signup__fullname"></ul>
+                    <div class="signup__form--item">
+                        <div class="subtitle2">Số điện thoại</div>
+                        <input type="text" id ="signup-phonenum" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signup__phonenumber"></ul>
+                    <div class="signup__form--item">
+                        <div class="subtitle2">Địa chỉ</div>
+                        <input type="text" id ="signup-address" class="product-textField">
+                    </div>
+                    <ul class="input-requirements for-signup__address"></ul>
+                    <div class="signup__form--item">
+                        <div class="subtitle2">Email</div>
+                        <input type="email" id ="signup-email" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signup__email"></ul>
+                    <div class="signup__form--item">
+                        <div class="subtitle2">Mật khẩu</div>
+                        <input type="password" id ="signup-password" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signup__password"></ul>
+                    <div class="signup__form--item">
+                        <div class="subtitle2">Xác nhận mật khẩu</div>
+                        <input type="password" id ="signup-password_repeat" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signup__password-repeat"></ul>
+                    <input type="submit" value="Đăng ký" class="signup__form--item signup__signup--btn size-l">
+                </form>
+            </div>
+        </div>
+        <!-- SIGN UP -->
+
         <!-- INDEX -->
         <div id="index-page" class="hidden">
             <div class="section__container promotion__cont">
@@ -286,214 +361,146 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- PRODUCTS-DETAIL -->
-    <!-- SignIn User-->
-    <div id="LogInUser-page" class="section__container">
-        <div class="LogInUser col-4">
-            <h3>Đăng nhập</h3>
-            <div class="LogInUser__notice">
-                <p>Bạn chưa có tài khoản ?</p>
-                <div id="SignUp__button" >Đăng ký</div>
-            </div>
-            <div class="LogInUser__UserName">
-                <h6>Tên đăng nhập</h6>
-                <input type="text" id ="UserName-Usersingin" class="product-textField">
-            </div>
-            <div>
-                <h6>Mật khẩu</h6>
-                <input type="text" id ="Password-Usersingin" class="product-textField">
-            </div>
-            <button class="LogIn--button" id="btnLogin">
-                Đăng nhập
-            </button>
-        </div>
-    </div>
-    <!--End SignIn User-->
+        <!-- PRODUCTS-DETAIL -->
 
-    <!--Signup User-->
-    <div id="SignupUser-page" class="section__container">
-        <div class="SignupUser col-4">
-            <h3>Đăng ký</h3>
-            <div class="SignupUser__notice">
-                <p>Bạn đã có tài khoản ?</p>
-                <div  id="SignIn__button" >Đăng nhập</div>
-            </div>
-            <div class="SignupUser__UserName">
-                <h6>Họ tên</h6>
-                <input type="text" id ="UserName-UserSignup" class="product-textField">
-            </div>
-            <div>
-                <h6>Số điện thoại</h6>
-                <input type="text" id ="SDT-UserSignup" class="product-textField">
-            </div>
-            <div>
-                <h6>Địa chỉ</h6>
-                <input type="text" id ="ADDRESS-UserSignup" class="product-textField">
-            </div>
-            <div>
-                <h6>Email</h6>
-                <input type="text" id ="EMAIL-UserSignup" class="product-textField">
-            </div>
-            <div>
-                <h6>Mật khẩu</h6>
-                <input type="text" id ="Password-UserSignup" class="product-textField">
-            </div>
-            <div>
-                <h6>Xác nhận mật khẩu</h6>
-                <input type="text" id ="CheckPassword-UserSignup" class="product-textField">
-            </div>
-            <button class="LogIn--button" id="btnsignup">
-                Đăng ký
-            </button>
-        </div>
-    </div>
-
-    <!--End Signup User-->
-
-
-    <!--Account-->
-    <div id="account-page">
-        <div class="section__container">
-            <div class="row">
-                <div class="Breadcrumb">
-                    <h4>Thông tin của tôi</h4>
-                </div>  
-            </div>
-            <div class="my-info row">
-                <div class="User_Account_UploadAvatar col-4">
-                    <div id="create-Avatar-form">
-                        <div id="add-Avatar">
-                            <div class="window-add-Avatar">  
-                                <input type="file"   id="image-input-Avatar" accept="image/**" onchange="previewImageAvatar()"> </input>
-                                <i id="icon-add" class="icon-add_a_photo"><p class="text-Avatar">Update photo </p>  </i>
-                                <!-- <p>Upload photo</p> --> 
+        <!--Account-->
+        <div id="account-page">
+            <div class="section__container">
+                <div class="row">
+                    <div class="Breadcrumb">
+                        <h4>Thông tin của tôi</h4>
+                    </div>  
+                </div>
+                <div class="my-info row">
+                    <div class="User_Account_UploadAvatar col-4">
+                        <div id="create-Avatar-form">
+                            <div id="add-Avatar">
+                                <div class="window-add-Avatar">  
+                                    <input type="file"   id="image-input-Avatar" accept="image/**" onchange="previewImageAvatar()"> </input>
+                                    <i id="icon-add" class="icon-add_a_photo"><p class="text-Avatar">Update photo </p>  </i>
+                                    <!-- <p>Upload photo</p> --> 
+                                </div>
+                                <p class="text-Avatar-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
+                                <img id="Avatar-image" src="" alt="">
                             </div>
-                            <p class="text-Avatar-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
-                            <img id="Avatar-image" src="" alt="">
                         </div>
                     </div>
-                </div>
-                <div class="User_Account_NewUserForm col-8">
-                    <div class="User_Account_NewUserForm_editor">
-                        <label class="info-label" for="fullName">Họ tên</label>
-                        <input type="text" id="user_fullName" class="info-input" required>
-                    </div>
-    
-                    <div class="User_Account_NewUserForm_editor">
-                        <label class="info-label" for="fullName">Số điện thoại</label>
-                        <input type="text" id="user_number" class="info-input" required>
-                    </div>
-    
-                    <div class="User_Account_NewUserForm_editor">
-                        <label class="info-label" for="fullName">Địa chỉ</label>
-                        <input type="text" id="user_address" class="info-input" required>
-                    </div>
-    
-                    <div class="User_Account_NewUserForm_editor">
-                        <label class="info-label" for="fullName">Email</label>
-                        <input type="text" id="user_email" class="info-input" required>
-                    </div>
-    
-                    <div class="User_Account_NewUserForm_editor">
-                        <label class="info-label" for="fullName">Mật khẩu</label>
-                        <input type="text" id="user_pass" class="info-input" required>
-                    </div>
+                    <div class="User_Account_NewUserForm col-8">
+                        <div class="User_Account_NewUserForm_editor">
+                            <label class="info-label" for="fullName">Họ tên</label>
+                            <input type="text" id="user_fullName" class="info-input" required>
+                        </div>
+        
+                        <div class="User_Account_NewUserForm_editor">
+                            <label class="info-label" for="fullName">Số điện thoại</label>
+                            <input type="text" id="user_number" class="info-input" required>
+                        </div>
+        
+                        <div class="User_Account_NewUserForm_editor">
+                            <label class="info-label" for="fullName">Địa chỉ</label>
+                            <input type="text" id="user_address" class="info-input" required>
+                        </div>
+        
+                        <div class="User_Account_NewUserForm_editor">
+                            <label class="info-label" for="fullName">Email</label>
+                            <input type="text" id="user_email" class="info-input" required>
+                        </div>
+        
+                        <div class="User_Account_NewUserForm_editor">
+                            <label class="info-label" for="fullName">Mật khẩu</label>
+                            <input type="text" id="user_pass" class="info-input" required>
+                        </div>
 
-                    <div class="User_Account_NewUserForm_editor">
-                        <label class="info-label" for="fullName">Xác nhận mật khẩu</label>
-                        <input type="text" id="user_checkpass" class="info-input" required>
-                    </div>
+                        <div class="User_Account_NewUserForm_editor">
+                            <label class="info-label" for="fullName">Xác nhận mật khẩu</label>
+                            <input type="text" id="user_checkpass" class="info-input" required>
+                        </div>
 
-                    <div class="User_Account_NewUserForm_editor">
-                        <input type="button" value="Cập nhật thông tin" class="Components_Button_Medium">
+                        <div class="User_Account_NewUserForm_editor">
+                            <input type="button" value="Cập nhật thông tin" class="Components_Button_Medium">
+                        </div>
                     </div>
-                </div>
-            </div> 
-            <div class="order-history row">
-                <div class="col-12">
+                </div> 
+                <div class="order-history row">
+                    <div class="col-12">
+                        <div class="Breadcrumb">
+                            <h4>Lịch sử mua hàng</h4>
+                        </div>  
+                        <div class="Table_view_Invoice">
+                            <table id="Table-info" class="Table-info"> 
+                                <thead>
+                                    <tr>
+                                        <th class="Table_Head_Invoice" style="width: 48px;"></th>
+                                        <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
+                                        <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
+                                        <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
+                                        <th class="Table_Head_Invoice" style="width: 80px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Thêm các dòng khác nếu cần -->
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th class="Table_Pagination" style="width: 48px;"></th>
+                                        <th class="Table_Pagination" style="width: 180px;"></th>
+                                        <th class="Table_Pagination" style="width: 724px;"></th>
+                                        <th class="Table_Pagination" style="width: 120px;">trang</th>
+                                        <th class="Table_Pagination" style="width: 80px;"> <   ></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <!--End-Account-->
+
+        <!--AccountOrder-->
+        <div class="AccountOrder">
+            <div class="section__container">
+                <div class="row col-12">
                     <div class="Breadcrumb">
-                        <h4>Lịch sử mua hàng</h4>
+                        <h4>chi tiết hóa đơn</h4>
                     </div>  
-                    <div class="Table_view_Invoice">
-                        <table id="Table-info" class="Table-info"> 
+                </div>
+                <div class="Oder row" id="oder">
+                    <div class="Oderlish col-8">
+                    <div>
+                        <table > 
                             <thead>
                                 <tr>
-                                    <th class="Table_Head_Invoice" style="width: 48px;"></th>
-                                    <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
-                                    <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
-                                    <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
-                                    <th class="Table_Head_Invoice" style="width: 80px;"></th>
+                                    <th  ></th>
+                                    <th  >Ngày mua</th>
+                                    <th  >Hóa đơn</th>
+                                    <th  >Giá trị</th>
+                                    <th  ></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Thêm các dòng khác nếu cần -->
                             </tbody>
-                            <thead>
-                                <tr>
-                                    <th class="Table_Pagination" style="width: 48px;"></th>
-                                    <th class="Table_Pagination" style="width: 180px;"></th>
-                                    <th class="Table_Pagination" style="width: 724px;"></th>
-                                    <th class="Table_Pagination" style="width: 120px;">trang</th>
-                                    <th class="Table_Pagination" style="width: 80px;"> <   ></th>
-                                </tr>
-                            </thead>
                         </table>
-                    </div>
-                </div>
-            </div>  
-        </div>
-    </div>
-
-    <!--End-Account-->
-
-    <!--AccountOrder-->
-    <div class="AccountOrder">
-        <div class="section__container">
-            <div class="row col-12">
-                <div class="Breadcrumb">
-                    <h4>chi tiết hóa đơn</h4>
-                </div>  
-            </div>
-            <div class="Oder row" id="oder">
-                <div class="Oderlish col-8">
-                  <div>
-                    <table > 
-                        <thead>
-                            <tr>
-                                <th  ></th>
-                                <th  >Ngày mua</th>
-                                <th  >Hóa đơn</th>
-                                <th  >Giá trị</th>
-                                <th  ></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Thêm các dòng khác nếu cần -->
-                        </tbody>
-                    </table>
-
-                  </div>
-                </div>
-                <div class="OderAP col-4">
-                    <div class="Oder-Address">
-                        Address
 
                     </div>
-                    <div class="Oder-Price">
-                        Price
+                    </div>
+                    <div class="OderAP col-4">
+                        <div class="Oder-Address">
+                            Address
 
+                        </div>
+                        <div class="Oder-Price">
+                            Price
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--End-AccountOrder-->
+
     </div>
-    <!--End-AccountOrder-->
-
-
-        <!-- PRODUCTS-DETAIL -->
-    </div>
-
     <!-- END MAIN BODY -->
 
     <div id="footer" class="section">
@@ -525,7 +532,6 @@
         </div>
         <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>
     </div>
-
 </body>
 </html>
 

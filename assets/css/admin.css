@@ -204,7 +204,7 @@
 }
 /* Under desktop */
 /* SignIn ADmin */
-.LogInAD{
+/* .LogInAD{
     width:368px;
     height: 402px;
     padding: 24px;
@@ -221,14 +221,14 @@
 .LogInAD__notice{
     display: flex;
     gap: 10px;
+    margin-bottom: 10px;
 }
 .LogInAD__notice button{
     color: black;
     background-color: transparent;
 }
-.LogInAD h6{
-    color: rgba(99, 115, 129, 1);
-    font-size: 18px;
+.LogInAD .subtitle2{
+    color: var(--color-text-sec);
 }
 .LogInAD__UserName{
     margin-top: 10px;
@@ -250,7 +250,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 
 /* SignIn ADmin */

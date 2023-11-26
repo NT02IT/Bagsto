@@ -77,3 +77,15 @@ document.addEventListener("click", function (event) {
       accountPopover.classList.add("collapsed");
     }
 });
+
+//SIGNIN SIGNUP
+document.querySelector("#login-page .login__signup--btn").addEventListener("click", function () {
+    clearMainBody();
+    document.querySelector("#signup-page").classList.remove("hidden");
+  });
+  
+  document.querySelector("#signup-page .signup__login--btn").addEventListener("click", function () {
+    clearMainBody();
+    document.querySelector("#login-page").classList.remove("hidden");
+  });
+  //SIGNIN SIGNUP

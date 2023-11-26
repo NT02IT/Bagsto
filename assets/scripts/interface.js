@@ -1,3 +1,75 @@
+// DATA HANDLER
+function IDGenerate() {
+  var ngayGioHienTai = new Date();
+  var chuoiNgayGio = ngayGioHienTai.toISOString().replace(/[-:T.]/g, "").slice(0, 14);
+  var ID = chuoiNgayGio.slice(0, 6);
+  return ID;
+}
+// DATA HANDLER
+
+// VALIDATION
+//----------------------------------------------------------------
+/* ----------------------------
+	CustomValidation prototype
+	- Keeps track of the list of invalidity messages for this input
+	- Keeps track of what validity checks need to be performed for this input
+	- Performs the validity checks and sends feedback to the front end
+---------------------------- */
+function CustomValidation() {
+	this.invalidities = [];
+	this.validityChecks = [];
+}
+CustomValidation.prototype = {
+	addInvalidity: function(message) {
+		this.invalidities.push(message);
+	},
+	getInvalidities: function() {
+		return this.invalidities.join('. \n');
+	},
+	checkValidity: function(input) {
+		for ( var i = 0; i < this.validityChecks.length; i++ ) {
+      var requirementElement = this.validityChecks[i].element;
+			var isInvalid = this.validityChecks[i].isInvalid(input);
+      var messages = this.validityChecks[i].invalidityMessage;
+			if (isInvalid) {
+				this.addInvalidity(messages);
+			}
+			if (requirementElement) {
+				if (isInvalid) {
+					requirementElement.classList.add('invalid');
+            inner_ul = ``;
+            for(var j = 0; j < this.invalidities.length; j++) {
+                inner_ul += `<li>${this.invalidities[j]}</li>`;
+            }
+            requirementElement.innerHTML = inner_ul;
+				} else {
+					requirementElement.classList.remove('invalid');
+				}
+			} 
+		}
+	}
+};
+
+/* ----------------------------
+	Check this input
+	Function to check this particular input
+	If input is invalid, use setCustomValidity() to pass a message to be displayed
+---------------------------- */
+function checkInput(input) {
+	input.CustomValidation.invalidities = [];
+	input.CustomValidation.checkValidity(input);
+
+	// if ( input.CustomValidation.invalidities.length == 0 && input.value != '' ) {
+	// 	input.setCustomValidity('');
+	// } else {
+	// 	var message = input.CustomValidation.getInvalidities();
+	// 	input.setCustomValidity(message);
+  //   console.log(message);
+	// }
+}
+//----------------------------------------------------------------
+// VALIDATION
+
 // SIDE NAVIGATE
 const mainBody = document.getElementById('main-body');
 const sitesMainBody = document.querySelectorAll('[id$="-page"]');
@@ -203,18 +275,239 @@ document.addEventListener("click", function (event) {
   }
 });
 
-//xuất hiện ẩn đăng nhập đăng kí
-
-
-document.getElementById("SignUp__button").addEventListener("click", function () {
-  document.getElementById("LogInUser-page").style.display = "none";
-  document.getElementById("SignupUser-page").style.display = "block";
+//SIGNIN SITE
+document.querySelector("#login-page .login__signup--btn").addEventListener("click", function () {
+  clearMainBody();
+  document.querySelector("#signup-page").classList.remove("hidden");
 });
 
-document.getElementById("SignIn__button").addEventListener("click", function () {
-  document.getElementById("SignupUser-page").style.display = "none";
-  document.getElementById("LogInUser-page").style.display = "block";
+// Check Validation
+var signinEmailValidityChecks = [
+	{
+		isInvalid: function(input) {
+			return !emailFormat.test(input.value);
+		},
+		invalidityMessage: 'Định dạng email không đúng',
+		element: document.querySelector('.input-requirements.for-signin__email')
+	}
+];
+var signinEmailInput = document.getElementById('login-email');
+signinEmailInput.CustomValidation = new CustomValidation();
+signinEmailInput.CustomValidation.validityChecks = signinEmailValidityChecks;
+
+var signinPasswordValidityChecks = [
+	{
+		isInvalid: function(input) {
+			return input.value.length < 8 | input.value.length > 100;
+		},
+		invalidityMessage: 'Mật khẩu phải có ít nhất 8 ký tự',
+		element: document.querySelector('.input-requirements.for-signin__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !numberFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải bao gồm ký tự và số',
+		element: document.querySelector('.input-requirements.for-signin__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !lowercaseFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải bao gồm ký tự in thường',
+		element: document.querySelector('.input-requirements.for-signin__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !uppercaseFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải bao gồm ký tự in hoa',
+		element: document.querySelector('.input-requirements.for-signin__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !specialCharFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải chứa ký tự đặc biệt',
+		element: document.querySelector('.input-requirements.for-signin__password')
+	}
+];
+var signinPasswordInput = document.getElementById('login-password');
+signinPasswordInput.CustomValidation = new CustomValidation();
+signinPasswordInput.CustomValidation.validityChecks = signinPasswordValidityChecks;
+
+var signinInputs = document.querySelectorAll('#login-page input:not([type="submit"]).js-checking');
+var signinSubmit = document.querySelector('#login-page input[type="submit"]');
+for (var i = 0; i < signinInputs.length; i++) {
+	signinInputs[i].addEventListener('keyup', function() {
+		checkInput(this);
+	});
+}
+signinSubmit.addEventListener('click', function() {
+	for (var i = 0; i < signinInputs.length; i++) {
+		checkInput(signinInputs[i]);
+	}
 });
+// Check Validation
+
+// Check exist and login
+signinSubmit.addEventListener("click", () => {
+  const u = usersList.find((user) => ((user.email == signinEmailInput.value && user.password == signinPasswordInput.value && user.role == "client") ? user : null));
+  if (u) {
+    clearMainBody();
+    siteIndex.classList.remove('hidden');
+    localStorage.setItem("currentUser",JSON.stringify(u));
+  }
+  else {
+    alert("Không có tài khoản")
+  }
+});
+// Check exist and login
+//SIGNIN SITE
+
+// SIGNUP SITE
+document.querySelector("#signup-page .signup__login--btn").addEventListener("click", function () {
+  clearMainBody();
+  document.querySelector("#login-page").classList.remove("hidden");
+});
+
+// Check Validation
+var signupPhoneNumValidityChecks = [
+	{
+		isInvalid: function(input) {
+			return !phonenumFormat.test(input.value);
+		},
+		invalidityMessage: 'Định dạng số điện thoại không đúng',
+		element: document.querySelector('.input-requirements.for-signup__phonenumber')
+	}
+];
+var signupPhonenumInput = document.getElementById('signup-phonenum');
+signupPhonenumInput.CustomValidation = new CustomValidation();
+signupPhonenumInput.CustomValidation.validityChecks = signupPhoneNumValidityChecks;
+
+var signupEmailValidityChecks = [
+	{
+		isInvalid: function(input) {
+			return !emailFormat.test(input.value);
+		},
+		invalidityMessage: 'Định dạng email không đúng',
+		element: document.querySelector('.input-requirements.for-signup__email')
+	}
+];
+var signupEmailInput = document.getElementById('signup-email');
+signupEmailInput.CustomValidation = new CustomValidation();
+signupEmailInput.CustomValidation.validityChecks = signupEmailValidityChecks;
+
+var signupPasswordValidityChecks = [
+	{
+		isInvalid: function(input) {
+			return input.value.length < 8 | input.value.length > 100;
+		},
+		invalidityMessage: 'Mật khẩu phải có ít nhất 8 ký tự',
+		element: document.querySelector('.input-requirements.for-signup__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !numberFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải bao gồm ký tự và số',
+		element: document.querySelector('.input-requirements.for-signup__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !lowercaseFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải bao gồm ký tự in thường',
+		element: document.querySelector('.input-requirements.for-signup__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !uppercaseFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải bao gồm ký tự in hoa',
+		element: document.querySelector('.input-requirements.for-signup__password')
+	},
+	{
+		isInvalid: function(input) {
+			return !specialCharFormat.test(input.value);
+		},
+		invalidityMessage: 'Mật khẩu phải chứa ký tự đặc biệt',
+		element: document.querySelector('.input-requirements.for-signup__password')
+	}
+];
+var signupPasswordInput = document.getElementById('signup-password');
+signupPasswordInput.CustomValidation = new CustomValidation();
+signupPasswordInput.CustomValidation.validityChecks = signupPasswordValidityChecks;
+
+var signupPasswordRepeatInput = document.getElementById('signup-password_repeat');
+var signupPasswordRepeatValidityChecks = [
+	{
+		isInvalid: function() {
+			return signupPasswordInput.value != signupPasswordRepeatInput.value;
+		},
+		invalidityMessage: 'Mật khẩu không trùng khớp',
+        element: document.querySelector('.input-requirements.for-signup__password-repeat')
+	}
+];
+signupPasswordRepeatInput.CustomValidation = new CustomValidation();
+signupPasswordRepeatInput.CustomValidation.validityChecks = signupPasswordRepeatValidityChecks;
+
+var signupInputs = document.querySelectorAll('#signup-page input:not([type="submit"]).js-checking');
+var signupSubmit = document.querySelector('#signup-page input[type="submit"]');
+for (var i = 0; i < signupInputs.length; i++) {
+	signupInputs[i].addEventListener('keyup', function() {
+		checkInput(this);
+	});
+}
+signupSubmit.addEventListener('click', function() {
+	for (var i = 0; i < signupInputs.length; i++) {
+		checkInput(signupInputs[i]);
+	}
+});
+
+function validateSignupForm(){
+  if(!document.getElementById("signup-fullname").value) return false;
+  if(!document.getElementById("signup-phonenum").value) return false;
+  if(!document.getElementById("signup-address").value) return false;
+  if(!document.getElementById("signup-email").value) return false;
+  if(!document.getElementById("signup-password").value) return false;
+  if(!document.getElementById("signup-password_repeat").value) return false;
+  if(signupPhonenumInput.CustomValidation.invalidities.length > 0) return false;
+  if(signupEmailInput.CustomValidation.invalidities.length > 0) return false;
+  if(signupPasswordInput.CustomValidation.invalidities.length > 0) return false;
+  if(signupPasswordRepeatInput.CustomValidation.invalidities.length > 0) return false;
+  return true;
+}
+// Check Validation
+
+// Check exist and signup
+signupSubmit.addEventListener("click", () => {
+  const u = usersList.find((user) => ((user.email == signupEmailInput.value && user.role == "client") ? user : null));
+  if (u) {
+    alert("Email đã được sử dụng");
+  }
+  if(validateSignupForm()) {     
+      const newuser = {
+        id: "AC" + IDGenerate(),
+        name: document.getElementById("signup-fullname").value,
+        email: document.getElementById("signup-email").value,
+        password: document.getElementById("signup-password").value,
+        address: document.getElementById("signup-address").value,        
+        phone: document.getElementById("signup-phonenum").value,
+        role: "client",
+        avatar: ""
+      }
+      usersList.push(newuser);
+      localStorage.setItem("users",JSON.stringify(usersList));
+      
+      clearMainBody();
+      siteIndex.classList.remove('hidden');
+      localStorage.setItem("currentUser",JSON.stringify(newuser));
+  }
+
+});
+// Check exist and signup
+// SIGNUP SITE
 
 
 // Account
@@ -230,74 +523,74 @@ document.addEventListener('DOMContentLoaded', function () {
   var account = document.getElementById('account-page'); // Thêm đoạn này để tham chiếu đến phần tử account
 
 
-  // Mảng chứa dữ liệu đơn hàng
-  var newData = [
-    // ... (giữ nguyên phần dữ liệu)
-    {
-      col1: '',
-      col2: '20/11/2003',
-      col3: 'ABCDXYZ',
-      col4: '200$',
-      col5: '...',
-      shippingAddress: '123 Đường ABC, Thành phố XYZ',
-      productList: [
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 2', price: 50 }
-      ],
-    },
-    {
-      col1: '',
-      col2: '20/11/2003',
-      col3: 'EBCDXYZ',
-      col4: '200$',
-      col5: '...',
-      shippingAddress: '123 Đường ABC, Thành phố XYZ',
-      productList: [
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 2', price: 50 }
-      ],
-    },
-    {
-      col1: '',
-      col2: '20/2/2022',
-      col3: 'KJSJFJS',
-      col4: '500$',
-      col5: '...',
-      shippingAddress: '123 Đường ABC, Thành phố XYZ',
-      productList: [
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 2', price: 50 }
-      ],
-    },
-  ];
+// Mảng chứa dữ liệu đơn hàng
+var newData = [
+  // ... (giữ nguyên phần dữ liệu)
+  {
+    col1: '',
+    col2: '20/11/2003',
+    col3: 'ABCDXYZ',
+    col4: '200$',
+    col5: '...',
+    shippingAddress: '123 Đường ABC, Thành phố XYZ',
+    productList: [
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 2', price: 50 }
+    ],
+  },
+  {
+    col1: '',
+    col2: '20/11/2003',
+    col3: 'EBCDXYZ',
+    col4: '200$',
+    col5: '...',
+    shippingAddress: '123 Đường ABC, Thành phố XYZ',
+    productList: [
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 2', price: 50 }
+    ],
+  },
+  {
+    col1: '',
+    col2: '20/2/2022',
+    col3: 'KJSJFJS',
+    col4: '500$',
+    col5: '...',
+    shippingAddress: '123 Đường ABC, Thành phố XYZ',
+    productList: [
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 1', price: 100 },
+      { name: 'Sản phẩm 2', price: 50 }
+    ],
+  },
+];
 
 
-  // Đọc dữ liệu từ mảng và thêm vào bảng
-  for (var i = 0; i < newData.length; i++) {
-    var row = tbody.insertRow();
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+// Đọc dữ liệu từ mảng và thêm vào bảng
+for (var i = 0; i < newData.length; i++) {
+  var row = tbody.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
 
-    cell1.innerHTML = newData[i].col1;
-    cell2.innerHTML = newData[i].col2;
-    cell3.innerHTML = newData[i].col3;
-    cell4.innerHTML = newData[i].col4;
+  cell1.innerHTML = newData[i].col1;
+  cell2.innerHTML = newData[i].col2;
+  cell3.innerHTML = newData[i].col3;
+  cell4.innerHTML = newData[i].col4;
 
-    cell1.className = 'Table_Row_Invoice';
-    cell2.className = 'Table_Row_Invoice';
-    cell3.className = 'Table_Row_Invoice';
-    cell4.className = 'Table_Row_Invoice';
+  cell1.className = 'Table_Row_Invoice';
+  cell2.className = 'Table_Row_Invoice';
+  cell3.className = 'Table_Row_Invoice';
+  cell4.className = 'Table_Row_Invoice';
 
-  }
+}
 
 });
 //thêm ảnh vào Avatar
@@ -326,152 +619,7 @@ function previewImageAvatar() {
 //chọn vào 1 đơn hàng xuất ra chi tiết đơn hàng
 
 
-var userdata  = [
-  {
-      id: 1,
-      name: "Leanne Graham",
-      email: "Sincere@april.biz",
-      password: "1234567890",
-      address: "173 Võ Thị Sáu, Q.1, Tp.HCM",
-      phone: "0327531105",
-      avatar: ""
-  },
-  {
-      id: 2,
-      name: "Ervin Howell",
-      email: "Shanna@melissa.tv",
-      password: "1234567890",
-      address: "98 Xuân Diệu, Mộ Đức, Quảng Ngãi",
-      phone: "0523235565",
-      avatar: ""
-  },
-  {
-      id: 3,
-      name: "Clementine Bauch",
-      email: "Nathan@yesenia.net",
-      password: "1234567890",
-      address: "375 Võ Trường Toản, Ngô Mây, Bình Định",
-      phone: "05467882326",
-      avatar: ""
-  },
-  {
-      id: 4,
-      name: "Patricia Lebsack",
-      email: "Julianne.OConner@kory.org",
-      password: "1234567890",
-      address: "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
-      phone: "0567868323",
-      avatar: ""
-  },
-  {
-      id: 5,
-      name: "Chelsey Dietrich",
-      email: "Lucio_Hettinger@annie.ca",
-      password: "1234567890",
-      address: "132 Võ Nguyên Giáp, Phù Mỹ, Bình Định",
-      phone: "04365781223",
-      avatar: ""
-  },
-  {
-      id: 6,
-      name: "Mrs. Dennis Schulist",
-      email: "Karley_Dach@jasper.info",
-      password: "1234567890",
-      address: "02 Trần Bình Trọng, Hải Dương",
-      phone: "0567876884",
-      avatar: ""
-  },
-  {
-      id: 7,
-      name: "Kurtis Weissnat",
-      email: "Telly.Hoeger@billy.biz",
-      password: "1234567890",
-      address: "187 Nguyễn Thị Minh Khai, Đống Đa, Hà Nội",
-      phone: "05678832241",
-      avatar: ""
-  },
-  {
-      id: 8,
-      name: "Nicholas Runolfsdottir V",
-      email: "Sherwood@rosamond.me",
-      password: "1234567890",
-      address: "72 Hồng Bàng, Q.10. Tp.HCM",
-      phone: "04565782345",
-      avatar: ""
-  },
-  {
-      id: 9,
-      name: "Glenna Reichert",
-      email: "Chaim_McDermott@dana.io",
-      password: "1234567890",
-      address: "128/6/12 Nguyễn Đình Chiểu, Q.5, Tp. HCM",
-      phone: "04665753343",
-      avatar: ""
-  },
-  {
-      id: 10,
-      name: "Clementina DuBuque",
-      email: "Rey.Padberg@karina.biz",
-      password: "1234567890",
-      address: "32 Bình Qưới, Thanh Đa, Q.Bình Thạnh, Tp.HCM",
-      phone: "05643524454",
-      avatar: ""
-  },
-  {
-      id: 11,
-      name: "Nguyễn Anh Tuấn",
-      email: "lowtee.vn@gmail.com",
-      password: "1234567890",
-      address: "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
-      phone: "0327431105",
-      avatar: ""
-  }
 
-]
-  localStorage.setItem("userdata", JSON.stringify(userdata));
-
-const userName = document.querySelector("#UserName-Usersingin");
-const passwordName = document.querySelector("#Password-Usersingin");
-const btn = document.querySelector("#btnLogin");
-
-btn.addEventListener("click", () => {
-  const u = userdata.find((user) => user.name == userName.value && user.password == passwordName.value)
-  if (u) {
-    alert("đăng nhập thành công")
-    console.log("co user");
-    document.getElementById("font-bold account-name").innerText = ` ${u.name} `;
-    localStorage.setItem("saveLogin",JSON.stringify(u));
-    // đọc thông tin vào ô thông tin user
-    document.getElementById("user_fullName").value = `${u.name} `;
-    document.getElementById("user_number").value = `${u.phone} `;
-    document.getElementById("user_address").value = `${u.address} `;
-    document.getElementById("user_email").value = `${u.email} `;
-    document.getElementById("user_pass").value = `${u.password} `;
-    document.getElementById("user_checkpass").value = `${u.password} `;
-    document.getElementById("Avatar-image").src= u.avatar ;
-  }
-  else {
-    alert("không có tài khoản")
-  }
-  // console.log(userName.value);
-  // console.log(passwordName.value);
-});
-
-// reload ko mất thông tin
-function checkSave(){
-  const saveLogin=JSON.parse(localStorage.getItem("saveLogin"));
-  if(saveLogin){
-    document.getElementById("font-bold account-name").innerText = ` ${saveLogin.name} `;
-    // ô thông tin
-    document.getElementById("user_fullName").value = `${saveLogin.name} `;
-    document.getElementById("user_number").value = `${saveLogin.phone} `;
-    document.getElementById("user_address").value = `${saveLogin.address} `;
-    document.getElementById("user_email").value = `${saveLogin.email} `;
-    document.getElementById("user_pass").value = `${saveLogin.password} `;
-    document.getElementById("user_checkpass").value = `${saveLogin.password} `;
-  }
-}
-checkSave();
 // hàm đăng xuất
 function checkLogout()
 {
@@ -484,37 +632,3 @@ document.getElementById("logout_bt").addEventListener("click",()=>{
 })
 
 //dang ki
-var userdata = JSON.parse(localStorage.getItem("userdata"));
-const btsup = document.querySelector("#btnsignup");
-btsup.addEventListener("click", () => {
-  const usercheck = document.querySelector("#UserName-UserSignup");
-  const u = userdata.find((user) => user.name == usercheck.value)
-  if (u) {
-    alert("đã có tên tài khoảng được sử dụng");
-  }
-  else { 
-    const newname = document.querySelector("#UserName-UserSignup").value;
-    const newphone = document.querySelector("#SDT-UserSignup").value;
-    const newaddress = document.querySelector("#ADDRESS-UserSignup").value;
-    const newemail = document.querySelector("#EMAIL-UserSignup").value;
-    const newpassword = document.querySelector("#Password-UserSignup").value;
-    const newcheckpassword = document.querySelector("#CheckPassword-UserSignup").value;
-    if(newpassword == newcheckpassword)
-    {
-      const newuser = {
-        name: newname,
-        phone: newphone,
-        address: newaddress,
-        email: newemail,
-        password: newpassword,
-      }
-      userdata.push(newuser);
-      localStorage.setItem("userdata",JSON.stringify(userdata));
-      alert("đăng ki thành công mời bạn đăng nhập");
-    }
-    else{
-      alert("xác nhận mật khẩu không đúng với mật khẩu");
-    }
-  }
-
-});

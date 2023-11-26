@@ -25,6 +25,9 @@ overflow-wrap: break-word;
 a{
     text-decoration: none;
 }
+a:hover{
+    text-decoration: underline;
+}
 ul{
     list-style-type: none;
     margin: 0;
@@ -403,8 +406,10 @@ button.chip:hover{
     transition: ease-in-out 0.1s;
     box-shadow: none;
 }
-button,
-button.type-primary{
+button, input[type="button"], input[type="submit"],
+button.type-primary,
+input[type="button"].type-primary,
+input[type="submit"].type-primary{
     cursor: pointer;
     display: flex;
     gap: 0.5rem;
@@ -425,47 +430,63 @@ button.type-primary.style-soft{
     background-color: var(--color-pri-trans16);
     color: var(--color-pri-dark);
 }
-button:hover,
+button:hover, input[type="button"]:hover, input[type="submit"]:hover,
 button.type-primary:hover,
 button.type-primary.style-text:hover,
-button.type-primary.style-soft:hover{
+button.type-primary.style-soft:hover,
+input[type="button"].type-primary:hover,
+input[type="submit"].type-primary:hover{
     color: var(--color-common-white);
     background-color: var(--color-pri-dark);
     box-shadow: var(--shadow-color-pri);
     transition: ease-in-out 0.1s;
 }
 
-button.size-s{
+button.size-s,
+input[type="button"].size-s,
+input[type="submit"].size-s{
     font-size: 0.8125rem;
     font-weight: 700;
     line-height: 1.375rem;
     padding: 0.25rem 0.625rem;
 }
-button.size-s i{
+button.size-s i,
+input[type="button"].size-s i,
+input[type="submit"].size-s i{
     font-size: 1.125rem;
 }
 button,
-button.size-m{
+button.size-m,
+input[type="button"].size-m,
+input[type="submit"].size-m{
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.5rem;
     padding: 0.375rem 1rem;
 }
 button i,
-button.size-m i{
+button.size-m i,
+input[type="button"].size-m i,
+input[type="submit"].size-m i{
     font-size: 1.25rem;
 }
-button.size-l{
+button.size-l,
+input[type="button"].size-l,
+input[type="submit"].size-l{
     font-size: 0.9375rem;
     font-weight: 700;
     line-height: 1.625rem;
     padding: 0.6875rem 1.375rem;
 }
-button.size-l i{
+button.size-l i,
+input[type="button"].size-l i,
+input[type="submit"].size-l i{
     font-size: 1.5rem;
 }
 
-button.type-secondary{
+button.type-secondary,
+input[type="button"].type-secondary,
+input[type="submit"].type-secondary{
     background-color: var(--color-sec-main);
     color: var(--color-common-white);
 }
@@ -479,14 +500,18 @@ button.type-secondary.style-soft{
 }
 button.type-secondary:hover,
 button.type-secondary.style-text:hover,
-button.type-secondary.style-soft:hover{
+button.type-secondary.style-soft:hover,
+input[type="button"].type-secondary:hover,
+input[type="submit"].type-secondary:hover{
     color: var(--color-common-white);
     background-color: var(--color-sec-dark);
     transition: ease-in-out 0.1s;
     box-shadow: var(--shadow-color-sec);
 }
 
-button.type-inherit{
+button.type-inherit,
+input[type="button"].type-inherit,
+input[type="submit"].type-inherit{
     background-color: var(--color-grey-300);
     color: var(--color-grey-800);
 }
@@ -499,7 +524,9 @@ button.type-inherit.style-soft{
 }
 button.type-inherit:hover,
 button.type-inherit.style-text:hover,
-button.type-inherit.style-soft:hover{
+button.type-inherit.style-soft:hover,
+input[type="button"].type-inherit:hover,
+input[type="submit"].type-inherit:hover{
     color: var(--color-grey-800);
     background-color: var(--color-grey-400);
     transition: ease-in-out 0.1s;
@@ -607,6 +634,7 @@ a.tab{
 a.tab:hover{
     color: var(--color-pri-main);    
     transition: ease-in-out 0.1s;
+    text-decoration: none;
 }
 a.tab.active{
     display: flex;
@@ -626,8 +654,22 @@ a.tab.active:hover{
 }
 /* Tab */
 
-/* Input */
-input[type="text"]{
+/* Form */
+.input-requirements{
+    display: none;
+    margin-top: -1rem;
+    color: var(--color-error-main);
+    font-size: 0.75rem;
+    text-align: left;
+    width: 100%;
+}
+.input-requirements.invalid{
+    display: block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]{
     outline: none;
     border: 1px solid var(--color-grey-trans32);
     border-radius: 0.5rem;
@@ -635,15 +677,21 @@ input[type="text"]{
     height: 2.5rem;
     padding: 0.5rem 0.875rem;
 }
-input[type="text"].size-l{
+input[type="text"].size-l,
+input[type="password"].size-l,
+input[type="email"].size-l{
     height: 3.5rem;
     padding: 1rem 0.875rem;     
 }
-input[type="text"].size-m{
+input[type="text"].size-m,
+input[type="password"].size-m,
+input[type="email"].size-m{
     height: 2.5rem;
     padding: 0.5rem 0.875rem;
 }
-input[type="text"].size-s{
+input[type="text"].size-s,
+input[type="password"].size-s,
+input[type="email"].size-s{
     font-size: 0.875rem;
     height: 2rem;
     padding: 0.5rem 0.52rem;
@@ -705,7 +753,7 @@ input[id^="color"]:checked + label::before{
     background-position: center;
     box-shadow: var(--shadow-z8);
 }
-/* Input */
+/* Form */
 
 /* Popover */
 .popover{
@@ -1015,6 +1063,83 @@ On desktop
     color: var(--color-pri-main)
 }
 /* Footer */
+
+/* Signin */
+#login-page .row{
+    justify-content: center;
+}
+.login__title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+.login__container{
+    min-width: 312px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    align-items: center;
+}
+.login__signup--btn{
+    color: var(--color-pri-main);
+}
+.login__form--item{
+    width: 100%;
+}
+.login__form--item > :first-child{
+    margin-bottom: 0.5rem;
+}
+.login__form--item input[type="text"],
+.login__form--item input[type="password"],
+.login__form--item input[type="email"]{
+    width: 100%;
+}
+.login__sigin--btn{
+    justify-content: center;
+}
+/* Signin */
+
+/* Signup */
+#signup-page .row{
+    justify-content: center;
+}
+.signup__title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+.signup__container{
+    min-width: 312px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    align-items: center;
+}
+.signup__login--btn{
+    color: var(--color-pri-main);
+}
+.signup__form--item{
+    width: 100%;
+}
+.signup__form--item > :first-child{
+    margin-bottom: 0.5rem;
+}
+.signup__form--item input[type="text"],
+.signup__form--item input[type="password"],
+.signup__form--item input[type="email"]{
+    width: 100%;
+}
+.signup__signup--btn{
+    justify-content: center;
+}
+/* Signup */
+
 /* 
 On desktop 
 */
