@@ -4,7 +4,7 @@ On desktop
 /* Product filter */
 [id^='product-filter']{
     display: flex;
-    padding-top: 5.5rem;
+    /* padding-top: 5.5rem; */
     flex-direction: column;
     position: fixed;
     height: 100vh;

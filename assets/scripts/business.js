@@ -24,13 +24,6 @@ let productList = getFromStorage('products');
 //----------------------------------------------------------------
 // DATA INIT
 
-
-
-
-// const itemList = [];
-// for (let i = 1; i <= 100; i++) {
-//     itemList.push(`Item ${i}`);
-// }
 // PRODUCT DISPLAY
 const itemsPerPage = 12;
 const maxPaginationItem = 5;
@@ -46,17 +39,17 @@ function displayProducts(htmlContainer, productList, currentPage){
         prdItem.classList.add("product-card", "col-3");
         prdItem.innerHTML = `
             <div class="product-card__cont">
-                <img src="https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg" alt="Productname" class="product__thumbnail">
+                <img src=${item.thumbnail_stack[0]} onerror="handleErrorPrdThumbnail(this)" alt=${item.name} class="product__thumbnail">
                 <div class="product__info">
-                    <h6 class="product__name">Foundations Matte Flip Flop Foundations Matte Flip Flop</h6>
+                    <h6 class="product__name">${item.name}</h6>
                     <div class="stack">
                         <div class="product__color-utility">
                             <div class="color-utility"></div>
                             <div class="color-utility"></div>
                             <div class="color-utility"></div>
                         </div>
-                        <div class="product__price--raw subtitle2 font-line_through">60.000đ</div>
-                        <div class="product__price--sale subtitle1">30.000đ</div>
+                        <div class="product__price--raw subtitle2 font-line_through">${item.price_sell}đ</div>
+                        <div class="product__price--sale subtitle1">${item.price_sell}đ</div>
                     </div>
                     <button class="btn-add-prd"><i class="icon-add_shopping_cart"></i>Thêm vào giỏ</button>
                 </div>
@@ -64,6 +57,10 @@ function displayProducts(htmlContainer, productList, currentPage){
         `;
         htmlContainer.appendChild(prdItem);
     }  
+}
+
+function handleErrorPrdThumbnail(img){
+    img.src = '..\\assets\\img\\product_placeholder.png';
 }
 // PRODUCT DISPLAY
 
