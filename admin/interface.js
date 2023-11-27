@@ -171,12 +171,4 @@ breadcrumbsInvoiceDetails[1].addEventListener("click", function(){
 });
 // STATISTICS
 
-//product-page
-const newProduct_Btn = document.getElementById('newProduct-btn');
-newProduct_Btn.addEventListener('click', ()=>{
-    var productCreatePage = document.getElementById('productCreate-page');
-    resetNavbar();
-    clearMainBody();
-    productCreatePage.classList.remove('hidden');
-})
-//product-page
+

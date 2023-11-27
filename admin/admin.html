@@ -418,7 +418,7 @@
                 <div class="user-body-row">
                     <div class="header-body">
                         <div class="header-body--left col">
-                            <h4 class="body-tab"> Sản phẩm</h4>
+                            <h4 class="body-tab"> Danh sách sản phẩm</h4>
                         </div>
                         <div class="header-body--right">
                             <button type="button" class="body-tab" id="newProduct-btn"> <i class="icon-plus"></i> Sản phẩm mới  </button>
@@ -441,11 +441,6 @@
                     </div>
                 </div>
                 <div class="invoice-analysis">
-                    <div class="heading__cont row">
-                        <div class="heading col-12">
-                            <h4 class="title">Danh sách sản phẩm</h4>
-                        </div>
-                    </div>
                     <div class="invoice-table row">
                         <div class="invoice-table__cont col-12">
                             <table id="table_product">
@@ -455,6 +450,7 @@
                                     <th class="productTable__cell col3">Price</th>
                                     <th class="productTable__cell col4">Status</th>
                                 </tr>
+<!--                                Danh Sach San pham-->
                             </table>
                             <div class="table__footer">
                                 <div colspan="100%" class="table__footer--action">
@@ -489,7 +485,7 @@
                         </div>
                         <div class="product-info--1-2">
 
-                            <div class="product-DayImport">
+                            <div class="product-Name">
                                 <h6>Ngày nhập</h6>
                                 <input type="text" id="product-DayImport--txtField" value placeholder="Ngày nhập">
                             </div>
@@ -500,28 +496,38 @@
                             </div>
                             <div class="product-image">
                                 <h6>Hình ảnh</h6>
-                                <button id="product-info__btn-img">
-                                    <i class="icon-add_photo_alternate"></i>
-                                    Thêm ảnh
-                                </button>
+                                <div class="containerProduct--img" id = "containerCreateProduct--img">
+                                    <!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+                                    <!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+                                    <button id="Product-info__btn-img" class="imageProduct">
+                                        <i class="icon-add_photo_alternate"></i>
+                                        Thêm ảnh
+                                    </button>
+                                </div>
+                                <input type="file" id="fileInput--Product" onchange="showCreateImage(this)" />
                             </div>
                         </div>
                     </div>
                     <div class="product-info--2">
                         <div class="product-info--2-1">
+                            <div class="ProductId">
+                                <p id="ProductId--create">
+
+                                </p>
+                            </div>
                             <div>
                                 <h6>Giới tính</h6>
                                 <ul class="product-info--checkBox">
                                     <li>
-                                        <input type="radio" name="product-checkBox--group">
+                                        <input type="radio" name="product-checkBox--group" id="product--radio1">
                                         Men
                                     </li>
                                     <li>
-                                        <input type="radio" name="product-checkBox--group">
+                                        <input type="radio" name="product-checkBox--group" id="product--radio2">
                                         Women
                                     </li>
                                     <li>
-                                        <input type="radio" name="product-checkBox--group">
+                                        <input type="radio" name="product-checkBox--group" id="product--radio3">
                                         Kid
                                     </li>
                                 </ul>
@@ -567,18 +573,6 @@
                                     <label for="Table__checkbox--12" class="colorTable--checkBox"></label>
                                 </div>
                             </div>
-                            <div>
-                                <h6>Size</h6>
-                                <div class="checkboxSize">
-                                    <input type="checkbox" id ="checkboxSize--S">
-                                    <label for="checkboxSize--S" class="checkboxSize__item">S</label>
-                                    <input type="checkbox" id ="checkboxSize--M">
-                                    <label for="checkboxSize--M"  class="checkboxSize__item">M</label>
-                                    <input type="checkbox" id ="checkboxSize--L">
-                                    <label for="checkboxSize--L" class="checkboxSize__item">L</label>
-                                </div>
-                            </div>
-
                         </div>
                         <div class="product-info--2-2">
                             <div>
@@ -635,8 +629,8 @@
                             <div class="product-image">
                                 <h6>Hình ảnh</h6>
                                 <div class="containerProduct--img" id = "containerDetailProduct--img">
-                                    <!--                                <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
-                                    <!--                                <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+<!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+<!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
                                     <button id="DetailProduct-info__btn-img" class="imageDetailProduct">
                                         <i class="icon-add_photo_alternate"></i>
                                         Thêm ảnh
