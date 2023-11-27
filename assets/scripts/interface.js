@@ -653,7 +653,25 @@ btn.addEventListener("click", () => {
         document.getElementById("Oder-info-Address").innerHTML = u.address;
 
 
-        
+        const tbody = document.querySelector("#checkoutCart");
+        console.log(iduser);
+
+        for (const iduser in filteredUseroder) {
+          // Tạo một dòng mới trong bảng
+          const row = tbody.insertRow();
+          // Tạo hai ô trong dòng
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+          const cell3 = row.insertCell(2);
+          const cell4 = row.insertCell(3);
+
+          // Đặt giá trị của userId vào ô thứ nhất
+          cell1.innerHTML = iduser;
+          // Đặt giá trị tổng giá vào ô thứ hai
+          // cell2.innerHTML = ;
+          // cell3.innerHTML = ;
+          // cell4.innerHTML = ;
+          }
 
       });
     }
