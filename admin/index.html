@@ -430,9 +430,10 @@
                     <div class="status" >
                         <select name="status-selection" id="Product-status-selection">
                             <option selected disabled> Status </option>
-                            <option value="active"> In stock </option>
-                            <option value="banned"> Low stock </option>
-                            <option value="all"> Out of stock </option>
+                            <option value="All"> All </option>
+                            <option value="InStock"> In stock </option>
+                            <option value="LowStock"> Low stock </option>
+                            <option value="OutOfStock"> Out of stock </option>
                         </select>
                     </div>
                     <div class="cus-search">
@@ -452,7 +453,7 @@
                         <table id="table_product">
                             <tr class="table__header productTable__row">
                                 <th class="productTable__cell col1">Product</th>
-                                <th class="productTable__cell col2">Create At</th>
+                                <th class="productTable__cell col2">Import date</th>
                                 <th class="productTable__cell col3">Price</th>
                                 <th class="productTable__cell col4">Status</th>
                             </tr>
@@ -636,6 +637,7 @@
                         <div class="product-image">
                             <h6>Hình ảnh</h6>
                             <div class="containerProduct--img" id = "containerDetailProduct--img">
+<!--                                <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
 <!--                                <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
                                 <button id="DetailProduct-info__btn-img" class="imageDetailProduct">
                                     <i class="icon-add_photo_alternate"></i>
