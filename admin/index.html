@@ -13,238 +13,31 @@
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <div id="header-admin" class="section">
-        <div class="section__container">
-            <div class="row">
-                <div class="header__block--left col">
-                    <img src="../assets/brand/logos/logo-full.svg" alt="" class="logo" id="header-logo">
-                    <input type="text" class="size-m header__search" value placeholder="Search">
-                </div>
-                <div class="header__block--right col">
-                    <a href="#" class="tab active" id="header-tab-admin1">Thống kê</a>
-                    <a href="#" class="tab" id="header-tab-admin2">Sản phẩm</a>
-                    <a href="#" class="tab" id="header-tab-admin3">Khách hàng</a>
-                    <img src="../assets/img/avatar-placeholder.png" alt="" class="header__avatar">
-                    <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
-                </div>
-            </div>
-
-            <div class="mobile-nav collapsed" id="mobile-nav">
-                <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
-                <div class="hello-account" id="to-account-info">
-                    <img src="../assets/img/avatar-placeholder.png" alt="" class="header__avatar">
-                    <p class="font-bold account-name">Nguyễn Tuấn</p>
-                    <button class="hello-account__button type-inherit style-text size-m">
-                        <i class="icon-chevron_right"></i>
-                    </button>
-                </div>
-                <button class="type-inherit style-text">Sản phẩm</button>
-                <button class="type-inherit style-text">Khách hàng</button>
-                <div class="space"></div>
-                <button class="type-inherit">Đăng xuất</button>
-            </div>
-            <div class="popover account-popover collapsed">
-                <div class="hello-account" id="to-account-info">
-                    <span>
-                        Xin chào,
-                        <p class="font-bold account-name">Nguyễn Tuấn</p>
-                    </span>
-                    <button class="hello-account__button type-inherit style-text size-l">
-                        <i class="icon-chevron_right"></i>
-                    </button>
-                </div>
-                <button class="type-inherit">Đăng xuất</button>
-            </div>
-        </div>
-    </div>
-    <!-- HEADER -->
-
     <!-- MAIN BODY HERE -->
-    <!-- SIGN IN -->
-    <!-- SIGN IN -->
-
-    <!-- ANALYSIS -->
-    <div id="analysis-page" class="">
-        <div class="overal-analysis section__container">
-            <div class="heading__cont row">
-                <div class="heading col-12">
-                    <h4 class="title">Thống kê</h4>
-                </div>
-            </div>
-            <div class="analysis__cont row">
-                <div class="analysis__block col-4">
-                    <div class="subtitle2">Số sản phẩm đã bán</div>
-                    <h3 class="total-number">48,951</h3>
-                    <div class="stack">
-                        <i class="icon-trending_up"></i>
-                        <span class="text">
-                            <span class="number subtitle2">+41.3%</span>
-                            <span class="body2">so với tuần trước</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="analysis__block col-4 trend--down">
-                    <div class="subtitle2">Tổng doanh thu</div>
-                    <h3 class="total-number">43,956</h3>
-                    <div class="stack">
-                        <i class="icon-trending_down"></i>
-                        <span class="text">
-                            <span class="number subtitle2">-63.1%</span>
-                            <span class="body2">so với tuần trước</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="analysis__block col-4">
-                    <div class="subtitle2">Lợi nhuận</div>
-                    <h3 class="total-number">28,971</h3>
-                    <div class="stack">
-                        <i class="icon-trending_up"></i>
-                        <span class="text">
-                            <span class="number subtitle2">+66.3%</span>
-                            <span class="body2">so với tuần trước</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="invoice-analysis section__container">
-            <div class="heading__cont row">
-                <div class="heading col-12">
-                    <h4 class="title">Danh sách hóa đơn</h4>
-                </div>
-            </div>
-            <div class="invoice-table row">
-                <div class="invoice-table__cont col-12">
-                    <table>
-                        <tr class="table__header subtitle1">
-                            <!-- <th class="data__checkbox" class="header__checkbox">
-                                <input type="checkbox" name="" id="checkbox-all-invoice">
-                                <label for="checkbox-all-invoice"></label>
-                            </th> -->
-                            <th>Khách hàng</th>
-                            <th>Ngày mua</th>
-                            <th>Hóa đơn</th>
-                            <th>Giá trị</th>
-                        </tr>
-    
-                        <!-- DATA -->
-                        <tr class="table__data canhover">
-                            <!-- <td class="data__checkbox">
-                                <input type="checkbox" name="" id="checkbox-invoice-1">
-                                <label for="checkbox-invoice-1"></label>
-                            </td> -->
-                            <td class="client__avatar">
-                                <img src="../assets/img/avatar-placeholder.png" alt="">
-                                <div class="client__info">
-                                    <div class="client__name subtitle2">Nguyễn Tuấn</div>
-                                    <div class="client__id body2">CL01</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="body2">12 Jan 2022</div>
-                            </td>
-                            <td>
-                                <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
-                            </td>
-                            <td>
-                                <div class="subtitle2">$44.39</div>
-                            </td>
-                        </tr>
-                        <tr class="table__data canhover">
-                            <!-- <td class="data__checkbox">
-                                <input type="checkbox" name="" id="checkbox-invoice-2">
-                                <label for="checkbox-invoice-2"></label>
-                            </td> -->
-                            <td class="client__avatar">
-                                <img src="../assets/img/avatar-placeholder.png" alt="">
-                                <div class="client__info">
-                                    <div class="client__name subtitle2">Nguyễn Tuấn</div>
-                                    <div class="client__id body2">CL01</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="body2">12 Jan 2022</div>
-                            </td>
-                            <td>
-                                <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
-                            </td>
-                            <td>
-                                <div class="subtitle2">$44.39</div>
-                            </td>
-                        </tr>
-                        <tr class="table__data canhover">
-                            <!-- <td class="data__checkbox">
-                                <input type="checkbox" name="" id="checkbox-invoice-3">
-                                <label for="checkbox-invoice-3"></label>
-                            </td> -->
-                            <td class="client__avatar">
-                                <img src="../assets/img/avatar-placeholder.png" alt="">
-                                <div class="client__info">
-                                    <div class="client__name subtitle2">Nguyễn Tuấn</div>
-                                    <div class="client__id body2">CL01</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="body2">12 Jan 2022</div>
-                            </td>
-                            <td>
-                                <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
-                            </td>
-                            <td>
-                                <div class="subtitle2">$44.39</div>
-                            </td>
-                        </tr>
-                        <tr class="table__data canhover">
-                            <!-- <td class="data__checkbox">
-                                <input type="checkbox" name="" id="checkbox-invoice-4">
-                                <label for="checkbox-invoice-4"></label>
-                            </td> -->
-                            <td class="client__avatar">
-                                <img src="../assets/img/avatar-placeholder.png" alt="">
-                                <div class="client__info">
-                                    <div class="client__name subtitle2">Nguyễn Tuấn</div>
-                                    <div class="client__id body2">CL01</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="body2">12 Jan 2022</div>
-                            </td>
-                            <td>
-                                <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
-                            </td>
-                            <td>
-                                <div class="subtitle2">$44.39</div>
-                            </td>
-                        </tr>
-                        <!-- DATA -->
-                    </table>
-                    <div class="table__footer">
-                        <div colspan="100%" class="table__footer--action">
-                            <div class="container">
-                                <button class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
-                                <button class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
-                                <span class="body2">1-12 trên 100 hóa đơn</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ANALYSIS -->
-
-    <!-- INVOICE DETAIL -->
-    <div id="invoice-detail-page" class="hidden">
-        <div class="invoice-detail section__container">
+    <div id="main-body" class="section">
+        <!-- SIGN IN -->
+        <div id="login-page" class="section__container admin">
             <div class="row">
-                <div class="breadcrumb col-12">
-                    <h4 class="title">Chi tiết hóa đơn</h4>
-                    <div class="breadcrumb__links horizontal">
-                        <div class="breadcrumb__link body2">Trang chủ</div>
-                        <div class="breadcrumb__link body2">Thống kê</div>
-                        <div class="breadcrumb__link body2">Chi tiết hóa đơn</div>
+                <div class="login__container col-4">
+                    <div class="login__header">
+                        <h4 class="login__title">Đăng nhập</h4>
                     </div>
+                    <div class="login__form--item">
+                        <div class="subtitle2">Tên đăng nhập</div>
+                        <input type="email" id ="login-email" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signin__email"></ul>
+                    <div class="login__form--item">
+                        <div class="subtitle2">Mật khẩu</div>
+                        <input type="password" id ="login-password" class="product-textField js-checking">
+                    </div>
+                    <ul class="input-requirements for-signin__password"></ul>
+                    <input type="submit" value="Đăng nhập" class="login__form--item login__sigin--btn size-l">
+                </div>
+            </div>
+        </div>
+        <!-- SIGN IN -->
+    </div>
                 </div>
             </div>
             <div class="content row">
@@ -257,7 +50,7 @@
                                 <th class="quantity">Số lượng</th>
                                 <th>Thành tiền</th>
                             </tr>
-        
+
                             <!-- DATA -->
                             <tr class="table__data">
                                 <td class="product">
@@ -370,7 +163,7 @@
                                 </td>
                             </tr>
                             <!-- DATA -->
-        
+
                         </table>
                     </div>
                 </div>
@@ -402,7 +195,7 @@
                         </div>
                         <div class="payment-card__total stack">
                             <div class="subtitle1">Tổng cộng</div>
-                            <div class="value"> 
+                            <div class="value">
                                 <div class="total-label subtitle1">500.000đ</div>
                                 <div class="caption"><i>(Đã bao gồm thuế VAT)</i></div>
                             </div>
@@ -421,8 +214,8 @@
                 <div class="header-body">
                     <div class="header-body--left col">
                         <h4 class="body-tab"> Sản phẩm</h4>
-                    </div>    
-                    <div class="header-body--right">  
+                    </div>
+                    <div class="header-body--right">
                         <button type="button" class="body-tab" id="newProduct-btn"> <i class="icon-plus"></i> Sản phẩm mới  </button>
                     </div>
                 </div>
@@ -449,7 +242,7 @@
                     </div>
                 </div>
                 <div class="invoice-table row">
-                    <div class="invoice-table__cont col-12">   
+                    <div class="invoice-table__cont col-12">
                         <table id="table_product">
                             <tr class="table__header productTable__row">
                                 <th class="productTable__cell col1">Product</th>
@@ -490,7 +283,7 @@
                         </div>
                     </div>
                     <div class="product-info--1-2">
-                        
+
                         <div class="product-DayImport">
                             <h6>Ngày nhập</h6>
                             <input type="text" id="product-DayImport--txtField" value placeholder="Ngày nhập">
@@ -518,7 +311,7 @@
                                     <input type="radio" name="product-checkBox--group">
                                     Men
                                 </li>
-                                <li>       
+                                <li>
                                     <input type="radio" name="product-checkBox--group">
                                     Women
                                 </li>
@@ -548,7 +341,7 @@
                                 <input type="checkbox" id ="Table__checkbox--2">
                                 <label for="Table__checkbox--2"  class="colorTable--checkBox"></label>
                                 <input type="checkbox" id ="Table__checkbox--3">
-                                <label for="Table__checkbox--3" class="colorTable--checkBox"></label>   
+                                <label for="Table__checkbox--3" class="colorTable--checkBox"></label>
                                 <input type="checkbox" id ="Table__checkbox--4">
                                 <label for="Table__checkbox--4" class="colorTable--checkBox"></label>
                                 <input type="checkbox" id ="Table__checkbox--5">
@@ -577,7 +370,7 @@
                                 <input type="checkbox" id ="checkboxSize--M">
                                 <label for="checkboxSize--M"  class="checkboxSize__item">M</label>
                                 <input type="checkbox" id ="checkboxSize--L">
-                                <label for="checkboxSize--L" class="checkboxSize__item">L</label>   
+                                <label for="checkboxSize--L" class="checkboxSize__item">L</label>
                             </div>
                         </div>
 
@@ -624,7 +417,7 @@
                         </div>
                     </div>
                     <div class="product-info--1-2">
-                        
+
                         <div class="product-Name">
                             <h6>Ngày nhập</h6>
                             <input type="text" id="DetailProduct-DayImport--txtField" value placeholder="Ngày nhập">
@@ -662,7 +455,7 @@
                                     <input type="radio" name="product-checkBox--group" id="Detailproduct--radio1">
                                     Men
                                 </li>
-                                <li>       
+                                <li>
                                     <input type="radio" name="product-checkBox--group" id="Detailproduct--radio2">
                                     Women
                                 </li>
@@ -692,7 +485,7 @@
                                 <input type="checkbox" id ="DetailProduct__Table__checkbox--2">
                                 <label for="DetailProduct__Table__checkbox--2"  class="colorTable--checkBox"></label>
                                 <input type="checkbox" id ="DetailProduct__Table__checkbox--3">
-                                <label for="DetailProduct__Table__checkbox--3" class="colorTable--checkBox"></label>   
+                                <label for="DetailProduct__Table__checkbox--3" class="colorTable--checkBox"></label>
                                 <input type="checkbox" id ="DetailProduct__Table__checkbox--4">
                                 <label for="DetailProduct__Table__checkbox--4" class="colorTable--checkBox"></label>
                                 <input type="checkbox" id ="DetailProduct__Table__checkbox--5">
@@ -828,6 +621,142 @@
 </body>
 </html>
 
-<script src="interface.js"></script>
+<script>
+    // VALIDATION
+    //----------------------------------------------------------------
+    function CustomValidation() {
+        this.invalidities = [];
+        this.validityChecks = [];
+    }
+    CustomValidation.prototype = {
+        addInvalidity: function(message) {
+            this.invalidities.push(message);
+        },
+        getInvalidities: function() {
+            return this.invalidities.join('. \n');
+        },
+        checkValidity: function(input) {
+            for ( var i = 0; i < this.validityChecks.length; i++ ) {
+        var requirementElement = this.validityChecks[i].element;
+                var isInvalid = this.validityChecks[i].isInvalid(input);
+        var messages = this.validityChecks[i].invalidityMessage;
+                if (isInvalid) {
+                    this.addInvalidity(messages);
+                }
+                if (requirementElement) {
+                    if (isInvalid) {
+                        requirementElement.classList.add('invalid');
+                inner_ul = ``;
+                for(var j = 0; j < this.invalidities.length; j++) {
+                    inner_ul += `<li>${this.invalidities[j]}</li>`;
+                }
+                requirementElement.innerHTML = inner_ul;
+                    } else {
+                        requirementElement.classList.remove('invalid');
+                    }
+                }
+            }
+        }
+    };
+
+    function checkInput(input) {
+        input.CustomValidation.invalidities = [];
+        input.CustomValidation.checkValidity(input);
+    }
+    //----------------------------------------------------------------
+    // VALIDATION
+    // Check Validation
+    var signinEmailValidityChecks = [
+        {
+            isInvalid: function(input) {
+                return !emailFormat.test(input.value);
+            },
+            invalidityMessage: 'Định dạng email không đúng',
+            element: document.querySelector('.input-requirements.for-signin__email')
+        }
+    ];
+    var signinEmailInput = document.getElementById('login-email');
+    signinEmailInput.CustomValidation = new CustomValidation();
+    signinEmailInput.CustomValidation.validityChecks = signinEmailValidityChecks;
+
+    var signinPasswordValidityChecks = [
+        {
+            isInvalid: function(input) {
+                return input.value.length < 8 | input.value.length > 100;
+            },
+            invalidityMessage: 'Mật khẩu phải có ít nhất 8 ký tự',
+            element: document.querySelector('.input-requirements.for-signin__password')
+        },
+        {
+            isInvalid: function(input) {
+                return !numberFormat.test(input.value);
+            },
+            invalidityMessage: 'Mật khẩu phải bao gồm ký tự và số',
+            element: document.querySelector('.input-requirements.for-signin__password')
+        },
+        {
+            isInvalid: function(input) {
+                return !lowercaseFormat.test(input.value);
+            },
+            invalidityMessage: 'Mật khẩu phải bao gồm ký tự in thường',
+            element: document.querySelector('.input-requirements.for-signin__password')
+        },
+        {
+            isInvalid: function(input) {
+                return !uppercaseFormat.test(input.value);
+            },
+            invalidityMessage: 'Mật khẩu phải bao gồm ký tự in hoa',
+            element: document.querySelector('.input-requirements.for-signin__password')
+        },
+        {
+            isInvalid: function(input) {
+                return !specialCharFormat.test(input.value);
+            },
+            invalidityMessage: 'Mật khẩu phải chứa ký tự đặc biệt',
+            element: document.querySelector('.input-requirements.for-signin__password')
+        }
+    ];
+    var signinPasswordInput = document.getElementById('login-password');
+    signinPasswordInput.CustomValidation = new CustomValidation();
+    signinPasswordInput.CustomValidation.validityChecks = signinPasswordValidityChecks;
+
+    var signinInputs = document.querySelectorAll('#login-page input:not([type="submit"]).js-checking');
+    var signinSubmit = document.querySelector('#login-page input[type="submit"]');
+    for (var i = 0; i < signinInputs.length; i++) {
+        signinInputs[i].addEventListener('keyup', function() {
+            checkInput(this);
+        });
+    }
+    signinSubmit.addEventListener('click', function() {
+        for (var i = 0; i < signinInputs.length; i++) {
+            checkInput(signinInputs[i]);
+        }
+    });
+    // Check Validation
+
+
+    // Check exist and login
+    let userLogin = JSON.parse(localStorage.getItem("currentAdminUser"));
+    if(userLogin){
+        window.location.href = ".\\admin.html";
+    }
+    signinSubmit.addEventListener("click", () => {
+        const u = usersList.find((user) => ((user.email == signinEmailInput.value && user.password == signinPasswordInput.value && user.role == "admin") ? user : null));
+        if (u) {
+            clearMainBody();
+            siteIndex.classList.remove('hidden');
+            localStorage.setItem("currentAdminUser",JSON.stringify(u));
+
+            for(let i = 0; i < accountsName.length; i++) {
+            accountsName[i].textContent = u.name;
+            }
+            window.location.href = ".\\admin.html";
+        }
+        else {
+            alert("Không có tài khoản")
+        }
+    });
+    // Check exist and login
+</script>
 <script src="../assets/scripts/business.js"></script>
 <script src="./ADproduct.js"></script>
