@@ -155,6 +155,7 @@ clearMainBody();
 siteIndex.classList.remove('hidden');
 let userLogin = JSON.parse(localStorage.getItem("currentUser"));
 function isLoggedIn() {
+  userLogin = JSON.parse(localStorage.getItem("currentUser"));
   headerClientAvatar.classList.remove('hidden');
   for(let i = 0; i < signinSignupBtns.length; i++){
     signinSignupBtns[i].classList.add('hidden');
@@ -566,11 +567,11 @@ signupSubmit.addEventListener("click", () => {
       }
       usersList.push(newuser);
       localStorage.setItem("users",JSON.stringify(usersList));
-      
+      localStorage.setItem("currentUser",JSON.stringify(newuser));
       isLoggedIn();
       clearMainBody();
       siteIndex.classList.remove('hidden');
-      localStorage.setItem("currentUser",JSON.stringify(newuser));
+      
       for(let i = 0; i < accountsName.length; i++) {
         accountsName[i].textContent = u.name;
       }
