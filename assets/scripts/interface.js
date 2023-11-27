@@ -592,7 +592,6 @@ btn.addEventListener("click", () => {
 
     //đọc thông tin ô lịch sửa mua hàng
     var iduser = u.id;
-    alert("id: " + iduser);
     var filteredUseroder = useroder.filter(item => item.id_user === iduser);
     var tbody = document.querySelector("#Table-info");
     var total = 0;
@@ -613,12 +612,12 @@ btn.addEventListener("click", () => {
         total = total + (filteredUseroder[i].products_order[j].price_sell * filteredUseroder[i].products_order[j].quantity);
       }
 
-        // Lấy thể hiện của bảng
-        var table = document.getElementById("Table-info");
-        var tbody = table.getElementsByTagName("tbody")[0];
+      // Lấy thể hiện của bảng
+      var tableinfo = document.getElementById("Table-info");
+      var tbody = tableinfo.getElementsByTagName("tbody")[0];
 
-        // Lấy danh sách tất cả các dòng trong tbody của bảng
-        var rows = tbody.getElementsByTagName("tr");
+      // Lấy danh sách tất cả các dòng trong tbody của bảng
+      var rows = tbody.getElementsByTagName("tr");
 
       // cell1.innerHTML = filteredUseroder[i].id;
       cell2.innerHTML = filteredUseroder[i].day_order;
@@ -633,35 +632,31 @@ btn.addEventListener("click", () => {
     }
 
     // Thêm sự kiện click chỉ cho các dòng trong bảng
-    for (var i = 0; i < rows.length; i++) {
-      rows[i].addEventListener("click", function () {
+    for (var r = 0; r < rows.length; r++) {
+      console.log("r trong row" + r);
+      rows[r].addEventListener("click", function () {
         // Lấy dữ liệu từ các ô trong dòng được nhấp
         var cells = this.getElementsByTagName("td");
         var ngayMua = cells[1].innerText;
         var hoaDon = cells[2].innerText;
         var giaTri = cells[3].innerText;
 
-        // In thông tin chi tiết ra console
-        console.log("Ngày mua:", ngayMua);
-        console.log("Hóa đơn:", hoaDon);
-        console.log("Giá trị:", giaTri);
+      
 
-        var tong = 0;
-        for(var j = 0;  j < filteredUseroder[i].products_order.length; j++ )
-      {
-        tong = tong + (filteredUseroder[i].products_order[j].price_sell * filteredUseroder[i].products_order[j].quantity);
-      }
-
-        alert("check" + tong);
-
-        document.getElementById("total").innerHTML = tong;
-
+        document.getElementById("account-page").style.display = "none";
         document.getElementById("AccountOrder").style.display = "block";
+
+        // đọc thông tin vào chi tiết đơn hàng
+
+        document.getElementById("total").innerHTML = giaTri ;
+        document.getElementById("Oder-info-code").innerHTML = hoaDon ;
+        document.getElementById("Oder-info-Address").innerHTML = u.address;
+
+
+        
+
       });
     }
-
-    // đọc thông tin vào chi tiết đơn hàng
-    document.getElementById("Oder-info-Address").innerHTML = u.address ;
 
   }
   else {
@@ -669,6 +664,7 @@ btn.addEventListener("click", () => {
   }
 
 });
+
 // reload ko mất thông tin
 function checkSave(){
   const saveLogin=JSON.parse(localStorage.getItem("saveLogin"));
