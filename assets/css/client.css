@@ -336,6 +336,272 @@ li[class^="pagination"].disable:hover{
 
 /* PRODUCTS */
 
+ /*CART*/
+ *{
+    box-sizing: border-box;
+ }
+
+.row__cart{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart-totals{
+    position: relative;
+    height: 315px;
+    margin-top: 30px;
+}
+.table-sum-price{
+    border-radius: 16px;
+    box-shadow: 0px 12px 24px -4px #919EAB1F;
+    box-shadow: 0px 0px 2px 0px #919EAB33;
+}
+.col-sm-10{
+    
+    width:760px;
+    height: 56px;
+}
+.col-sm-12{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.col-sm-13{
+    padding: 24px;
+    height: 76px;
+}
+
+.breadcrumb-cart{
+    flex-wrap: wrap;
+    list-style: none;
+
+}
+
+.text-black{
+    font-size: 24px;
+    line-height: 36px;
+    width:101px;
+    height:36px;
+}
+strong{
+    font-size: 14px;
+    line-height: 22px;
+}
+.row-body{
+    width: 1152px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.body-table table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px 10px 0 0; 
+    min-width: fit-content;
+}
+
+
+.body-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.body-table{
+    margin-top: 30px;
+    position: relative;
+    width: 760px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0px 20px 24px -4px #919EAB1F
+}
+.head-table td{
+    border:none;
+    
+}
+
+.head-table{
+    width:760px;
+    height: 56px;
+    background: #F4F6F8;
+    
+}
+
+.text-right{
+    width:352px;
+    padding: 24px;
+}
+.button-checkout{
+    background: #00AB55;
+    width: 368px;
+    height: 48px;
+    padding: 11px, 22px, 11px, 22px;
+    border-radius: 8px;
+    gap: 8px;
+   
+}
+.proceed-to-checkout{
+    text-align: center;
+    padding-top: 22px;
+}
+.custom-button {
+    width:368px;
+    height: 48px;
+    display: inline-block;
+    padding: 11px 22px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background: #00AB55;
+
+}
+.infor-cart{
+    width: 368px;
+    height: 76px;
+    padding: 24px 16px 24px 24px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.cart-shipping,
+.cart-subtotal{
+    font-size: 13px;
+    color: #637381;
+    font-family: Public Sans;
+    padding: 0 0 15px 0;
+}
+.content-cart{
+    padding: 0 25px 25px 25px;
+}
+i{
+    color:#000000
+}
+.product-table{
+    padding-bottom: 50px;
+}
+.product-name{
+    width:352px;
+    text-align: left;
+    padding: 16px;
+    font-size: 13px;
+    color:  #637381;
+
+}
+.product-delete-items{
+    width: 50px;
+}
+.product-subtotal{
+    width: 101px;   
+    padding: 16px;
+    font-size: 13px;
+    color:  #637381;
+}
+.product-price{
+    width: 10px;   
+    padding: 16px;
+    font-size: 13px;
+    color:  #637381;
+}
+.product-quantity{
+    text-align: center;
+    width: 128px;
+    padding: 16px;
+    font-size: 13px;
+    color:  #637381;
+}
+.cart__page{
+    box-sizing: border-box;
+}
+.line-separator {
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+}
+hr.rounded {
+    border-top: 1px solid #bbb;
+    border-radius: 5px;
+ 
+}
+.cart-order-sum{
+    padding-top: 25px;
+    font-weight: 600; 
+}
+.infor-VAT{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: small;
+}
+.type-back-order {
+    position:absolute;
+    display: inline-block;
+    padding-top: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    color:#000000;
+    top: auto;
+    font-weight: bolder;
+    background-color: white;
+}
+.quantity-cell {
+    border:0.5px solid #888282;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+  
+.quantity-value {
+    text-align: center;
+    width: 10px;
+}
+  
+.custom-decrease-button,
+.custom-increase-button {
+    color:#000000;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+}
+
+.custom-decrease-button:hover{
+    background: transparent;
+    color:#000000
+}
+.custom-increase-button:hover{
+    background: transparent;
+    color:#000000
+}
+.body-table td {
+    border: none; 
+    text-align: left;
+    padding: 8px;
+}
+.delete-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    min-width: initial !important;
+    display: flex;
+    justify-content: center; 
+    
+}
+  
+.delete-button:hover{
+    background: transparent;
+}
+
+  
+
+  
+  /*CART*/
 /* 
 On desktop 
 */

@@ -202,3 +202,132 @@ document.addEventListener("click", function (event) {
     }
   }
 });
+
+//cart//
+
+
+
+function createDeleteIcon() {
+  const deleteCell = document.createElement('td');
+  const deleteButton = document.createElement('button');
+
+  const trashIcon = document.createElement('img');
+  trashIcon.src = 'assets/brand/icons/svg/trash.svg'; 
+
+  deleteButton.appendChild(trashIcon);
+  deleteButton.classList.add('delete-button');
+  deleteButton.addEventListener('click', function() {
+    const row = this.closest('tr');
+    row.remove(); 
+  });
+
+  deleteCell.appendChild(deleteButton);
+  return deleteCell;
+}
+
+function createQuantityCell() {
+  const quantityCell = document.createElement('td');
+  quantityCell.classList.add('quantity-cell'); 
+
+  const quantityValue = document.createElement('span');
+  quantityValue.textContent = '1'; 
+  quantityValue.classList.add('quantity-value');
+  
+
+  const decreaseButton = document.createElement('button');
+  decreaseButton.textContent = '-';
+  decreaseButton.classList.add('custom-decrease-button');
+  decreaseButton.addEventListener('click', () => {
+      let currentValue = parseInt(quantityValue.textContent);
+      if (currentValue > 1) {
+          quantityValue.textContent = (currentValue - 1).toString();
+      }
+  });
+  quantityCell.appendChild(decreaseButton);
+  quantityCell.appendChild(quantityValue);
+
+  const increaseButton = document.createElement('button');
+  increaseButton.textContent = '+';
+  increaseButton.classList.add('custom-increase-button');
+  increaseButton.addEventListener('click', () => {
+      let currentValue = parseInt(quantityValue.textContent);
+      quantityValue.textContent = (currentValue + 1).toString();
+  });
+  quantityCell.appendChild(increaseButton);
+
+  return quantityCell;
+}
+
+
+// Hàm điền dữ liệu vào bảng
+function fillTableWithData(data) {
+  data.forEach(item => {
+      const row = document.createElement('tr');
+    
+      // Tạo và điền các ô dữ liệu vào hàng
+      const productNameCell = document.createElement('td');
+      productNameCell.textContent = item.name;
+      row.appendChild(productNameCell);
+
+      const priceCell = document.createElement('td');
+      priceCell.textContent = item.price_sell.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+      row.appendChild(priceCell);
+
+      const quantityCell = createQuantityCell(); // Sử dụng hàm tạo cột số lượng
+      row.appendChild(quantityCell);
+
+      const totalCell = document.createElement('td');
+      const total = (parseInt(quantityCell.firstChild.textContent) * item.price_sell) - item.price_sell; 
+      totalCell.textContent = total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+      row.appendChild(totalCell);
+
+      const deleteCell = createDeleteIcon(); // Thêm cột biểu tượng thùng rác
+      row.appendChild(deleteCell);
+
+      tableBody.appendChild(row);
+  });
+  applyColumnWidths();
+}
+
+const tableBody = document.getElementById('table-body');
+function applyColumnWidths() {
+  const headerColumns = document.querySelectorAll('.head-table th');
+
+  // Lấy số lượng cột trong tiêu đề
+  const numOfColumns = headerColumns.length;
+
+  const dataRows = document.querySelectorAll('.product-table tbody tr');
+  dataRows.forEach(row => {
+    const dataColumns = row.querySelectorAll('td');
+
+    dataColumns.forEach((column, index) => {
+      const width = window.getComputedStyle(headerColumns[index]).width;
+      column.style.minWidth = width; // Sử dụng minWidth để ô dữ liệu có độ rộng tối thiểu tương đương với cột tiêu đề
+    });
+
+    // Đặt độ rộng cho ô cuối cùng (nút xóa), nếu cần thiết
+    const deleteCell = row.querySelector('.delete-button');
+    if (deleteCell) {
+      deleteCell.style.minWidth = window.getComputedStyle(headerColumns[numOfColumns - 1]).width;
+    }
+  });
+}
+
+// Gọi hàm applyColumnWidths sau khi dữ liệu đã được thêm vào bảng
+fetch('data/products.json')
+  .then(response => response.json())
+  .then(data => {
+      fillTableWithData(data);
+      applyColumnWidths(); // Áp dụng kích thước cột sau khi thêm dữ liệu vào bảng
+  })
+  .catch(error => {
+      console.error('Error fetching data:', error);
+  });
+
+
+
+
+
+
+
+//cart//

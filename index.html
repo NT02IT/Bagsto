@@ -285,6 +285,79 @@
             </div>
         </div>
         <!-- PRODUCTS-DETAIL -->
+
+        <!--CART-->
+        <div id="cart-page" class="section__container" >
+            <div class="row__cart">
+                <div class="col-sm-12">
+                    <div class="breadcrumb-cart">
+                        <strong class="text-black">Giỏ Hàng</strong><br>
+                        <a href="#">
+                            <i class="homepage">Trang Chủ</i>         
+                        </a>
+                        <span class="mx-2"> • </span>
+                        <a href="#"><i>Giỏ Hàng</i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-body">
+                <div class="body-table">
+                    <table class="product-table">
+                        <thead>
+                            <tr class="head-table">
+                                <th class="text-left product-name">Sản phẩm</th>
+                                <th class="product-price">Đơn giá</th>
+                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-subtotal">Thành tiền</th>
+                                <th class="product-delete-items"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Các dữ liệu sẽ được thêm vào đây -->
+                        </tbody>
+                        </table>
+                        <div class="button-container">
+                            <button id="backButton" class="type-back">&lt; Trở lại</button>
+                            
+                        </div>
+                        
+                </div>
+                <div class="cart-totals">
+                    <div class="table-sum-price">
+                        <div class="infor-cart">Thông tin đơn hàng</div>
+                        <div class="check-sum-shipping">
+                            <div class="content-cart">
+                                <div class="cart-subtotal">
+                                    <div>Tạm tính</div>
+                                    <div id="cartSubtotalPrice" class="cart-subtotal-price"></div>
+                                </div>
+                                <div class="cart-shipping">
+                                    <div>Shipping</div>
+                                    <div id="cartShippingPrice" class="cart-shipping-price"></div>
+                                </div>
+                                <hr class="rounded">
+                                <div class="cart-order-sum">
+                                    <div>Tổng cộng</div>
+                                    <div id="cartSumPrice" class="cart-sum-price"></div>
+                                </div>
+                                <div class="infor-VAT">(Đã bao gồm thuế VAT)</div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="proceed-to-checkout">
+                        <label for="paymentButton" class="custom-button">Thanh Toán</label>
+                        <button id="paymentButton" style="display: none;">Thanh Toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--CART-->
     </div>
     <!-- END MAIN BODY -->
 
