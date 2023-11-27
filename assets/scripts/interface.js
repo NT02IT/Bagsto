@@ -203,8 +203,15 @@ document.addEventListener("click", function (event) {
   }
 });
 
-//xuất hiện ẩn đăng nhập đăng kí
+// ấn vào nút đăng nhập để xuất hiện form đăng nhập
 
+document.getElementById("login_bt").addEventListener("click", function () {
+  document.getElementById("LogInUser-page").style.display = "block";
+  document.getElementById("SignupUser-page").style.display = "none"; // hạn chế xuất hiện cả 2 form đăng kí đăng nhập
+});
+
+
+//xuất hiện ẩn đăng nhập đăng kí
 
 document.getElementById("SignUp__button").addEventListener("click", function () {
   document.getElementById("LogInUser-page").style.display = "none";
@@ -223,85 +230,91 @@ document.getElementsByClassName("hello-account")[1].addEventListener("click", ()
   obj.style.display = "block";
 })
 
-document.addEventListener('DOMContentLoaded', function () {
-  var tbody = document.getElementById('Table-info').getElementsByTagName('tbody')[0];
-  var productDetailsContainer = document.getElementById('ProductDetailsContainer');
-  var productDetailsContent = document.getElementById('ProductDetailsContent');
-  var account = document.getElementById('account-page'); // Thêm đoạn này để tham chiếu đến phần tử account
+// document.addEventListener('DOMContentLoaded', function () {
+//   var tbody = document.getElementById('Table-info').getElementsByTagName('tbody')[0];
+//   var productDetailsContainer = document.getElementById('ProductDetailsContainer');
+//   var productDetailsContent = document.getElementById('ProductDetailsContent');
+//   var account = document.getElementById('account-page'); // Thêm đoạn này để tham chiếu đến phần tử account
 
 
-  // Mảng chứa dữ liệu đơn hàng
-  var newData = [
-    // ... (giữ nguyên phần dữ liệu)
-    {
-      col1: '',
-      col2: '20/11/2003',
-      col3: 'ABCDXYZ',
-      col4: '200$',
-      col5: '...',
-      shippingAddress: '123 Đường ABC, Thành phố XYZ',
-      productList: [
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 2', price: 50 }
-      ],
-    },
-    {
-      col1: '',
-      col2: '20/11/2003',
-      col3: 'EBCDXYZ',
-      col4: '200$',
-      col5: '...',
-      shippingAddress: '123 Đường ABC, Thành phố XYZ',
-      productList: [
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 2', price: 50 }
-      ],
-    },
-    {
-      col1: '',
-      col2: '20/2/2022',
-      col3: 'KJSJFJS',
-      col4: '500$',
-      col5: '...',
-      shippingAddress: '123 Đường ABC, Thành phố XYZ',
-      productList: [
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 1', price: 100 },
-        { name: 'Sản phẩm 2', price: 50 }
-      ],
-    },
-  ];
+//   // Mảng chứa dữ liệu đơn hàng
+//   var newData = [
+//     // ... (giữ nguyên phần dữ liệu)
+//     {
+//       col1: '',
+//       col2: '20/11/2003',
+//       col3: 'ABCDXYZ',
+//       col4: '200$',
+//       col5: '...',
+//       shippingAddress: '123 Đường ABC, Thành phố XYZ',
+//       productList: [
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 2', price: 50 }
+//       ],
+//     },
+//     {
+//       col1: '',
+//       col2: '20/11/2003',
+//       col3: 'EBCDXYZ',
+//       col4: '200$',
+//       col5: '...',
+//       shippingAddress: '123 Đường ABC, Thành phố XYZ',
+//       productList: [
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 2', price: 50 }
+//       ],
+//     },
+//     {
+//       col1: '',
+//       col2: '20/2/2022',
+//       col3: 'KJSJFJS',
+//       col4: '500$',
+//       col5: '...',
+//       shippingAddress: '123 Đường ABC, Thành phố XYZ',
+//       productList: [
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 1', price: 100 },
+//         { name: 'Sản phẩm 2', price: 50 }
+//       ],
+//     },
+//   ];
 
 
-  // Đọc dữ liệu từ mảng và thêm vào bảng
-  for (var i = 0; i < newData.length; i++) {
-    var row = tbody.insertRow();
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+//   // Đọc dữ liệu từ mảng và thêm vào bảng
+//   for (var i = 0; i < newData.length; i++) {
+//     var row = tbody.insertRow();
+//     var cell1 = row.insertCell(0);
+//     var cell2 = row.insertCell(1);
+//     var cell3 = row.insertCell(2);
+//     var cell4 = row.insertCell(3);
+//     var cell5 = row.insertCell(4);
 
-    cell1.innerHTML = newData[i].col1;
-    cell2.innerHTML = newData[i].col2;
-    cell3.innerHTML = newData[i].col3;
-    cell4.innerHTML = newData[i].col4;
+//     cell1.innerHTML = newData[i].col1;
+//     cell2.innerHTML = newData[i].col2;
+//     cell3.innerHTML = newData[i].col3;
+//     cell4.innerHTML = newData[i].col4;
 
-    cell1.className = 'Table_Row_Invoice';
-    cell2.className = 'Table_Row_Invoice';
-    cell3.className = 'Table_Row_Invoice';
-    cell4.className = 'Table_Row_Invoice';
+//     cell1.className = 'Table_Row_Invoice';
+//     cell2.className = 'Table_Row_Invoice';
+//     cell3.className = 'Table_Row_Invoice';
+//     cell4.className = 'Table_Row_Invoice';
 
-  }
+//   }
 
-});
+// });
+
+
+
+
+
+
 //thêm ảnh vào Avatar
-document.getElementById('Avatar-image').addEventListener("click", function () {
+document.getElementById('Avatar-image').addEventListener("click", function () { 
   document.getElementById('image-input').click();
 });
 function previewImageAvatar() {
@@ -323,7 +336,133 @@ function previewImageAvatar() {
     preview.src = "";
   }
 }
-//chọn vào 1 đơn hàng xuất ra chi tiết đơn hàng
+
+//hiển thị lịch sử mua hàng của tài khoảng đang đăng nhập
+var useroder = [
+  
+  {
+      "id": 1,
+      "id_user": 1,
+      "id_order_state": 1,
+      "id_receiver": 1,
+      "id_shipping_type": 1,
+      "id_payment_type": 1,
+      "day_order": "19/11/2002",
+      "products_order": [{
+          "id": 1,
+          "colors" : "#000000",
+          "sizes" : "S",
+          "price_sell" : 600000,
+          "quantity" : 2
+      },
+      {
+          "id": 1,
+          "colors" : "#000000",
+          "sizes" : "S",
+          "price_sell" : 600000,
+          "quantity" : 2
+      }]
+  },
+  {
+      "id": 2,
+      "id_user": 2,
+      "id_order_state": 2,
+      "id_receiver": 2,
+      "id_shipping_type": 1,
+      "id_payment_type": 1,
+      "day_order": "19/11/2002",
+      "products_order": [{
+          "id": 1,
+          "colors" : "#000000",
+          "sizes" : "S",
+          "price_sell" : 600000,
+          "quantity" : 2
+      }]
+  },
+  {
+      "id": 3,
+      "id_user": 3,
+      "id_order_state": 2,
+      "id_receiver": 2,
+      "id_shipping_type": 1,
+      "id_payment_type": 1,
+      "day_order": "19/11/2002",
+      "products_order": [{
+          "id": 1,
+          "colors" : "#000000",
+          "sizes" : "S",
+          "price_sell" : 600000,
+          "quantity" : 2
+      }]
+  },
+  {
+      "id": 4,
+      "id_user": 11,
+      "id_order_state": 2,
+      "id_receiver": 2,
+      "id_shipping_type": 1,
+      "id_payment_type": 1,
+      "day_order": "19/11/2002",
+      "products_order": [{
+          "id": 1,
+          "colors" : "#000000",
+          "sizes" : "S",
+          "price_sell" : 600000,
+          "quantity" : 2
+      }]
+  },
+  {
+    "id": 5,
+    "id_user": 11,
+    "id_order_state": 2,
+    "id_receiver": 2,
+    "id_shipping_type": 2,
+    "id_payment_type": 1,
+    "day_order": "19/11/2002",
+    "products_order": [
+      {
+        "id": 1,
+        "colors" : "#000000",
+        "sizes" : "S",
+        "price_sell" : 100000,
+        "quantity" : 2
+    },
+      {
+        "id": 1,
+        "colors" : "#000000",
+        "sizes" : "S",
+        "price_sell" : 100000,
+        "quantity" : 2
+    }]
+},
+{
+  "id": 6,
+  "id_user": 11,
+  "id_order_state": 2,
+  "id_receiver": 2,
+  "id_shipping_type": 1,
+  "id_payment_type": 1,
+  "day_order": "20/11/2022",
+  "products_order": [
+    {
+      "id": 1,
+      "colors" : "#000000",
+      "sizes" : "S",
+      "price_sell" : 100000,
+      "quantity" : 1
+  },
+    {
+      "id": 1,
+      "colors" : "#000000",
+      "sizes" : "S",
+      "price_sell" : 200000,
+      "quantity" : 1
+  }]
+}
+]
+
+localStorage.setItem("useroder", JSON.stringify(useroder));
+
 
 
 var userdata  = [
@@ -428,7 +567,8 @@ var userdata  = [
   }
 
 ]
-  localStorage.setItem("userdata", JSON.stringify(userdata));
+
+localStorage.setItem("userdata", JSON.stringify(userdata));
 
 const userName = document.querySelector("#UserName-Usersingin");
 const passwordName = document.querySelector("#Password-Usersingin");
@@ -438,7 +578,7 @@ btn.addEventListener("click", () => {
   const u = userdata.find((user) => user.name == userName.value && user.password == passwordName.value)
   if (u) {
     alert("đăng nhập thành công")
-    console.log("co user");
+    document.getElementById("LogInUser-page").style.display = "none";
     document.getElementById("font-bold account-name").innerText = ` ${u.name} `;
     localStorage.setItem("saveLogin",JSON.stringify(u));
     // đọc thông tin vào ô thông tin user
@@ -449,14 +589,86 @@ btn.addEventListener("click", () => {
     document.getElementById("user_pass").value = `${u.password} `;
     document.getElementById("user_checkpass").value = `${u.password} `;
     document.getElementById("Avatar-image").src= u.avatar ;
+
+    //đọc thông tin ô lịch sửa mua hàng
+    var iduser = u.id;
+    alert("id: " + iduser);
+    var filteredUseroder = useroder.filter(item => item.id_user === iduser);
+    var tbody = document.querySelector("#Table-info");
+    var total = 0;
+    for (var i = 0; i < filteredUseroder.length; i++) {
+      var row = tbody.insertRow();
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+
+      // useroder
+      //filteredUseroder
+    
+
+      for(var j = 0;  j < filteredUseroder[i].products_order.length; j++ )
+      {
+        total = total + (filteredUseroder[i].products_order[j].price_sell * filteredUseroder[i].products_order[j].quantity);
+      }
+
+        // Lấy thể hiện của bảng
+        var table = document.getElementById("Table-info");
+        var tbody = table.getElementsByTagName("tbody")[0];
+
+        // Lấy danh sách tất cả các dòng trong tbody của bảng
+        var rows = tbody.getElementsByTagName("tr");
+
+      // cell1.innerHTML = filteredUseroder[i].id;
+      cell2.innerHTML = filteredUseroder[i].day_order;
+      cell3.innerHTML = filteredUseroder[i].id;
+      cell4.innerHTML = total;
+      total = 0;
+
+      cell1.className = 'Table_Row_Invoice';
+      cell2.className = 'Table_Row_Invoice';
+      cell3.className = 'Table_Row_Invoice';
+      cell4.className = 'Table_Row_Invoice';
+    }
+
+    // Thêm sự kiện click chỉ cho các dòng trong bảng
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].addEventListener("click", function () {
+        // Lấy dữ liệu từ các ô trong dòng được nhấp
+        var cells = this.getElementsByTagName("td");
+        var ngayMua = cells[1].innerText;
+        var hoaDon = cells[2].innerText;
+        var giaTri = cells[3].innerText;
+
+        // In thông tin chi tiết ra console
+        console.log("Ngày mua:", ngayMua);
+        console.log("Hóa đơn:", hoaDon);
+        console.log("Giá trị:", giaTri);
+
+        var tong = 0;
+        for(var j = 0;  j < filteredUseroder[i].products_order.length; j++ )
+      {
+        tong = tong + (filteredUseroder[i].products_order[j].price_sell * filteredUseroder[i].products_order[j].quantity);
+      }
+
+        alert("check" + tong);
+
+        document.getElementById("total").innerHTML = tong;
+
+        document.getElementById("AccountOrder").style.display = "block";
+      });
+    }
+
+    // đọc thông tin vào chi tiết đơn hàng
+    document.getElementById("Oder-info-Address").innerHTML = u.address ;
+
   }
   else {
     alert("không có tài khoản")
   }
-  // console.log(userName.value);
-  // console.log(passwordName.value);
-});
 
+});
 // reload ko mất thông tin
 function checkSave(){
   const saveLogin=JSON.parse(localStorage.getItem("saveLogin"));
@@ -469,6 +681,7 @@ function checkSave(){
     document.getElementById("user_email").value = `${saveLogin.email} `;
     document.getElementById("user_pass").value = `${saveLogin.password} `;
     document.getElementById("user_checkpass").value = `${saveLogin.password} `;
+
   }
 }
 checkSave();
@@ -481,26 +694,41 @@ function checkLogout()
 document.getElementById("logout_bt").addEventListener("click",()=>{
   checkLogout()
   window.location.reload();
-})
+});
 
 //dang ki
 var userdata = JSON.parse(localStorage.getItem("userdata"));
 const btsup = document.querySelector("#btnsignup");
 btsup.addEventListener("click", () => {
-  const usercheck = document.querySelector("#UserName-UserSignup");
-  const u = userdata.find((user) => user.name == usercheck.value)
-  if (u) {
-    alert("đã có tên tài khoảng được sử dụng");
+  const usercheckname = document.querySelector("#UserName-UserSignup");
+  const usercheckemail = document.querySelector("#EMAIL-UserSignup");
+  const u = userdata.find((username) => username.name == usercheckname.value)
+  const e = userdata.find((useremail) => useremail.email == usercheckemail.value)
+  if (u || e) {
+    alert("đã có tên tài khoảng hoặc email được sử dụng");
   }
   else { 
+    // biểu thức chính quy
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^0\d{8,9}$/;
+
     const newname = document.querySelector("#UserName-UserSignup").value;
     const newphone = document.querySelector("#SDT-UserSignup").value;
     const newaddress = document.querySelector("#ADDRESS-UserSignup").value;
     const newemail = document.querySelector("#EMAIL-UserSignup").value;
     const newpassword = document.querySelector("#Password-UserSignup").value;
     const newcheckpassword = document.querySelector("#CheckPassword-UserSignup").value;
-    if(newpassword == newcheckpassword)
+    if(newpassword != newcheckpassword)
     {
+      alert("xác nhận mật khẩu không đúng với mật khẩu");
+    }
+    else if(emailRegex.test(newemail) == false){
+      alert("không đúng định dạng email");
+    }
+    else if(phoneRegex.test(newphone) == false){
+      alert("không đúng định dạng số điện thoại");
+    }
+    else{
       const newuser = {
         name: newname,
         phone: newphone,
@@ -511,9 +739,6 @@ btsup.addEventListener("click", () => {
       userdata.push(newuser);
       localStorage.setItem("userdata",JSON.stringify(userdata));
       alert("đăng ki thành công mời bạn đăng nhập");
-    }
-    else{
-      alert("xác nhận mật khẩu không đúng với mật khẩu");
     }
   }
 

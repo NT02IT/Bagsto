@@ -22,8 +22,8 @@
     height: 414px;
     width: 368px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
-
   
 .icon-dot{
   font-size: 16px;
@@ -42,8 +42,7 @@
     flex-direction: column;
     justify-content: center;
     position:relative;
-    
- }
+   }
 .window-add-Avatar {
     position: absolute;
       top: 30%;
@@ -115,6 +114,7 @@
     grid-gap: 10px; /* Khoảng trắng giữa các ô */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 15px;
+    border-radius: 10px;
   }
 
   .User_Account_NewUserForm_editor{
@@ -173,10 +173,11 @@
 }
 .Table-info{
     padding: 0px;
-}
+  }
 
 .Table_view_Invoice{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
 .Table_Head_Invoice{
     text-align: left;
@@ -224,36 +225,126 @@
   display: flex;
 
 }
+
 .Product_Details_Content div{
   width: 100%;
 }
+
+#AccountOrder{
+  display: block;
+}
 .Oderlish{
-  background-color: green;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  height: 350px;
+  border-radius: 10px;
+
 }
-.Oderlish div {
+.checkoutCart{
   width: 100%;
-  background-color: aqua;
-  height: 30px;
+  padding: 48px;
 }
-.Oderlish_table{
-  /* background-color: blue; */ 
-  width: 100%;
-}
-.table_Oderlish_Invoice{
-  background-color: red;
-}
-table{
-  width: 100%;
+.Table_Pagination_checkoutCart{
+  height: 24px;
+  background-color: #F4F6F8;
+
 }
 
 
+.OderAP{
 
+}
 
+.Oder-Address{
+  padding: 24px 16px 24px 24px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  width: 368px;
+  height: 204px ;
+  margin: 5px;
+  border-radius: 10px;
+}
+.Oder-Address_info{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  /* background-color: #919EAB33; */
+}
 
+.Oder-info-ManuelCooper{
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.375rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.Oder-info-Address
+{
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.375rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.Oder-info-code{
+  font-size: 0.875rem;
+  font-weight: 200;
+  line-height: 1.375rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #637381;
+}
+
+.Oder-Price{
+  padding: 24px 16px 24px 24px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  width: 368px;
+  height: 240px;
+  margin: 5px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.Oder-Price_ship{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  height: 75px;
+  color: #637381;
+}
+.Oder-Price-layer{
+  margin: 20px;
+  width: 80%;
+  height: 1px;
+  background-color: rgb(92, 84, 84);
+}
+.Oder-Price_total{
+  height: 50px;
+}
+.total-text{
+  float: left;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.375rem;
+}
+.total{
+  float: right;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.375rem;
+  color: red;
+}
+.thue{
+  padding-top: 40px;
+  float: right;
+  font-size: 0.675rem;
+  font-weight: 600;
+  line-height: 24px;
+}
 
 
 
 /* SignIn User */
+#LogInUser-page{
+  display: none;
+}
 .LogInUser{
   width:368px;
   height: 402px;

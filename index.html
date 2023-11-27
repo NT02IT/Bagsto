@@ -58,6 +58,7 @@
                     </button>
                 </div>
                 <button class="type-inherit" id="logout_bt">Đăng xuất</button>
+                <button class="type-inherit" id="login_bt">Đăng nhập</button>
             </div>
         </div>
     </div>
@@ -302,7 +303,7 @@
             </div>
             <div>
                 <h6>Mật khẩu</h6>
-                <input type="text" id ="Password-Usersingin" class="product-textField">
+                <input type="password" id ="Password-Usersingin" class="product-textField">
             </div>
             <button class="LogIn--button" id="btnLogin">
                 Đăng nhập
@@ -337,11 +338,11 @@
             </div>
             <div>
                 <h6>Mật khẩu</h6>
-                <input type="text" id ="Password-UserSignup" class="product-textField">
+                <input type="password" id ="Password-UserSignup" class="product-textField">
             </div>
             <div>
                 <h6>Xác nhận mật khẩu</h6>
-                <input type="text" id ="CheckPassword-UserSignup" class="product-textField">
+                <input type="password" id ="CheckPassword-UserSignup" class="product-textField">
             </div>
             <button class="LogIn--button" id="btnsignup">
                 Đăng ký
@@ -410,6 +411,7 @@
                     </div>
                 </div>
             </div> 
+            <!-- lịch sửa mua hàng -->
             <div class="order-history row">
                 <div class="col-12">
                     <div class="Breadcrumb">
@@ -419,25 +421,17 @@
                         <table id="Table-info" class="Table-info"> 
                             <thead>
                                 <tr>
-                                    <th class="Table_Head_Invoice" style="width: 48px;"></th>
-                                    <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
-                                    <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
-                                    <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
-                                    <th class="Table_Head_Invoice" style="width: 80px;"></th>
+                                    <th class="Table_Head_Invoice" style="width: 48px"></th>
+                                    <th class="Table_Head_Invoice" style="width: 180px">Ngày mua</th>
+                                    <th class="Table_Head_Invoice" style="width: 724px">Hóa đơn</th>
+                                    <th class="Table_Head_Invoice" style="width: 120px">Giá trị</th>
+                                    <th class="Table_Head_Invoice" style="width: 80px"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Thêm các dòng khác nếu cần -->
                             </tbody>
-                            <thead>
-                                <tr>
-                                    <th class="Table_Pagination" style="width: 48px;"></th>
-                                    <th class="Table_Pagination" style="width: 180px;"></th>
-                                    <th class="Table_Pagination" style="width: 724px;"></th>
-                                    <th class="Table_Pagination" style="width: 120px;">trang</th>
-                                    <th class="Table_Pagination" style="width: 80px;"> <   ></th>
-                                </tr>
-                            </thead>
+                            
                         </table>
                     </div>
                 </div>
@@ -448,46 +442,69 @@
     <!--End-Account-->
 
     <!--AccountOrder-->
-    <div class="AccountOrder">
+    <div class="AccountOrder" id="AccountOrder">
         <div class="section__container">
-            <div class="row col-12">
-                <div class="Breadcrumb">
-                    <h4>chi tiết hóa đơn</h4>
-                </div>  
+            <div class="row">
+                <div class="col-12">
+                    <div class="Breadcrumb">
+                        <h4>chi tiết hóa đơn</h4>
+                    </div>  
+                </div>
             </div>
             <div class="Oder row" id="oder">
                 <div class="Oderlish col-8">
                   <div>
-                    <table > 
+                    <table id="checkoutCart" class="checkoutCart"> 
                         <thead>
                             <tr>
-                                <th  ></th>
-                                <th  >Ngày mua</th>
-                                <th  >Hóa đơn</th>
-                                <th  >Giá trị</th>
-                                <th  ></th>
+                                <th  class="Table_Head_Invoice" >Sản phẩm</th>
+                                <th  class="Table_Head_Invoice" >Đơn giá</th>
+                                <th  class="Table_Head_Invoice" >Số lượng</th>
+                                <th  class="Table_Head_Invoice" >Thành tiền</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Thêm các dòng khác nếu cần -->
-                        </tbody>
+                                <tbody>
+                                    <!-- Thêm các dòng khác nếu cần -->
+                                </tbody>
+                        <thead>
+                            <tr>
+                                <th  class="Table_Pagination_checkoutCart" > </th>
+                                <th  class="Table_Pagination_checkoutCart" > </th>
+                                <th  class="Table_Pagination_checkoutCart" > </th>
+                                <th  class="Table_Pagination_checkoutCart" > </th>
+                            </tr>
+                        </thead>
                     </table>
-
                   </div>
                 </div>
                 <div class="OderAP col-4">
                     <div class="Oder-Address">
-                        Address
+                        <h6>Địa chỉ giao hàng</h6>
+                        <div class="Oder-Address_info">
+                            <p id="Oder-info-ManuelCooper" class="Oder-info-ManuelCooper">Manue lCooper</p>
+                            <p id="Oder-info-Address" class="Oder-info-Address"> </p>
+                            <p id="Oder-info-code" class="Oder-info-code">904-966-2836</p>
+                        </div>
 
                     </div>
                     <div class="Oder-Price">
-                        Price
+                        <h6>Thông tin đơn giá</h6>
+                        <div class="Oder-Price_ship">
+                            <p class="body2">tạm tính:</p>
+                            <p class="body2">loại vận chuyển:</p>
+                        </div>
+                        <div class="Oder-Price-layer"> </div>
+                        <div class="Oder-Price_total">
+                            <p class="total-text">tổng cộng: </p>
+                            <p class="total" id="total"></p>
+                            <p class="thue">(đã bao gồm thuế VAT)</p>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        
     <!--End-AccountOrder-->
 
 

@@ -627,6 +627,14 @@ a.tab.active:hover{
 /* Tab */
 
 /* Input */
+input[type="password"]{
+    outline: none;
+    border: 1px solid var(--color-grey-trans32);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    height: 2.5rem;
+    padding: 0.5rem 0.875rem;
+}
 input[type="text"]{
     outline: none;
     border: 1px solid var(--color-grey-trans32);
@@ -753,13 +761,13 @@ input[id^="color"]:checked + label::before{
 /* Breadcrumb */
 
 /* Table */
-table{
+/* table{
     width: 100%;
     min-width: 70.5rem;
     text-align: left;
     border-spacing: 0;
     padding-bottom: 3.5rem;
-}
+} */
 table .table__header{
     color: var(--color-text-sec);
     background-color: var(--color-bg-neutral);
