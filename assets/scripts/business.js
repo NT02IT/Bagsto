@@ -240,7 +240,7 @@ if (currentUser) {
       var cell4 = row.insertCell(3);
       var cell5 = row.insertCell(4);
 
-
+    
     
 
       for(var j = 0;  j < filteredUseroder[i].products_order.length; j++ )
@@ -297,8 +297,10 @@ if (currentUser) {
                 var productId = filteredUseroder[k].products_order[l].id;
         
                 // Tìm sản phẩm trong mảng productList dựa trên productId
-                var filteredProduct = productList.find(item => item.id === productId);
-        
+                var filteredProduct = productList.find(item => item.id === productId );
+                console.log(filteredProduct);
+                //console.log(filteredUseroder);
+          
                 if (filteredProduct) {
                     checkoutCell1.innerHTML = filteredProduct.name;
                     checkoutCell2.innerHTML = filteredUseroder[k].products_order[l].price_sell;
@@ -315,5 +317,41 @@ if (currentUser) {
 
     }
 
+    var checkupdateInput = document.getElementById("Components_Button_Medium");
+    function updateUserInfo() {
+        // Get updated values from input fields
+        const updatedFullName = document.getElementById("user_fullName").value;
+        const updatedPhoneNumber = document.getElementById("user_number").value;
+        const updatedEmail = document.getElementById("user_email").value;
+        const updatedpass = document.getElementById("user_pass").value;
+        const updatedcheckpass = document.getElementById("user_checkpass").value;
+        const updatedaddress = document.getElementById("user_address").value;
+        if(updatedpass == updatedcheckpass )
+        {
+            // Update user info in local storage
+        currentUser.name = updatedFullName;
+        currentUser.phone = updatedPhoneNumber;
+        currentUser.email = updatedEmail;
+        currentUser.address = updatedaddress;
+        currentUser.password = updatedpass ;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+        // Display updated user info in input fields
+        document.getElementById("user_fullName").value = updatedFullName;
+        document.getElementById("user_number").value = updatedPhoneNumber;
+        document.getElementById("user_email").value = updatedEmail;
+        document.getElementById("user_address").value = updatedaddress;
+        document.getElementById("user_pass").value = updatedpass;
+        document.getElementById("user_checkpass").value = updatedcheckpass;
+
+        alert("dữ liệu đã được cập nhật");
+        }
+        else {
+            alert("Xác nhận mật khẩu không đúng");
+        }
+    }
+    checkupdateInput.addEventListener('click', function(){
+        updateUserInfo();
+    })
 
   }
