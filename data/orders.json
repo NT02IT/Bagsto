@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "id_user": 1,
+        "id_user": "AC000009",
         "id_order_state": 1,
         "id_receiver": 1,
         "id_shipping_type": 1,
@@ -24,7 +24,7 @@
     },
     {
         "id": 2,
-        "id_user": 2,
+        "id_user": "AC000008",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
@@ -40,7 +40,7 @@
     },
     {
         "id": 3,
-        "id_user": 3,
+        "id_user": "AC000008",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
@@ -56,7 +56,7 @@
     },
     {
         "id": 4,
-        "id_user": 4,
+        "id_user": "AC000008",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
@@ -80,7 +80,7 @@
     },
     {
         "id": 4,
-        "id_user": 4,
+        "id_user": "AC000007",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
@@ -104,7 +104,7 @@
     },
     {
         "id": 4,
-        "id_user": 4,
+        "id_user": "AC000007",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
