@@ -4,7 +4,7 @@ On desktop
 /* Product filter */
 [id^='product-filter']{
     display: flex;
-    padding-top: 5.5rem;
+    /* padding-top: 5.5rem; */
     flex-direction: column;
     position: fixed;
     height: 100vh;
@@ -41,7 +41,7 @@ On desktop
     padding-bottom: 1.5rem;
     padding-top: 1.5rem;
     position: fixed;
-    bottom: 0;
+    bottom: 5rem;
     background-color: var(--color-bg-default);
 }
 [id^='product-filter'] .filter__title{
@@ -343,7 +343,7 @@ On desktop
 /* Under desktop */
 @media only screen and (max-width: 1216px){
     .promotion__cont {
-        padding-top: calc(5.5rem + 1.5rem);
+        /* padding-top: calc(5.5rem + 1.5rem); */
     }
     .promotion__cont .row > :nth-child(2){
         display: none;
@@ -400,7 +400,9 @@ On tablet
 On mobile
 */
 @media only screen and (max-width: 800px){
-
+    /* .product-card{
+        transform: scale(0.5);
+    } */
 }
 /* 
 On mobile

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="icon" type="image/x-icon" href="../assets/brand/logos/logo-icon.svg">
+    <link rel="stylesheet" href="../assets/brand/icons/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <div id="header-admin" class="section">
+        <div class="section__container">
+            <div class="row">
+                <div class="header__block--left col">
+                    <img src="../assets/brand/logos/logo-full.svg" alt="" class="logo" id="header-logo">
+                    <input type="text" class="size-m header__search" value placeholder="Search">
+                </div>
+                <div class="header__block--right col">
+                    <a href="#" class="tab active" id="header-tab-admin1">Thống kê</a>
+                    <a href="#" class="tab" id="header-tab-admin2">Sản phẩm</a>
+                    <a href="#" class="tab" id="header-tab-admin3">Khách hàng</a>
+                    <img src="../assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                    <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
+                </div>
+            </div>
+
+            <div class="mobile-nav collapsed" id="mobile-nav">
+                <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
+                <div class="hello-account" id="to-account-info">
+                    <img src="../assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                    <p class="font-bold account-name">Nguyễn Tuấn</p>
+                    <button class="hello-account__button type-inherit style-text size-m">
+                        <i class="icon-chevron_right"></i>
+                    </button>
+                </div>
+                <button class="type-inherit style-text">Sản phẩm</button>
+                <button class="type-inherit style-text">Khách hàng</button>
+                <div class="space"></div>
+                <button class="type-inherit">Đăng xuất</button>
+            </div>
+            <div class="popover account-popover collapsed">
+                <div class="hello-account" id="to-account-info">
+                    <span>
+                        Xin chào,
+                        <p class="font-bold account-name">Nguyễn Tuấn</p>
+                    </span>
+                    <button class="hello-account__button type-inherit style-text size-l">
+                        <i class="icon-chevron_right"></i>
+                    </button>
+                </div>
+                <button class="type-inherit">Đăng xuất</button>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+
+    <!-- MAIN BODY HERE -->
+    <div id="main-body" class="section">
+        <!-- ANALYSIS -->
+        <div id="analysis-page" class="">
+            <div class="overal-analysis section__container">
+                <div class="heading__cont row">
+                    <div class="heading col-12">
+                        <h4 class="title">Thống kê</h4>
+                    </div>
+                </div>
+                <div class="analysis__cont row">
+                    <div class="analysis__block col-4">
+                        <div class="subtitle2">Số sản phẩm đã bán</div>
+                        <h3 class="total-number">48,951</h3>
+                        <div class="stack">
+                            <i class="icon-trending_up"></i>
+                            <span class="text">
+                                <span class="number subtitle2">+41.3%</span>
+                                <span class="body2">so với tuần trước</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="analysis__block col-4 trend--down">
+                        <div class="subtitle2">Tổng doanh thu</div>
+                        <h3 class="total-number">43,956</h3>
+                        <div class="stack">
+                            <i class="icon-trending_down"></i>
+                            <span class="text">
+                                <span class="number subtitle2">-63.1%</span>
+                                <span class="body2">so với tuần trước</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="analysis__block col-4">
+                        <div class="subtitle2">Lợi nhuận</div>
+                        <h3 class="total-number">28,971</h3>
+                        <div class="stack">
+                            <i class="icon-trending_up"></i>
+                            <span class="text">
+                                <span class="number subtitle2">+66.3%</span>
+                                <span class="body2">so với tuần trước</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="invoice-analysis section__container">
+                <div class="heading__cont row">
+                    <div class="heading col-12">
+                        <h4 class="title">Danh sách hóa đơn</h4>
+                    </div>
+                </div>
+                <div class="invoice-table row">
+                    <div class="invoice-table__cont col-12">
+                        <table>
+                            <tr class="table__header subtitle1">
+                                <!-- <th class="data__checkbox" class="header__checkbox">
+                                    <input type="checkbox" name="" id="checkbox-all-invoice">
+                                    <label for="checkbox-all-invoice"></label>
+                                </th> -->
+                                <th>Khách hàng</th>
+                                <th>Ngày mua</th>
+                                <th>Hóa đơn</th>
+                                <th>Giá trị</th>
+                            </tr>
+        
+                            <!-- DATA -->
+                            <tr class="table__data canhover">
+                                <!-- <td class="data__checkbox">
+                                    <input type="checkbox" name="" id="checkbox-invoice-1">
+                                    <label for="checkbox-invoice-1"></label>
+                                </td> -->
+                                <td class="client__avatar">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="client__info">
+                                        <div class="client__name subtitle2">Nguyễn Tuấn</div>
+                                        <div class="client__id body2">CL01</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">12 Jan 2022</div>
+                                </td>
+                                <td>
+                                    <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$44.39</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data canhover">
+                                <!-- <td class="data__checkbox">
+                                    <input type="checkbox" name="" id="checkbox-invoice-2">
+                                    <label for="checkbox-invoice-2"></label>
+                                </td> -->
+                                <td class="client__avatar">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="client__info">
+                                        <div class="client__name subtitle2">Nguyễn Tuấn</div>
+                                        <div class="client__id body2">CL01</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">12 Jan 2022</div>
+                                </td>
+                                <td>
+                                    <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$44.39</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data canhover">
+                                <!-- <td class="data__checkbox">
+                                    <input type="checkbox" name="" id="checkbox-invoice-3">
+                                    <label for="checkbox-invoice-3"></label>
+                                </td> -->
+                                <td class="client__avatar">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="client__info">
+                                        <div class="client__name subtitle2">Nguyễn Tuấn</div>
+                                        <div class="client__id body2">CL01</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">12 Jan 2022</div>
+                                </td>
+                                <td>
+                                    <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$44.39</div>
+                                </td>
+                            </tr>
+                            <tr class="table__data canhover">
+                                <!-- <td class="data__checkbox">
+                                    <input type="checkbox" name="" id="checkbox-invoice-4">
+                                    <label for="checkbox-invoice-4"></label>
+                                </td> -->
+                                <td class="client__avatar">
+                                    <img src="../assets/img/avatar-placeholder.png" alt="">
+                                    <div class="client__info">
+                                        <div class="client__name subtitle2">Nguyễn Tuấn</div>
+                                        <div class="client__id body2">CL01</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="body2">12 Jan 2022</div>
+                                </td>
+                                <td>
+                                    <div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div>
+                                </td>
+                                <td>
+                                    <div class="subtitle2">$44.39</div>
+                                </td>
+                            </tr>
+                            <!-- DATA -->
+                        </table>
+                        <div class="table__footer">
+                            <div colspan="100%" class="table__footer--action">
+                                <div class="container">
+                                    <button class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
+                                    <button class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
+                                    <span class="body2">1-12 trên 100 hóa đơn</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ANALYSIS -->
+    
+        <!-- INVOICE DETAIL -->
+        <div id="invoice-detail-page" class="hidden">
+            <div class="invoice-detail section__container">
+                <div class="row">
+                    <div class="breadcrumb col-12">
+                        <h4 class="title">Chi tiết hóa đơn</h4>
+                        <div class="breadcrumb__links horizontal">
+                            <div class="breadcrumb__link body2 home">Trang chủ</div>
+                            <div class="breadcrumb__link body2 statistic">Thống kê</div>
+                            <div class="breadcrumb__link body2 invoice-detail">Chi tiết hóa đơn</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content row">
+                    <div class="invoice-detail-table col-8">
+                        <div class="invoice-detail-table__cont">
+                            <table>
+                                <tr class="table__header subtitle1">
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th class="quantity">Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+            
+                                <!-- DATA -->
+                                <tr class="table__data">
+                                    <td class="product">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info">
+                                            <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                            <span class="product__size body2">Kích thước: 9</span>
+                                            <span class="product__color body2">
+                                                Màu sắc:
+                                                <span class="color-utility"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$17.42</div>
+                                    </td>
+                                    <td>
+                                        <div class="quantity body2">1</div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$17.42</div>
+                                    </td>
+                                </tr>
+                                <tr class="table__data">
+                                    <td class="product">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info">
+                                            <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                            <span class="product__size body2">Kích thước: 9</span>
+                                            <span class="product__color body2">
+                                                Màu sắc:
+                                                <span class="color-utility"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$17.42</div>
+                                    </td>
+                                    <td>
+                                        <div class="quantity body2">1</div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$17.42</div>
+                                    </td>
+                                </tr>
+                                <tr class="table__data">
+                                    <td class="product">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info">
+                                            <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                            <span class="product__size body2">Kích thước: 9</span>
+                                            <span class="product__color body2">
+                                                Màu sắc:
+                                                <span class="color-utility"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$17.42</div>
+                                    </td>
+                                    <td>
+                                        <div class="quantity body2">1</div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$17.42</div>
+                                    </td>
+                                </tr>
+                                <tr class="table__data">
+                                    <td class="product">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info">
+                                            <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                            <span class="product__size body2">Kích thước: 9</span>
+                                            <span class="product__color body2">
+                                                Màu sắc:
+                                                <span class="color-utility"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$17.42</div>
+                                    </td>
+                                    <td>
+                                        <div class="quantity body2">1</div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$17.42</div>
+                                    </td>
+                                </tr>
+                                <tr class="table__data">
+                                    <td class="product">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info">
+                                            <div class="product__name subtitle2">Nguyễn Tuấn</div>
+                                            <span class="product__size body2">Kích thước: 9</span>
+                                            <span class="product__color body2">
+                                                Màu sắc:
+                                                <span class="color-utility"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$17.42</div>
+                                    </td>
+                                    <td>
+                                        <div class="quantity body2">1</div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$17.42</div>
+                                    </td>
+                                </tr>
+                                <!-- DATA -->
+            
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="buyer-card">
+                            <img src="../assets/img/avatar-placeholder.png" alt="">
+                            <div class="client__info">
+                                <div class="client__name subtitle2">Nguyễn Tuấn</div>
+                                <div class="client__id body2">#CL01</div>
+                                <!-- <div class="client__address body2"><i class="icon-location"></i>967/58 Sư Vạn Hạnh, Quận 5, tp.Hồ Chí Minh</div> -->
+                            </div>
+                            <button class="size-s type-inherit">Chi tiết</button>
+                        </div>
+                        <div class="address-card">
+                            <h6 class="address-card__title">Địa chỉ giao hàng</h6>
+                            <div class="address-card__receiver subtitle2">Nguyễn Tuấn</div>
+                            <div class="address-card__address body2">1147 Rohan Drive Suite 819 - Burlington, VT / 82021</div>
+                            <div class="address-card__phonenumber body2">0327531105</div>
+                        </div>
+                        <div class="payment-card">
+                            <h6 class="payment-card__title">Thông tin đơn hàng</h6>
+                            <div class="payment-card__total-temp stack">
+                                <div class="label body2">Tạm tính</div>
+                                <div class="body2">500.000đ</div>
+                            </div>
+                            <div class="payment-card__shipping stack">
+                                <div class="label body2">Phí ship</div>
+                                <div class="body2">-</div>
+                            </div>
+                            <div class="payment-card__total stack">
+                                <div class="subtitle1">Tổng cộng</div>
+                                <div class="value"> 
+                                    <div class="total-label subtitle1">500.000đ</div>
+                                    <div class="caption"><i>(Đã bao gồm thuế VAT)</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- INVOICE DETAIL -->
+    
+        <!-- PRODUCT -->
+        <!-- PRODUCT -->
+    
+        <!-- PRODUCT CREATE -->
+        <!-- PRODUCT CREATE -->
+    
+        <!-- PRODUCT UPDATE -->
+        <!-- PRODUCT UPDATE -->
+    
+        <!-- USER -->
+        <!-- USER -->
+    
+        <!-- USER CREATE -->
+        <!-- USER CREATE -->
+    
+        <!-- USER DETAIL -->
+        <!-- USER DETAIL -->
+    
+        <!-- USER ORDER -->
+        <!-- USER ORDER -->
+    </div>
+    <!-- MAIN BODY HERE -->
+
+    <!-- FOOTER -->
+    <div id="footer" class="section">
+        <div class="section__container">
+            <div class="footer__about-brand">
+                <img src="../assets/brand/logos/logo-full.svg" alt="" class="logo" id="footer-logo">
+                <p class="intro body2">Bagsto cung cấp các sản phẩm balo, ví, túi xách nam nữ. Chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng cao, thiết kế sang trọng, lịch lãm, phù hợp với mọi nhu cầu.</p>
+                <div class="socials">
+                    <a href="#" class="socials__item"><i class="icon-facebbook"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-instagram"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-linkedin"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Chính sách</li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li>         
+            </ul>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Liên hệ</li>
+                <li class="nav__item body2"><a href="mailto:cskh@bagsto.vn">cskh@bagsto.vn</a></li>
+                <li class="nav__item body2"><a href="tel:+84 9797 9797">+84 9797 9797</a></li>
+                <li class="nav__item body2"><a href="#">273 An Dương Vương, Quận 5, Tp.HCM</a></li>
+            </ul>
+        </div>
+        <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>
+    </div>
+    <!-- FOOTER -->
+    
+</body>
+</html>
+
+<script src="interface.js"></script>
+<script src="../assets/scripts/business.js"></script>
