@@ -366,7 +366,7 @@
         <!-- PRODUCTS-DETAIL -->
 
         <!--Account-->
-        <div id="account-page">
+        <div id="account">
             <div class="section__container">
                 <div class="row">
                     <div class="Breadcrumb">
@@ -460,47 +460,62 @@
         <!--End-Account-->
 
         <!--AccountOrder-->
-        <div class="AccountOrder">
-            <div class="section__container">
-                <div class="row col-12">
+    <div class="AccountOrder" id="AccountOrder">
+        <div class="section__container">
+            <div class="row">
+                <div class="col-12">
                     <div class="Breadcrumb">
                         <h4>chi tiết hóa đơn</h4>
                     </div>  
                 </div>
-                <div class="Oder row" id="oder">
-                    <div class="Oderlish col-8">
-                    <div>
-                        <table > 
-                            <thead>
-                                <tr>
-                                    <th  ></th>
-                                    <th  >Ngày mua</th>
-                                    <th  >Hóa đơn</th>
-                                    <th  >Giá trị</th>
-                                    <th  ></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Thêm các dòng khác nếu cần -->
-                            </tbody>
-                        </table>
+            </div>
+            <div class="Oder row" id="oder">
+                <div class="Oderlish col-8">
+                  <div>
+                    <table id="checkoutCart" class="checkoutCart"> 
+                        <thead>
+                            <tr>
+                                <th  class="Table_Head_Invoice" >Sản phẩm</th>
+                                <th  class="Table_Head_Invoice" >Đơn giá</th>
+                                <th  class="Table_Head_Invoice" >Số lượng</th>
+                                <th  class="Table_Head_Invoice" >Thành tiền</th>
+                            </tr>
+                        </thead>
+                                <tbody>
+                                    <!-- Thêm các dòng khác nếu cần -->
+                                </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="OderAP col-4">
+                    <div class="Oder-Address">
+                        <h6>Địa chỉ giao hàng</h6>
+                        <div class="Oder-Address_info">
+                            <p id="Oder-info-ManuelCooper" class="Oder-info-ManuelCooper">Manue lCooper</p>
+                            <p id="Oder-info-Address" class="Oder-info-Address"> </p>
+                            <p id="Oder-info-code" class="Oder-info-code">904-966-2836</p>
+                        </div>
 
                     </div>
-                    </div>
-                    <div class="OderAP col-4">
-                        <div class="Oder-Address">
-                            Address
-
+                    <div class="Oder-Price">
+                        <h6>Thông tin đơn giá</h6>
+                        <div class="Oder-Price_ship">
+                            <p class="body2">tạm tính:</p>
+                            <p class="body2">loại vận chuyển:</p>
                         </div>
-                        <div class="Oder-Price">
-                            Price
-
+                        <div class="Oder-Price-layer"> </div>
+                        <div class="Oder-Price_total">
+                            <p class="total-text">tổng cộng: </p>
+                            <p class="total" id="total"></p>
+                            <p class="thue">(đã bao gồm thuế VAT)</p>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!--End-AccountOrder-->
+        
+    <!--End-AccountOrder-->
 
     </div>
     <!-- END MAIN BODY -->

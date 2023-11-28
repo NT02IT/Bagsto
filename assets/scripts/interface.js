@@ -104,10 +104,10 @@ headerTab1.addEventListener('click', () => {
       siteProduct.classList.remove('hidden');
       siteProduct.classList.add('product-balo')
 
-      const prdItems_Product = document.querySelector("#product-page .products__items");
-      const pagination_Product = document.getElementById('product-pagination-products');
-      displayProducts(prdItems_Product, itemList, currentPageBaloProduct);
-      updatePaginationOfProducts(prdItems_Product, itemList, pagination_Product, currentPageBaloProduct);
+      // const prdItems_Product = document.querySelector("#product-page .products__items");
+      // const pagination_Product = document.getElementById('product-pagination-products');
+      // displayProducts(prdItems_Product, itemList, currentPageBaloProduct);
+      // updatePaginationOfProducts(prdItems_Product, itemList, pagination_Product, currentPageBaloProduct);
     }
   }
 })
@@ -575,6 +575,9 @@ signupSubmit.addEventListener("click", () => {
       for(let i = 0; i < accountsName.length; i++) {
         accountsName[i].textContent = u.name;
       }
+
+    
+     
   }
 
 });
@@ -584,85 +587,18 @@ signupSubmit.addEventListener("click", () => {
 
 // Account
 document.getElementsByClassName("hello-account")[1].addEventListener("click", () => {
-  var obj = document.getElementById("account-page");
-  obj.style.display = "block";
+  alert("Đây là thông tin của bạn");
+  clearMainBody();
+  document.getElementById("account").style.display = "block";
 })
 
 document.addEventListener('DOMContentLoaded', function () {
   var tbody = document.getElementById('Table-info').getElementsByTagName('tbody')[0];
   var productDetailsContainer = document.getElementById('ProductDetailsContainer');
   var productDetailsContent = document.getElementById('ProductDetailsContent');
-  var account = document.getElementById('account-page'); // Thêm đoạn này để tham chiếu đến phần tử account
+  var account = document.getElementById('account'); // Thêm đoạn này để tham chiếu đến phần tử account
 
 
-// Mảng chứa dữ liệu đơn hàng
-var newData = [
-  // ... (giữ nguyên phần dữ liệu)
-  {
-    col1: '',
-    col2: '20/11/2003',
-    col3: 'ABCDXYZ',
-    col4: '200$',
-    col5: '...',
-    shippingAddress: '123 Đường ABC, Thành phố XYZ',
-    productList: [
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 2', price: 50 }
-    ],
-  },
-  {
-    col1: '',
-    col2: '20/11/2003',
-    col3: 'EBCDXYZ',
-    col4: '200$',
-    col5: '...',
-    shippingAddress: '123 Đường ABC, Thành phố XYZ',
-    productList: [
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 2', price: 50 }
-    ],
-  },
-  {
-    col1: '',
-    col2: '20/2/2022',
-    col3: 'KJSJFJS',
-    col4: '500$',
-    col5: '...',
-    shippingAddress: '123 Đường ABC, Thành phố XYZ',
-    productList: [
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 1', price: 100 },
-      { name: 'Sản phẩm 2', price: 50 }
-    ],
-  },
-];
-
-
-// Đọc dữ liệu từ mảng và thêm vào bảng
-for (var i = 0; i < newData.length; i++) {
-  var row = tbody.insertRow();
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  var cell5 = row.insertCell(4);
-
-  cell1.innerHTML = newData[i].col1;
-  cell2.innerHTML = newData[i].col2;
-  cell3.innerHTML = newData[i].col3;
-  cell4.innerHTML = newData[i].col4;
-
-  cell1.className = 'Table_Row_Invoice';
-  cell2.className = 'Table_Row_Invoice';
-  cell3.className = 'Table_Row_Invoice';
-  cell4.className = 'Table_Row_Invoice';
-
-}
 
 });
 //thêm ảnh vào Avatar
