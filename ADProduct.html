@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/general.css">
+    <link rel="stylesheet" href="./assets/brand/icons/style.css">
     <link rel="stylesheet" href="./assets/css/ADProduct.css">
     <title>Admin Product</title>
 </head>
@@ -22,83 +23,109 @@
                     <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
                 </div>
             </div>
+           <div class="account">
+                <div class="InfoAccount">
+                    <h6>Xin chào, </h6>
+                    <p id="InfoAccount--name">
+                        Nghia Nguyen
+                    </p>
+                    <button id="InfoAccount--button"></button>
+                </div>
+                <div class="logOut">
+                    <button id="logOut--button">
+                        Đăng xuất
+                    </button>
+                </div>
+           </div>
         </div>
-        <div class="mainBody">
-            <div class="section__container">
-                <div class="main-body__header row">
-                    <h4 class="main-body__header__title col">Sản phẩm</h4>
-                    <button class="main-body__header__btnAddProduct col">+ Sản phẩm mới</button>
+    </div>
+    <div class="mainBody">
+        <div class="section__container">
+            <div class="main-body__header row">
+                <h4 class="main-body__header__title">Sản phẩm</h4>
+                <button class="main-body__header__btnAddProduct">+ Sản phẩm mới</button>
+            </div>
+            <div class="main-body__searchBar">
+                <select name="" id="main-body__searchBar__comboBoxStatus">
+                    <option value="AllStatus">Status</option>
+                    <option value="InStock">In stock</option>
+                    <option value="LowStock">Low stock</option>
+                    <option value="OutOfStock">Out of stock</option>
+                </select>
+                <div class="input-container">
+                    <span class="icon--lookFor">
+                    <img src="./assets/brand/icons/svg/search.svg" alt="">
+                    </span>
+                    <input type="text" id="main-body__searchBar__searchProduct" value placeholder="Search...">
                 </div>
-                <div class="main-body__searchBar row">
-                    <select name="" id="main-body__searchBar__comboBoxStatus">
-                        <option value="AllStatus">Status</option>
-                        <option value="InStock">In stock</option>
-                        <option value="LowStock">Low stock</option>
-                        <option value="OutOfStock">Out of stock</option>
-                    </select>
-                    <input type="text" value placeholder="Search...">
-                </div>
-    
-                <div class="main-body__productTable row">
-                    <table class="productTable__title">
-                        <tr class="productTable__title__row"">
-                            <th class="productTable__title__item">
-                                <label for="productTable__title__Checkbox">
-                                    <input type="checkbox" id="productTable__title__Checkbox" name="Checkbox">
-                                </label>
-                            </th>
-                            <th class="productTable__title__item">Product</th>
-                            <th class="productTable__title__item">Create at</th>
-                            <th class="productTable__title__item">Price</th>
-                            <th class="productTable__title__item">Status</th>
-                            <th class="productTable__title__item">
-                                <button class="productTable__title__item__button">
+               
+            </div>
 
-                                </button>
-                            </th>
-                        </tr>
-                    </table>
-                    <table class="productTable__body">
-                        
-                    </table>
+            <div class="main-body__productTable">
+                <table class="productTable__title">
+                    <tr>
+                        <th class="productTable__cell col1">
+                            <label for="checkBox--genaral"> </label>
+                            <input type="checkbox" id="checkBox--genaral">
+                            Product
+                        </th>
+                        <th class="productTable__cell col2">Create at</th>
+                        <th class="productTable__cell col3">Price</th>
+                        <th class="productTable__cell col4">Status</th>
+                        <th class="productTable__cell col5">
+                            <button id="btnInfo0" class="btnInfo">
+
+                            </button>
+                        </th>
+                    </tr>
+                </table>
+                <table class="productTable__body">
+                    
+                </table>
+            </div>
+            <div class="dividedIngredients">
+                <div class="numberOfIngredients">
+                   
                 </div>
-                <div class="dividedIngredients">
-                    <div class="numberOfIngredients">1-6 of 89</div>
-                    <button class="NextButton"></button>
-                    <button class="backButton"></button>
-                </div>
+                <div class="nextBackButton">
+                    <button class="backButton" id ="backButton--id">
+                        <i class="icon-chevron_left"></i>
+                    </button>
+                      <button class="nextButton" id ="nextButton--id">
+                        <i class="icon-chevron_right"></i>
+                    </button>
+                </div> 
             </div>
         </div>
-        <div id="footer" class="section">
-            <div class="section__container">
-                <div class="footer__about-brand">
-                    <img src="assets\brand\logos\logo-full.svg" alt="" class="logo" id="footer-logo">
-                    <p class="intro body2">Bagsto cung cấp các sản phẩm balo, ví, túi xách nam nữ. Chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng cao, thiết kế sang trọng, lịch lãm, phù hợp với mọi nhu cầu.</p>
-                    <div class="socials">
-                        <a href="#" class="socials__item"><i class="icon-facebbook"></i></a>
-                        <a href="#" class="socials__item"><i class="icon-instagram"></i></a>
-                        <a href="#" class="socials__item"><i class="icon-linkedin"></i></a>
-                        <a href="#" class="socials__item"><i class="icon-twitter"></i></a>
-                    </div>
+    </div>
+    <div id="footer" class="section">
+        <div class="section__container">
+            <div class="footer__about-brand">
+                <img src="assets\brand\logos\logo-full.svg" alt="" class="logo" id="footer-logo">
+                <p class="intro body2">Bagsto cung cấp các sản phẩm balo, ví, túi xách nam nữ. Chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng cao, thiết kế sang trọng, lịch lãm, phù hợp với mọi nhu cầu.</p>
+                <div class="socials">
+                    <a href="#" class="socials__item"><i class="icon-facebbook"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-instagram"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-linkedin"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-twitter"></i></a>
                 </div>
-                <ul class="footer__nav">
-                    <li class="nav__title overline">Chính sách</li>
-                    <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
-                    <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
-                    <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
-                    <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
-                    <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li>         
-                </ul>
-                <ul class="footer__nav">
-                    <li class="nav__title overline">Liên hệ</li>
-                    <li class="nav__item body2"><a href="mailto:cskh@bagsto.vn">cskh@bagsto.vn</a></li>
-                    <li class="nav__item body2"><a href="tel:+84 9797 9797">+84 9797 9797</a></li>
-                    <li class="nav__item body2"><a href="#">273 An Dương Vương, Quận 5, Tp.HCM</a></li>
-                </ul>
             </div>
-            <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Chính sách</li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li>         
+            </ul>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Liên hệ</li>
+                <li class="nav__item body2"><a href="mailto:cskh@bagsto.vn">cskh@bagsto.vn</a></li>
+                <li class="nav__item body2"><a href="tel:+84 9797 9797">+84 9797 9797</a></li>
+                <li class="nav__item body2"><a href="#">273 An Dương Vương, Quận 5, Tp.HCM</a></li>
+            </ul>
         </div>
-    
+        <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>
     </div>
 </body>
 </html>

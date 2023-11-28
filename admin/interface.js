@@ -36,7 +36,7 @@ CustomValidation.prototype = {
 				} else {
 					requirementElement.classList.remove('invalid');
 				}
-			} 
+			}
 		}
 	}
 };
@@ -93,6 +93,16 @@ headerTab1.addEventListener('click', () =>{
     }
 })
 
+headerTab2.addEventListener('click', () =>{
+    const siteInvoiceDetail = document.getElementById('product-page');
+    if(!headerTab2.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab2.classList.add('active');
+        siteInvoiceDetail.classList.remove('hidden');
+    }
+})
+
 function resetNavbar(){
     const headerTabs = document.querySelectorAll('#header-admin .tab');
     for(let i = 0; i < headerTabs.length; i++){
@@ -125,8 +135,18 @@ headerAdminAvatar.addEventListener('click', function () {
     accountPopover.classList.toggle('collapsed');
 });
 let userLogin = JSON.parse(localStorage.getItem("currentAdminUser"));
-for(let i = 0; i < accountsName.length; i++) {
-    accountsName[i].textContent = userLogin.name;
+if(userLogin) {
+    for(let i = 0; i < accountsName.length; i++) {
+        accountsName[i].textContent = userLogin.name;
+    }
+    for(let i = 0; i < logoutButtons.length; i++) {
+        logoutButtons[i].addEventListener('click', function(){
+            localStorage.removeItem("currentAdminUser");
+            window.location.href = ".\\index.html";
+        });
+    }
+} else{
+    clearMainBody();
 }
 
 // HEADER INTERFACE
@@ -160,3 +180,5 @@ breadcrumbsInvoiceDetails[1].addEventListener("click", function(){
     siteAnalysis.classList.remove('hidden');
 });
 // STATISTICS
+
+
