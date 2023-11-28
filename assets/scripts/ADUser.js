@@ -65,7 +65,7 @@ listUser = [
     }
 ];
 
-const addUser = document.getElementsByClassName("body-tab")[0];
+// const addUser = document.getElementsByClassName("body-tab")[0];
 var tableUser = document.getElementsByClassName("user-table-body")[0];
 
 function loadUser(listUser){
@@ -75,23 +75,21 @@ function loadUser(listUser){
         listStatus += `
         <tr class="user-table__row">
             <th class="user-table-body-cell">
-            <div class="user-table-body-cell__Name">
+            <div class="user-table-title-name">
                 <img class="user-img" src="${listUser[i].img}" alt="">
-                <p class="user-name">${listUser[i].FullName}</p>
+                <p class="user-text">${listUser[i].FullName}</p>
             </div>
                 </th>
-            <th class="user-table-body-cell">
-                <p class="user-address">${listUser[i].Address}</p>
+            <th class="user-table-title-address">
+                <p class="user-text">${listUser[i].Address}</p>
             </th>
-            <th class="user-table-body-cell">
-                <p class="user-createdate">${listUser[i].CreateDate}</p>
+            <th class="user-table-title-date-create">
+                <p class="user-text">${listUser[i].CreateDate}</p>
             </th>
-            <th class="user-table-body-cell">
-            <div class="user-table-body-cell__status">
-                <p class="user-status">${listUser[i].Status}</p>
-            </div>
+            <th class="user-table-title-status">
+                <p class="user-text">${listUser[i].Status}</p>
             </th>
-            <th class="user-table-body-cell">
+            <th class="user-table-title-switch">
                 <i class="icon-more">
             </th>  
         </tr>     
@@ -99,10 +97,10 @@ function loadUser(listUser){
     }
     tableUser.innerHTML = listStatus;
 }
-window.onload = function(){
-    loadUser(listUser);
-};
-addUser.addEventListener("click",loadUser(listUser));
+// window.onload = function(){
+//     loadUser(listUser);
+// };
+// addUser.addEventListener("click",loadUser(listUser));
 function toggleVisibility(){
     var a = document.getElementById("user-data");
     if (a.style.display === "none"){
@@ -133,3 +131,140 @@ function previewImage() {
         preview.src = "";
     }
 }
+document.getElementById('preview-image-change').addEventListener("click",function(){
+    document.getElementById('image-change').click();   
+});
+function previewImageChange() {
+    var input = document.getElementById('image-change');
+    var preview = document.getElementById('preview-image-change');
+
+    var file = input.files[0];
+
+    if (file) {
+        var reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.style.display="block";
+            preview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+}
+
+listBillUser = [
+    {
+        DateBuying: "12/10/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130002",
+        Price: "33,25$",
+    },
+    {
+        DateBuying: "25/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "50$",
+    },
+    {
+        DateBuying: "20/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "50$",
+    },
+    {
+        DateBuying: "21/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "50$",
+    },
+    {
+        DateBuying: "1/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "850$",
+    },
+    {
+        DateBuying: "5/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "510$",
+    },
+    {
+        DateBuying: "25/10/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "250$"
+    },
+    {
+        DateBuying: "11/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "450$",
+    },
+    {
+        DateBuying: "2/11/2023",
+        IDBill: "01dc1370-3df6-11eb-b378-0242ac130003",
+        Price: "50,33$",
+    },
+];
+
+var tableHistoryBuying = document.getElementsByClassName("bill-user")[0];
+function loadHistoryBuying(listBillUser){
+    var listBill="";
+    for(let i=0;i<6;i++)
+    {
+        listBill +=`
+            <tr >
+                <th class="date-buying">
+                    <p class="table-cell-history-buying"> ${listBillUser[i].DateBuying}</p>   
+                </th>
+                <th class="bill">
+                    <p class="table-cell-history-buying"> ${listBillUser[i].IDBill}</p>
+                </th>
+                <th class="price">
+                    <p class="table-cell-history-buying"> ${listBillUser[i].Price}</p>
+                </th>
+            </tr>
+        `;
+    }
+    tableHistoryBuying.innerHTML = listBill;
+}
+
+let listUserOrder = JSON.parse(localStorage.getItem('products'));
+var tableUserOrder= document.getElementsByClassName("user-order-table-detail")[0];
+function loadUserOrder(listUserOrder){
+    var listOrder="";
+    for (let i=0; i< 3 ;i++){
+        listOrder += `
+        <tr>
+                <th class="user-order-product">
+                    <p class="table-cell-order">${listUserOrder[i].name}</p>
+                </th>
+                <th class="user-order-price">
+                    <p class="table-cell-order">${listUserOrder[i].price_imported}</p>
+                </th>
+                <th class="user-order-amount">
+                    <p class="table-cell-order"> 1 </p>
+                </th>
+                <th class="user-order-money">
+                    <p class="table-cell-order">${listUserOrder[i].price_sell}</p>
+                </th>             
+        </tr>
+        `;
+    }
+    tableUserOrder.innerHTML = listOrder;
+}
+let listReceiver = JSON.parse(localStorage.getItem('receivers'));
+const receiversOrder = document.getElementById("address-ship");
+function loadReceiver(listReceiver){
+    var receiver="";
+    receiver += `
+    <div class="name-owner"> ${listReceiver[1].name}</div>
+    <div class="address-owner">${listReceiver[1].address}</div>
+    <div class="phone-owner">${listReceiver[1].phone}</div>
+`
+receiversOrder.innerHTML= receiver;
+}
+window.onload = function(){
+    console.log(listReceiver);
+    loadHistoryBuying(listBillUser);
+    loadUser(listUser);
+    loadUserOrder(listUserOrder);
+    loadReceiver(listReceiver);
+}
+ 
+

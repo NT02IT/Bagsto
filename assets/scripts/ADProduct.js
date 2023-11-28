@@ -118,8 +118,6 @@ function loadProduct(listProduct){
     }
     table.innerHTML = ListItem;
 }
-
-
 window.onload = function () {
     loadProduct(ListProduct);
 };

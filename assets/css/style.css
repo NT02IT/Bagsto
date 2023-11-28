@@ -755,7 +755,7 @@ input[id^="color"]:checked + label::before{
 /* Table */
 table{
     width: 100%;
-    min-width: 70.5rem;
+    min-width: 60.5rem;
     text-align: left;
     border-spacing: 0;
     padding-bottom: 3.5rem;
