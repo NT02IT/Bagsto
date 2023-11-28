@@ -17,7 +17,7 @@ headerTab2.addEventListener('click', () =>{
     load6Product(ListProduct, "next");
     var containerDetailProductImg = document.getElementById('containerDetailProduct--img');
     var imgElements = containerDetailProductImg.getElementsByTagName('img');
-// Lặp qua danh sách các thẻ img và xóa chúng
+// Lặp qua danh sách các thẻ img và xóa
     for (var i = imgElements.length - 1; i >= 0; i--) {
         var imgElement = imgElements[i];
         imgElement.parentNode.removeChild(imgElement);
@@ -59,13 +59,13 @@ function loadJSonProduct(){
             ));
 
             // In ra mảng ListProduct
-            console.log(ListProduct);
+         //   console.log(ListProduct);
         })
         .catch(error => {
             // Xử lý lỗi nếu có
             console.error('Fetch error:', error);
         });
-    load6Product();
+    load6Product(ListProduct, 'next');
 }
 function updataProductJson() {
     var productListJSON = JSON.stringify(ListProduct);
@@ -107,7 +107,36 @@ function deleteProduct(ID){
         }
     }
 }
-
+function filterInStockStatus(){
+    loadJSonProduct();
+    for (let i=0;i<ListProduct.length;i++){
+        if (ListProduct[i].quantity<20){
+            ListProduct.splice(i,1);
+            i--;
+        }
+    }
+}
+function filterLowStockStatus(){
+    loadJSonProduct();
+    for (let i=0;i<ListProduct.length;i++){
+        if (ListProduct[i].quantity>=20 || ListProduct[i].quantity<1){
+            ListProduct.splice(i,1);
+            i--;
+        }
+    }
+}
+function filterOutOfStockStatus(){
+    loadJSonProduct();
+    for (let i=0;i<ListProduct.length;i++){
+        if (ListProduct[i].quantity>0){
+            ListProduct.splice(i,1);
+            i--;
+        }
+    }
+}
+function filterAllStatus(){
+    loadJSonProduct();
+}
 
 
 function resetNavbar(){
@@ -258,6 +287,24 @@ function load6Product(listProduct, check) {
         loadDetail(n-2);
     });
 }
+
+var ProductStatusSelection = document.getElementById('Product-status-selection');
+ProductStatusSelection.addEventListener('change',()=>{
+    var statusSelected = ProductStatusSelection.options[ProductStatusSelection.selectedIndex].value;
+    if (statusSelected==='All'){
+        filterAllStatus();
+    }else if (statusSelected==='InStock'){
+        filterInStockStatus();
+    }else if (statusSelected==='LowStock'){
+        filterLowStockStatus();
+    }else if (statusSelected==='OutOfStock'){
+        filterOutOfStockStatus();
+    }
+    n=1;
+    clearTable();
+    load6Product(ListProduct, 'next');
+})
+
 function handleImageClick(imgId){
     var confirmDelete = confirm("Bạn chắc chắn muốn xóa!");
     if (confirmDelete){
