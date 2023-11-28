@@ -416,50 +416,48 @@
         <!-- PRODUCT -->
         <div id="product-page" class="hidden">
             <div class="section__container">
-                <div class="user-body-row">
-                    <div class="header-body">
-                        <div class="header-body--left col">
+                <div class="row">
+                    <div class="product__header col-12">
+                        <div class="header-body--left">
                             <h4 class="body-tab"> Danh sách sản phẩm</h4>
                         </div>
                         <div class="header-body--right">
                             <button type="button" class="body-tab" id="newProduct-btn"> <i class="icon-plus"></i> Sản phẩm mới  </button>
                         </div>
                     </div>
-                    <div class="user-body-row-2">
-                        <div class="status" >
-                            <select name="status-selection" id="Product-status-selection">
-                                <option selected disabled> Status </option>
-                                <option value="All"> All </option>
-                                <option value="InStock"> In stock </option>
-                                <option value="LowStock"> Low stock </option>
-                                <option value="OutOfStock"> Out of stock </option>
-                            </select>
-                        </div>
-                        <div class="cus-search">
-                            <i class="icon-search"></i>
-                            <input type="text" class="" id="Product-search-input" placeholder="Search...">
-                        </div>
-                    </div>
                 </div>
-                <div class="invoice-analysis">
-                    <div class="invoice-table row">
-                        <div class="invoice-table__cont col-12">
-                            <table id="table_product">
-                                <tr class="table__header productTable__row">
-                                    <th class="productTable__cell col1">Product</th>
-                                    <th class="productTable__cell col2">Import date</th>
-                                    <th class="productTable__cell col3">Price</th>
-                                    <th class="productTable__cell col4">Status</th>
-                                </tr>
+                <div class="product-table row">
+                    <div class="product-table__cont col-12">
+                        <div class="product-table__action">
+                            <div class="status-filter" >
+                                <select name="status-selection" id="Product-status-selection">
+                                    <option selected disabled> Status </option>
+                                    <option value="All"> All </option>
+                                    <option value="InStock"> In stock </option>
+                                    <option value="LowStock"> Low stock </option>
+                                    <option value="OutOfStock"> Out of stock </option>
+                                </select>
+                            </div>
+                            <div class="cus-search">
+                                <i class="icon-search"></i>
+                                <input type="text" class="" id="Product-search-input" placeholder="Search...">
+                            </div>
+                        </div>
+                        <table id="table_product">
+                            <tr class="table__header productTable__row">
+                                <th class="productTable__cell col1">Product</th>
+                                <th class="productTable__cell col2">Import date</th>
+                                <th class="productTable__cell col3">Price</th>
+                                <th class="productTable__cell col4">Status</th>
+                            </tr>
 <!--                                Danh Sach San pham-->
-                            </table>
-                            <div class="table__footer">
-                                <div colspan="100%" class="table__footer--action">
-                                    <div class="table__footer__container">
-                                        <span class="body2">1-12 of 39</span>
-                                        <button id ="loadBackProduct" class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
-                                        <button id ="loadNextProduct" class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
-                                    </div>
+                        </table>
+                        <div class="table__footer">
+                            <div colspan="100%" class="table__footer--action">
+                                <div class="table__footer__container">
+                                    <button id ="loadBackProduct" class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
+                                    <button id ="loadNextProduct" class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
+                                    <span class="body2">1-12 trên 39 sản phẩm</span>
                                 </div>
                             </div>
                         </div>
@@ -473,18 +471,18 @@
         <!-- PRODUCT CREATE -->
         <div  id="productCreate-page" class="hidden">
             <div class="section__container">
-                <div class="Product-head__title">
+                <div class="row">
                     <h4>Sản phẩm mới</h4>
                 </div>
-                <div class="product-info">
-                    <div class = "product-info--1">
-                        <div class="product-info--1-1">
+                <div class="product-info row">
+                    <div class = "col-8">
+                        <div class="product-infor--name">
                             <div class="product-Name">
                                 <h6>Tên sản phẩm</h6>
                                 <input type="text" id="product-Name--txtField" value placeholder="Tên sản phẩm">
                             </div>
                         </div>
-                        <div class="product-info--1-2">
+                        <div class="product-info--detail">
 
                             <div class="product-Name">
                                 <h6>Ngày nhập</h6>
@@ -509,7 +507,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-info--2">
+                    <div class="col-4">
                         <div class="product-info--2-1">
                             <div class="ProductId">
                                 <p id="ProductId--create">
@@ -605,11 +603,13 @@
         <!-- PRODUCT UPDATE -->
         <div  id="DetailProduct-page" class="hidden">
             <div class="section__container">
-                <div class="Product-head__title">
-                    <h4>Chi tiết sản phẩm</h4>
+                <div class="Product-head__title row">
+                    <div class="col-12">
+                        <h4>Chi tiết sản phẩm</h4>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <div class = "product-info--1">
+                <div class="product-info row">
+                    <div class = "col-8">
                         <div class="product-info--1-1">
                             <div class="product-Name">
                                 <h6>Tên sản phẩm</h6>
@@ -617,11 +617,11 @@
                             </div>
                         </div>
                         <div class="product-info--1-2">
-
+<!-- 
                             <div class="product-Name">
                                 <h6>Ngày nhập</h6>
                                 <input type="text" id="DetailProduct-DayImport--txtField" value placeholder="Ngày nhập">
-                            </div>
+                            </div> -->
                             <div class="product-describe">
                                 <h6>Mô tả</h6>
                                 <textarea id="DetailProduct-describe--txtField" name="long-text" value placeholder="Write something awesome"></textarea>
@@ -641,11 +641,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-info--2">
+                    <div class="col-4">
                         <div class="product-info--2-1">
                             <div class="ProductId">
                                 <p id="ProductId--detail">
-
+                                </p>
+                                <p id="DetailProduct-DayImport--txtField">
                                 </p>
                             </div>
                             <div>

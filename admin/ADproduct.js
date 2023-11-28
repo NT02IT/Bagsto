@@ -318,7 +318,7 @@ function loadDetail(i){
     var DetailProductNametxtField = document.getElementById('DetailProduct-Name--txtField');
     DetailProductNametxtField.value = ListProduct[i].name;
     var DetailProductDayImporttxtField = document.getElementById('DetailProduct-DayImport--txtField');
-    DetailProductDayImporttxtField.value = ListProduct[i].dayImport;
+    DetailProductDayImporttxtField.textContent = "Ngày nhập: " + ListProduct[i].dayImport;
     var DetailProductdescribetxtField = document.getElementById('DetailProduct-describe--txtField');
     DetailProductdescribetxtField.value = ListProduct[i].description;
     var containerDetailProductImg = document.getElementById('containerDetailProduct--img');
