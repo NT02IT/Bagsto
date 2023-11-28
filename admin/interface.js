@@ -36,7 +36,7 @@ CustomValidation.prototype = {
 				} else {
 					requirementElement.classList.remove('invalid');
 				}
-			} 
+			}
 		}
 	}
 };
@@ -90,6 +90,16 @@ headerTab1.addEventListener('click', () =>{
         clearMainBody();
         headerTab1.classList.add('active');
         siteAnalysis.classList.remove('hidden');
+    }
+})
+
+headerTab2.addEventListener('click', () =>{
+    const siteInvoiceDetail = document.getElementById('product-page');
+    if(!headerTab2.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab2.classList.add('active');
+        siteInvoiceDetail.classList.remove('hidden');
     }
 })
 
@@ -170,3 +180,5 @@ breadcrumbsInvoiceDetails[1].addEventListener("click", function(){
     siteAnalysis.classList.remove('hidden');
 });
 // STATISTICS
+
+
