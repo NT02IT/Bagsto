@@ -125,8 +125,18 @@ headerAdminAvatar.addEventListener('click', function () {
     accountPopover.classList.toggle('collapsed');
 });
 let userLogin = JSON.parse(localStorage.getItem("currentAdminUser"));
-for(let i = 0; i < accountsName.length; i++) {
-    accountsName[i].textContent = userLogin.name;
+if(userLogin) {
+    for(let i = 0; i < accountsName.length; i++) {
+        accountsName[i].textContent = userLogin.name;
+    }
+    for(let i = 0; i < logoutButtons.length; i++) {
+        logoutButtons[i].addEventListener('click', function(){
+            localStorage.removeItem("currentAdminUser");
+            window.location.href = ".\\index.html";
+        });
+    }
+} else{
+    clearMainBody();
 }
 
 // HEADER INTERFACE

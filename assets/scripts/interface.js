@@ -103,11 +103,6 @@ headerTab1.addEventListener('click', () => {
     if (siteProduct.classList.contains('hidden')) {
       siteProduct.classList.remove('hidden');
       siteProduct.classList.add('product-balo')
-
-      const prdItems_Product = document.querySelector("#product-page .products__items");
-      const pagination_Product = document.getElementById('product-pagination-products');
-      displayProducts(prdItems_Product, itemList, currentPageBaloProduct);
-      updatePaginationOfProducts(prdItems_Product, itemList, pagination_Product, currentPageBaloProduct);
     }
   }
 })
