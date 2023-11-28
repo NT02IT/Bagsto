@@ -632,3 +632,372 @@ function previewImageAvatar() {
 
 
 //dang ki
+
+//cart//
+
+const cartPage = document.getElementById('cart-page');
+cartPage.classList.remove('hidden');
+
+
+function createDeleteIcon() {
+  const deleteCell = document.createElement('td');
+  const deleteButton = document.createElement('button');
+
+  const trashIcon = document.createElement('img');
+  trashIcon.src = 'assets/brand/icons/svg/trash.svg'; 
+
+  deleteButton.appendChild(trashIcon);
+  deleteButton.classList.add('delete-button');
+  deleteButton.addEventListener('click', function() {
+    const row = this.closest('tr');
+    row.remove(); 
+  });
+
+  deleteCell.appendChild(deleteButton);
+  return deleteCell;
+}
+
+function createQuantityCell() {
+  const quantityCell = document.createElement('td');
+  quantityCell.classList.add('quantity-cell'); 
+
+  const quantityValue = document.createElement('span');
+  quantityValue.textContent = '1'; 
+  quantityValue.classList.add('quantity-value');
+
+
+  const decreaseButton = document.createElement('button');
+  decreaseButton.textContent = '-';
+  decreaseButton.classList.add('custom-decrease-button');
+  decreaseButton.addEventListener('click', () => {
+      let currentValue = parseInt(quantityValue.textContent);
+      if (currentValue > 1) {
+          quantityValue.textContent = (currentValue - 1).toString();
+      }
+  });
+  quantityCell.appendChild(decreaseButton);
+  quantityCell.appendChild(quantityValue);
+
+  const increaseButton = document.createElement('button');
+  increaseButton.textContent = '+';
+  increaseButton.classList.add('custom-increase-button');
+  increaseButton.addEventListener('click', () => {
+      let currentValue = parseInt(quantityValue.textContent);
+      quantityValue.textContent = (currentValue + 1).toString();
+  });
+  quantityCell.appendChild(increaseButton);
+
+  return quantityCell;
+}
+
+
+// Hàm điền dữ liệu vào bảng
+function fillTableWithData(data) {
+  data.forEach(item => {
+      const row = document.createElement('tr');
+
+      // Tạo và điền các ô dữ liệu vào hàng
+      const productNameCell = document.createElement('td');
+      productNameCell.textContent = item.name;
+      row.appendChild(productNameCell);
+
+      const priceCell = document.createElement('td');
+      priceCell.textContent = item.price_sell.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+      row.appendChild(priceCell);
+
+      const quantityCell = createQuantityCell(); // Sử dụng hàm tạo cột số lượng
+      row.appendChild(quantityCell);
+
+      const totalCell = document.createElement('td');
+      const total = (parseInt(quantityCell.firstChild.textContent) * item.price_sell) - item.price_sell; 
+      totalCell.textContent = total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+      row.appendChild(totalCell);
+
+      const deleteCell = createDeleteIcon(); // Thêm cột biểu tượng thùng rác
+      row.appendChild(deleteCell);
+
+      tableBody.appendChild(row);
+  });
+  applyColumnWidths();
+}
+
+const tableBody = document.getElementById('table-body');
+function applyColumnWidths() {
+  const headerColumns = document.querySelectorAll('.head-table th');
+
+  // Lấy số lượng cột trong tiêu đề
+  const numOfColumns = headerColumns.length;
+
+  const dataRows = document.querySelectorAll('.product-table tbody tr');
+  dataRows.forEach(row => {
+    const dataColumns = row.querySelectorAll('td');
+
+    dataColumns.forEach((column, index) => {
+      const width = window.getComputedStyle(headerColumns[index]).width;
+      column.style.minWidth = width; // Sử dụng minWidth để ô dữ liệu có độ rộng tối thiểu tương đương với cột tiêu đề
+    });
+
+    // Đặt độ rộng cho ô cuối cùng (nút xóa), nếu cần thiết
+    const deleteCell = row.querySelector('.delete-button');
+    if (deleteCell) {
+      deleteCell.style.minWidth = window.getComputedStyle(headerColumns[numOfColumns - 1]).width;
+    }
+  });
+}
+
+// Gọi hàm applyColumnWidths sau khi dữ liệu đã được thêm vào bảng
+fetch('data/products.json')
+  .then(response => response.json())
+  .then(data => {
+      fillTableWithData(data);
+      applyColumnWidths(); // Áp dụng kích thước cột sau khi thêm dữ liệu vào bảng
+  })
+  .catch(error => {
+      console.error('Error fetching data:', error);
+  });
+
+//cart//
+//checkout//
+
+// })
+document.addEventListener('DOMContentLoaded', function() {
+  let data;
+  function showCustomerAddresses() {
+    var listAddresses = document.getElementById('listAddresses');
+    listAddresses.innerHTML = '';
+
+    fetch('data/receivers.json')
+      .then(response => response.json())
+      .then(data => {
+        var isFirstDefaultAdded = false;
+
+        data.slice(0, 4).forEach(function(customer, index) {
+          var customerDiv = document.createElement('div');
+          customerDiv.classList.add('customer-address');
+
+          var namePara = document.createElement('p');
+          namePara.classList.add('customer-info', 'customer-name');
+          namePara.textContent = `${customer.name}`;
+
+          var addressPara = document.createElement('p');
+          addressPara.classList.add('customer-info', 'customer-address-text');
+          addressPara.textContent = `${customer.address}`;
+
+          var phonePara = document.createElement('p');
+          phonePara.classList.add('customer-info', 'customer-phone');
+          phonePara.textContent = `${customer.phone}`;
+
+          var buttonContainer = document.createElement('div');
+          buttonContainer.classList.add('button-on-address');
+
+          var confirmButton = document.createElement('button');
+          confirmButton.classList.add('confirmButton')
+          confirmButton.textContent = 'Giao đến địa chỉ này';
+
+          var defaultLabel = document.createElement('span');
+          defaultLabel.classList.add('default-label');
+          defaultLabel.textContent = 'Mặc định';
+          if (customer.default && !isFirstDefaultAdded) {
+            defaultLabel.style.color = 'lightblue';
+            namePara.appendChild(defaultLabel);
+            isFirstDefaultAdded = true;
+          }
+
+          var deleteButton = document.createElement('button');
+          deleteButton.classList.add('deleteButton');
+          deleteButton.textContent = 'Xóa';
+          deleteButton.addEventListener('click', function() {
+            var addressToDelete = this.closest('.customer-address');
+            addressToDelete.remove();
+          }); 
+
+          buttonContainer.appendChild(deleteButton);
+          buttonContainer.appendChild(confirmButton);
+          customerDiv.appendChild(namePara);
+          customerDiv.appendChild(addressPara);
+          customerDiv.appendChild(phonePara);
+          customerDiv.appendChild(buttonContainer);
+
+          listAddresses.appendChild(customerDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+
+  showCustomerAddresses();
+
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const checkoutAddress = document.getElementById('checkoutAddress');
+  const checkoutPayment = document.getElementById('checkoutPayment');
+  const checkoutSuccess = document.getElementById('checkoutSuccess');
+  const mainbody = document.querySelector("#index-page");
+  const bodyCheckout = document.querySelector("#checkoutPayment");
+  const buttonBackMain = document.querySelector("#backHomePageButton");
+  const continueShoppingButton = document.querySelector("#paymentSuccessButton");
+  const backToAddressButton = document.getElementById('backButton');
+
+  document.getElementById('listAddresses').addEventListener('click', function (event) {
+    if (event.target.classList.contains('confirmButton')) {
+      checkoutAddress.classList.add('hidden');
+      checkoutPayment.classList.remove('hidden');
+      document.querySelector('.step-two .step-circle').classList.add('step-circle-active');
+    }
+  });
+
+  const paymentButton = document.getElementById('paymentButton');
+  paymentButton.addEventListener('click', function() {
+    checkoutPayment.classList.add('hidden');
+    checkoutSuccess.classList.remove('hidden');
+  });
+
+  buttonBackMain.addEventListener('click', () =>{
+    mainbody.classList.remove('hidden');
+    bodyCheckout.classList.add('hidden');
+    checkoutSuccess.classList.add('hidden'); 
+  });
+
+  continueShoppingButton.addEventListener('click', () => {
+    mainbody.classList.remove('hidden');
+    checkoutSuccess.classList.add('hidden'); 
+  });
+  backToAddressButton.addEventListener('click', function () {
+    checkoutPayment.classList.add('hidden');
+    checkoutAddress.classList.remove('hidden');
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const optionTransports = document.querySelectorAll('.option-transport');
+
+  optionTransports.forEach(option => {
+      option.addEventListener('click', function(event) {
+          const radioBtn = option.querySelector('input[type="radio"]');
+          if (!radioBtn.checked) {
+              radioBtn.checked = true;
+          }
+      });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const optionTransports = document.querySelectorAll('.option-payment');
+
+  optionTransports.forEach(option => {
+      option.addEventListener('click', function(event) {
+          const radioBtn = option.querySelector('input[type="radio"]');
+          if (!radioBtn.checked) {
+              radioBtn.checked = true;
+          }
+      });
+  });
+});
+
+
+
+
+
+//checkout//
+
+
+
+
+/*checkoutpayment*/
+document.addEventListener('DOMContentLoaded', function() {
+  const customRadios = document.querySelectorAll('.custom-radio');
+
+  customRadios.forEach(customRadio => {
+    customRadio.addEventListener('change', function() {
+      const radioLabel = this.nextElementSibling.querySelector('label');
+      if (this.checked) {
+        radioLabel.style.backgroundColor = '#4CAF50'; 
+      } else {
+        radioLabel.style.backgroundColor = ''; 
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const listAddresses = document.getElementById('listAddresses');
+  const contentAddress = document.getElementById('contentAddress');
+  const editAddressButton = document.querySelector('.edit-address .edit-button');
+
+  // Lấy danh sách các địa chỉ
+  const addresses = listAddresses.querySelectorAll('.customer-address');
+
+  // Kiểm tra xem danh sách có địa chỉ hay không và lấy địa chỉ đầu tiên
+  if (addresses.length > 0) {
+      const firstAddressData = addresses[0].innerHTML;
+
+      // Gán dữ liệu vào contentAddress
+      contentAddress.innerHTML = firstAddressData;
+
+      // Thêm sự kiện khi click vào nút "Chỉnh sửa"
+      editAddressButton.addEventListener('click', function() {
+          // Hiển thị địa chỉ đầu tiên khi click vào nút "Chỉnh sửa"
+          contentAddress.innerHTML = firstAddressData;
+      });
+  }
+});
+
+
+
+/*checkoutpayment*/
+document.addEventListener('DOMContentLoaded', function () {
+  const cartToCheckout = document.getElementById('cart-page');
+  const checkoutAddress = document.getElementById('checkoutAddress');
+  const checkoutPayment = document.getElementById('checkoutPayment');
+  const checkoutSuccess = document.getElementById('checkoutSuccess');
+  const mainbody = document.querySelector("#index-page");
+  const bodyCheckout = document.querySelector("#checkoutPayment");
+  const continueShoppingToCheckout = document.getElementById('paymentButton');
+  const continueShoppingButton = document.querySelector("#paymentSuccessButton");
+  const backToAddressButton = document.getElementById('backButton');
+  const buttonBackMain = document.querySelector("#backHomePageButton");
+
+  continueShoppingToCheckout.addEventListener('click', () => {
+    cartToCheckout.classList.add('hidden');
+    checkoutAddress.classList.remove('hidden');
+  });
+
+  document.getElementById('listAddresses').addEventListener('click', function (event) {
+    if (event.target.classList.contains('confirmButton')) {
+      checkoutAddress.classList.add('hidden');
+      checkoutPayment.classList.remove('hidden');
+      document.querySelector('.step-two .step-circle').classList.add('step-circle-active');
+    }
+  });
+
+  const paymentButton = document.getElementById('paymentButton');
+  paymentButton.addEventListener('click', function() {
+    checkoutPayment.classList.add('hidden');
+    checkoutSuccess.classList.remove('hidden');
+  });
+
+  buttonBackMain.addEventListener('click', () => {
+    mainbody.classList.remove('hidden');
+    bodyCheckout.classList.add('hidden');
+    checkoutSuccess.classList.add('hidden');
+    checkoutPayment.classList.add('hidden');
+    checkoutAddress.classList.add('hidden');
+    cartToCheckout.classList.remove('hidden');
+  });
+
+  continueShoppingButton.addEventListener('click', () => {
+    mainbody.classList.remove('hidden');
+    checkoutSuccess.classList.add('hidden');
+    checkoutPayment.classList.add('hidden');
+    checkoutAddress.classList.add('hidden');
+    cartToCheckout.classList.remove('hidden');
+  });
+
+  backToAddressButton.addEventListener('click', () => {
+    checkoutPayment.classList.add('hidden');
+    checkoutAddress.classList.remove('hidden');
+  });
+});

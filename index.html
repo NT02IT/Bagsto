@@ -518,6 +518,350 @@
     <!--End-AccountOrder-->
 
     </div>
+     <!--CART-->
+     <div id="cart-page" class="section__container" >
+        <div class="row__cart">
+            <div class="col-sm-12">
+                <div class="breadcrumb-cart">
+                    <strong class="text-black">Giỏ Hàng</strong><br>
+                    <a href="#">
+                        <i class="homepage">Trang Chủ</i>         
+                    </a>
+                    <span class="mx-2"> • </span>
+                    <a href="#"><i>Giỏ Hàng</i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-body">
+            <div class="body-table">
+                <table class="product-table">
+                    <thead>
+                        <tr class="head-table">
+                            <th class="text-left product-name">Sản phẩm</th>
+                            <th class="product-price">Đơn giá</th>
+                            <th class="product-quantity">Số lượng</th>
+                            <th class="product-subtotal">Thành tiền</th>
+                            <th class="product-delete-items"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Các dữ liệu sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+                <button id="backButton" class="type-back">&lt; Trở lại</button>
+
+
+            </div>
+            <div class="cart-totals">
+                <div class="table-sum-price">
+                    <div class="infor-cart">Thông tin đơn hàng</div>
+                    <div class="check-sum-shipping">
+                        <div class="content-cart">
+                            <div class="cart-subtotal">
+                                <div>Tạm tính</div>
+                                <div id="cartSubtotalPrice" class="cart-subtotal-price"></div>
+                            </div>
+                            <div class="cart-shipping">
+                                <div>Shipping</div>
+                                <div id="cartShippingPrice" class="cart-shipping-price"></div>
+                            </div>
+                            <hr class="rounded">
+                            <div class="cart-order-sum">
+                                <div>Tổng cộng</div>
+                                <div id="cartSumPrice" class="cart-sum-price"></div>
+                            </div>
+                            <div class="infor-VAT">(Đã bao gồm thuế VAT)</div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="proceed-to-checkout">
+                    <label for="paymentButton" class="custom-button">Thanh Toán</label>
+                    <button id="paymentButton" style="display: none;">Thanh Toán</button>
+                </div>
+            </div>
+        </div>
+     </div>
+
+    <!--CART-->
+     <!--CHECKOUT-->
+        <!-- CHECKOUTADDRESS-->
+        <div id="checkoutAddress" class="section__container checkout" >
+            <div class="row__cart">
+                <div class="row-sm">
+                    <div class="breadcrumb-cart">
+                        <strong class="text-black">Giỏ Hàng</strong><br>
+                        <a href="#">
+                            <i class="homepage">Trang Chủ</i>         
+                        </a>
+                        <span class="mx-2"> • </span>
+                        <a href="#"><i>Giỏ Hàng</i></a>
+                        <span class="mx-2"> • </span>
+                        <a href="#"><i class="checkout-link-active">Thanh toán</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                  <div class="step-content">
+                    <div class="step-circle step-one"></div>
+                    <span class="step-text">Thông tin giao hàng</span>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-content">
+                    <div class="step-circle step-two"></div>
+                    <span class="step-text">Thông tin thanh toán</span>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-content">
+                    <div class="step-circle step-three"></div>
+                    <span class="step-text">Thanh toán</span>
+                  </div>
+                </div>
+            </div>
+            <div class="row-body">
+                <div id="listAddresses" class="list-address">
+                     <!-- Danh sách địa chỉ được hiển thị sẽ được thêm vào đây -->
+                </div>
+                <div class="button-container">
+                    <button id="backButton" class="type-back">&lt; Trở lại</button>
+                    <button id="addAddressButton" class="type-add-address">+ Thêm địa chỉ mới</button>
+                  </div>
+                <div class="cart-totals">
+                    <div class="table-sum-price">
+                        <div class="infor-cart">Thông tin đơn hàng</div>
+                        <div class="check-sum-shipping">
+                            <div class="content-cart">
+                                <div class="cart-subtotal">
+                                    <div>Tạm tính</div>
+                                    <div id="cartSubtotalPrice" class="cart-subtotal-price"></div>
+                                </div>
+                                <div class="cart-shipping">
+                                    <div>Shipping</div>
+                                    <div id="cartShippingPrice" class="cart-shipping-price"></div>
+                                </div>
+                                <hr class="rounded">
+                                <div class="cart-order-sum">
+                                    <div>Tổng cộng</div>
+                                    <div id="cartSumPrice" class="cart-sum-price"></div>
+                                </div>
+                                <div class="infor-VAT">(Đã bao gồm thuế VAT)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+
+
+        </div> 
+
+
+        <!-- CHECKOUTADDRESS-->
+
+        <!--CHECKOUTPAYMENT-->
+        <div id="checkoutPayment" class="section__container checkout hidden" >
+            <div class="row__cart">
+                <div class="row-sm">
+                    <div class="breadcrumb-cart">
+                        <strong class="text-black">Giỏ Hàng</strong><br>
+                        <a href="#">
+                            <i class="homepage">Trang Chủ</i>         
+                        </a>
+                        <span class="mx-2"> • </span>
+                        <a href="#"><i>Giỏ Hàng</i></a>
+                        <span class="mx-2"> • </span>
+                        <a href="#"><i class="checkout-link-active">Thanh toán</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                  <div class="step-content">
+                    <div class="step-circle step-one active"></div>
+                    <span class="step-text">Thông tin giao hàng</span>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-content">
+                    <div class="step-circle step-two activeA"></div>
+                    <span class="step-text">Thông tin thanh toán</span>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-content">
+                    <div class="step-circle step-three"></div>
+                    <span class="step-text">Thanh toán</span>
+                  </div>
+                </div>
+            </div>
+            <div class="row-body">
+                <div class="main-payment">
+                     <div class="transport">
+                        <a>Vận chuyển</a>
+                        <div class="body-transport">
+                            <div class="option-transport">
+                                <div class="radio-button">
+                                    <input type="radio" id="tranOption1" name="option" class="custom-radio">
+                                    <label for="option1">
+                                        <span class="check-circle">
+                                            <span class="check-icon"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="text-transport">
+                                    <p class="name-transport">Vận chuyển tiêu chuẩn (Free)</p>
+                                    <p class="inttend-time">Dự kiến giao hàng trong 3-5 ngày</p>
+                                </div>
+                            </div>
+                            <div class="option-transport">
+                                <div class="radio-button">
+                                    <input type="radio" id="tranOption2" name="option" class="custom-radio">
+                                    <label for="option2">
+                                        <span class="check-circle">
+                                            <span class="check-icon"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="text-transport">
+                                    <p class="name-transport">Chuyển phát nhanh ($2.0)</p>
+                                    <p class="inttend-time">Dự kiến giao hàng trong 1-2 ngày</p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="payment-method">
+                        <a>Phương thức thanh toán</a>
+                        <div class="body-payment">
+                            <div class="option-payment">
+                                <div class="radio-button">
+                                    <input type="radio" id="paymentOption1" name="paymentOption" class="custom-radio">
+                                    <label for="paymentOption1">
+                                        <span class="check-circle">
+                                            <span class="check-icon"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="text-transport">
+                                    <p class="name-transport">Thanh toán với Paypal</p>
+                                    <p class="inttend-time">Bạn sẽ được chuyển hướng trực tiếp đến cổng thanh toán Paypal</p>
+                                </div>
+                            </div>
+                            <div class="option-payment">
+                                <div class="radio-button">
+                                    <input type="radio" id="paymentOption2" name="paymentOption" class="custom-radio">
+                                    <label for="paymentOption2">
+                                        <span class="check-circle">
+                                            <span class="check-icon"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="text-transport">
+                                    <p class="name-transport">Thanh toán khi nhận hàng</p>
+                                    <p class="inttend-time">Thanh toán bằng tiền mặt khi bạn nhận được hàng</p>
+                                </div>
+                            </div>
+                        </div>
+
+                     </div>
+                </div>
+                <div class="button-container">
+                    <button id="backButton" class="type-back">&lt; Trở lại</button>
+                  </div>
+                <div class="infor-and-address">
+                    <div class="addresss-payment">
+                        <div class="edit-address">
+                            <p>Địa chỉ</p>
+                            <button class="edit-button" class="">Chỉnh sửa</button>
+                        </div>
+                        <div id="contentAddress" class="content-address">
+
+                        </div>
+                    </div>
+                    <div class="table-sum-price">
+                        <div class="infor-cart">Thông tin đơn hàng</div>
+                        <div class="check-sum-shipping">
+                            <div class="content-cart">
+                                <div class="cart-subtotal">
+                                    <div>Tạm tính</div>
+                                    <div id="cartSubtotalPrice" class="cart-subtotal-price"></div>
+                                </div>
+                                <div class="cart-shipping">
+                                    <div>Shipping</div>
+                                    <div id="cartShippingPrice" class="cart-shipping-price"></div>
+                                </div>
+                                <hr class="rounded">
+                                <div class="cart-order-sum">
+                                    <div>Tổng cộng</div>
+                                    <div id="cartSumPrice" class="cart-sum-price"></div>
+                                </div>
+                                <div class="infor-VAT">(Đã bao gồm thuế VAT)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proceed-to-checkout">
+                        <label for="paymentButton" class="custom-button">Hoàn tất đặt hàng</label>
+                        <button id="paymentButton" style="display: none;">Hoàn tất đặt hàng</button>
+                    </div>
+                </div>
+            </div> 
+
+
+
+        </div> 
+
+
+
+
+        <!--CHECKOUTPAYMENT-->
+
+         <!--CHECKOUTSUCCESS-->
+        <div id="checkoutSuccess" class="checkout-success section__container hidden">
+            <h4 class="text-thanks">Bagsto cảm ơn bạn</h4>
+            <div class="order-complete">
+                <div class="image-container">
+                    <img src="assets\img\order_completefullcompleteorder.png" class="pic-complete-order">
+                </div>
+                <div class="image-container">
+                <div class="steps">
+                    <div class="step">
+                      <div class="step-content">
+                        <div class="step-circle step-one active"></div>
+                        <span class="step-text">Thông tin giao hàng</span>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-content">
+                        <div class="step-circle step-two activeA activeB"></div>
+                        <span class="step-text">Thông tin thanh toán</span>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-content">
+                        <div class="step-circle step-three active"></div>
+                        <span class="step-text">Thanh toán</span>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="text-thanks-order">Cảm ơn bạn đã đặt hàng :
+                    <br><a class="code-order-complete">01dc1370-3df6-11eb-b378-0242ac130002</a><br>
+                    Bagsto sẽ gửi cho bạn thông báo trong vòng 5 ngày tới để gửi trạng thái đơn hàng cho bạn. Nếu có bất kỳ câu hỏi hoặc thắc mắc nào vui lòng liên hệ với chúng tôi qua cskh@bagsto.vn
+                    Chúc bạn một ngày tốt lành
+                </div>
+                <div id="paymentSuccessButton">
+                    <button id="backHomePageButton" class="back-button ">
+                        <span class="icon start-icon"><i class="icon-chevron_left"></i></span>
+                        <span class="text">Tiếp tục mua sắm</span>
+                        <span class="icon end-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--CHECKOUTSUCCESS-->
+        <!--CHECKOUT-->
     <!-- END MAIN BODY -->
 
     <div id="footer" class="section">
