@@ -20,7 +20,6 @@ function writeToStorage(key, valueUrl) {
             .catch(error => console.error('Error reading JSON file:', error));
     }
 }
-
 function getFromStorage(key) {
   const storedData = localStorage.getItem(key);
   if (storedData) {
@@ -35,6 +34,8 @@ writeToStorage('products', '../../data/products.json');
 let productList = getFromStorage('products');
 writeToStorage('users', '../../data/users.json');
 let usersList = getFromStorage('users');
+
+checkSave();
 
 //----------------------------------------------------------------
 // DATA INIT

@@ -102,6 +102,15 @@ headerTab2.addEventListener('click', () =>{
         siteInvoiceDetail.classList.remove('hidden');
     }
 })
+headerTab3.addEventListener('click', () =>{
+    const siteInvoiceDetail = document.getElementById('AdUser-page');
+    if(!headerTab3.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab3.classList.add('active');
+        siteInvoiceDetail.classList.remove('hidden');
+    }
+})
 
 function resetNavbar(){
     const headerTabs = document.querySelectorAll('#header-admin .tab');
