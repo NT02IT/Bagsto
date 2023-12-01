@@ -801,13 +801,13 @@ input[id^="color"]:checked + label::before{
 /* Breadcrumb */
 
 /* Table */
-/* table{
+table{
     width: 100%;
     min-width: 70.5rem;
     text-align: left;
     border-spacing: 0;
     padding-bottom: 3.5rem;
-} */
+}
 table .table__header{
     color: var(--color-text-sec);
     background-color: var(--color-bg-neutral);
