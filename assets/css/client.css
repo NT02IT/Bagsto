@@ -333,8 +333,65 @@ li[class^="pagination"].disable:hover{
     width: 100%;
     height: fit-content;
 }
-
 /* PRODUCTS */
+
+/* CART */
+#cart-page .cart-table__cont table{
+    width: 100%;
+    text-align: left;
+}
+#cart-page .cart-table__cont {
+    position: relative;
+    overflow: auto;   
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+}
+
+.order-resume--details{
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+}
+.order-resume--title{
+    margin-bottom: 1.5rem;
+}
+.order-resume--body .info-item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.order-resume--body .label{
+    color: var(--color-text-sec);
+}
+.order-resume--body .divider{
+    background-color: var(--color-grey-trans24);
+    height: 1px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.order-resume--body .cart-order-sum{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+.order-resume--body .infor-VAT{
+    width: 100%;
+    text-align: right;
+    color: var(--text-pri);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 18px;
+}
+#cartSumPrice{
+    color: var(--color-error-main);
+}
+.order-resume #cart-checkout-btn{
+    width: 100%;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+/* CART */
 
 /* 
 On desktop 
@@ -381,7 +438,7 @@ On desktop
         margin-right: 12px;
         width: calc(100% - 24px);
     }
-    /* PRODUCTS */        
+    /* PRODUCTS */      
 }
 /* Under desktop */
 

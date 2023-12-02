@@ -54,6 +54,10 @@
 .invoice-table__cont {
     position: relative;
 }
+.invoice-table__cont table{
+    width: 100%;
+    text-align: left;
+}
 .invoice-table .invoice-table__cont {
     overflow: auto;   
     border-radius: 1rem;

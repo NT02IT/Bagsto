@@ -220,56 +220,6 @@ for (let i = 0; i < filterProductBtns.length; i++) {
   });
 }
 
-// filterProductBtn.addEventListener('click', function(){
-//     filterPopover.classList.remove('collapsed');
-
-//     const prdFilterGenderList = filterPopover.querySelectorAll('.filter__gender input[type="checkbox"]')
-//     const prdFilterBrandList = filterPopover.querySelectorAll('.filter__brand input[type="checkbox"]')
-//     const prdFilterColorList = filterPopover.querySelectorAll('.filter__color input[type="checkbox"]')
-//     const prdFilterPriceList = filterPopover.querySelectorAll('.filter__price input[type="text"]')
-//     const deleteFilterOptionBtn = filterPopover.querySelector('.filter__action .delete')
-//     deleteFilterOptionBtn.addEventListener('click', () => {
-//         resetFilterOption(prdFilterGenderList);
-//         resetFilterOption(prdFilterBrandList);
-//         resetFilterOption(prdFilterColorList);
-//         for(let i = 0; i < prdFilterPriceList.length; i++){
-//             prdFilterPriceList[i].value = ""
-//         }
-//     });
-// });
-// filterCloseBtn.addEventListener('click', function(){
-//     filterPopover.classList.add('collapsed');
-// });
-
-// const filterProductBtns = document.querySelectorAll('.action__filter');
-// const filterPopovers = document.querySelectorAll("[id^='product-filter']");
-// for (let i = 0; i < filterProductBtns.length; i++) {
-//   console.log(i);
-
-//   const filterCloseBtns = document.querySelectorAll('#btn-filter-close');
-//   filterCloseBtns[i].addEventListener('click', function(){
-//     filterPopovers[i].classList.add('collapsed');
-//   });
-
-//   filterProductBtns[i].addEventListener("click", function () {
-//     filterPopovers[i].classList.remove("collapsed");
-
-//     const prdFilterGenderList = filterPopovers[i].querySelectorAll('.filter__gender input[type="checkbox"]');
-//     const prdFilterBrandList = filterPopovers[i].querySelectorAll('.filter__brand input[type="checkbox"]');
-//     const prdFilterColorList = filterPopovers[i].querySelectorAll('.filter__color input[type="checkbox"]');
-//     const prdFilterPriceList = filterPopovers[i].querySelectorAll('.filter__price input[type="text"]');
-//     const deleteFilterOptionBtn = filterPopovers[i].querySelector(".filter__action .delete");
-//     deleteFilterOptionBtn.addEventListener("click", () => {
-//       resetFilterOption(prdFilterGenderList);
-//       resetFilterOption(prdFilterBrandList);
-//       resetFilterOption(prdFilterColorList);
-//       for (let i = 0; i < prdFilterPriceList.length; i++) {
-//         prdFilterPriceList[i].value = "";
-//       }
-//     });
-//   });
-// }
-
 function resetFilterOption(listOption) {
   for (let i = 0; i < listOption.length; i++) {
     listOption[i].checked = false;
@@ -628,7 +578,10 @@ function previewImageAvatar() {
 
 
 
-// hàm đăng xuất
-
-
-//dang ki
+// CART SITE
+const cartBtn = document.getElementById('header-cart');
+cartBtn.onclick = function () {
+  clearMainBody();
+  document.getElementById("cart-page").classList.remove("hidden");
+};
+// CART SITE

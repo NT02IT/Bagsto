@@ -801,13 +801,13 @@ input[id^="color"]:checked + label::before{
 /* Breadcrumb */
 
 /* Table */
-/* table{
+table{
     width: 100%;
-    min-width: 70.5rem;
+    /* min-width: 70.5rem; */
     text-align: left;
     border-spacing: 0;
     padding-bottom: 3.5rem;
-} */
+}
 table .table__header{
     color: var(--color-text-sec);
     background-color: var(--color-bg-neutral);
@@ -816,13 +816,13 @@ table .table__header th,
 table td{
     padding: 1rem;
 }
-/* table .table__header .header__checkbox,
+table .table__header .header__checkbox,
 table tr .data__checkbox{
     width: 4.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-} */
+}
 table .table__header .header__more-action{
     width: 1rem;
 }
@@ -843,6 +843,52 @@ table .client__avatar img{
 }
 table .client__avatar .client__id{
     color: var(--color-text-sec);
+}
+table .product__info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+table .product__info img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 12px;
+}
+.quantity-btn-group{
+    display: flex;
+}
+.quantity-btn-group button{
+    border-radius: 0;
+    background-color: var(--color-common-white);
+    color: var(--color-text-sec);
+    border-top: 1px solid var(--color-grey-trans32);
+    border-bottom: 1px solid var(--color-grey-trans32);
+}
+.quantity-btn-group button:hover{
+    background-color: var(--color-common-white-trans32);
+    box-shadow: var(--shadow-z8);
+}
+.quantity-btn-group button:first-child{
+    width: 2.5rem;
+    justify-content: center;
+    border-top-left-radius: 0.5rem !important;
+    border-bottom-left-radius: 0.5rem !important;
+    border-left: 1px solid var(--color-grey-trans32);
+}
+.quantity-btn-group button:last-child{
+    width: 2.5rem;
+    justify-content: center;
+    border-top-right-radius: 0.5rem !important;
+    border-bottom-right-radius: 0.5rem !important;
+    border-right: 1px solid var(--color-grey-trans32);
+}
+.delete-btn{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
 }
 .table__footer{
     position: absolute;
