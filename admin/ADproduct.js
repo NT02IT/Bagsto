@@ -25,8 +25,8 @@ headerTab2.addEventListener('click', () =>{
 })
 
 
-
-//////////
+//
+// //////
 // function loadJSonProduct(){
 //     const jsonFilePath = '../data/products.json';
 // // Sử dụng Fetch API để đọc file JSON
@@ -106,7 +106,7 @@ function updateProduct(Product){
 }
 function deleteProduct(ID){
     for (var i=0;i<ListProduct.length;i++){
-        if (ListProduct[i].id === parseInt(ID)){
+        if (ListProduct[i].id==ID){
             ListProduct.splice(i,1);
             break;
         }
@@ -160,42 +160,53 @@ function clearMainBody(){
 //load 6 san pham vao bang
 var n = 1;
 var table_product = document.getElementById("table_product");
-function load6Product(check) {
 
+function load6Product(check) {
     // Lấy reference đến table
     if (check === 'back') {
-        if (n <= 13) {
-            n = 1;
+        if ((n - 1) % 6 === 0) {
+            n -= 12;
         } else {
-            // Nếu n không phải là bội số của 6, đặt n về trang bắt đầu của trang hiện tại
-            n = n - (n % 6 === 0 ? 11 : (n % 6) + 5);
+            n = n - 6 - ((n - 1) % 6);
         }
     }
-    var m = n+5;
-    if (m>ListProduct.length){
-        m = ListProduct.length;
+
+    let m = Math.min(n + 5, ListProduct.length);
+
+    // Lấy đối tượng span có class là 'body2'
+    var spanElement = document.getElementById('indexProductTable');
+    // Kiểm tra xem đối tượng có tồn tại không
+    if (spanElement) {
+        // Thay đổi nội dung của đối tượng span
+        spanElement.textContent = `${n} - ${m} of ${ListProduct.length}`; // Thay "New Text" bằng nội dung mới bạn muốn đặt
     }
-    var j=0;
-    for (let i = n-1; i<m; i++) {
+
+    //  table_product.innerHTML = ''; // Clear the table content
+
+    for (let i = n - 1; i < m; i++) {
+        let product = ListProduct[i];
+
         // Tạo một hàng mới
-        var newRow = document.createElement("tr");
+        let newRow = document.createElement("tr");
         newRow.className = "productTable__row product__row canhover";
-        newRow.id = `product__row--${j}`;
+        newRow.id = `product__row--${i}`;
+
         // Tạo các ô (cột) cho hàng mới
-        var cell1 = document.createElement("td");
+        let cell1 = document.createElement("td");
         cell1.className = "productTable__cell col1";
 
-        var checkbox = document.createElement("input");
+        let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.id = "checkBox--" + j;
+        checkbox.id = "checkBox--" + i;
 
-        var img = document.createElement("img");
+        let img = document.createElement("img");
         img.className = "Product__img";
-        img.src = ListProduct[i].thumbnail_stack[0];
+        img.src = product.thumbnail_stack[0];
         img.alt = "";
-        var productName = document.createElement("p");
+
+        let productName = document.createElement("p");
         productName.className = "product__name";
-        productName.textContent = ListProduct[i].name;
+        productName.textContent = product.name;
 
         // Gắn các phần tử con vào cell1
         cell1.appendChild(checkbox);
@@ -203,27 +214,9 @@ function load6Product(check) {
         cell1.appendChild(productName);
 
         // Tạo và gắn các ô khác vào hàng mới
-        var cell2 = document.createElement("td");
-        cell2.className = "productTable__cell col2";
-        cell2.innerHTML = "<p>" + ListProduct[i].day_import + "</p>";
-
-        var cell3 = document.createElement("td");
-        cell3.className = "productTable__cell col3";
-        cell3.innerHTML = "<p>$ " + ListProduct[i].price_sell + "</p>";
-
-        var cell4 = document.createElement("td");
-        cell4.className = "productTable__cell col4";
-        var statusProduct="In stock";
-        if (ListProduct[i].quantity===0){
-            statusProduct="Out of stock"
-            cell4.innerHTML = "<p class='OutOfStock'>" + statusProduct + "</p>";
-        }else if(ListProduct[i].quantity<20) {
-            statusProduct = "Low stock"
-            cell4.innerHTML = "<p class='LowStock'>" + statusProduct + "</p>";
-        }else{
-            cell4.innerHTML = "<p class='InStock'>" + statusProduct + "</p>";
-        }
-
+        let cell2 = createTableCell("productTable__cell col2", `<p>${product.day_import}</p>`);
+        let cell3 = createTableCell("productTable__cell col3", `<p>${product.price_sell} VND</p>`);
+        let cell4 = createTableCell("productTable__cell col4", getStatusHTML(product.quantity));
 
         // Gắn các ô vào hàng mới
         newRow.appendChild(cell1);
@@ -233,66 +226,43 @@ function load6Product(check) {
 
         // Gắn hàng mới vào table
         table_product.appendChild(newRow);
+
+        //click xem chi tiet san pham
+        let myTableRowProduct = document.getElementById(`product__row--${i}`);
+        if (myTableRowProduct != null) {
+            myTableRowProduct.addEventListener('click', function () {
+                var detailProduct = document.getElementById('DetailProduct-page');
+                resetNavbar();
+                clearMainBody();
+                detailProduct.classList.remove('hidden');
+                loadDetail(i);
+            });
+        }
         n++;
-        j++;
     }
-    //click xem chi tiet san pham
-    let myTableRowProduct1 = document.getElementById("product__row--0");
-    myTableRowProduct1.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-7);
-    });
-    var myTableRowProduct2 = document.getElementById("product__row--1");
-    myTableRowProduct2.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-6);
-    });
-    var myTableRowProduct3 = document.getElementById("product__row--2");
-    myTableRowProduct3.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-5);
-    });
-    var myTableRowProduct4 = document.getElementById("product__row--3");
-    myTableRowProduct4.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-4);
-    });
-    var myTableRowProduct5 = document.getElementById("product__row--4");
-    myTableRowProduct5.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-3);
-    });
-    var myTableRowProduct6 = document.getElementById("product__row--5");
-    myTableRowProduct6.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-2);
-    });
 }
 
+function createTableCell(className, innerHTML) {
+    let cell = document.createElement("td");
+    cell.className = className;
+    cell.innerHTML = innerHTML;
+    return cell;
+}
+
+function getStatusHTML(quantity) {
+    let statusProduct = "In stock";
+    if (quantity === 0 || quantity==="") {
+        statusProduct = "Out of stock";
+        return `<p class='OutOfStock'>${statusProduct}</p>`;
+    } else if (quantity < 20) {
+        statusProduct = "Low stock";
+        return `<p class='LowStock'>${statusProduct}</p>`;
+    } else {
+        return `<p class='InStock'>${statusProduct}</p>`;
+    }
+}
+
+// comboBox status
 var ProductStatusSelection = document.getElementById('Product-status-selection');
 ProductStatusSelection.addEventListener('change',()=>{
     var statusSelected = ProductStatusSelection.options[ProductStatusSelection.selectedIndex].value;
@@ -309,6 +279,28 @@ ProductStatusSelection.addEventListener('change',()=>{
     clearTable();
     load6Product('next');
 })
+
+//search bar
+var ProductSearchInput = document.getElementById('Product-search-input');
+ProductSearchInput.addEventListener('change',()=>{
+    var statusSelected = ProductStatusSelection.options[ProductStatusSelection.selectedIndex].value;
+    console.log(statusSelected);
+    if (statusSelected==='All'){
+        filterAllStatus();
+    }else if (statusSelected==='InStock'){
+        filterInStockStatus();
+    }else if (statusSelected==='LowStock'){
+        filterLowStockStatus();
+    }else if (statusSelected==='OutOfStock'){
+        filterOutOfStockStatus();
+    }
+    var input = ProductSearchInput.value;
+    ListProduct = ListProduct.filter(element=>element.name.includes(input));
+    n=1;
+    clearTable();
+    load6Product('next');
+})
+
 
 function handleImageClick(imgId){
     var confirmDelete = confirm("Bạn chắc chắn muốn xóa!");
@@ -481,6 +473,11 @@ function showCreateImage(input) {
 //Nút lưu sửa đổi
 var saveProductButtonRepair = document.getElementById('saveProduct--button--repair');
 saveProductButtonRepair.addEventListener('click', ()=>{
+    if (!checkDayImport(1) || !checkPriceImport(1) || !checkPriceSell(1) || !checkAmount(1) ){
+        alert("Sửa sản phẩm thất bại. Vui lòng kiểm tra lại thông tin.")
+        return;
+    }
+
     var DetailProductNametxtField = document.getElementById('DetailProduct-Name--txtField');
     var ProductName = DetailProductNametxtField.value;
     var DetailProductDayImporttxtField = document.getElementById('DetailProduct-DayImport--txtField');
@@ -489,13 +486,16 @@ saveProductButtonRepair.addEventListener('click', ()=>{
     var describe = DetailProductdescribetxtField.value;
     var containerDetailProductImg = document.querySelectorAll('.imageDetailProduct');
     var listDetailImgSrc = Array();
+    console.log(listDetailImgSrc);
     containerDetailProductImg.forEach(function (img){
-        listDetailImgSrc.push(img.src);
+        if (img.src!=null){
+            listDetailImgSrc.push(img.src);
+        }
     });
 
     //product-info--2
     var ProductIdDetail = document.getElementById('ProductId--detail').textContent;
-    ProductIdDetail = ProductIdDetail.slice(12);
+    ProductIdDetail = parseInt(ProductIdDetail.slice(12));
 
     var Gender;
     var Detailproductradio1 = document.getElementById('Detailproduct--radio1').checked;
@@ -549,9 +549,9 @@ saveProductButtonRepair.addEventListener('click', ()=>{
         listColorProduct.push('#ab7d00');
     }
 
-    var DetailProductPriceImportTextField = document.getElementById('DetailProduct__PriceImport-textField').value;
-    var DetailProductPriceExportTextField = document.getElementById('DetailProduct__PriceExport-textField').value;
-    var DetailProductAmountTextField = document.getElementById('DetailProduct__Amount-textField').value;
+    var DetailProductPriceImportTextField = parseInt(document.getElementById('DetailProduct__PriceImport-textField').value);
+    var DetailProductPriceExportTextField = parseInt(document.getElementById('DetailProduct__PriceExport-textField').value);
+    var DetailProductAmountTextField = parseInt(document.getElementById('DetailProduct__Amount-textField').value);
 
     product = new Product(ProductIdDetail, ProductName, DetailProductInfoCategory, DetailProductBrandTextField,
         DayImport, DetailProductAmountTextField, listColorProduct, DetailProductPriceImportTextField,
@@ -566,6 +566,12 @@ saveProductButtonRepair.addEventListener('click', ()=>{
 //Nút tạo sản phẩm
 var saveProductButtonCreate = document.getElementById('saveProduct--button--create');
 saveProductButtonCreate.addEventListener('click', ()=>{
+
+    if (!checkDayImport(0) || !checkPriceImport(0) || !checkPriceSell(0) || !checkAmount(0) ){
+        alert("Thêm sản phẩm thất bại. Vui lòng kiểm tra lại thông tin.")
+        return;
+    }
+
     var DetailProductNametxtField = document.getElementById('product-Name--txtField');
     var ProductName = DetailProductNametxtField.value;
     var DetailProductDayImporttxtField = document.getElementById('product-DayImport--txtField');
@@ -575,7 +581,9 @@ saveProductButtonCreate.addEventListener('click', ()=>{
     var containerDetailProductImg = document.querySelectorAll('.imageProduct');
     var listDetailImgSrc = Array();
     containerDetailProductImg.forEach(function (img){
-        listDetailImgSrc.push(img.src);
+        if (img.src!=null){
+            listDetailImgSrc.push(img.src);
+        }
     });
 
     //product-info--2
@@ -634,9 +642,12 @@ saveProductButtonCreate.addEventListener('click', ()=>{
         listColorProduct.push('#ab7d00');
     }
 
-    var DetailProductPriceImportTextField = document.getElementById('PriceImport-textField').value;
-    var DetailProductPriceExportTextField = document.getElementById('PriceExport-textField').value;
-    var DetailProductAmountTextField = document.getElementById('Amount-textField').value;
+    var DetailProductPriceImportTextField = parseInt(document.getElementById('PriceImport-textField').value);
+    var DetailProductPriceExportTextField = parseInt(document.getElementById('PriceExport-textField').value);
+    var DetailProductAmountTextField = parseInt(document.getElementById('Amount-textField').value);
+    if (DetailProductAmountTextField===null) DetailProductAmountTextField=0;
+
+
 
     product = new Product(ProductIdDetail, ProductName, DetailProductInfoCategory, DetailProductBrandTextField,
         DayImport, DetailProductAmountTextField, listColorProduct, DetailProductPriceImportTextField,
@@ -644,7 +655,6 @@ saveProductButtonCreate.addEventListener('click', ()=>{
     addProduct(product);
     updataProductJson();
     alert("Đã thêm sản phẩm.");
-    console.log(ListProduct);
 })
 
 
@@ -656,6 +666,7 @@ saveProductButtonDelete.addEventListener('click',() =>{
     let result = confirm("Bạn có chắc chắn muốn xóa!");
     if (result){
         deleteProduct(ProductIdDetail);
+        updataProductJson();
         headerTab2.click();
     }
 });
@@ -673,18 +684,16 @@ var btnNext = document.getElementById("loadNextProduct");
 var btnBack = document.getElementById("loadBackProduct");
 
 btnNext.addEventListener('click', ()=>{
-    if (n>=ListProduct.length){
-        return;
+    if (n<ListProduct.length){
+        clearTable();
+        load6Product("next");
     }
-    clearTable();
-    load6Product("next");
 })
 btnBack.addEventListener('click', ()=>{
-    if (n<6){
-        return;
+    if (n>7){
+        clearTable();
+        load6Product("back");
     }
-    clearTable();
-    load6Product("back");
 });
 
 window.onload = function (){
@@ -697,3 +706,75 @@ window.onload = function (){
 // });
 //Detail product
 
+
+//kiểm tra lỗi sai khi nhập:
+const NgayThangNam = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/;
+function checkDayImport(kt){
+    if (kt===0){
+        var productDayImportTxtField = document.getElementById('product-DayImport--txtField').value;
+        var errorElement = document.getElementById('error--ProductDayImport');
+    }else {
+        var productDayImportTxtField = document.getElementById('DetailProduct-DayImport--txtField').value;
+        var errorElement = document.getElementById('error--ProductDayImport--detail');
+    }
+    if (productDayImportTxtField.trim()===""){
+        errorElement.innerHTML = 'Vui lòng điền ngày nhập hàng.';
+        return false;
+    }
+    if (!NgayThangNam.test(productDayImportTxtField)){
+        errorElement.innerHTML = 'Vui lòng điền đúng định dạng: dd/MM/yyyy';
+        return false
+    }
+    errorElement.innerHTML='';
+    return true;
+}
+
+const realNumbers =/^\d+(\.\d+)?$/;
+function checkPriceImport(kt){
+    if (kt===0){
+        var PriceImportTextField = document.getElementById('PriceImport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceImport');
+    }else{
+        var PriceImportTextField = document.getElementById('DetailProduct__PriceImport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceImport--detail');
+    }
+    if (!realNumbers.test(PriceImportTextField)){
+        errorElement.innerHTML ='Giá nhập vui lòng điền số thực không âm.'
+        return false;
+    }
+    errorElement.innerHTML='';
+    return true;
+}
+function checkPriceSell(kt){
+    if (kt===0){
+        var PriceExportTextField = document.getElementById('PriceExport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceSell');
+    }else{
+        var PriceExportTextField = document.getElementById('DetailProduct__PriceExport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceSell--detail');
+    }
+    if (!realNumbers.test(PriceExportTextField)){
+        errorElement.innerHTML ='Giá bán vui lòng điền số thực không âm.'
+        return false;
+    }
+    errorElement.innerHTML='';
+    return true;
+}
+
+
+const naturalNumbers =/^\d+$/;
+function checkAmount(kt){
+    if (kt===0){
+        var detailProductAmountTextField = document.getElementById('Amount-textField').value;
+        var errorElement = document.getElementById('error--ProductAmount');
+    }else{
+        var detailProductAmountTextField = document.getElementById('DetailProduct__Amount-textField').value;
+        var errorElement = document.getElementById('error--ProductAmount--detail');
+    }
+    if (!naturalNumbers.test(detailProductAmountTextField)){
+        errorElement.innerHTML ='Số lượng vui lòng nhập số tự nhiên.'
+        return false;
+    }
+    errorElement.innerHTML='';
+    return true;
+}

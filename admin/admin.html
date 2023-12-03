@@ -417,8 +417,8 @@
             <div class="section__container">
                 <div class="user-body-row">
                     <div class="header-body">
-                        <div class="header-body--left col">
-                            <h4 class="body-tab"> Danh sách sản phẩm</h4>
+                        <div class="header-body--left">
+                            <h4 class="body-tab">Danh sách sản phẩm</h4>
                         </div>
                         <div class="header-body--right">
                             <button type="button" class="body-tab" id="newProduct-btn"> <i class="icon-plus"></i> Sản phẩm mới  </button>
@@ -427,8 +427,8 @@
                     <div class="user-body-row-2">
                         <div class="status" >
                             <select name="status-selection" id="Product-status-selection">
-                                <option selected disabled> Status </option>
-                                <option value="All"> All </option>
+<!--                                <option selected disabled> Status </option>-->
+                                <option value="All"> All status</option>
                                 <option value="InStock"> In stock </option>
                                 <option value="LowStock"> Low stock </option>
                                 <option value="OutOfStock"> Out of stock </option>
@@ -455,7 +455,7 @@
                             <div class="table__footer">
                                 <div colspan="100%" class="table__footer--action">
                                     <div class="table__footer__container">
-                                        <span class="body2">1-12 of 39</span>
+                                        <span class="body2" id ="indexProductTable">1-12 of 39</span>
                                         <button id ="loadBackProduct" class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
                                         <button id ="loadNextProduct" class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
                                     </div>
@@ -481,13 +481,15 @@
                             <div class="product-Name">
                                 <h6>Tên sản phẩm</h6>
                                 <input type="text" id="product-Name--txtField" value placeholder="Tên sản phẩm">
+                                <div class="error-message" id="error--ProductName"></div>
                             </div>
                         </div>
                         <div class="product-info--1-2">
 
                             <div class="product-Name">
                                 <h6>Ngày nhập</h6>
-                                <input type="text" id="product-DayImport--txtField" value placeholder="Ngày nhập">
+                                <input type="text" id="product-DayImport--txtField" value placeholder="Ngày nhập" onchange="checkDayImport(0)">
+                                <div class="error-message" id="error--ProductDayImport"></div>
                             </div>
                             <div class="product-describe">
                                 <h6>Mô tả</h6>
@@ -577,21 +579,24 @@
                         <div class="product-info--2-2">
                             <div>
                                 <h6>Giá nhập</h6>
-                                <input type="text" id ="PriceImport-textField" class="product-textField"  value placeholder="VND">
+                                <input type="text" id ="PriceImport-textField" class="product-textField"  value placeholder="VND" onchange="checkPriceImport(0)">
+                                <div class="error-message" id="error--ProductPriceImport"></div>
                             </div>
                             <div>
                                 <h6>Giá bán</h6>
-                                <input type="text" id ="PriceExport-textField" class="product-textField" value placeholder="VND">
+                                <input type="text" id ="PriceExport-textField" class="product-textField" value placeholder="VND" onchange="checkPriceSell(0)">
+                                <div class="error-message" id="error--ProductPriceSell"></div>
                             </div>
                             <div>
                                 <h6>Số lượng</h6>
-                                <input type="text" id ="Amount-textField" class="product-textField">
+                                <input type="text" id ="Amount-textField" class="product-textField" onchange="checkAmount(0)">
+                                <div class="error-message" id="error--ProductAmount"></div>
                             </div>
-                            <div class="saveProduct">
-                                <button id ="saveProduct--button--create" class="saveProduct--button">
-                                    Tạo sản phẩm
-                                </button>
-                            </div>
+                        </div>
+                        <div class="saveProduct">
+                            <button id ="saveProduct--button--create" class="saveProduct--button">
+                                Tạo sản phẩm
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -619,7 +624,8 @@
 
                             <div class="product-Name">
                                 <h6>Ngày nhập</h6>
-                                <input type="text" id="DetailProduct-DayImport--txtField" value placeholder="Ngày nhập">
+                                <input type="text" id="DetailProduct-DayImport--txtField" value placeholder="Ngày nhập"onchange="checkDayImport(1)">
+                                <div class="error-message" id="error--ProductDayImport--detail"></div>
                             </div>
                             <div class="product-describe">
                                 <h6>Mô tả</h6>
@@ -720,15 +726,18 @@
                         <div class="product-info--2-2">
                             <div>
                                 <h6>Giá nhập</h6>
-                                <input type="text" id ="DetailProduct__PriceImport-textField" class="product-textField"  value placeholder="VND">
+                                <input type="text" id ="DetailProduct__PriceImport-textField" class="product-textField"  value placeholder="VND"onchange="checkPriceImport(1)">
+                                <div class="error-message" id="error--ProductPriceImport--detail"></div>
                             </div>
                             <div>
                                 <h6>Giá bán</h6>
-                                <input type="text" id ="DetailProduct__PriceExport-textField" class="product-textField" value placeholder="VND">
+                                <input type="text" id ="DetailProduct__PriceExport-textField" class="product-textField" value placeholder="VND"onchange="checkPriceSell(1)">
+                                <div class="error-message" id="error--ProductPriceSell--detail"></div>
                             </div>
                             <div>
                                 <h6>Số lượng</h6>
-                                <input type="text" id ="DetailProduct__Amount-textField" class="product-textField">
+                                <input type="text" id ="DetailProduct__Amount-textField" class="product-textField" onchange="checkAmount(1)">
+                                <div class="error-message" id="error--ProductAmount--detail"></div>
                             </div>
                             <div class="saveProduct">
                                 <button id ="saveProduct--button--repair" class="saveProduct--button">
