@@ -48,7 +48,7 @@ let productsList = getFromStorage('products');
 //----------------------------------------------------------------
 const itemsPerPage = 12;
 const maxPaginationItem = 5;
-
+let productItems;
 function displayProducts(htmlContainer, productList, currentPage){
     htmlContainer.innerHTML = "";
     const start = (currentPage - 1) * itemsPerPage;
@@ -78,6 +78,16 @@ function displayProducts(htmlContainer, productList, currentPage){
         `;
         htmlContainer.appendChild(prdItem);
     }  
+    
+    productItems=htmlContainer.querySelectorAll('.product-card__cont');
+    for (var i=0; i<productItems.length; i++){
+        productItems[i].addEventListener('click', () =>{
+            for (let i = 0; i < sitesMainBody.length; i++) {
+                sitesMainBody[i].classList.add('hidden');
+            }
+            siteProductDetail.classList.remove('hidden');
+        });
+    }
 }
 
 function handleErrorPrdThumbnail(img){

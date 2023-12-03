@@ -84,6 +84,7 @@ const siteIndex = document.getElementById('index-page');
 const siteProduct = document.getElementById('product-page');
 const siteAccount  =document.getElementById('account-page');
 const siteAccountOrder  =document.getElementById('account-order-page');
+const siteProductDetail  =document.getElementById('product-detail-page');
 
 headerLogo.addEventListener('click', () => {
   resetNavbar();
