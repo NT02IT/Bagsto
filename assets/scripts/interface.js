@@ -83,6 +83,7 @@ const loginIndex = document.querySelector('#login-page.client');
 const siteIndex = document.getElementById('index-page');
 const siteProduct = document.getElementById('product-page');
 const siteAccount  =document.getElementById('account-page');
+const siteAccountOrder  =document.getElementById('account-order-page');
 
 headerLogo.addEventListener('click', () => {
   resetNavbar();
@@ -545,28 +546,28 @@ for(let i = 0; i < helloAccount.length; i++){
   })
 }
 //thêm ảnh vào Avatar
-document.getElementById('Avatar-image').addEventListener("click", function () {
-  document.getElementById('image-input').click();
-});
-function previewImageAvatar() {
-  var input = document.getElementById('image-input-Avatar');
-  var preview = document.getElementById('Avatar-image');
+// document.getElementById('Avatar-image').addEventListener("click", function () {
+//   document.getElementById('image-input').click();
+// });
+// function previewImageAvatar() {
+//   var input = document.getElementById('image-input-Avatar');
+//   var preview = document.getElementById('Avatar-image');
 
-  var file = input.files[0];
+//   var file = input.files[0];
 
-  if (file) {
-    var reader = new FileReader();
+//   if (file) {
+//     var reader = new FileReader();
 
-    reader.onload = function (e) {
-      preview.style.display = "block";
-      preview.src = e.target.result;
-    }
+//     reader.onload = function (e) {
+//       preview.style.display = "block";
+//       preview.src = e.target.result;
+//     }
 
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
-}
+//     reader.readAsDataURL(file);
+//   } else {
+//     preview.src = "";
+//   }
+// }
 //chọn vào 1 đơn hàng xuất ra chi tiết đơn hàng
 
 
@@ -578,3 +579,13 @@ cartBtn.onclick = function () {
   document.getElementById("cart-page").classList.remove("hidden");
 };
 // CART SITE
+
+// ACCOUNT SITE
+const historyItems = document.querySelectorAll('.account-invoice-table .table__data');
+for (let i = 0; i < historyItems.length; i++){
+  historyItems[i].addEventListener("click", function(e){
+    clearMainBody();
+    siteAccountOrder.classList.remove("hidden");
+  });
+}
+// ACCOUNT SITE

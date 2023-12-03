@@ -11,8 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/client.css">
-    <link rel="stylesheet" href="./assets/css/Account.css">
-
 </head>
 <body>
     <div id="header-client" class="section">
@@ -377,7 +375,7 @@
                     <div class="breadcrumb col-12">
                         <div class="breadcrumb__links horizontal">
                             <div class="breadcrumb__link body2">Trang chủ</div>
-                            <div class="breadcrumb__link body2">Thông tin của tôi</div>
+                            <div class="breadcrumb__link body2">Tài khoản</div>
                         </div>
                     </div>
                 </div>
@@ -476,56 +474,157 @@
         <!--End-Account-->
 
         <!--AccountOrder-->
-        <div class="AccountOrder" id="AccountOrder">
+        <div id="account-order-page">
             <div class="section__container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="Breadcrumb">
-                            <h4>chi tiết hóa đơn</h4>
-                        </div>  
+                        <h4>Chi tiết hóa đơn</h4>
                     </div>
                 </div>
-                <div class="Oder row" id="oder">
-                    <div class="Oderlish col-8">
-                    <div>
-                        <table id="checkoutCart" class="checkoutCart"> 
-                            <thead>
-                                <tr>
-                                    <th  class="Table_Head_Invoice" >Sản phẩm</th>
-                                    <th  class="Table_Head_Invoice" >Đơn giá</th>
-                                    <th  class="Table_Head_Invoice" >Số lượng</th>
-                                    <th  class="Table_Head_Invoice" >Thành tiền</th>
-                                </tr>
-                            </thead>
-                                    <tbody>
-                                        <!-- Thêm các dòng khác nếu cần -->
-                                    </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <div class="OderAP col-4">
-                        <div class="Oder-Address">
-                            <h6>Địa chỉ giao hàng</h6>
-                            <div class="Oder-Address_info">
-                                <p id="Oder-info-ManuelCooper" class="Oder-info-ManuelCooper">Manue lCooper</p>
-                                <p id="Oder-info-Address" class="Oder-info-Address"> </p>
-                                <p id="Oder-info-code" class="Oder-info-code">904-966-2836</p>
-                            </div>
-
+                <div class="row">
+                    <div class="breadcrumb col-12">
+                        <div class="breadcrumb__links horizontal">
+                            <div class="breadcrumb__link body2">Trang chủ</div>
+                            <div class="breadcrumb__link body2">Tài khoản</div>
+                            <div class="breadcrumb__link body2">Chi tiết hóa đơn</div>
                         </div>
-                        <div class="Oder-Price">
-                            <h6>Thông tin đơn giá</h6>
-                            <div class="Oder-Price_ship">
-                                <p class="body2">tạm tính:</p>
-                                <p class="body2">loại vận chuyển:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section__container">
+                <div class="row" id="account-order-detail">
+                    <div class="account-order-detail-table col-8">
+                        <div class="account-order-detail-table__cont">
+                            <table>
+                                <tr class="table__header subtitle1">
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>            
+                                <!-- DATA -->
+                                <tr class="table__data canhover">
+                                    <td class="product__info">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info--detail">
+                                            <div class="product__name subtitle2">Arizona Soft Footbed Sandal</div>
+                                            <div class="product__info--order body2">
+                                                <p class="body2">Kích thước: <strong class="size">S</strong></p>
+                                                <p class="body2">Màu sắc: <strong class="color">Nâu</strong></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$43.83</div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">
+                                            <div class="quantity-btn-group">
+                                                <button><i class="icon-minus"></i></button>
+                                                <button>1</button>
+                                                <button><i class="icon-plus"></i></button>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$44.39</div>
+                                    </td>
+                                </tr>
+                                <tr class="table__data canhover">
+                                    <td class="product__info">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info--detail">
+                                            <div class="product__name subtitle2">Arizona Soft Footbed Sandal</div>
+                                            <div class="product__info--order body2">
+                                                <p class="body2">Kích thước: <strong class="size">S</strong></p>
+                                                <p class="body2">Màu sắc: <strong class="color">Nâu</strong></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$43.83</div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">
+                                            <div class="quantity-btn-group">
+                                                <button><i class="icon-minus"></i></button>
+                                                <button>1</button>
+                                                <button><i class="icon-plus"></i></button>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$44.39</div>
+                                    </td>
+                                </tr>
+                                <tr class="table__data canhover">
+                                    <td class="product__info">
+                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <div class="product__info--detail">
+                                            <div class="product__name subtitle2">Arizona Soft Footbed Sandal</div>
+                                            <div class="product__info--order body2">
+                                                <p class="body2">Kích thước: <strong class="size">S</strong></p>
+                                                <p class="body2">Màu sắc: <strong class="color">Nâu</strong></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">$43.83</div>
+                                    </td>
+                                    <td>
+                                        <div class="body2">
+                                            <div class="quantity-btn-group">
+                                                <button><i class="icon-minus"></i></button>
+                                                <button>1</button>
+                                                <button><i class="icon-plus"></i></button>
+                                            </div>
+                                            <div></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="subtitle2">$44.39</div>
+                                    </td>
+                                </tr>
+                                <!-- DATA -->
+                            </table>
+                            <div class="table__footer">
+                                <div colspan="100%" class="table__footer--action">
+                                    <div class="container">
+                                        <button class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
+                                        <button class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
+                                        <span class="body2">1-12 trên 100 hóa đơn</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="Oder-Price-layer"> </div>
-                            <div class="Oder-Price_total">
-                                <p class="total-text">tổng cộng: </p>
-                                <p class="total" id="total"></p>
-                                <p class="thue">(đã bao gồm thuế VAT)</p>
+                        </div>
+                    </div>                    
+                    <div class="account-order__resume col-4">
+                        <div class="address-card">
+                            <h6 class="address-card__title">Địa chỉ giao hàng</h6>
+                            <div class="address-card__receiver subtitle2">Nguyễn Tuấn</div>
+                            <div class="address-card__address body2">1147 Rohan Drive Suite 819 - Burlington, VT / 82021</div>
+                            <div class="address-card__phonenumber body2">0327531105</div>
+                        </div>
+                        <div class="payment-card">
+                            <h6 class="payment-card__title">Thông tin đơn hàng</h6>
+                            <div class="payment-card__total-temp stack">
+                                <div class="label body2">Tạm tính</div>
+                                <div class="body2">500.000đ</div>
                             </div>
-
+                            <div class="payment-card__shipping stack">
+                                <div class="label body2">Phí ship</div>
+                                <div class="body2">-</div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="payment-card__total stack">
+                                <div class="subtitle1">Tổng cộng</div>
+                                <div class="value"> 
+                                    <div class="total-label subtitle1">500.000đ</div>
+                                    <div class="caption"><i>(Đã bao gồm thuế VAT)</i></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

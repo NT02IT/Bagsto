@@ -490,6 +490,51 @@ li[class^="pagination"].disable:hover{
 }
 /* ACCOUNT */
 
+/* ACCOUNT ORDER */
+.account-order-detail-table__cont table{
+    width: 100%;
+    text-align: left;
+}
+.account-order-detail-table__cont {
+    position: relative;
+    overflow: auto;   
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+}
+
+.account-order__resume .address-card,
+.account-order__resume .payment-card{
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.account-order__resume h6{
+    margin-bottom: 1rem;
+}
+.account-order__resume .divider{
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-grey-300);
+    margin: 0.5rem 0;
+}
+.account-order__resume .stack{
+    display: flex;
+    justify-content: space-between;
+}
+.account-order__resume .stack .label{
+    color: var(--color-text-sec);
+}
+.account-order__resume .total-label{
+    width: 100%;
+    text-align: right;
+    color: var(--color-error-main);
+}
+/* ACCOUNT ORDER */
+
 /* 
 On desktop 
 */
