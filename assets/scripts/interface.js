@@ -576,6 +576,7 @@ for(let i = 0; i < helloAccount.length; i++){
 // CART SITE
 const cartBtn = document.getElementById('header-cart');
 cartBtn.onclick = function () {
+  resetNavbar();
   clearMainBody();
   document.getElementById("cart-page").classList.remove("hidden");
 };

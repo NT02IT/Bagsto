@@ -224,6 +224,49 @@ displayProducts(prdItems_Product, productList, currentPage_Product);
 updatePaginationOfProducts(prdItems_Product, productList, pagination_Product, currentPage_Product);
 //----------------------------------------------------------------
 // PRODUCTS SITE
+
+// PRODUCT DETAIL
+//----------------------------------------------------------------
+let totalPrdQuantity = 12;
+const productOrderElement = document.getElementById('prd-detail-quantity');
+const productQuantityRemain = document.getElementById('prd-detail-quantity-remain');
+const addQuantityBtn = document.getElementById('prd-detail-add-quantity');
+const subQuantityBtn = document.getElementById('prd-detail-sub-quantity');
+let quantityPrdOrder = 1;
+totalPrdQuantity--;
+productQuantityRemain.innerText = `Còn lại ${totalPrdQuantity} sản phẩm`;
+addQuantityBtn.addEventListener('click', () =>{
+    if(quantityPrdOrder < totalPrdQuantity+quantityPrdOrder){
+        quantityPrdOrder++;
+        totalPrdQuantity--;
+        productOrderElement.innerText = quantityPrdOrder;
+        productQuantityRemain.innerText = `Còn lại ${totalPrdQuantity} sản phẩm`;
+    }
+});
+subQuantityBtn.addEventListener('click', () =>{
+    if(quantityPrdOrder > 0){
+        quantityPrdOrder--;
+        totalPrdQuantity++;
+        productOrderElement.innerText = quantityPrdOrder;
+        productQuantityRemain.innerText = `Còn lại ${totalPrdQuantity} sản phẩm`;
+    }
+});
+
+//----------------------------------------------------------------
+// PRODUCT DETAIL
+
+// CART
+//----------------------------------------------------------------
+const BtnDeleteOrderProductInCart = document.querySelectorAll('.cart-table .delete-btn')
+const RowOrderProductInCart = document.querySelectorAll('.cart-table tr');
+for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
+    BtnDeleteOrderProductInCart[i].addEventListener('click', ()=>{
+        RowOrderProductInCart[i+1].remove();
+    });
+}
+//----------------------------------------------------------------
+// CART
+
 // AccountUser
 const currentUser= JSON.parse(localStorage.getItem("currentUser"));
 if (currentUser) {

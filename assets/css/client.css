@@ -549,6 +549,10 @@ li[class^="pagination"].disable:hover{
     margin-left: -4px;    
     flex-wrap: wrap;
 }
+.product-introduce{
+    margin-top: 1rem;
+    color: var(--color-text-sec);
+}
 .product-thumbnail-slider .inactive-img{
     cursor: pointer;
     width: 5rem;
