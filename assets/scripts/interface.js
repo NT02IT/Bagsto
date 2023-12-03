@@ -131,6 +131,7 @@ function clearMainBody() {
 // SIDE NAVIGATE
 
 // HEADER INTERFACE
+let userLogin = JSON.parse(localStorage.getItem("currentUser"));
 const burgerBtn = document.getElementById('burger-btn')
 const mobileNav = document.getElementById('mobile-nav')
 const accountsName = document.querySelectorAll(".hello-account p")
@@ -138,11 +139,14 @@ const helloAccounts = document.querySelectorAll(".hello-account")
 const logoutButtons = document.querySelectorAll(".logout_button")
 const signinSignupBtns = document.querySelectorAll('.header-signin-signup')
 const headerClientAvatar = document.querySelector('#header-client .header__avatar')
+const headerClientAvatarMobile = document.querySelector('#mobile-nav .header__avatar')
 const accountPopover = document.querySelector('.account-popover')
 burgerBtn.addEventListener('click', function () {
   mobileNav.classList.toggle('collapsed');
 });
 
+headerClientAvatar.src = userLogin.avatar;
+headerClientAvatarMobile.src = userLogin.avatar;
 headerClientAvatar.addEventListener('click', function () {
   accountPopover.classList.toggle('collapsed');
 });
@@ -156,7 +160,6 @@ for(let i = 0; i < signinSignupBtns.length; i++) {
 
 clearMainBody();
 siteIndex.classList.remove('hidden');
-let userLogin = JSON.parse(localStorage.getItem("currentUser"));
 function isLoggedIn() {
   userLogin = JSON.parse(localStorage.getItem("currentUser"));
   headerClientAvatar.classList.remove('hidden');
@@ -538,40 +541,17 @@ signupSubmit.addEventListener("click", () => {
 // SIGNUP SITE
 
 
-// Account
+// ACCOUNT SITE
 const helloAccount = document.querySelectorAll('.hello-account');
+const accountInfoAvatar = document.getElementById("account-avatar-img");
 for(let i = 0; i < helloAccount.length; i++){
   helloAccount[i].addEventListener("click", () => {
     clearMainBody();
     siteAccount.classList.remove("hidden");
+    accountInfoAvatar.src = currentUser.avatar;
   })
 }
-//thêm ảnh vào Avatar
-// document.getElementById('Avatar-image').addEventListener("click", function () {
-//   document.getElementById('image-input').click();
-// });
-// function previewImageAvatar() {
-//   var input = document.getElementById('image-input-Avatar');
-//   var preview = document.getElementById('Avatar-image');
-
-//   var file = input.files[0];
-
-//   if (file) {
-//     var reader = new FileReader();
-
-//     reader.onload = function (e) {
-//       preview.style.display = "block";
-//       preview.src = e.target.result;
-//     }
-
-//     reader.readAsDataURL(file);
-//   } else {
-//     preview.src = "";
-//   }
-// }
-//chọn vào 1 đơn hàng xuất ra chi tiết đơn hàng
-
-
+// ACCOUNT SITE
 
 // CART SITE
 const cartBtn = document.getElementById('header-cart');

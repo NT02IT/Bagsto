@@ -25,7 +25,7 @@
                     <a href="#" class="tab" id="header-tab-2">Túi xách</a>
                     <a href="#" class="tab" id="header-tab-3">Ví nam, nữ</a>
                     <button class="style-text type-primary size-m" id="header-cart"><i class="icon-cart"></i>Giỏ hàng</button>
-                    <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar hidden">
+                    <img src="./assets/img/avatar-placeholder.png" onerror="handleErrorAvatar(this)" alt="" class="header__avatar hidden">
                     <button class="type-primary size-m hidden header-signin-signup" id="">Đăng nhập/ Đăng ký</button>
                     <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
                 </div>
@@ -35,7 +35,7 @@
                 <input type="text" class="size-s mobile-nav__search" value placeholder="Search">
                 <button class="type-primary size-m hidden header-signin-signup" id="">Đăng nhập/ Đăng ký</button>
                 <div class="hello-account hidden" id="to-account-info">
-                    <img src="./assets/img/avatar-placeholder.png" alt="" class="header__avatar">
+                    <img src="./assets/img/avatar-placeholder.png" onerror="handleErrorAvatar(this)" alt="" class="header__avatar">
                     <p class="font-bold account-name" id="name">Nguyễn Tuấn</p>
                     <button class="hello-account__button type-inherit style-text size-m">
                         <i class="icon-chevron_right"></i>
@@ -433,12 +433,12 @@
                 <div class="row">
                     <div class="account-info__avatar--container col-4">
                         <div class="account-info__avatar">  
-                            <img id="account-avatar-img" src="./assets/img/avatar-placeholder.png" alt="">
+                            <img id="account-avatar-img" src="./assets/img/avatar-placeholder.png" onerror="handleErrorAvatar(this)" alt="">
                             <div class="overlay-container">
                                 <i class="icon-add_a_photo"></i>
                                 <p class="caption overlay-container-label">Update photo</p>
                             </div>
-                            <input type="file" id="image-input-Avatar" accept="image/**" onchange="previewImageAvatar()">
+                            <input type="file" id="image-input-Avatar" accept="image/**" onchange="changeAvatarImg()">
                         </div>
                         <p class="type-accepted">*.jpeg, *.jpg, *.png, *.gif</p>
                     </div>
@@ -467,7 +467,7 @@
                             <label class="subtitle2" for="fullName">Xác nhận mật khẩu</label>
                             <input type="password" id="user_checkpass" class="info-input" required>
                         </div>
-                        <input type="submit" value="Cập nhật thông tin" class="Components_Button_Medium">
+                        <input type="submit" value="Cập nhật thông tin" id="account-info-update">
                     </div>
                 </div> 
             </div>
@@ -614,7 +614,7 @@
                                 <!-- DATA -->
                                 <tr class="table__data">
                                     <td class="product__info">
-                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <img src="../assets/img/avatar-placeholder.png" onerror="handleErrorAvatar(this)" alt="">
                                         <div class="product__info--detail">
                                             <div class="product__name subtitle2">Arizona Soft Footbed Sandal</div>
                                             <div class="product__info--order body2">
@@ -646,7 +646,7 @@
                                 </tr>
                                 <tr class="table__data">
                                     <td class="product__info">
-                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <img src="../assets/img/avatar-placeholder.png" onerror="handleErrorAvatar(this)" alt="">
                                         <div class="product__info--detail">
                                             <div class="product__name subtitle2">Arizona Soft Footbed Sandal</div>
                                             <div class="product__info--order body2">
@@ -678,7 +678,7 @@
                                 </tr>
                                 <tr class="table__data">
                                     <td class="product__info">
-                                        <img src="../assets/img/avatar-placeholder.png" alt="">
+                                        <img src="../assets/img/avatar-placeholder.png" onerror="handleErrorAvatar(this)" alt="">
                                         <div class="product__info--detail">
                                             <div class="product__name subtitle2">Arizona Soft Footbed Sandal</div>
                                             <div class="product__info--order body2">

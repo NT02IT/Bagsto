@@ -95,6 +95,10 @@ function displayProducts(htmlContainer, productList, currentPage){
 function handleErrorPrdThumbnail(img){
     img.src = '..\\assets\\img\\product_placeholder.png';
 }
+
+function handleErrorAvatar(img){
+    img.src = '..\\assets\\img\\avatar-placeholder.png';
+}
 // PRODUCT DISPLAY
 
 // PAGINATION CONTROL
@@ -362,20 +366,19 @@ function showAccountOrderDetailPrice(shippingPrice){
 if (currentUser) {
     showAccountInfo();
     showAccountOrder();
-    
+}
 
-    var checkupdateInput = document.getElementById("Components_Button_Medium");
-    function updateUserInfo() {
-        // Get updated values from input fields
-        const updatedFullName = document.getElementById("user_fullName").value;
-        const updatedPhoneNumber = document.getElementById("user_number").value;
-        const updatedEmail = document.getElementById("user_email").value;
-        const updatedpass = document.getElementById("user_pass").value;
-        const updatedcheckpass = document.getElementById("user_checkpass").value;
-        const updatedaddress = document.getElementById("user_address").value;
-        if(updatedpass == updatedcheckpass )
-        {
-            // Update user info in local storage
+var checkupdateInput = document.getElementById("account-info-update");
+function updateUserInfo() {
+    // Get updated values from input fields
+    const updatedFullName = document.getElementById("user_fullName").value;
+    const updatedPhoneNumber = document.getElementById("user_number").value;
+    const updatedEmail = document.getElementById("user_email").value;
+    const updatedpass = document.getElementById("user_pass").value;
+    const updatedcheckpass = document.getElementById("user_checkpass").value;
+    const updatedaddress = document.getElementById("user_address").value;
+    if(updatedpass == updatedcheckpass ){
+        // Update user info in local storage
         currentUser.name = updatedFullName;
         currentUser.phone = updatedPhoneNumber;
         currentUser.email = updatedEmail;
@@ -391,16 +394,34 @@ if (currentUser) {
         document.getElementById("user_pass").value = updatedpass;
         document.getElementById("user_checkpass").value = updatedcheckpass;
 
-        alert("dữ liệu đã được cập nhật");
-        }
-        else {
-            alert("Xác nhận mật khẩu không đúng");
-        }
+        alert("Dữ liệu đã được cập nhật");
+    } else {
+        alert("Xác nhận mật khẩu không đúng");
     }
-    checkupdateInput.addEventListener('click', function(){
-        updateUserInfo();
-    })
+    location.reload();
+}
+checkupdateInput.addEventListener('click', function(){
+    updateUserInfo();
+})
 
+//Thay đổi avatar
+function changeAvatarImg() {
+    let input = document.getElementById("image-input-Avatar");
+  
+    // Lấy tên của tệp
+    var fileName = input.files[0].name;
+    console.log("Tên của tệp: " + fileName);
+    let urlNewAvatar = "./data/avatar/" + fileName;
+    currentUser.avatar = urlNewAvatar;
+  
+    // Kiểm tra xem người dùng đã chọn hình ảnh chưa
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            accountInfoAvatar.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
   }
 //----------------------------------------------------------------
 // ACCOUNT
