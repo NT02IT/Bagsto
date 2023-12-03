@@ -10,14 +10,12 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         },
         {
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         }]
@@ -33,7 +31,6 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         }]
@@ -49,7 +46,6 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         }]
@@ -65,14 +61,12 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 1
         },
         {
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 1
         }
@@ -89,14 +83,12 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 1
         },
         {
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 1
         }
@@ -113,16 +105,36 @@
         "products_order": [{
             "id": 2,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 1
         },
         {
             "id": 2,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 700000,
             "quantity" : 1
+        }
+    ]
+    },
+    {
+        "id": 5,
+        "id_user": "AC000011",
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2023",
+        "products_order": [{
+            "id": 2,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        },
+        {
+            "id": 3,
+            "colors" : "#581F1F",
+            "price_sell" : 700000,
+            "quantity" : 2
         }
     ]
     }
