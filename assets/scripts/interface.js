@@ -82,6 +82,7 @@ const headerTab3 = document.getElementById('header-tab-3');
 const loginIndex = document.querySelector('#login-page.client');
 const siteIndex = document.getElementById('index-page');
 const siteProduct = document.getElementById('product-page');
+const siteAccount  =document.getElementById('account-page');
 
 headerLogo.addEventListener('click', () => {
   resetNavbar();
@@ -536,21 +537,13 @@ signupSubmit.addEventListener("click", () => {
 
 
 // Account
-document.getElementsByClassName("hello-account")[1].addEventListener("click", () => {
-  alert("Đây là thông tin của bạn");
-  clearMainBody();
-  document.getElementById("account").style.display = "block";
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  var tbody = document.getElementById('Table-info').getElementsByTagName('tbody')[0];
-  var productDetailsContainer = document.getElementById('ProductDetailsContainer');
-  var productDetailsContent = document.getElementById('ProductDetailsContent');
-  var account = document.getElementById('account'); // Thêm đoạn này để tham chiếu đến phần tử account
-
-
-
-});
+const helloAccount = document.querySelectorAll('.hello-account');
+for(let i = 0; i < helloAccount.length; i++){
+  helloAccount[i].addEventListener("click", () => {
+    clearMainBody();
+    siteAccount.classList.remove("hidden");
+  })
+}
 //thêm ảnh vào Avatar
 document.getElementById('Avatar-image').addEventListener("click", function () {
   document.getElementById('image-input').click();

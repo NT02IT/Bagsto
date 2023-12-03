@@ -366,92 +366,108 @@
         <!-- PRODUCTS-DETAIL -->
 
         <!--Account-->
-        <div id="account">
-            <div class="section__container">
+        <div id="account-page">
+            <div class="section__container account-info-title">
                 <div class="row">
-                    <div class="Breadcrumb">
+                    <div class="col-12">
                         <h4>Thông tin của tôi</h4>
-                    </div>  
+                    </div>
                 </div>
-                <div class="my-info row">
-                    <div class="User_Account_UploadAvatar col-4">
-                        <div id="create-Avatar-form">
-                            <div id="add-Avatar">
-                                <div class="window-add-Avatar">  
-                                    <input type="file"   id="image-input-Avatar" accept="image/**" onchange="previewImageAvatar()"> </input>
-                                    <i id="icon-add" class="icon-add_a_photo"><p class="text-Avatar">Update photo </p>  </i>
-                                    <!-- <p>Upload photo</p> --> 
-                                </div>
-                                <p class="text-Avatar-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
-                                <img id="Avatar-image" src="" alt="">
-                            </div>
+                <div class="row">
+                    <div class="breadcrumb col-12">
+                        <div class="breadcrumb__links horizontal">
+                            <div class="breadcrumb__link body2">Trang chủ</div>
+                            <div class="breadcrumb__link body2">Thông tin của tôi</div>
                         </div>
                     </div>
-                    <div class="User_Account_NewUserForm col-8">
-                        <div class="User_Account_NewUserForm_editor">
-                            <label class="info-label" for="fullName">Họ tên</label>
+                </div>
+            </div>
+            <div class="section__container account-info">
+                <div class="row">
+                    <div class="account-info__avatar--container col-4">
+                        <div class="account-info__avatar">  
+                            <img id="account-avatar-img" src="./assets/img/avatar-placeholder.png" alt="">
+                            <div class="overlay-container">
+                                <i class="icon-add_a_photo"></i>
+                                <p class="caption overlay-container-label">Update photo</p>
+                            </div>
+                            <input type="file" id="image-input-Avatar" accept="image/**" onchange="previewImageAvatar()">
+                        </div>
+                        <p class="type-accepted">*.jpeg, *.jpg, *.png, *.gif</p>
+                    </div>
+                    <div class="account-info__detail--container col-8">
+                        <div class="account-info__detail_editor">
+                            <label class="subtitle2" for="fullName">Họ tên</label>
                             <input type="text" id="user_fullName" class="info-input" required>
-                        </div>
-        
-                        <div class="User_Account_NewUserForm_editor">
-                            <label class="info-label" for="fullName">Số điện thoại</label>
+                        </div>        
+                        <div class="account-info__detail_editor">
+                            <label class="subtitle2" for="fullName">Số điện thoại</label>
                             <input type="text" id="user_number" class="info-input" required>
-                        </div>
-        
-                        <div class="User_Account_NewUserForm_editor">
-                            <label class="info-label" for="fullName">Địa chỉ</label>
+                        </div>        
+                        <div class="account-info__detail_editor">
+                            <label class="subtitle2" for="fullName">Địa chỉ</label>
                             <input type="text" id="user_address" class="info-input" required>
-                        </div>
-        
-                        <div class="User_Account_NewUserForm_editor">
-                            <label class="info-label" for="fullName">Email</label>
+                        </div>        
+                        <div class="account-info__detail_editor">
+                            <label class="subtitle2" for="fullName">Email</label>
                             <input type="text" id="user_email" class="info-input" required>
+                        </div>        
+                        <div class="account-info__detail_editor">
+                            <label class="subtitle2" for="fullName">Mật khẩu</label>
+                            <input type="password" id="user_pass" class="info-input" required>
                         </div>
-        
-                        <div class="User_Account_NewUserForm_editor">
-                            <label class="info-label" for="fullName">Mật khẩu</label>
-                            <input type="text" id="user_pass" class="info-input" required>
+                        <div class="account-info__detail_editor">
+                            <label class="subtitle2" for="fullName">Xác nhận mật khẩu</label>
+                            <input type="password" id="user_checkpass" class="info-input" required>
                         </div>
-
-                        <div class="User_Account_NewUserForm_editor">
-                            <label class="info-label" for="fullName">Xác nhận mật khẩu</label>
-                            <input type="text" id="user_checkpass" class="info-input" required>
-                        </div>
-
-                        <div class="User_Account_NewUserForm_editor">
-                            <input type="button" value="Cập nhật thông tin" class="Components_Button_Medium">
-                        </div>
+                        <input type="submit" value="Cập nhật thông tin" class="Components_Button_Medium">
                     </div>
                 </div> 
-                <div class="order-history row">
+            </div>
+            <div class="section__container order-history-title">
+                <div class="row">
                     <div class="col-12">
-                        <div class="Breadcrumb">
-                            <h4>Lịch sử mua hàng</h4>
-                        </div>  
-                        <div class="Table_view_Invoice">
-                            <table id="Table-info" class="Table-info"> 
-                                <thead>
-                                    <tr>
-                                        <th class="Table_Head_Invoice" style="width: 48px;"></th>
-                                        <th class="Table_Head_Invoice" style="width: 180px;">Ngày mua</th>
-                                        <th class="Table_Head_Invoice" style="width: 724px;">Hóa đơn</th>
-                                        <th class="Table_Head_Invoice" style="width: 120px;">Giá trị</th>
-                                        <th class="Table_Head_Invoice" style="width: 80px;"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Thêm các dòng khác nếu cần -->
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th class="Table_Pagination" style="width: 48px;"></th>
-                                        <th class="Table_Pagination" style="width: 180px;"></th>
-                                        <th class="Table_Pagination" style="width: 724px;"></th>
-                                        <th class="Table_Pagination" style="width: 120px;">trang</th>
-                                        <th class="Table_Pagination" style="width: 80px;"> <   ></th>
-                                    </tr>
-                                </thead>
+                        <h4>Lịch sử mua hàng</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="section__container order-history">
+                <div class="row">
+                    <div class="account-invoice-table col-12">
+                        <div class="account-invoice-table__cont">
+                            <table>
+                                <tr class="table__header subtitle1">
+                                    <th>Ngày mua</th>
+                                    <th>Hóa đơn</th>
+                                    <th>Giá trị</th>
+                                </tr>            
+                                <!-- DATA -->
+                                <tr class="table__data canhover">
+                                    <td><div class="body2">12 Jan 2022</div></td>
+                                    <td><div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div></td>
+                                    <td><div class="subtitle2">$44.39</div></td>
+                                </tr>
+                                <tr class="table__data canhover">
+                                    <td><div class="body2">12 Jan 2022</div></td>
+                                    <td><div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div></td>
+                                    <td><div class="subtitle2">$44.39</div></td>
+                                </tr>
+                                <tr class="table__data canhover">
+                                    <td><div class="body2">12 Jan 2022</div></td>
+                                    <td><div class="body2">01dc1370-3df6-11eb-b378-0242ac130002</div></td>
+                                    <td><div class="subtitle2">$44.39</div></td>
+                                </tr>
+                                <!-- DATA -->
                             </table>
+                            <div class="table__footer">
+                                <div colspan="100%" class="table__footer--action">
+                                    <div class="container">
+                                        <button class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
+                                        <button class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
+                                        <span class="body2">1-12 trên 100 hóa đơn</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>  
