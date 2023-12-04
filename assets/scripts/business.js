@@ -24,8 +24,8 @@ function writeToStorage(key, valueUrl) {
 function getFromStorage(key) {
   const storedData = localStorage.getItem(key);
   if (storedData) {
-    const users = JSON.parse(storedData);
-    return users;
+    const data = JSON.parse(storedData);
+    return data;
   } else {
     // console.log('No data found in localStorage.');
     return null;
@@ -41,6 +41,8 @@ writeToStorage('products', '../../data/products.json');
 let productsList = getFromStorage('products');
 writeToStorage('receivers', '../../data/receivers.json');
 let receiversList = getFromStorage('receivers');
+writeToStorage('carts', '../../data/carts.json');
+let cartsList = getFromStorage('carts');
 
 
 //----------------------------------------------------------------
@@ -51,6 +53,7 @@ let receiversList = getFromStorage('receivers');
 const itemsPerPage = 12;
 const maxPaginationItem = 5;
 let productItems;
+let selectedProduct;
 function displayProducts(htmlContainer, productList, currentPage){
     htmlContainer.innerHTML = "";
     const start = (currentPage - 1) * itemsPerPage;
@@ -67,11 +70,12 @@ function displayProducts(htmlContainer, productList, currentPage){
                     <h6 class="product__name">${item.name}</h6>
                     <div class="stack">
                         <div class="product__color-utility">
+                            <p>Giá: </p>
+                        <!-- <div class="color-utility"></div>
                             <div class="color-utility"></div>
-                            <div class="color-utility"></div>
-                            <div class="color-utility"></div>
+                            <div class="color-utility"></div> -->
                         </div>
-                        <div class="product__price--raw subtitle2 font-line_through">${item.price_sell}đ</div>
+                        <!-- <div class="product__price--raw subtitle2 font-line_through">${item.price_sell}đ</div> -->
                         <div class="product__price--sale subtitle1">${item.price_sell}đ</div>
                     </div>
                     <button class="btn-add-prd"><i class="icon-add_shopping_cart"></i>Thêm vào giỏ</button>
@@ -82,20 +86,51 @@ function displayProducts(htmlContainer, productList, currentPage){
     }  
     
     productItems=htmlContainer.querySelectorAll('.product-card__cont');
-    for (var i=0; i<productItems.length; i++){
+    for (let i=0; i<productItems.length; i++){
         productItems[i].addEventListener('click', () =>{
-            for (let i = 0; i < sitesMainBody.length; i++) {
-                sitesMainBody[i].classList.add('hidden');
+            for (let j = 0; j < sitesMainBody.length; j++) {
+                resetNavbar();
+                sitesMainBody[j].classList.add('hidden');
             }
             siteProductDetail.classList.remove('hidden');
+            localStorage.setItem('selectedProduct', JSON.stringify(productList[i]));
+            viewProductDetail(productList[i]);
         });
     }
+}
+
+function viewProductDetail(product){
+    document.querySelector('.product-info-head .product-name').innerText = product.name;
+    document.querySelector('.product-price-stack .sale-price').innerText = product.price_sell + "đ";
+    document.querySelector('.product-introduce').innerText = product.description;
+    document.getElementById('breadcrumb-product-detail').innerText = product.name;
+    const activeImg = document.querySelector('.product-thumbnail-slider .active-img');
+    activeImg.src = product.thumbnail_stack[0];
+    const inactiveImgStack = document.querySelector('.product-thumbnail-slider .stack');
+    inactiveImgStack.innerHTML = `<img src="${product.thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="" class="inactive-img selected">`;
+    for(let i=1; i < product.thumbnail_stack.length; i++){
+        inactiveImgStack.innerHTML += `
+        <img src="${product.thumbnail_stack[i]}" onerror="handleErrorPrdThumbnail(this)" alt="" class="inactive-img">
+        `;
+    }
+
+    const inactiveImgs = document.querySelectorAll('.product-thumbnail-slider .stack .inactive-img');
+    const tempActiveImg = activeImg;
+    for(let i=0; i < inactiveImgs.length; i++){
+        inactiveImgs[i].addEventListener("click", ()=>{
+            for(let j=0; j < inactiveImgs.length; j++){
+                inactiveImgs[j].classList.remove('selected');
+            }
+            inactiveImgs[i].classList.add('selected');
+            activeImg.src = inactiveImgs[i].src;
+        })
+    }
+
 }
 
 function handleErrorPrdThumbnail(img){
     img.src = '..\\assets\\img\\product_placeholder.png';
 }
-
 function handleErrorAvatar(img){
     img.src = '..\\assets\\img\\avatar-placeholder.png';
 }
@@ -258,18 +293,141 @@ subQuantityBtn.addEventListener('click', () =>{
     }
 });
 
+const buttonAddToCart = document.getElementById('product-detail-addToCart');
+buttonAddToCart.addEventListener('click', () =>{
+    let product = getFromStorage('selectedProduct');
+    let productID = product.id;
+    let productPrice = product.price_sell;
+    let quantityOrder = document.getElementById('prd-detail-quantity').textContent;
+    let orderDetail = {
+        "id": productID,
+        "colors" : "#000000",
+        "price_sell" : productPrice,
+        "quantity" : quantityOrder
+    }
+    localStorage.setItem('productOrder', JSON.stringify(orderDetail));
+
+    //đọc giỏ hàng
+    let iduser = currentUser.id;
+    let filteredUserCart = cartsList.filter(item => item.id_user == iduser)[0];
+    //check xem giỏ hàng có sản phẩm nào chưa -> chưa thì tạo key
+    if(filteredUserCart){
+        var index = cartsList.indexOf(filteredUserCart);
+        filteredUserCart.products_order.push(orderDetail);
+        cartsList[index] = filteredUserCart;
+        console.log(cartsList)
+        localStorage.setItem('carts', JSON.stringify(cartsList));
+        alert (`Bạn đã thêm thành công ${quantityOrder} sản phẩm vào giỏ hàng`);
+    } else{
+        //them key value moi
+    }
+    //-> có thì add thêm vào
+
+});
 //----------------------------------------------------------------
 // PRODUCT DETAIL
 
 // CART
 //----------------------------------------------------------------
-const BtnDeleteOrderProductInCart = document.querySelectorAll('.cart-table .delete-btn')
-const RowOrderProductInCart = document.querySelectorAll('.cart-table tr');
-for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
-    BtnDeleteOrderProductInCart[i].addEventListener('click', ()=>{
-        RowOrderProductInCart[i+1].remove();
-    });
+function showCart(){
+    let iduser = currentUser.id;
+    let filteredUserCart = cartsList.filter(item => item.id_user == iduser)[0];
+    const tableCart = document.querySelector(".cart-table__cont table");
+    const tbodyCart = tableCart.querySelector("tbody");
+    tbodyCart.innerHTML = `
+        <tr class="table__header subtitle1">
+            <th>Sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>            
+    `;
+    for (let j = 0; j < filteredUserCart.products_order.length; j++) {
+        let row = tbodyCart.insertRow();
+        row.classList.add('table__data');
+        let filteredProduct = productList.filter(item => item.id == filteredUserCart.products_order[j].id)[0];
+        let cellTotal = filteredProduct.price_sell * filteredUserCart.products_order[j].quantity;
+        row.innerHTML = `
+            <td class="product__info">
+                <img src="${filteredProduct.thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="">
+                <div class="product__info--detail">
+                    <div class="product__name subtitle2">${filteredProduct.name}</div>
+                    <!--<div class="product__info--order body2">
+                        <p class="body2">Kích thước: <strong class="size">S</strong></p>
+                        <br>
+                        <p class="body2">Màu sắc: <div class="color-dot"></div></p>
+                    </div>-->
+                </div>
+            </td>
+            <td>
+                <div class="body2">${filteredProduct.price_sell}đ</div>
+            </td>
+            <td>
+                <div class="body2">
+                    <div class="quantity-btn-group">
+                        <button><i class="icon-minus"></i></button>
+                        <button>${filteredUserCart.products_order[j].quantity}</button>
+                        <button><i class="icon-plus"></i></button>
+                    </div>
+                    <div></div>
+                </div>
+            </td>
+            <td>
+                <div class="subtitle2 cart-cell-total">${cellTotal}đ</div>
+            </td>
+            <td>
+                <button class="type-inherit style-text delete-btn"><i class="icon-trash"></i></button>
+            </td>
+        `;
+    }
+    showCartResume();
 }
+
+function showCartResume(){
+    const cartSubtotalPrice = document.getElementById('cartSubtotalPrice');
+    const cartShippingPrice = document.getElementById('cartShippingPrice');
+    const cartSumPrice = document.getElementById('cartSumPrice');
+    const allCartCellTotal = document.getElementsByClassName('cart-cell-total'); 
+
+    let cartSubtotalPriceValue = 0;
+    let cartShippingPriceValue = 0;
+    for(let i = 0; i < allCartCellTotal.length; i++){
+        let value = allCartCellTotal[i].innerText.match(/\d+/)[0];
+        cartSubtotalPriceValue += parseInt(value);
+    }
+    let cartSumPriceValue = cartSubtotalPriceValue + cartShippingPriceValue;
+    cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
+    cartShippingPrice.textContent = cartShippingPriceValue + "đ";
+    cartSumPrice.textContent = cartSumPriceValue + "đ";
+
+}
+
+const cartBtn = document.getElementById('header-cart');
+cartBtn.onclick = function () {
+    resetNavbar();
+    clearMainBody();
+    document.getElementById("cart-page").classList.remove("hidden");
+    
+    //Render data
+    showCart();
+    // CHƯA REVIEW CODE
+    const RowOrderProductInCart = document.querySelectorAll('.cart-table tr');
+    let BtnDeleteOrderProductInCart = document.querySelectorAll('.cart-table .delete-btn')
+    for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
+        BtnDeleteOrderProductInCart[i].addEventListener('click', ()=>{
+            RowOrderProductInCart[i+1].remove();
+    
+            let iduser = currentUser.id;
+            let filteredUserCart = cartsList.filter(item => item.id_user == iduser)[0];
+            var index = cartsList.indexOf(filteredUserCart);
+            filteredUserCart.products_order.splice(i, 1);
+            cartsList[index] = filteredUserCart;
+            localStorage.setItem('carts', JSON.stringify(cartsList));
+        });
+    }
+};
+
 //----------------------------------------------------------------
 // CART
 

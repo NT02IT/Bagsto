@@ -1,293 +1,262 @@
 [
     {
         "id": 1,
-        "name": "Balo 1",
-        "category": "TuiXach",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":22,
-        "colors" : ["#00ab55", "#003768", "#ab7d00"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
-        "for_gender" : "Nu",
-        "description" : "Vải đẹp lắm",
+        "name": "3-Stripes Backpack CF3290",
+        "brand_name": "Adidas",
+        "day_import": "19/11/2022",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 9500000,
+        "price_sell" : 797000,
+        "for_gender" : "Nam",
+        "description" : "Balo Adidas 3-Stripes CF3290 là sản phẩm của thương hiệu Adidas. Balo thiết thể thao phù hợp cho bạn trẻ năng động. Chất liệu vải Polyester chống nước bền bỉ, ngăn đựng bên trong rộng rãi chứa nhiều vật dụng cá nhân. Thiết kế quai đeo tùy chỉnh thoải mái cho việc di chuyển.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg",
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg",
-            "../assets/img/balo2.jpg",
-            "../assets/img/balo1.jpg",
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "data:https://balono1.vn/wp-content/uploads/2019/07/cf3290-01-standard-1.jpg", 
+            "https://balono1.vn/wp-content/uploads/2019/07/cf3290-01-standard-1.jpg"
         ]
     },
     {
         "id": 2,
-        "name": "Balo 2",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":0,
-        "colors" : ["#00ab55", "#f36be1"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "name": "Balo Adidas classic",
+        "brand_name": "Adidas",
+        "day_import": "19/11/2022",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 1000000,
+        "price_sell" : 499000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "Chiếc ba lô đa năng rộng rãi, có sử dụng chất liệu tái chế.",
         "thumbnail_stack" : [
-            "https://i.imgur.com/HYSv6Yo.jpeg"
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-HR9809.png",
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-HZ2469.png",
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-FT9233.png"
         ]
     },
     {
         "id": 3,
-        "name": "Balo 3",
-        "category": "PhuKien",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":15,
+        "name": "Balo Badge of Sport Classic HZ2469",
+        "brand_name": "Adidas",
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1200000,
+        "price_sell" : 999000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
-        "thumbnail_stack" : [
-            "https://imgur.com/gallery/9AUb50o",
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+        "description" : "Chiếc ba lô rộng rãi có sử dụng chất liệu tái chế.",
+        "thumbnail_stack" : [ 
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-HZ2469.png"
         ]
     },
     {
         "id": 4,
-        "name": "Balo 4",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":30,
+        "name": "Balo Adidas màu đen FT9233",
+        "brand_name": "Adidas",
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1500000,
+        "price_sell" : 1499000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "Khoác lên mình chiếc Adidas backpack và đem theo tất cả những vật dụng cần thiết!!!",
         "thumbnail_stack" : [
-            "https://imgur.com/gallery/EsZLZrS",
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-FT9233.png"
         ]
     },
     {
         "id": 5,
-        "name": "Balo 5",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":0,
+        "name": "Balo Adidas backpack",
+        "brand_name": "Adidas",
+        "day_import": "14/10/2023",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 950000,
+        "price_sell" : 599000,
         "for_gender" : "Nam",
         "description" : "Vải đẹp lắm",
-        "thumbnail_stack" : [
-            "https://i.imgur.com/PgaifiJ.png",
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+        "thumbnail_stack" : [ 
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-GN1997.png"
         ]
     },
     {
         "id": 6,
-        "name": "Balo 6",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":100,
+        "name": "Balo Adidas Power 5 màu cam GL0958",
+        "brand_name": "Adidas",
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1000000,
+        "price_sell" : 599000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "BA LÔ BỀN MỖI NGÀY CHO MỌI NHU CẦU CỦA BẠN",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-power-5-chinh-hang-mau-cam-GL0958.png"
         ]
     },
     {
         "id": 7,
-        "name": "Balo 7",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":120,
+        "name": "Balo Adidas Power 5 GL0925",
+        "brand_name": "Adidas",
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1000000,
+        "price_sell" : 847000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "MỘT CHIẾC BA LÔ BẮT MẮT CHO NHỮNG NGÀY BẬN RỘN RA NGOÀI.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-power-5-GL0925.png"
         ]
     },
     {
         "id": 8,
-        "name": "Balo 8",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "name": "Balo Adidas Power 5 màu tím H45606",
+        "brand_name": "Adidas",
+        "day_import": "3/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1000000,
+        "price_sell" : 999000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "BA LÔ BỀN MỖI NGÀY CHO MỌI NHU CẦU CỦA BẠN",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+           "https://levinshop.vn/wp-content/uploads/2023/05/balo-power-5-mau-tim-H45606-1.png"
         ]
     },
     {
         "id": 9,
-        "name": "Balo 9",
-        "category": "Balo",
-        "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":105,
+        "name": "Balo Adidas STREET CLASSICS HC4775",
+        "brand_name": "Adidas",
+        "day_import": "3/12/2023",
         "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
         "price_imported" : 500000,
         "price_sell" : 600000,
         "for_gender" : "Nam",
         "description" : "Vải đẹp lắm",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-HC4775.png"
         ]
     },
     {
         "id": 10,
-        "name": "Balo 10",
-        "category": "Balo",
+        "name": "Nike Hayward",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "3/5/2023",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1200000,
+        "price_sell" : 999000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "The Nike Hayward Backpack is a new twist on an old favourite with plenty of room for your gear. The durable design has webbing at the front to hold a jacket and side pockets for a water bottle.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/156433db-a630-490f-bb7b-01c56348f563/hayward-backpack-lM67TS.png",
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-power-5-mau-tim-H45606-1.png",
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-power-5-mau-tim-H45606-1.png"
         ]
     },
     {
         "id": 11,
-        "name": "Balo 11",
-        "category": "Balo",
+        "name": "Balo Nike Classic",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 600000,
+        "price_sell" : 599000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "Scaled down to size for your little one, the Nike Classic Kids' Backpack sits comfortably on smaller shoulders. It features several zip pockets for easy, secure storage on your daily adventures.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/bdacef69-4a43-443f-aa12-8ab42585c1c3/classic-backpack-V8xJFl.png"
         ]
     },
     {
         "id": 12,
-        "name": "Balo 12",
-        "category": "Balo",
+        "name": "Balo Nike Hayward",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 2000000,
+        "price_sell" : 1699000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "Here, we like to live outside the lines. Take on your next adventure—whatever that looks like—with the pack that's ready for anything. A laptop sleeve, small-item pockets and a front bungee for your jacket are all here to keep your day moving. Don't worry about support—between the padded adjustable shoulder straps and the sternum strap, this backpack will stay comfortable.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a81aa726-7e9a-40a6-b9d1-d47ac78d89cb/hayward-backpack-mmLFDD.png"
         ]
     },
     {
         "id": 13,
-        "name": "Balo 13",
-        "category": "Balo",
+        "name": "Balo Nike Heritage Eugene",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
+        "quantity" : 12,
+        "price_imported" : 1500000,
+        "price_sell" : 900000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "Classics are always in style. A double-zip main compartment holds your essentials and 2 small front pockets keep your quick-grab items organised—just like the bag you had back in the day. And this one is super durable, adjustable for your comfort and holds everything you need for a day out.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/eaf17f4e-06c3-474e-8674-cfbf87596bf9/heritage-eugene-backpack-4ch1xG.png"
         ]
     },
     {
         "id": 14,
-        "name": "Balo 14",
-        "category": "Balo",
+        "name": "Balo Nike Hike",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/1/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
+        "quantity" : 12,
+        "price_imported" : 800000,
         "price_sell" : 600000,
         "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "description" : "From the trails to campus, this bag is an essential for a day out. A large main compartment holds all your gear with plenty of internal storage, and a small front pocket makes smaller stuff easier to grab. The padded shoulder straps are adjustable and feature an adjustable chest strap to help distribute the weight of your bag. Sweat-wicking technology helps to keep you cool and dry no matter where your next adventure takes you.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/96a33b46-ccb3-4da9-a665-73a0992d5377/hike-day-pack-X5TKQC.png"
         ]
     },
     {
         "id": 15,
-        "name": "Balo 15",
-        "category": "Balo",
+        "name": "Balo Nike Brasilia JDI",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
-        "price_sell" : 600000,
-        "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "quantity" : 12,
+        "price_imported" : 800000,
+        "price_sell" : 700000,
+        "for_gender" : "Nữ",
+        "description" : "Meet the bag that's mini but mighty. A large main pocket is zipped to help keep all your must-haves safe and secure, while a removable key ring on the smaller zip pocket adds heritage Nike style. The padded and adjustable shoulder straps help make for a comfy carrying experience.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a18a5838-6c14-40e3-a471-b8a7f1189114/brasilia-jdi-mini-backpack-699mhx.png"
         ]
     },
     {
         "id": 16,
-        "name": "Balo 16",
-        "category": "Balo",
+        "name": "Balo Nike Sportswear Forward",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
-        "price_imported" : 500000,
+        "quantity" : 12,
+        "price_imported" : 900000,
         "price_sell" : 600000,
-        "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "for_gender" : "Nữ",
+        "description" : "Meet the tote as unique as you are. A large main compartment has plenty of space for your gear, and the magnetic envelope closure makes getting to your essentials easy while you're on the go. The bag insert snaps into the webbing cage for a stylish look.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/91d6d5c9-151b-4141-b709-4bd6924ceedb/sportswear-forward-cargo-tote-71QHV8.png"
         ]
     },
     {
         "id": 17,
-        "name": "Balo 17",
-        "category": "Balo",
+        "name": "Balo Nike Brasilia JDI",
         "brand_name": "Nike",
-        "day_import": "19/11/2002",
-        "quantity":20,
+        "day_import": "19/11/2022",
         "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
         "price_imported" : 500000,
-        "price_sell" : 600000,
-        "for_gender" : "Nam",
-        "description" : "Vải đẹp lắm",
+        "price_sell" : 300000,
+        "for_gender" : "Nữ",
+        "description" : "From the playground to the park and every adventure in between, this backpack is here to hold the snacks, water and other essentials that you need to have your best day. Don't worry about being uncomfortable when you carry it—the shoulder straps are adjustable and padded, while mesh fabric on the back and straps gives plenty of ventilation so you can keep the adventure going all day long.",
         "thumbnail_stack" : [
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg", 
-            "https://my.naelofar.com/pub/media/catalog/category/ND_09.jpg"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5d360d82-77af-4963-b652-4eeb303ea0cb/brasilia-jdi-mini-backpack-cG5Lh0.png"
         ]
     }
 ]

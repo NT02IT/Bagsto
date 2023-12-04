@@ -5,6 +5,15 @@ function IDGenerate() {
   var ID = chuoiNgayGio.slice(0, 6);
   return ID;
 }
+
+function getCurrentDate() {
+  var currentDate = new Date();
+  var day = currentDate.getDate();
+  var month = currentDate.getMonth() + 1;
+  var year = currentDate.getFullYear();
+  var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
+  return formattedDate;
+}
 // DATA HANDLER
 
 // VALIDATION
@@ -106,11 +115,6 @@ headerTab1.addEventListener('click', () => {
     if (siteProduct.classList.contains('hidden')) {
       siteProduct.classList.remove('hidden');
       siteProduct.classList.add('product-balo')
-
-      // const prdItems_Product = document.querySelector("#product-page .products__items");
-      // const pagination_Product = document.getElementById('product-pagination-products');
-      // displayProducts(prdItems_Product, itemList, currentPageBaloProduct);
-      // updatePaginationOfProducts(prdItems_Product, itemList, pagination_Product, currentPageBaloProduct);
     }
   }
 })
@@ -540,7 +544,6 @@ signupSubmit.addEventListener("click", () => {
 // Check exist and signup
 // SIGNUP SITE
 
-
 // ACCOUNT SITE
 const helloAccount = document.querySelectorAll('.hello-account');
 const accountInfoAvatar = document.getElementById("account-avatar-img");
@@ -554,12 +557,7 @@ for(let i = 0; i < helloAccount.length; i++){
 // ACCOUNT SITE
 
 // CART SITE
-const cartBtn = document.getElementById('header-cart');
-cartBtn.onclick = function () {
-  resetNavbar();
-  clearMainBody();
-  document.getElementById("cart-page").classList.remove("hidden");
-};
+
 // CART SITE
 
 // ACCOUNT SITE
