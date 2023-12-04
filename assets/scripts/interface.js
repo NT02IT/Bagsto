@@ -5,6 +5,22 @@ function IDGenerate() {
   var ID = chuoiNgayGio.slice(0, 6);
   return ID;
 }
+
+function getCurrentDate() {
+  var currentDate = new Date();
+  var day = currentDate.getDate();
+  var month = currentDate.getMonth() + 1;
+  var year = currentDate.getFullYear();
+  var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
+  return formattedDate;
+}
+
+function handleErrorPrdThumbnail(img){
+  img.src = '..\\assets\\img\\product_placeholder.png';
+}
+function handleErrorAvatar(img){
+  img.src = '..\\assets\\img\\avatar-placeholder.png';
+}
 // DATA HANDLER
 
 // VALIDATION
@@ -96,24 +112,6 @@ footerLogo.addEventListener('click', () => {
   clearMainBody();
   siteIndex.classList.remove('hidden');
 })
-var currentPageBaloProduct = 1;
-headerTab1.addEventListener('click', () => {
-  if (!headerTab1.classList.contains('active')) {
-    resetNavbar();
-    if (!headerTab1.classList.contains('active'))
-      headerTab1.classList.add('active');
-    clearMainBody();
-    if (siteProduct.classList.contains('hidden')) {
-      siteProduct.classList.remove('hidden');
-      siteProduct.classList.add('product-balo')
-
-      // const prdItems_Product = document.querySelector("#product-page .products__items");
-      // const pagination_Product = document.getElementById('product-pagination-products');
-      // displayProducts(prdItems_Product, itemList, currentPageBaloProduct);
-      // updatePaginationOfProducts(prdItems_Product, itemList, pagination_Product, currentPageBaloProduct);
-    }
-  }
-})
 
 function resetNavbar() {
   if (headerTab1.classList.contains('active'))
@@ -131,6 +129,7 @@ function clearMainBody() {
 // SIDE NAVIGATE
 
 // HEADER INTERFACE
+let userLogin = JSON.parse(localStorage.getItem("currentUser"));
 const burgerBtn = document.getElementById('burger-btn')
 const mobileNav = document.getElementById('mobile-nav')
 const accountsName = document.querySelectorAll(".hello-account p")
@@ -138,11 +137,14 @@ const helloAccounts = document.querySelectorAll(".hello-account")
 const logoutButtons = document.querySelectorAll(".logout_button")
 const signinSignupBtns = document.querySelectorAll('.header-signin-signup')
 const headerClientAvatar = document.querySelector('#header-client .header__avatar')
+const headerClientAvatarMobile = document.querySelector('#mobile-nav .header__avatar')
 const accountPopover = document.querySelector('.account-popover')
 burgerBtn.addEventListener('click', function () {
   mobileNav.classList.toggle('collapsed');
 });
 
+headerClientAvatar.src = userLogin.avatar;
+headerClientAvatarMobile.src = userLogin.avatar;
 headerClientAvatar.addEventListener('click', function () {
   accountPopover.classList.toggle('collapsed');
 });
@@ -156,7 +158,6 @@ for(let i = 0; i < signinSignupBtns.length; i++) {
 
 clearMainBody();
 siteIndex.classList.remove('hidden');
-let userLogin = JSON.parse(localStorage.getItem("currentUser"));
 function isLoggedIn() {
   userLogin = JSON.parse(localStorage.getItem("currentUser"));
   headerClientAvatar.classList.remove('hidden');
@@ -537,49 +538,20 @@ signupSubmit.addEventListener("click", () => {
 // Check exist and signup
 // SIGNUP SITE
 
-
-// Account
+// ACCOUNT SITE
 const helloAccount = document.querySelectorAll('.hello-account');
+const accountInfoAvatar = document.getElementById("account-avatar-img");
 for(let i = 0; i < helloAccount.length; i++){
   helloAccount[i].addEventListener("click", () => {
     clearMainBody();
     siteAccount.classList.remove("hidden");
+    accountInfoAvatar.src = currentUser.avatar;
   })
 }
-//thêm ảnh vào Avatar
-// document.getElementById('Avatar-image').addEventListener("click", function () {
-//   document.getElementById('image-input').click();
-// });
-// function previewImageAvatar() {
-//   var input = document.getElementById('image-input-Avatar');
-//   var preview = document.getElementById('Avatar-image');
-
-//   var file = input.files[0];
-
-//   if (file) {
-//     var reader = new FileReader();
-
-//     reader.onload = function (e) {
-//       preview.style.display = "block";
-//       preview.src = e.target.result;
-//     }
-
-//     reader.readAsDataURL(file);
-//   } else {
-//     preview.src = "";
-//   }
-// }
-//chọn vào 1 đơn hàng xuất ra chi tiết đơn hàng
-
-
+// ACCOUNT SITE
 
 // CART SITE
-const cartBtn = document.getElementById('header-cart');
-cartBtn.onclick = function () {
-  resetNavbar();
-  clearMainBody();
-  document.getElementById("cart-page").classList.remove("hidden");
-};
+
 // CART SITE
 
 // ACCOUNT SITE
