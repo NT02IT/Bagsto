@@ -43,8 +43,6 @@ writeToStorage('receivers', '../../data/receivers.json');
 let receiversList = getFromStorage('receivers');
 writeToStorage('carts', '../../data/carts.json');
 let cartsList = getFromStorage('carts');
-
-
 //----------------------------------------------------------------
 // DATA INIT
 
@@ -95,6 +93,10 @@ function displayProducts(htmlContainer, productList, currentPage){
             siteProductDetail.classList.remove('hidden');
             localStorage.setItem('selectedProduct', JSON.stringify(productList[start+i]));
             viewProductDetail(productList[start+i]);
+        });
+        productItems[i].querySelector('.btn-add-prd').addEventListener('click', (e) => {
+            e.stopPropagation();
+            addToCartHandler();
         });
     }
 }
@@ -306,6 +308,42 @@ headerTab1.addEventListener('click', () => {
 //----------------------------------------------------------------
 // PRODUCTS SITE
 
+// SEARCH PRODUCT
+//----------------------------------------------------------------
+let productRepo = [];
+for(let i = 0; i < productList.length; i++) {
+    productRepo.push({
+        "product" : productList[i],
+        "pattern" : productList[i].category + " " + productList[i].for_gender + " " + productList[i].brand_name + " " + productList[i].name + " " + productList[i].description
+    });
+}
+
+let searchInput = document.getElementById("header-search-feild");
+searchInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        searchProduct(searchInput.value.toUpperCase());
+    }
+});
+
+function searchProduct(searchPattern) {
+    let result = [];
+    for (i = 0; i < productRepo.length; i++) {
+        txtValue = productRepo[i].pattern;
+        if (txtValue.toUpperCase().indexOf(searchPattern) > -1) {
+            result.push(productRepo[i].product);
+        }
+    }
+    resetNavbar();
+    clearMainBody();
+    siteProduct.classList.remove("hidden");
+    console.log(result)
+    let currentPage_Product = 1;
+    displayProducts(prdItems_Product, result, currentPage_Product);
+    updatePaginationOfProducts(prdItems_Product, result, pagination_Product, currentPage_Product);
+}
+//----------------------------------------------------------------
+// SEARCH PRODUCT
+
 // PRODUCT DETAIL
 //----------------------------------------------------------------
 let totalPrdQuantity = 12;
@@ -335,6 +373,10 @@ subQuantityBtn.addEventListener('click', () =>{
 
 const buttonAddToCart = document.getElementById('product-detail-addToCart');
 buttonAddToCart.addEventListener('click', () =>{
+    addToCartHandler();
+});
+
+function addToCartHandler(){
     let product = getFromStorage('selectedProduct');
     let productID = product.id;
     let productPrice = product.price_sell;
@@ -353,17 +395,20 @@ buttonAddToCart.addEventListener('click', () =>{
     //check xem giỏ hàng có sản phẩm nào chưa -> chưa thì tạo key
     if(filteredUserCart){
         var index = cartsList.indexOf(filteredUserCart);
+        //Còn thiếu việc check xem sản phẩm đã có trong giỏ chưa nếu có rr thì chỉ việc tăng số lượng lên, không add thêm item mới
         filteredUserCart.products_order.push(orderDetail);
         cartsList[index] = filteredUserCart;
-        console.log(cartsList)
-        localStorage.setItem('carts', JSON.stringify(cartsList));
-        alert (`Bạn đã thêm thành công ${quantityOrder} sản phẩm vào giỏ hàng`);
     } else{
-        //them key value moi
+        let userCart = {
+            "id": "CA" + IDGenerate(),
+            "id_user": currentUser.id,
+            "products_order": [orderDetail]
+        }
+        cartsList.push(userCart);
     }
-    //-> có thì add thêm vào
-
-});
+    localStorage.setItem('carts', JSON.stringify(cartsList));
+    alert (`Bạn đã thêm thành công ${quantityOrder} sản phẩm vào giỏ hàng`);
+}
 //----------------------------------------------------------------
 // PRODUCT DETAIL
 
@@ -451,7 +496,6 @@ cartBtn.onclick = function () {
     
     //Render data
     showCart();
-    // CHƯA REVIEW CODE
     const RowOrderProductInCart = document.querySelectorAll('.cart-table tr');
     let BtnDeleteOrderProductInCart = document.querySelectorAll('.cart-table .delete-btn')
     for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
