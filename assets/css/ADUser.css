@@ -1,14 +1,16 @@
 #section__container-user{
     max-width: 1200px;
     margin: auto;
-    padding: 20px
+    padding: 20px;
+    width: fit-content;
+    margin-top: 100px;
 }
 .hidden-user{
     display:none;
 }
-#user-data{
-    /* display:none; */
-}    
+/* #user-data{
+    display:none;
+}     */
 .row{
     width: 110%;
     padding-right: 8%;
@@ -45,42 +47,44 @@
     margin-top:30px ;
    
 }
-#status{
+/* #status{
     flex-grow: 1;
     opacity: 0.5;
 }
 #status-selection{
     align-items: center;
-    width: 90%;
-    height: 50px;
+    width: 240px;
+    height: 56px;
     padding-left: 20px;
     margin-left: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     border: 1px solid;
     opacity: 0.5;
-}
-#cus-search{
-    flex-grow: 3;
-    display: inline-block;
-}
-#search-input{
-    width: 95%;
-    height: 50px;
-    padding-left: 50px;
-    position: relative;
-    border: 1px solid ;
-    opacity:0.5;
-}
+} */
 .icon-search{
-    height: 50px;
-    width: 50px ;
-    position: absolute;
-    top: 125px;
-    left: 29%;
-    transform: translateY(-50%);
-    z-index: 1;
+    color: #919EAB;
     font-size: 30px;
-    opacity: 0.5;
+    margin-left: 16px;
+}
+#search-input-user{
+    display: flex;
+    align-items: center;
+    width: 1060px; /* Điều chỉnh chiều rộng của thanh tìm kiếm */
+    height: 56px;
+    overflow: hidden;
+    border:white;
+    margin-left: auto;
+}
+#user-search{
+    display: flex;
+    align-items: center;
+    width: 1100px; /* Điều chỉnh chiều rộng của thanh tìm kiếm */
+    height: 56px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    margin-left: 16px;
 }
 .main-body__user-table{
     display: flex;
@@ -90,7 +94,6 @@
     border: 0.5px solid #919EAB33;
     border-radius: 16px;
     box-shadow: 2px 2px 2px 2px #919EAB33;
-  
 }
 #pagination{
     margin-top: -50px;
@@ -130,13 +133,13 @@
     height:56px;
     
 }
-.user-table-title-switch{
-    width: 80px;
-    height: 56px;
-}
+
 .user-table__row{
    display: inline-block;
     height: 70px;
+}
+.create-user-body-row{
+    display:none;
 }
 #create-user-data{
     max-width: 1200px;
@@ -486,7 +489,7 @@
  #hidden-detail-user{
     max-width: 1200px;
     margin: auto;
-    /* display: none; */
+    display: none;
  }
  .btn-user-history-buying{
     background-color: #FFFFFF;
@@ -517,7 +520,7 @@
     
  }
  #hidden-user-order{
-    /* display: none; */
+    display: none;
     max-width: 1200px;
     margin: auto;
 

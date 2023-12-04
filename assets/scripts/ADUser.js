@@ -116,14 +116,7 @@ function nextPage() {
     }
 }
 
-function toggleVisibility(){
-    var a = document.getElementById("user-data");
-    if (a.style.display === "none"){
-        a.style.display = "block";
-    } else {
-        a.style.display = "block";
-    }
-}
+
 document.getElementById('preview-image').addEventListener("click",function(){
     document.getElementById('image-input').click();   
 });
@@ -381,7 +374,24 @@ function loadPriceOrder(a){
         }
     } 
 }
+//Thêm người dùng
+document.addEventListener("DOMContentLoaded",function(){
+    const UserTable = document.getElementById("section__container-user")
+    const toggleButton = document.getElementById("AddNewUserBtn")
+    toggleButton.addEventListener("click", function () {
+        // Kiểm tra xem userContainer có chứa lớp "hidden-user" hay không
+        const isHidden = userContainer.classList.contains("create-user-body-row");
 
+        // Nếu đang ẩn, hiển thị và ngược lại
+        if (isHidden) {
+            UserTable.classList.remove("create-user-body-row");
+            toggleButton.textContent = "Ẩn người dùng";
+        } else {
+            UserTable.classList.add("create-user-body-row");
+            toggleButton.textContent = "Thêm người dùng";
+        }
+    });
+});
 function CreateAccount(){
     var username = document.getElementById('user-name').value;
     var address = document.getElementById('address-user').value;
@@ -401,17 +411,12 @@ function CreateAccount(){
     alert("Account created successfully!"); 
 }
 const UserPage = document.getElementById('section__container-user')
-headerLogo.addEventListener('click', () =>{
-    resetNavbar();
-    clearMainBody();
-    UserPage.classList.remove('hidden-user');
-    headerTab3.classList.add('active');
+
+headerTab1.addEventListener('click', () =>{
+    UserPage.classList.add('hidden-user');
 })
-footerLogo.addEventListener('click', () =>{
-    resetNavbar();
-    clearMainBody();
-    UserPage.classList.remove('hidden-user');
-    headerTab3.classList.add('active');
+headerTab2.addEventListener('click', () =>{
+    UserPage.classList.add('hidden-user');
 })
 headerTab3.addEventListener('click', () =>{
     if(!headerTab3.classList.contains('active')){
@@ -421,19 +426,6 @@ headerTab3.addEventListener('click', () =>{
         UserPage.classList.remove('hidden-user');
     }
 })
-function resetNavbar(){
-    const headerTabs = document.querySelectorAll('#header-admin .tab');
-    for(let i = 0; i < headerTabs.length; i++){
-        if(headerTabs[i].classList.contains('active'))
-        headerTabs[i].classList.remove('active');
-    }
-}
-function clearMainBody(){
-    const sitesMainBody = document.querySelectorAll('[id$="-page"]');
-    for(let i = 0; i < sitesMainBody.length; i++){
-        sitesMainBody[i].classList.add('hidden');
-    }
-}
 window.onload = function(){
     console.log(listUser);
     console.log(listOrder);
