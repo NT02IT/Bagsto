@@ -195,7 +195,7 @@
     position: relative;
 }
 .product-table .product-table__cont {
-    overflow: auto;   
+    overflow: auto;
     border-radius: 1rem;
     box-shadow: var(--shadow-card);
 }
