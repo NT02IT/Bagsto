@@ -14,6 +14,13 @@ function getCurrentDate() {
   var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
   return formattedDate;
 }
+
+function handleErrorPrdThumbnail(img){
+  img.src = '..\\assets\\img\\product_placeholder.png';
+}
+function handleErrorAvatar(img){
+  img.src = '..\\assets\\img\\avatar-placeholder.png';
+}
 // DATA HANDLER
 
 // VALIDATION
@@ -104,19 +111,6 @@ footerLogo.addEventListener('click', () => {
   resetNavbar();
   clearMainBody();
   siteIndex.classList.remove('hidden');
-})
-var currentPageBaloProduct = 1;
-headerTab1.addEventListener('click', () => {
-  if (!headerTab1.classList.contains('active')) {
-    resetNavbar();
-    if (!headerTab1.classList.contains('active'))
-      headerTab1.classList.add('active');
-    clearMainBody();
-    if (siteProduct.classList.contains('hidden')) {
-      siteProduct.classList.remove('hidden');
-      siteProduct.classList.add('product-balo')
-    }
-  }
 })
 
 function resetNavbar() {

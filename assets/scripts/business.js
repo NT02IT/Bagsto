@@ -85,7 +85,7 @@ function displayProducts(htmlContainer, productList, currentPage){
         htmlContainer.appendChild(prdItem);
     }  
     
-    productItems=htmlContainer.querySelectorAll('.product-card__cont');
+    productItems = htmlContainer.querySelectorAll('.product-card__cont');
     for (let i=0; i<productItems.length; i++){
         productItems[i].addEventListener('click', () =>{
             for (let j = 0; j < sitesMainBody.length; j++) {
@@ -93,8 +93,8 @@ function displayProducts(htmlContainer, productList, currentPage){
                 sitesMainBody[j].classList.add('hidden');
             }
             siteProductDetail.classList.remove('hidden');
-            localStorage.setItem('selectedProduct', JSON.stringify(productList[i]));
-            viewProductDetail(productList[i]);
+            localStorage.setItem('selectedProduct', JSON.stringify(productList[start+i]));
+            viewProductDetail(productList[start+i]);
         });
     }
 }
@@ -126,13 +126,6 @@ function viewProductDetail(product){
         })
     }
 
-}
-
-function handleErrorPrdThumbnail(img){
-    img.src = '..\\assets\\img\\product_placeholder.png';
-}
-function handleErrorAvatar(img){
-    img.src = '..\\assets\\img\\avatar-placeholder.png';
 }
 // PRODUCT DISPLAY
 
@@ -261,8 +254,55 @@ updatePaginationOfProducts(prdItems_Index, productList, pagination_Index, curren
 var currentPage_Product = 1;
 const prdItems_Product = document.querySelector("#product-page .products__items");
 const pagination_Product = document.getElementById('product-pagination-products');
-displayProducts(prdItems_Product, productList, currentPage_Product);
-updatePaginationOfProducts(prdItems_Product, productList, pagination_Product, currentPage_Product);
+
+headerTab1.addEventListener('click', () => {
+    if (!headerTab1.classList.contains('active')) {
+      resetNavbar();
+      if (!headerTab1.classList.contains('active'))
+        headerTab1.classList.add('active');
+      clearMainBody();
+      if (siteProduct.classList.contains('hidden')) {
+        siteProduct.classList.remove('hidden');
+        siteProduct.classList.add('product-balo')
+      }
+    }
+    let baloList = productList.filter(item => item.category == "Balo");
+    currentPage_Product = 1;
+    displayProducts(prdItems_Product, baloList, currentPage_Product);
+    updatePaginationOfProducts(prdItems_Product, baloList, pagination_Product, currentPage_Product);
+  })
+  headerTab2.addEventListener('click', () => {
+    if (!headerTab2.classList.contains('active')) {
+      resetNavbar();
+      if (!headerTab2.classList.contains('active'))
+        headerTab2.classList.add('active');
+      clearMainBody();
+      if (siteProduct.classList.contains('hidden')) {
+        siteProduct.classList.remove('hidden');
+        siteProduct.classList.add('product-tuixach')
+      }
+    }
+    let tuiList = productList.filter(item => item.category == "tui");
+    currentPage_Product = 1;
+    displayProducts(prdItems_Product, tuiList, currentPage_Product);
+    updatePaginationOfProducts(prdItems_Product, tuiList, pagination_Product, currentPage_Product);
+  })
+  headerTab3.addEventListener('click', () => {
+    if (!headerTab3.classList.contains('active')) {
+      resetNavbar();
+      if (!headerTab3.classList.contains('active'))
+        headerTab3.classList.add('active');
+      clearMainBody();
+      if (siteProduct.classList.contains('hidden')) {
+        siteProduct.classList.remove('hidden');
+        siteProduct.classList.add('product-tuixach')
+      }
+    }
+    let viList = productList.filter(item => item.category == "vi");
+    currentPage_Product = 1;
+    displayProducts(prdItems_Product, viList, currentPage_Product);
+    updatePaginationOfProducts(prdItems_Product, viList, pagination_Product, currentPage_Product);
+  })
 //----------------------------------------------------------------
 // PRODUCTS SITE
 
@@ -417,6 +457,7 @@ cartBtn.onclick = function () {
     for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
         BtnDeleteOrderProductInCart[i].addEventListener('click', ()=>{
             RowOrderProductInCart[i+1].remove();
+            showCartResume();
     
             let iduser = currentUser.id;
             let filteredUserCart = cartsList.filter(item => item.id_user == iduser)[0];
