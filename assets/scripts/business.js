@@ -39,6 +39,8 @@ writeToStorage('orders', '../../data/orders.json');
 let ordersList = getFromStorage('orders');
 writeToStorage('products', '../../data/products.json');
 let productsList = getFromStorage('products');
+writeToStorage('receivers', '../../data/receivers.json');
+let receiversList = getFromStorage('receivers');
 
 
 //----------------------------------------------------------------
@@ -267,106 +269,138 @@ for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
 //----------------------------------------------------------------
 // CART
 
-// AccountUser
+// ACCOUNT
+//----------------------------------------------------------------
 const currentUser= JSON.parse(localStorage.getItem("currentUser"));
-if (currentUser) {
-    // Hiển thị thông tin trong các trường input
+
+function showAccountInfo(){
     document.getElementById("user_fullName").value = currentUser.name;
     document.getElementById("user_number").value = currentUser.phone;
     document.getElementById("user_address").value = currentUser.address;
     document.getElementById("user_email").value = currentUser.email;
     document.getElementById("user_pass").value = currentUser.password;
     document.getElementById("user_checkpass").value = currentUser.password;
-
-
-
+}
+function showAccountOrder(){
     var iduser = currentUser.id;
     var filteredUseroder = ordersList.filter(item => item.id_user == iduser);
-    var tbody = document.querySelector("#Table-info");
-    var total = 0;
-    
-    for (var i = 0; i < filteredUseroder.length; i++) {
-      var row = tbody.insertRow();
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
+    const tableAccountInvoice = document.querySelector(".account-invoice-table__cont table");
+    const tbodyAccountInvoice = tableAccountInvoice.querySelector("tbody");
+    var cellTotal = 0;
 
+    for (let i = 0; i < filteredUseroder.length; i++) {
+        let row = tbodyAccountInvoice.insertRow();
+        row.classList.add('table__data','canhover');
 
-    
-
-      for(var j = 0;  j < filteredUseroder[i].products_order.length; j++ )
-      {
-        total = total + (filteredUseroder[i].products_order[j].price_sell * filteredUseroder[i].products_order[j].quantity);
-      }
-
-      // Lấy thể hiện của bảng
-      var tableinfo = document.getElementById("Table-info");
-    //   var tbody = tableinfo.getElementsByTagName("tbody")[0];
-
-    //   // Lấy danh sách tất cả các dòng trong tbody của bảng
-    //   var rows = tbody.getElementsByTagName("tr");
-
-      // cell1.innerHTML = filteredUseroder[i].id;
-      cell2.innerHTML = filteredUseroder[i].day_order;
-      cell3.innerHTML = filteredUseroder[i].id;
-      cell4.innerHTML = total;
-      total = 0;
-
-      cell1.className = 'Table_Row_Invoice';
-      cell2.className = 'Table_Row_Invoice';
-      cell3.className = 'Table_Row_Invoice';
-      cell4.className = 'Table_Row_Invoice';
-
-
-      row.addEventListener("click", function () {
-        // Lấy dữ liệu từ các ô trong dòng được nhấp
-        document.getElementById("AccountOrder").style.display = "block";
-        var cells = this.getElementsByTagName("td");
-       
-        var hoaDon = cells[2].innerText;
-        var giaTri = cells[3].innerText;
-
-        // Hiển thị chi tiết đơn hàng trong bảng AccountOrder
-        document.getElementById("account").style.display = "block";
-        document.getElementById("AccountOrder").style.display = "block";
-        document.getElementById("total").innerHTML = giaTri;
-        document.getElementById("Oder-info-code").innerHTML = hoaDon;
-        document.getElementById("Oder-info-Address").innerHTML = currentUser.address;
-
-        // Hiển thị chi tiết đơn hàng trong bảng checkoutCart
-        const checkoutCartTable = document.querySelector("#checkoutCart");
-        // checkoutCartTable.innerHTML = ""; // Xóa nội dung cũ của bảng
-
-        for (var k = 0; k < filteredUseroder.length; k++) {
-            for (var l = 0; l < filteredUseroder[k].products_order.length; l++) {
-                var checkoutRow = checkoutCartTable.insertRow();
-                var checkoutCell1 = checkoutRow.insertCell(0);
-                var checkoutCell2 = checkoutRow.insertCell(1);
-                var checkoutCell3 = checkoutRow.insertCell(2);
-                var checkoutCell4 = checkoutRow.insertCell(3);
-        
-                var productId = filteredUseroder[k].products_order[l].id;
-        
-                // Tìm sản phẩm trong mảng productList dựa trên productId
-                var filteredProduct = productList.find(item => item.id === productId);
-        
-                if (filteredProduct) {
-                    checkoutCell1.innerHTML = filteredProduct.name;
-                    checkoutCell2.innerHTML = filteredUseroder[k].products_order[l].price_sell;
-                    checkoutCell3.innerHTML = filteredUseroder[k].products_order[l].quantity;
-                    checkoutCell4.innerHTML = (filteredUseroder[k].products_order[l].price_sell) * (filteredUseroder[k].products_order[l].quantity);
-                } else {
-                    console.log("Không tìm thấy sản phẩm với id:", productId);
-                }
-            }
+        for (let j = 0; j < filteredUseroder[i].products_order.length; j++) {
+            cellTotal = filteredUseroder[i].products_order[j].price_sell * filteredUseroder[i].products_order[j].quantity;
+            row.setAttribute('id', `account-order-${filteredUseroder[i].id}`)
+            row.innerHTML = `
+            <td><div class="body2">${filteredUseroder[i].day_order}</div></td>
+            <td><div class="body2">${filteredUseroder[i].id}</div></td>
+            <td><div class="subtitle2">${cellTotal}đ</div></td>
+            `;
         }
-    });
 
-
-
+        row.addEventListener("click", function () {
+            // Chuyển trang
+            clearMainBody();
+            siteAccountOrder.classList.remove("hidden");
+    
+            // Fill data
+            let receiverID = filteredUseroder[i].id_receiver;
+            let filteredReceiver = receiversList.filter(item => item.id_receiver == receiverID);
+            document.querySelector(".address-card__receiver").textContent = filteredReceiver[0].name;
+            document.querySelector(".address-card__address").textContent = filteredReceiver[0].address;
+            document.querySelector(".address-card__phonenumber").textContent = filteredReceiver[0].phone;
+    
+            // Fill table
+            let tableAccountInvoiceDetail = document.querySelector(".account-order-detail-table__cont table");
+            let tbodyAccountInvoiceDetail = tableAccountInvoiceDetail.querySelector("tbody");
+            console.log(filteredUseroder[i].products_order);
+            for(let k =0; k < filteredUseroder[i].products_order.length; k++){
+                let row = tbodyAccountInvoiceDetail.insertRow();
+                row.classList.add('table__data');
+                let cellTotal = filteredUseroder[i].products_order[k].price_sell * filteredUseroder[i].products_order[k].quantity;
+                var filteredProductOrder = productsList.filter(item => item.id == filteredUseroder[i].products_order[k].id);
+                row.innerHTML = `
+                <tr class="table__data">
+                    <td class="product__info">
+                        <img src="${filteredProductOrder[0].thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="">
+                        <div class="product__info--detail">
+                            <div class="product__name subtitle2">${filteredProductOrder[0].name}</div>
+                            <div class="product__info--order body2">
+                                <p class="body2">Màu sắc: </p><div class="color-dot" style="background: ${filteredUseroder[i].products_order[k].colors};"></div><p></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><div class="body2">${filteredUseroder[i].products_order[k].price_sell}đ</div></td>
+                    <td><p class="body2">${filteredUseroder[i].products_order[k].quantity}</p></td>
+                    <td><div class="subtitle2 cellTotal">${cellTotal}đ</div></td>
+                </tr>
+                `;
+            }
+            showAccountOrderDetailPrice(0);
+        });
+    }
+}
+function showAccountOrderDetailPrice(shippingPrice){
+    let paymentTotalTempValue = 0;
+    const cellTotals = document.querySelectorAll(".account-order-detail-table__cont .cellTotal");
+    for (let i = 0; i < cellTotals.length; i++) {
+        let value = cellTotals[i].textContent.match(/\d+/)[0];
+        paymentTotalTempValue += parseInt(value);
     }
 
+    document.querySelector(".payment-card__total-temp--number").innerText = paymentTotalTempValue + "đ";
+    document.querySelector(".payment-card__shipping--number").innerText = shippingPrice + "đ";
+    let paymentTotalValue = paymentTotalTempValue + shippingPrice;
+    document.querySelector(".account-order__resume .total-label").innerText = paymentTotalValue + "đ";
+
+}
+
+if (currentUser) {
+    showAccountInfo();
+    showAccountOrder();
+    
+
+    var checkupdateInput = document.getElementById("Components_Button_Medium");
+    function updateUserInfo() {
+        // Get updated values from input fields
+        const updatedFullName = document.getElementById("user_fullName").value;
+        const updatedPhoneNumber = document.getElementById("user_number").value;
+        const updatedEmail = document.getElementById("user_email").value;
+        const updatedpass = document.getElementById("user_pass").value;
+        const updatedcheckpass = document.getElementById("user_checkpass").value;
+        const updatedaddress = document.getElementById("user_address").value;
+        if(updatedpass == updatedcheckpass )
+        {
+            // Update user info in local storage
+        currentUser.name = updatedFullName;
+        currentUser.phone = updatedPhoneNumber;
+        currentUser.email = updatedEmail;
+        currentUser.address = updatedaddress;
+        currentUser.password = updatedpass ;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+        // Display updated user info in input fields
+        document.getElementById("user_fullName").value = updatedFullName;
+        document.getElementById("user_number").value = updatedPhoneNumber;
+        document.getElementById("user_email").value = updatedEmail;
+        document.getElementById("user_address").value = updatedaddress;
+        document.getElementById("user_pass").value = updatedpass;
+        document.getElementById("user_checkpass").value = updatedcheckpass;
+
+        alert("dữ liệu đã được cập nhật");
+        }
+        else {
+            alert("Xác nhận mật khẩu không đúng");
+        }
+    }
+    checkupdateInput.addEventListener('click', function(){
+        updateUserInfo();
+    })
 
   }
+//----------------------------------------------------------------
+// ACCOUNT

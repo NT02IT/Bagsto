@@ -583,11 +583,5 @@ cartBtn.onclick = function () {
 // CART SITE
 
 // ACCOUNT SITE
-const historyItems = document.querySelectorAll('.account-invoice-table .table__data');
-for (let i = 0; i < historyItems.length; i++){
-  historyItems[i].addEventListener("click", function(e){
-    clearMainBody();
-    siteAccountOrder.classList.remove("hidden");
-  });
-}
+
 // ACCOUNT SITE
