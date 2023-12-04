@@ -36,6 +36,7 @@ let productList = getFromStorage('products');
 writeToStorage('users', '../../data/users.json');
 let usersList = getFromStorage('users');
 
+
 //----------------------------------------------------------------
 // DATA INIT
 

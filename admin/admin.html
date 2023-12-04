@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/admin.css"> 
+    <link rel="stylesheet" href="../assets/css/ADUser.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -24,7 +25,7 @@
                 <div class="header__block--right col">
                     <a href="#" class="tab active" id="header-tab-admin1">Thống kê</a>
                     <a href="#" class="tab" id="header-tab-admin2">Sản phẩm</a>
-                    <a href="#" class="tab" id="header-tab-admin3">Khách hàng</a>
+                    <a href="#" class="tab" id="header-tab-admin3" >Khách hàng</a>
                     <img src="../assets/img/avatar-placeholder.png" alt="" class="header__avatar">
                     <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
                 </div>
@@ -413,6 +414,7 @@
         <!-- INVOICE DETAIL -->
     
         <!-- PRODUCT -->
+
         <!-- PRODUCT -->
     
         <!-- PRODUCT CREATE -->
@@ -422,17 +424,232 @@
         <!-- PRODUCT UPDATE -->
     
         <!-- USER -->
+       <div id="section__container-user" class="hidden-user">
+            <div class="user-body-row" id="user-data">
+                <div class="header-body">
+                    <div class="header-body--left col">
+                        <h4 class="body-tab" class="body-tab-1"> Khách hàng </h4>
+                    </div>    
+                    <div class="header-body--right col">  
+                        <button type="button" class="body-tab" class="body-tab-2"> <i class="icon-plus"></i> Khách hàng mới  </button>
+                    </div>
+                </div>
+                <div class="user-body-row-2">
+                    <div id="status" >
+                        <select name="status-selection" id="status-selection">
+                            <option selected disabled> Status </option>
+                            <option value="active"> Active </option>
+                            <option value="banned"> Banned </option>
+                            <option value="all"> All </option>
+                        </select>
+                    </div>
+                    <div id="cus-search">
+                        <i class="icon-search"></i>
+                        <input type="text" class="" id="search-input" placeholder="Search...">
+                    </div>
+                </div>
+                <div class="main-body__user-table row">
+                    <table id="user-table-title">
+                        <thead>
+                        <tr class="user-table-title-row"> 
+                            <th class="user-table-title-ID"> ID </th>    
+                            <th class="user-table-title-name"> Họ tên </th>
+                            <th class="user-table-title-address"> Địa chỉ </th>
+                            <th class="user-table-title-phone"> Điện thoại </th>                           
+                            <!-- <th class="user-table-title-switch"></th> -->
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body"></tbody>
+                </table>
+                <div id="pagination">
+                    <span id="currentPage"></span>
+                    <button class="style-button" onclick="prevPage()"><i class="icon-chevron_left"></i></button>
+                    <button class="style-button" onclick="nextPage()"><i class="icon-chevron_right"></i></button>
+                </div>
+            </div>     
+            </div>
+        </div>
         <!-- USER -->
     
         <!-- USER CREATE -->
+        <div class="create-user-body-row" id="create-user-data">
+           
+            <div class="header-body-1">
+                <div id="hidden-form"> 
+            <div>
+                <h3 class="body-tab body-tab-3"> Khách hàng mới </h3>
+            </div> 
+            
+            <div >    
+                <ul class="item-user"  >
+                    <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
+                    <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
+                    <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i>Khách hàng mới </li>
+                </ul>
+            </div>    
+        
+                
+                <div id="create-user-form">               
+                <div id="add-photo">
+                    <div class="window-add-photo">  
+                                       
+                        <input type="file"   id="image-input" accept="image/**" onchange="previewImage()"> </input>
+                        <i id="icon-add" class="icon-add_a_photo"><p class="text-photo">Upload photo </p>  </i>
+                        <!-- <p>Upload photo</p> --> 
+                    </div>
+                    
+                    <p class="text-photo-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
+                    <img id="preview-image" src="" alt="">
+                </div>
+                <div id="input-information-user">
+                    <div class="input-information">
+                    <label for="user-name"> Họ và tên </label>
+                    <input type="text" id="user-name" name="user-name">
+                    </div>
+                    <div class="input-information">
+                    <label for="phonenumeber-user"> Số điện thoại </label>
+                    <input type="text" id="phonenumeber-user" name="phonenumeber-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="address-user"> Địa chỉ </label>
+                    <input type="text" id="address-user" name="address-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="email-user"> Email </label>
+                    <input type="text" id="email-user" name="email-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="password-user"> Mật khẩu </label>
+                    <input type="password" id="password-user" name="password-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="confirm-password-user"> Xác nhận lại mật khẩu </label>
+                    <input type="password" id="confirm-password-user" name="confirm-password-user">
+                    </div>
+                    <div id="button-create-new-user">
+                    <button type="button" id="create-new-user" onclick="CreateAccount()" class="burger-btn"> Tạo khách hàng mới </button>     
+                    </div>              
+                </div>
+        </div>
+        </div>
+        </div>
+        </div>
         <!-- USER CREATE -->
     
         <!-- USER DETAIL -->
+        <div id="hidden-detail-user">
+            <h4> Tài khoản khách hàng</h4>
+            <div>
+                <ul class="item-user"  >
+                    <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
+                    <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
+                    <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i> Tài khoản khách hàng </li>
+                </ul>
+            </div >
+            <div id="change-data-user">
+                <div id="change-photo">
+                    <div class="window-change-photo">
+                        <input type="file"   id="image-change" accept="image/**" onchange="previewImageChange()"> </input>
+                        <i id="icon-add-photo" class="icon-add_a_photo"><p class="text-photo">Upload photo </p>  </i>
+                        <img id="background" src="../assets/img/avatar-placeholder.png"> 
+                        <!-- <p>Upload photo</p> --> 
+                    </div>                  
+                    <p class="text-photo-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
+                    <img id="preview-image-change" src="" alt="">
+                </div>
+                <div id="change-input-information-user">
+                    <div class="input-information">
+                    <label for="change-user-name"> Họ và tên </label>
+                    <input type="text" id="change-user-name" name="user-name">
+                    </div>
+                    <div class="input-information">
+                    <label for="change-phonenumeber-user"> Số điện thoại </label>
+                    <input type="text" id="change-phonenumeber-user" name="phonenumeber-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="change-address-user"> Địa chỉ </label>
+                    <input type="text" id="change-address-user" name="address-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="change-email-user"> Email </label>
+                    <input type="text" id="change-email-user" name="email-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="change-password-user"> Mật khẩu </label>
+                    <input type="password" id="change-password-user" name="password-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="change-confirm-password-user"> Xác nhận lại mật khẩu </label>
+                    <input type="password" id="change-confirm-password-user" name="confirm-password-user">
+                    </div>
+                    <div id="button-create-new-user">
+                    <button id="change-user" class="burger-btn"> Cập nhật thông tin </button>     
+                    </div>              
+                </div> 
+            </div>
+            <div id="history-buying">
+               <h4 id="title-history-buying"> Lịch sử mua hàng </h4>
+               <div id="table-history-buying">
+                    <table id="detail-table-history-buying">
+                        <thead>
+                            <tr id="history-buying-title">
+                                <th class="date-buying"> Ngày mua </th>
+                                <th class="bill"> Hóa đơn </th>
+                                <th class="price"> Giá trị </th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-history-buying-body"> 
+                        </tbody>
+                    </table>                   
+            </div>
+            <div id="paginationOrder">
+                <span id="currentPageOder"></span>
+                <button class="style-button" onclick="prevPageOrder()"><i class="icon-chevron_left"> </i></button>    
+                <button class="style-button" onclick="nextPageOrder()"><i class="icon-chevron_right"></i></button>
+            </div>
+        </div>
+            </div> 
+        </div>
         <!-- USER DETAIL -->
     
         <!-- USER ORDER -->
-        <!-- USER ORDER -->
+        <div id="hidden-user-order">
+            <h4> Tài khoản khách hàng</h4>
+            <div>
+                <ul class="item-user"  >
+                    <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
+                    <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
+                    <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Thông tin khách hàng </a></li>
+                    <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i> Chi tiết hóa đơn </li>
+                </ul>
+            </div> 
+       <div id="user-order-container">             
+        <div id="table-order">
+            <table id="user-order-table">
+                    <tr id="user-order-table-title">
+                        <th id="user-order-product"> Sản phẩm </th>
+                        <th id="user-order-price"> Đơn giá </th>
+                        <th id="user-order-amount"> Số Lượng </th>
+                        <th id="user-order-money"> Thành tiền </th>
+                    </tr>    
+                    <tbody id="user-order-table-body"></tbody>
+            </table>
+        </div>
+        <div id="ship">          
+            <div id="address-ship">  
+                <h5 class="text-title">  Địa chỉ giao hàng </h5>           
+            </div>
+            <div id="price-order">
+                <h5 class="text-title"> Thông tin đơn hàng </h5>
+            </div>
+
+        </div>
+    </div>  
     </div>
+</div>
+
+        <!-- USER ORDER -->
+    
     <!-- MAIN BODY HERE -->
 
     <!-- FOOTER -->
@@ -472,3 +689,4 @@
 
 <script src="interface.js"></script>
 <script src="../assets/scripts/business.js"></script>
+<script src="../assets/scripts/ADUser.js"></script>

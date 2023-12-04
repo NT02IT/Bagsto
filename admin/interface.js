@@ -61,6 +61,7 @@ function checkInput(input) {
 //----------------------------------------------------------------
 // VALIDATION
 
+
 // SIDE NAVIGATE
 const mainBody = document.getElementById('main-body');
 const headerLogo = document.getElementById('header-logo');
