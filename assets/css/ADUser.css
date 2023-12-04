@@ -1,16 +1,10 @@
-#section__container-user{
+.section__container-user{
     max-width: 1200px;
     margin: auto;
     padding: 20px;
     width: fit-content;
     margin-top: 100px;
 }
-.hidden-user{
-    display:none;
-}
-/* #user-data{
-    display:none;
-}     */
 .row{
     width: 110%;
     padding-right: 8%;
@@ -133,7 +127,10 @@
     height:56px;
     
 }
-
+#user-create-page{
+    max-width: 1200px;
+    margin: auto;
+}
 .user-table__row{
    display: inline-block;
     height: 70px;
@@ -141,10 +138,7 @@
 .create-user-body-row{
     display:none;
 }
-#create-user-data{
-    max-width: 1200px;
-    margin: auto;
-    }
+
 .user-table-body-cell{
     padding: 20px;
     margin-bottom: 20px;

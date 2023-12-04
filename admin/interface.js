@@ -72,6 +72,7 @@ const headerTab3 = document.getElementById('header-tab-admin3');
 
 const siteAnalysis = document.getElementById('analysis-page');
 const siteInvoiceDetail = document.getElementById('invoice-detail-page');
+const UserAdmin = document.getElementById('user-page');
 
 headerLogo.addEventListener('click', () =>{
     resetNavbar();
@@ -93,7 +94,14 @@ headerTab1.addEventListener('click', () =>{
         siteAnalysis.classList.remove('hidden');
     }
 })
-
+headerTab3.addEventListener('click', () =>{
+    if(!headerTab3.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab3.classList.add('active');
+        UserAdmin.classList.remove('hidden');
+    }
+})
 function resetNavbar(){
     const headerTabs = document.querySelectorAll('#header-admin .tab');
     for(let i = 0; i < headerTabs.length; i++){

@@ -376,19 +376,20 @@ function loadPriceOrder(a){
 }
 //Thêm người dùng
 document.addEventListener("DOMContentLoaded",function(){
-    const UserTable = document.getElementById("section__container-user")
+    const UserTable = document.getElementById("user-page")
+    const UserCreate = document.getElementById("user-create-page")
     const toggleButton = document.getElementById("AddNewUserBtn")
     toggleButton.addEventListener("click", function () {
         // Kiểm tra xem userContainer có chứa lớp "hidden-user" hay không
-        const isHidden = userContainer.classList.contains("create-user-body-row");
-
+        const isHidden = UserCreate.classList.contains("hidden");
         // Nếu đang ẩn, hiển thị và ngược lại
         if (isHidden) {
-            UserTable.classList.remove("create-user-body-row");
-            toggleButton.textContent = "Ẩn người dùng";
+            UserCreate.classList.remove("hidden");
+            UserTable.classList.add("hidden")
+
         } else {
-            UserTable.classList.add("create-user-body-row");
-            toggleButton.textContent = "Thêm người dùng";
+            UserCreate.classList.add("hidden");      
+            UserTable.classList.remove("hidden")
         }
     });
 });
@@ -410,22 +411,7 @@ function CreateAccount(){
     localStorage.setItem("account", JSON.stringify(users));
     alert("Account created successfully!"); 
 }
-const UserPage = document.getElementById('section__container-user')
 
-headerTab1.addEventListener('click', () =>{
-    UserPage.classList.add('hidden-user');
-})
-headerTab2.addEventListener('click', () =>{
-    UserPage.classList.add('hidden-user');
-})
-headerTab3.addEventListener('click', () =>{
-    if(!headerTab3.classList.contains('active')){
-        resetNavbar();
-        clearMainBody();
-        headerTab3.classList.add('active');
-        UserPage.classList.remove('hidden-user');
-    }
-})
 window.onload = function(){
     console.log(listUser);
     console.log(listOrder);

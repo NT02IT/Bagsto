@@ -424,7 +424,8 @@
         <!-- PRODUCT UPDATE -->
     
         <!-- USER -->
-       <div id="section__container-user" class="hidden-user">
+       <div id="user-page"   class="hidden">
+        <div class="section__container-user">
             <div class="user-body-row" id="user-data">
                 <div class="header-body">
                     <div class="header-body--left col">
@@ -465,14 +466,16 @@
                     <span id="currentPage"></span>
                     <button class="style-button" onclick="prevPage()"><i class="icon-chevron_left"></i></button>
                     <button class="style-button" onclick="nextPage()"><i class="icon-chevron_right"></i></button>
-                </div>
+                </div> 
             </div>     
             </div>
+        </div> 
         </div>
         <!-- USER -->
     
         <!-- USER CREATE -->
-        <div class="create-user-body-row" id="create-user-data">
+        <div id="user-create-page" class="hidden">
+        <div id="create-user-body-row" class="create-user-data"  >
            
             <div class="header-body-1">
                 <div id="hidden-form"> 
@@ -534,10 +537,11 @@
         </div>
         </div>
         </div>
+    </div>
         <!-- USER CREATE -->
     
         <!-- USER DETAIL -->
-        <div id="hidden-detail-user">
+        <div class="hidden" id="user-detail-page">
             <h4> Tài khoản khách hàng</h4>
             <div>
                 <ul class="item-user"  >
@@ -613,7 +617,7 @@
         <!-- USER DETAIL -->
     
         <!-- USER ORDER -->
-        <div id="hidden-user-order">
+        <div class="hidden" id="user-order-page">
             <h4> Tài khoản khách hàng</h4>
             <div>
                 <ul class="item-user"  >
