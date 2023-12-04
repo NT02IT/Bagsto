@@ -59,11 +59,12 @@ function displayProducts(htmlContainer, productList, currentPage){
     const itemsToDisplay = productList.slice(start, end);
 
     for (const item of itemsToDisplay) {
+        console.log()
         const prdItem = document.createElement("li");
         prdItem.classList.add("product-card", "col-3");
         prdItem.innerHTML = `
             <div class="product-card__cont">
-                <img src=${item.thumbnail_stack[0]} onerror="handleErrorPrdThumbnail(this)" alt=${item.name} class="product__thumbnail">
+                <img src="${item.thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="${item.name}" class="product__thumbnail">
                 <div class="product__info">
                     <h6 class="product__name">${item.name}</h6>
                     <div class="stack">
@@ -96,6 +97,7 @@ function displayProducts(htmlContainer, productList, currentPage){
         });
         productItems[i].querySelector('.btn-add-prd').addEventListener('click', (e) => {
             e.stopPropagation();
+            localStorage.setItem('selectedProduct', JSON.stringify(productList[start+i]));
             addToCartHandler();
         });
     }
@@ -576,9 +578,9 @@ function showAccountOrder(){
                         <img src="${filteredProductOrder[0].thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="">
                         <div class="product__info--detail">
                             <div class="product__name subtitle2">${filteredProductOrder[0].name}</div>
-                            <div class="product__info--order body2">
+                            <!--<div class="product__info--order body2">
                                 <p class="body2">Màu sắc: </p><div class="color-dot" style="background: ${filteredUseroder[i].products_order[k].colors};"></div><p></p>
-                            </div>
+                            </div>-->
                         </div>
                     </td>
                     <td><div class="body2">${filteredUseroder[i].products_order[k].price_sell}đ</div></td>

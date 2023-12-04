@@ -46,6 +46,59 @@ let cartsList = getFromStorage('carts');
 //----------------------------------------------------------------
 // DATA INIT
 
+// VALIDATE DATA
+//----------------------------------------------------------------
+const realNumbers =/^\d+(\.\d+)?$/;
+function checkPriceImport(kt){
+    if (kt===0){
+        var PriceImportTextField = document.getElementById('PriceImport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceImport');
+    }else{
+        var PriceImportTextField = document.getElementById('DetailProduct__PriceImport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceImport--detail');
+    }
+    if (!realNumbers.test(PriceImportTextField)){
+        errorElement.innerHTML ='Giá nhập vui lòng điền số thực không âm.'
+        return false;
+    }
+    errorElement.innerHTML='';
+    return true;
+}
+function checkPriceSell(kt){
+    if (kt===0){
+        var PriceExportTextField = document.getElementById('PriceExport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceSell');
+    }else{
+        var PriceExportTextField = document.getElementById('DetailProduct__PriceExport-textField').value;
+        var errorElement = document.getElementById('error--ProductPriceSell--detail');
+    }
+    if (!realNumbers.test(PriceExportTextField)){
+        errorElement.innerHTML ='Giá bán vui lòng điền số thực không âm.'
+        return false;
+    }
+    errorElement.innerHTML='';
+    return true;
+}
+
+const naturalNumbers =/^\d+$/;
+function checkAmount(kt){
+    if (kt===0){
+        var detailProductAmountTextField = document.getElementById('Amount-textField').value;
+        var errorElement = document.getElementById('error--ProductAmount');
+    }else{
+        var detailProductAmountTextField = document.getElementById('DetailProduct__Amount-textField').value;
+        var errorElement = document.getElementById('error--ProductAmount--detail');
+    }
+    if (!naturalNumbers.test(detailProductAmountTextField)){
+        errorElement.innerHTML ='Số lượng vui lòng nhập số tự nhiên.'
+        return false;
+    }
+    errorElement.innerHTML='';
+    return true;
+}
+//----------------------------------------------------------------
+// VALIDATE DATA
+
 // STATISTIC ADMIN
 //----------------------------------------------------------------
 function viewAdminInvoices(){

@@ -1,9 +1,10 @@
 // DATA HANDLER
 function IDGenerate() {
-  var ngayGioHienTai = new Date();
-  var chuoiNgayGio = ngayGioHienTai.toISOString().replace(/[-:T.]/g, "").slice(0, 14);
-  var ID = chuoiNgayGio.slice(0, 6);
-  return ID;
+  // Lấy thời gian hiện tại
+  var currentTime = new Date().getTime();
+  // Tạo mã từ thời gian và lấy 6 ký tự cuối cùng
+  var uniqueCode = currentTime.toString().slice(-6);
+  return uniqueCode;
 }
 
 function getCurrentDate() {
