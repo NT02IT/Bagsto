@@ -82,7 +82,6 @@ function displayProducts(htmlContainer, productList, currentPage){
         `;
         htmlContainer.appendChild(prdItem);
     }  
-    
     productItems = htmlContainer.querySelectorAll('.product-card__cont');
     for (let i=0; i<productItems.length; i++){
         productItems[i].addEventListener('click', () =>{
