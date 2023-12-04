@@ -68,6 +68,8 @@ const footerLogo = document.getElementById('footer-logo');
 const headerTab1 = document.getElementById('header-tab-admin1');
 const headerTab2 = document.getElementById('header-tab-admin2');
 const headerTab3 = document.getElementById('header-tab-admin3');
+const headerTab1Mobile = document.getElementById('AlalysisButton--mobile');
+const headerTab2Mobile = document.getElementById('ProductButton--mobile');
 
 const siteAnalysis = document.getElementById('analysis-page');
 const siteInvoiceDetail = document.getElementById('invoice-detail-page');
@@ -112,6 +114,24 @@ headerTab3.addEventListener('click', () =>{
     }
 })
 
+headerTab1Mobile.addEventListener('click', () =>{
+    if(!headerTab1.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab1.classList.add('active');
+        siteAnalysis.classList.remove('hidden');
+    }
+})
+headerTab2Mobile.addEventListener('click', () =>{
+    const siteInvoiceDetail = document.getElementById('product-page');
+    if(!headerTab2.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab2.classList.add('active');
+        siteInvoiceDetail.classList.remove('hidden');
+    }
+})
+
 function resetNavbar(){
     const headerTabs = document.querySelectorAll('#header-admin .tab');
     for(let i = 0; i < headerTabs.length; i++){
@@ -130,6 +150,7 @@ function clearMainBody(){
 // HEADER INTERFACE
 const burgerBtn = document.getElementById('burger-btn')
 const mobileNav = document.getElementById('mobile-nav')
+
 const accountsName = document.querySelectorAll(".hello-account p")
 const helloAccounts = document.querySelectorAll(".hello-account")
 const headerAdminAvatar = document.querySelector('.header__avatar')
@@ -137,6 +158,7 @@ const accountPopover = document.querySelector('.account-popover')
 const logoutButtons = document.querySelectorAll(".logout_button")
 const navItems = document.querySelectorAll('.nav-item');
 const headerAdmin = document.querySelector('#header-admin');
+
 burgerBtn.addEventListener('click', function(){
     mobileNav.classList.toggle('collapsed');
 });
@@ -180,4 +202,11 @@ breadcrumbsInvoiceDetails[1].addEventListener("click", function(){
 });
 // STATISTICS
 
+//Log Out
+const LogoutAmin = document.getElementById('LogoutAmin');
+LogoutAmin.addEventListener("click",()=>{
+    // window.location.href = "./admin.html";
+    localStorage.removeItem("currentAdminUser");
+    window.location.replace("./index.html");
+})
 

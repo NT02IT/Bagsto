@@ -691,6 +691,11 @@ label.colorTable--checkBox {
         margin-top: 1rem;
     }
 
+    /*product*/
+    .product-info{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 /* detail product */
 #DetailProduct-describe--txtField{
