@@ -4,6 +4,7 @@
         "name": "3-Stripes Backpack CF3290",
         "brand_name": "Adidas",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 9500000,
@@ -11,7 +12,6 @@
         "for_gender" : "Nam",
         "description" : "Balo Adidas 3-Stripes CF3290 là sản phẩm của thương hiệu Adidas. Balo thiết thể thao phù hợp cho bạn trẻ năng động. Chất liệu vải Polyester chống nước bền bỉ, ngăn đựng bên trong rộng rãi chứa nhiều vật dụng cá nhân. Thiết kế quai đeo tùy chỉnh thoải mái cho việc di chuyển.",
         "thumbnail_stack" : [
-            "data:https://balono1.vn/wp-content/uploads/2019/07/cf3290-01-standard-1.jpg", 
             "https://balono1.vn/wp-content/uploads/2019/07/cf3290-01-standard-1.jpg"
         ]
     },
@@ -20,6 +20,7 @@
         "name": "Balo Adidas classic",
         "brand_name": "Adidas",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1000000,
@@ -27,9 +28,7 @@
         "for_gender" : "Nam",
         "description" : "Chiếc ba lô đa năng rộng rãi, có sử dụng chất liệu tái chế.",
         "thumbnail_stack" : [
-            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-HR9809.png",
-            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-HZ2469.png",
-            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-FT9233.png"
+            "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-HR9809.png"
         ]
     },
     {
@@ -37,6 +36,7 @@
         "name": "Balo Badge of Sport Classic HZ2469",
         "brand_name": "Adidas",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1200000,
@@ -52,12 +52,13 @@
         "name": "Balo Adidas màu đen FT9233",
         "brand_name": "Adidas",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1500000,
         "price_sell" : 1499000,
         "for_gender" : "Nam",
-        "description" : "Khoác lên mình chiếc Adidas backpack và đem theo tất cả những vật dụng cần thiết!!!",
+        "description" : "Khoác lên mình chiếc Adidas backpack và đem theo tất cả những vật dụng cần thiết!!!🔥",
         "thumbnail_stack" : [
             "https://levinshop.vn/wp-content/uploads/2023/05/balo-adidas-chinh-hang-mau-den-FT9233.png"
         ]
@@ -67,6 +68,7 @@
         "name": "Balo Adidas backpack",
         "brand_name": "Adidas",
         "day_import": "14/10/2023",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 950000,
@@ -82,6 +84,7 @@
         "name": "Balo Adidas Power 5 màu cam GL0958",
         "brand_name": "Adidas",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1000000,
@@ -97,6 +100,7 @@
         "name": "Balo Adidas Power 5 GL0925",
         "brand_name": "Adidas",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1000000,
@@ -112,6 +116,7 @@
         "name": "Balo Adidas Power 5 màu tím H45606",
         "brand_name": "Adidas",
         "day_import": "3/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1000000,
@@ -127,6 +132,7 @@
         "name": "Balo Adidas STREET CLASSICS HC4775",
         "brand_name": "Adidas",
         "day_import": "3/12/2023",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 500000,
@@ -142,6 +148,7 @@
         "name": "Nike Hayward",
         "brand_name": "Nike",
         "day_import": "3/5/2023",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1200000,
@@ -149,9 +156,7 @@
         "for_gender" : "Nam",
         "description" : "The Nike Hayward Backpack is a new twist on an old favourite with plenty of room for your gear. The durable design has webbing at the front to hold a jacket and side pockets for a water bottle.",
         "thumbnail_stack" : [
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/156433db-a630-490f-bb7b-01c56348f563/hayward-backpack-lM67TS.png",
-            "https://levinshop.vn/wp-content/uploads/2023/05/balo-power-5-mau-tim-H45606-1.png",
-            "https://levinshop.vn/wp-content/uploads/2023/05/balo-power-5-mau-tim-H45606-1.png"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/156433db-a630-490f-bb7b-01c56348f563/hayward-backpack-lM67TS.png"
         ]
     },
     {
@@ -159,6 +164,7 @@
         "name": "Balo Nike Classic",
         "brand_name": "Nike",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 600000,
@@ -174,6 +180,7 @@
         "name": "Balo Nike Hayward",
         "brand_name": "Nike",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 2000000,
@@ -189,6 +196,7 @@
         "name": "Balo Nike Heritage Eugene",
         "brand_name": "Nike",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 1500000,
@@ -204,6 +212,7 @@
         "name": "Balo Nike Hike",
         "brand_name": "Nike",
         "day_import": "19/1/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 800000,
@@ -219,6 +228,7 @@
         "name": "Balo Nike Brasilia JDI",
         "brand_name": "Nike",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 800000,
@@ -234,6 +244,7 @@
         "name": "Balo Nike Sportswear Forward",
         "brand_name": "Nike",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
         "price_imported" : 900000,
@@ -246,17 +257,422 @@
     },
     {
         "id": 17,
-        "name": "Balo Nike Brasilia JDI",
+        "name": "Balo Nike JDI",
         "brand_name": "Nike",
         "day_import": "19/11/2022",
+        "category":"Balo",
         "colors" : ["#000000", "#111111"],
         "quantity" : 12,
-        "price_imported" : 500000,
+        "price_imported" : 800000,
         "price_sell" : 300000,
         "for_gender" : "Nữ",
         "description" : "From the playground to the park and every adventure in between, this backpack is here to hold the snacks, water and other essentials that you need to have your best day. Don't worry about being uncomfortable when you carry it—the shoulder straps are adjustable and padded, while mesh fabric on the back and straps gives plenty of ventilation so you can keep the adventure going all day long.",
         "thumbnail_stack" : [
             "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5d360d82-77af-4963-b652-4eeb303ea0cb/brasilia-jdi-mini-backpack-cG5Lh0.png"
         ]
+    },
+    {
+        "id": 18,
+        "name": "Nike Basic Wallet Purse",
+        "brand_name": "Nike",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://cdn-amz.woka.io/images/I/817g0EzIr5L._SR200,200_.jpg"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Nike Men's Wallet, Red",
+        "brand_name": "Nike",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://cdn-amz.woka.io/images/I/71x-p6kGASL._SR476,476_.jpg"
+        ]
+    },
+    {
+        "id": 20,
+        "name": " Adidas cyclone",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://balono1.vn/wp-content/uploads/2020/06/9a0da744fe3903675a28-800x533.jpg"
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Ví Bifold Monogram Carlos",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/files/Leonardo110802175copy_600x.jpg?v=1696221423"
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Ví Livermore",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/LEONARDO-1110l_n_600x.jpg?v=1681098200"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Ví Austin",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/files/ViGiovanniTh_ngHi_uLeonardo01l_n_600x.jpg?v=1685948305"
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Ví Anderson",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 399000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/1_2aed2b47-f67e-4be3-a1b2-6051456c5342_600x.jpg?v=1674115267"
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Ví Harrison",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/VidanamHarrisonTh_ngHi_uLeonardo01_600x.jpg?v=1672713319"
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Ví Bifold Saturn",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/DSCF0955_600x.jpg?v=1669607025"
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Ví LEO Capra",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/DSCF6135_600x.jpg?v=1671433369"
+        ]
+    },
+    {
+        "id": 41,
+        "name": "Ví Bifold Owen",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/DSCF5113_600x.jpg?v=1648449737"
+        ]
+    },
+    {
+        "id": 42,
+        "name": "Ví Mini Mladen",
+        "brand_name": "monogram",
+        "day_import": "3/5/2023",
+        "category":"vi",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://www.leonardo.vn/cdn/shop/products/DSCF09961_600x.jpg?v=1645690335"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "TÚI FESTIVAL PREMIUM ESSENTIALS",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/d16a50e1034140c78934d8017a76de1a_9366/Tui_Festival_Premium_Essentials_DJen_IJ5008_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 26,
+        "name": "AC MINI AIRL",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nữ",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/148c24ef6f5c4e2d9d254acc1a1cf67a_9366/AC_MINI_AIRL_Hong_IT4832_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 27,
+        "name": "CXPLR BUMBAG",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8530b7565bdf4499b0d6aad9122e80e9_9366/CXPLR_BUMBAG_nau_IQ0911_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 28,
+        "name": "CXPLR SMALL BAG",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0bbe07c805964b11a2f4562f4bbe65f0_9366/CXPLR_SMALL_BAG_Be_IP0392_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 29,
+        "name": "CXPLR BP 2",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/83056487a3704f60b3d2d41579232023_9366/CXPLR_BP_2_Be_IP0391_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "TÚI TOTE PRIME",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/85f4bbe0c9504ecdac18e269f2015ee0_9366/Tui_Tote_Prime_DJen_HZ5988_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 31,
+        "name": "TÚI FESTIVAL ESSENTIALS",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/88a65930710b4f7caaf4afcc011b2484_9366/Tui_Festival_Premium_Essentials_Mau_xanh_da_troi_IL8440_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 32,
+        "name": "TÚI DUFFEL SPORTSWEAR CỠ VỪA",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nam",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/49b298d6690449659c13de889beb935f_9366/Tui_Duffel_Sportswear_Co_Vua_DJen_HY0730_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 33,
+        "name": "TÚI GẤP GỌN",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 700000,
+        "price_sell" : 599000,
+        "for_gender" : "Nữ",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/44b1ca44afc74bcc97caafcc00f34e42_9366/Tui_Gap_Gon_Hong_IK7488_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 34,
+        "name": "TÚI ĐEO HÔNG ARCHIVE ADICOLOR",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nữ",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cd33ad704ef84482b051afcd00275fb1_9366/Tui_DJeo_Hong_Archive_Adicolor_DJen_IJ0768_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 35,
+        "name": "TÚI ĐEO HÔNG CLASSIC ADICOLOR",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nữ",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/1cb42bd43ca54b98b1d1a86874e2feea_9366/Tui_DJeo_Hong_Classic_Adicolor_mau_xanh_la_IL4815_01_standard.jpg"
+        ]
+    },
+    {
+        "id": 36,
+        "name": "TÚI SACOCHE MUST HAVES",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nữ",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/50aa5273c1e64185b1fbafc2002a2b9a_9366/Tui_Sacoche_Must_Haves_Be_HY3009_04_standard.jpg"
+        ]
+    },
+    {
+        "id": 37,
+        "name": "WAISTBAG",
+        "brand_name": "Adidas",
+        "day_import": "3/5/2023",
+        "category":"tui",
+        "colors" : ["#000000", "#111111"],
+        "quantity" : 12,
+        "price_imported" : 500000,
+        "price_sell" : 300000,
+        "for_gender" : "Nữ",
+        "description" : "",
+        "thumbnail_stack" : [
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/a69d9224f77a4189b0c3d4b36584f1e3_9366/WAISTBAG_DJen_II3382_01_standard.jpg"
+        ]
+    },
+
+    {
+
     }
 ]
