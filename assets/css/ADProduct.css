@@ -4,36 +4,166 @@
 }
 
 .mainBody{
-}
-#main-body__header{
 
 }
-#main-body__searchBar{
-    
+#main-body__header{
+   
 }
 .main-body__productTable{
     display: flex;
     flex-direction: column;
 }
+.main-body__searchBar{
+    display: flex;
+    padding: 24px 20px;
+    height: 104px;
+    width: 100%;
+    gap: 16px;
+}
+
+.account{
+    height: 140px;
+    width: 260px;
+    background-color: #ffff;
+}
+.InfoAccount{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    position: relative;
+    background-color: var(--color-grey-trans8);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+#InfoAccount--button{
+    
+}
+.logOut{
+    height: 35px;
+    width: 225px;
+    background-color: var(--color-grey-300);
+}
+#main-body__searchBar__comboBoxStatus{
+    width: 200px;
+    height: 56px;
+    padding: 16px 14px;
+    color: var(--color-grey-500);
+    border: 1px solid var(--color-grey-trans32);
+    border-radius: 8px;
+}
+#main-body__searchBar__searchProduct{
+    width: 100%;
+    height: 56px;
+    padding: 16px 14px;
+    padding-left: 45px; 
+}
+.input-container{
+    flex-grow: 1;
+    width: 500px;
+    position: relative;
+}
+.icon--lookFor{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 input[type="checkbox"]{
-    display:block;
+    margin-left: 12px;
+    margin-right: 20px;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.main-body__header__btnAddProduct{
+    border-radius: 0.5rem;
+    color: var(--color-common-white);
+    background-color: var(--color-pri-main);
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+    height: 36px;
+    width: 155px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
 }
 .productTable__title{
+    color: var(--color-grey-600);
     background-color: var(--color-grey-200);
-}
-.productTable__title__row{
     height: 56px;
+}
+.productTable__body{
+    color: var(--color-grey-800);
+    font-size: 14px;
+    line-height: 22px;
+}
+.productTable__cell{
+    
 }
 .Product__img{
     width: 40px;
     height: 40px;
     border-radius: 10px;
+    margin-right: 12px;
+}
+#btnInfo0{
+    background-color: var(--color-grey-200);
+}
+.btnInfo {
+    background-color: #ffff;
 }
 .productTable__row{
     height: 72px;
 }
-
+.productTable__cell{
+    height: 72px;
+    text-align: center;
+    align-items: center;
+}
 .dividedIngredients{
     display: flex;
     justify-content: flex-end;
+    gap: 20px;
 }
+.nextBackButton{
+    display: flex;
+    width: 80px;
+    height: 36px;
+    gap: 8px;
+}
+.backButton{
+    background-color: transparent;
+}
+.nextButton{
+    background-color: transparent;
+}
+.icon-chevron_left{
+    color: var(--color-grey-800);
+}
+.icon-chevron_left{
+    color: var(--color-grey-400);
+}
+.col1{
+    width: 572px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.col2{
+    width: 200px;
+}
+.col3{
+    width: 120px;
+}
+.col4{
+    width: 160px;
+}
+.col5{
+    width: 100px;
+    padding-left: 50px;
+}
+
+
+

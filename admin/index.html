@@ -38,7 +38,6 @@
         </div>
         <!-- SIGN IN -->
     </div>
-    <!-- MAIN BODY HERE -->
 
     <!-- FOOTER -->
     <div id="footer" class="section">
@@ -108,7 +107,7 @@
                     } else {
                         requirementElement.classList.remove('invalid');
                     }
-                } 
+                }
             }
         }
     };
@@ -191,19 +190,13 @@
 
     // Check exist and login
     let userLogin = JSON.parse(localStorage.getItem("currentAdminUser"));
-    if(userLogin){ 
+    if(userLogin){
         window.location.href = ".\\admin.html";
     }
     signinSubmit.addEventListener("click", () => {
         const u = usersList.find((user) => ((user.email == signinEmailInput.value && user.password == signinPasswordInput.value && user.role == "admin") ? user : null));
         if (u) {
-            clearMainBody();
-            siteIndex.classList.remove('hidden');
             localStorage.setItem("currentAdminUser",JSON.stringify(u));
-
-            for(let i = 0; i < accountsName.length; i++) {
-            accountsName[i].textContent = u.name;
-            }
             window.location.href = ".\\admin.html";
         }
         else {

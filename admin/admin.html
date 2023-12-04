@@ -10,8 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/admin.css"> 
-    <link rel="stylesheet" href="../assets/css/ADUser.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -40,10 +39,11 @@
                         <i class="icon-chevron_right"></i>
                     </button>
                 </div>
+                <button class="type-inherit style-text">Thống kê</button>
                 <button class="type-inherit style-text">Sản phẩm</button>
                 <button class="type-inherit style-text">Khách hàng</button>
                 <div class="space"></div>
-                <button class="type-inherit">Đăng xuất</button>
+                <button class="type-inherit logout_button">Đăng xuất</button>
             </div>
             <div class="popover account-popover collapsed">
                 <div class="hello-account" id="to-account-info">
@@ -55,7 +55,7 @@
                         <i class="icon-chevron_right"></i>
                     </button>
                 </div>
-                <button class="type-inherit">Đăng xuất</button>
+                <button class="type-inherit logout_button">Đăng xuất</button>
             </div>
         </div>
     </div>
@@ -412,15 +412,341 @@
             </div>
         </div>
         <!-- INVOICE DETAIL -->
-    
-        <!-- PRODUCT -->
 
         <!-- PRODUCT -->
-    
+        <div id="product-page" class="hidden">
+            <div class="section__container">
+                <div class="row">
+                    <div class="product__header col-12">
+                        <div class="header-body--left">
+                            <h4 class="body-tab"> Danh sách sản phẩm</h4>
+                        </div>
+                        <div class="header-body--right">
+                            <button type="button" class="body-tab" id="newProduct-btn"> <i class="icon-plus"></i> Sản phẩm mới  </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-table row">
+                    <div class="product-table__cont col-12">
+                        <div class="product-table__action">
+                            <div class="status-filter" >
+                                <select name="status-selection" id="Product-status-selection">
+                                    <option selected disabled> Status </option>
+                                    <option value="All"> All </option>
+                                    <option value="InStock"> In stock </option>
+                                    <option value="LowStock"> Low stock </option>
+                                    <option value="OutOfStock"> Out of stock </option>
+                                </select>
+                            </div>
+                            <div class="cus-search">
+                                <i class="icon-search"></i>
+                                <input type="text" class="" id="Product-search-input" placeholder="Search...">
+                            </div>
+                        </div>
+                        <table id="table_product">
+                            <tr class="table__header productTable__row">
+                                <th class="productTable__cell col1">Product</th>
+                                <th class="productTable__cell col2">Import date</th>
+                                <th class="productTable__cell col3">Price</th>
+                                <th class="productTable__cell col4">Status</th>
+                            </tr>
+<!--                                Danh Sach San pham-->
+                        </table>
+                        <div class="table__footer">
+                            <div colspan="100%" class="table__footer--action">
+                                <div class="table__footer__container">
+                                    <button id ="loadBackProduct" class="style-text type-inherit"><i class="icon-chevron_left"></i></button>
+                                    <button id ="loadNextProduct" class="style-text type-inherit"><i class="icon-chevron_right"></i></button>
+                                    <span class="body2">1-12 trên 39 sản phẩm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- PRODUCT -->
+
         <!-- PRODUCT CREATE -->
+        <div  id="productCreate-page" class="hidden">
+            <div class="section__container">
+                <div class="row">
+                    <h4>Sản phẩm mới</h4>
+                </div>
+                <div class="product-info row">
+                    <div class = "col-8">
+                        <div class="product-infor--name">
+                            <div class="product-Name">
+                                <h6>Tên sản phẩm</h6>
+                                <input type="text" id="product-Name--txtField" value placeholder="Tên sản phẩm">
+                            </div>
+                        </div>
+                        <div class="product-info--detail">
+
+                            <div class="product-Name">
+                                <h6>Ngày nhập</h6>
+                                <input type="text" id="product-DayImport--txtField" value placeholder="Ngày nhập">
+                            </div>
+                            <div class="product-describe">
+                                <h6>Mô tả</h6>
+                                <textarea id="product-describe--txtField" name="long-text" value placeholder="Write something awesome"></textarea>
+                                <!-- <input type="text" id="product-describe--txtField" value placeholder="Write something awesome"> -->
+                            </div>
+                            <div class="product-image">
+                                <h6>Hình ảnh</h6>
+                                <div class="containerProduct--img" id = "containerCreateProduct--img">
+                                    <!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+                                    <!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+                                    <button id="Product-info__btn-img" class="imageProduct">
+                                        <i class="icon-add_photo_alternate"></i>
+                                        Thêm ảnh
+                                    </button>
+                                </div>
+                                <input type="file" id="fileInput--Product" onchange="showCreateImage(this)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="product-info--2-1">
+                            <div class="ProductId">
+                                <p id="ProductId--create">
+
+                                </p>
+                            </div>
+                            <div>
+                                <h6>Giới tính</h6>
+                                <ul class="product-info--checkBox">
+                                    <li>
+                                        <input type="radio" name="product-checkBox--group" id="product--radio1">
+                                        Men
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="product-checkBox--group" id="product--radio2">
+                                        Women
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="product-checkBox--group" id="product--radio3">
+                                        Kid
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6>Danh mục</h6>
+                                <select name="" id="product-info-category">
+                                    <option value="Balo">Balo</option>
+                                    <option value="tuiXach">Túi xách</option>
+                                    <option value="PhuKien">Phụ kiện</option>
+                                </select>
+                            </div>
+                            <div>
+                                <h6>Thương hiệu</h6>
+                                <input type="text" id ="Brand-textField" class="product-textField">
+                            </div>
+                            <div>
+                                <h6>Màu sắc</h6>
+                                <div class="colorTable">
+                                    <input type="checkbox" id ="Table__checkbox--1">
+                                    <label for="Table__checkbox--1" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--2">
+                                    <label for="Table__checkbox--2"  class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--3">
+                                    <label for="Table__checkbox--3" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--4">
+                                    <label for="Table__checkbox--4" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--5">
+                                    <label for="Table__checkbox--5" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--6">
+                                    <label for="Table__checkbox--6" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--7">
+                                    <label for="Table__checkbox--7" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--8">
+                                    <label for="Table__checkbox--8" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--9">
+                                    <label for="Table__checkbox--9" class="colorTableckBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--10">
+                                    <label for="Table__checkbox--10" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--11">
+                                    <label for="Table__checkbox--11" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="Table__checkbox--12">
+                                    <label for="Table__checkbox--12" class="colorTable--checkBox"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info--2-2">
+                            <div>
+                                <h6>Giá nhập</h6>
+                                <input type="text" id ="PriceImport-textField" class="product-textField"  value placeholder="VND">
+                            </div>
+                            <div>
+                                <h6>Giá bán</h6>
+                                <input type="text" id ="PriceExport-textField" class="product-textField" value placeholder="VND">
+                            </div>
+                            <div>
+                                <h6>Số lượng</h6>
+                                <input type="text" id ="Amount-textField" class="product-textField">
+                            </div>
+                            <div class="saveProduct">
+                                <button id ="saveProduct--button--create" class="saveProduct--button">
+                                    Tạo sản phẩm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <!-- PRODUCT CREATE -->
-    
+
         <!-- PRODUCT UPDATE -->
+        <div  id="DetailProduct-page" class="hidden">
+            <div class="section__container">
+                <div class="Product-head__title row">
+                    <div class="col-12">
+                        <h4>Chi tiết sản phẩm</h4>
+                    </div>
+                </div>
+                <div class="product-info row">
+                    <div class = "col-8">
+                        <div class="product-info--1-1">
+                            <div class="product-Name">
+                                <h6>Tên sản phẩm</h6>
+                                <input type="text" id="DetailProduct-Name--txtField" value placeholder="Tên sản phẩm">
+                            </div>
+                        </div>
+                        <div class="product-info--1-2">
+<!--
+                            <div class="product-Name">
+                                <h6>Ngày nhập</h6>
+                                <input type="text" id="DetailProduct-DayImport--txtField" value placeholder="Ngày nhập">
+                            </div> -->
+                            <div class="product-describe">
+                                <h6>Mô tả</h6>
+                                <textarea id="DetailProduct-describe--txtField" name="long-text" value placeholder="Write something awesome"></textarea>
+                                <!-- <input type="text" id="product-describe--txtField" value placeholder="Write something awesome"> -->
+                            </div>
+                            <div class="product-image">
+                                <h6>Hình ảnh</h6>
+                                <div class="containerProduct--img" id = "containerDetailProduct--img">
+<!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+<!--                                    <img src="../assets/img/balo2.jpg" class="imageDetailProduct">-->
+                                    <button id="DetailProduct-info__btn-img" class="imageDetailProduct">
+                                        <i class="icon-add_photo_alternate"></i>
+                                        Thêm ảnh
+                                    </button>
+                                </div>
+                                <input type="file" id="fileInput" onchange="showImage(this)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="product-info--2-1">
+                            <div class="ProductId">
+                                <p id="ProductId--detail">
+                                </p>
+                                <p id="DetailProduct-DayImport--txtField">
+                                </p>
+                            </div>
+                            <div>
+                                <h6>Giới tính</h6>
+                                <ul class="product-info--checkBox">
+                                    <li>
+                                        <input type="radio" name="product-checkBox--group" id="Detailproduct--radio1">
+                                        Men
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="product-checkBox--group" id="Detailproduct--radio2">
+                                        Women
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="product-checkBox--group" id="Detailproduct--radio3">
+                                        Kid
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6>Danh mục</h6>
+                                <select name="" id="DetailProduct-info-category">
+                                    <option value="Balo">Balo</option>
+                                    <option value="TuiXach">Túi xách</option>
+                                    <option value="PhuKien">Phụ kiện</option>
+                                </select>
+                            </div>
+                            <div>
+                                <h6>Thương hiệu</h6>
+                                <input type="text" id ="DetailProduct__Brand-textField" class="product-textField">
+                            </div>
+                            <div>
+                                <h6>Màu sắc</h6>
+                                <div class="colorTable">
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--1">
+                                    <label for="DetailProduct__Table__checkbox--1" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--2">
+                                    <label for="DetailProduct__Table__checkbox--2"  class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--3">
+                                    <label for="DetailProduct__Table__checkbox--3" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--4">
+                                    <label for="DetailProduct__Table__checkbox--4" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--5">
+                                    <label for="DetailProduct__Table__checkbox--5" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--6">
+                                    <label for="DetailProduct__Table__checkbox--6" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--7">
+                                    <label for="DetailProduct__Table__checkbox--7" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--8">
+                                    <label for="DetailProduct__Table__checkbox--8" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--9">
+                                    <label for="DetailProduct__Table__checkbox--9" class="colorTableckBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--10">
+                                    <label for="DetailProduct__Table__checkbox--10" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--11">
+                                    <label for="DetailProduct__Table__checkbox--11" class="colorTable--checkBox"></label>
+                                    <input type="checkbox" id ="DetailProduct__Table__checkbox--12">
+                                    <label for="DetailProduct__Table__checkbox--12" class="colorTable--checkBox"></label>
+                                </div>
+                            </div>
+                            <!--                        <div>-->
+                            <!--                            <h6>Size</h6>-->
+                            <!--                            <div class="checkboxSize">-->
+                            <!--                                <input type="checkbox" id ="checkboxSizeS&#45;&#45;Detail">-->
+                            <!--                                <label for="checkboxSizeS&#45;&#45;Detail" class="checkboxSize__item">S</label>-->
+                            <!--                                <input type="checkbox" id ="checkboxSizeM&#45;&#45;Detail">-->
+                            <!--                                <label for="checkboxSizeM&#45;&#45;Detail"  class="checkboxSize__item">M</label>-->
+                            <!--                                <input type="checkbox" id ="checkboxSizeL&#45;&#45;Detail">-->
+                            <!--                                <label for="checkboxSizeL&#45;&#45;Detail" class="checkboxSize__item">L</label>-->
+                            <!--                            </div>-->
+                            <!--                        </div>-->
+                        </div>
+                        <div class="product-info--2-2">
+                            <div>
+                                <h6>Giá nhập</h6>
+                                <input type="text" id ="DetailProduct__PriceImport-textField" class="product-textField"  value placeholder="VND">
+                            </div>
+                            <div>
+                                <h6>Giá bán</h6>
+                                <input type="text" id ="DetailProduct__PriceExport-textField" class="product-textField" value placeholder="VND">
+                            </div>
+                            <div>
+                                <h6>Số lượng</h6>
+                                <input type="text" id ="DetailProduct__Amount-textField" class="product-textField">
+                            </div>
+                            <div class="saveProduct">
+                                <button id ="saveProduct--button--repair" class="saveProduct--button">
+                                    Lưu sửa đổi
+                                </button>
+                            </div>
+                            <div class="saveProduct">
+                                <button id ="saveProduct--button--delete" class="saveProduct--button">
+                                    Xóa sản phẩm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- PRODUCT UPDATE -->
     
         <!-- USER -->
@@ -430,8 +756,8 @@
                 <div class="header-body">
                     <div class="header-body--left col">
                         <h4 class="body-tab" class="body-tab-1"> Khách hàng </h4>
-                    </div>    
-                    <div class="header-body--right col">  
+                    </div>
+                    <div class="header-body--right col">
                         <button type="button" class="body-tab" class="body-tab-2" id="AddNewUserBtn"> <i class="icon-plus"></i> Khách hàng mới  </button>
                     </div>
                 </div>
@@ -452,11 +778,11 @@
                 <div class="main-body__user-table row">
                     <table id="user-table-title">
                         <thead>
-                        <tr class="user-table-title-row"> 
-                            <th class="user-table-title-ID"> ID </th>    
+                        <tr class="user-table-title-row">
+                            <th class="user-table-title-ID"> ID </th>
                             <th class="user-table-title-name"> Họ tên </th>
                             <th class="user-table-title-address"> Địa chỉ </th>
-                            <th class="user-table-title-phone"> Điện thoại </th>                           
+                            <th class="user-table-title-phone"> Điện thoại </th>
                             <!-- <th class="user-table-title-switch"></th> -->
                         </tr>
                     </thead>
@@ -466,41 +792,41 @@
                     <span id="currentPage"></span>
                     <button class="style-button" onclick="prevPage()"><i class="icon-chevron_left"></i></button>
                     <button class="style-button" onclick="nextPage()"><i class="icon-chevron_right"></i></button>
-                </div> 
-            </div>     
+                </div>
             </div>
-        </div> 
+            </div>
+        </div>
         </div>
         <!-- USER -->
     
         <!-- USER CREATE -->
         <div id="user-create-page" class="hidden">
         <div id="create-user-body-row" class="create-user-data"  >
-           
+
             <div class="header-body-1">
-                <div id="hidden-form"> 
+                <div id="hidden-form">
             <div>
                 <h3 class="body-tab body-tab-3"> Khách hàng mới </h3>
-            </div> 
-            
-            <div >    
+            </div>
+
+            <div >
                 <ul class="item-user"  >
                     <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
                     <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
                     <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i>Khách hàng mới </li>
                 </ul>
-            </div>    
-        
-                
-                <div id="create-user-form">               
+            </div>
+
+
+                <div id="create-user-form">
                 <div id="add-photo">
-                    <div class="window-add-photo">  
-                                       
+                    <div class="window-add-photo">
+
                         <input type="file"   id="image-input" accept="image/**" onchange="previewImage()"> </input>
                         <i id="icon-add" class="icon-add_a_photo"><p class="text-photo">Upload photo </p>  </i>
-                        <!-- <p>Upload photo</p> --> 
+                        <!-- <p>Upload photo</p> -->
                     </div>
-                    
+
                     <p class="text-photo-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
                     <img id="preview-image" src="" alt="">
                 </div>
@@ -530,8 +856,8 @@
                     <input type="password" id="confirm-password-user" name="confirm-password-user">
                     </div>
                     <div id="button-create-new-user">
-                    <button type="button" id="create-new-user" onclick="CreateAccount()" class="burger-btn"> Tạo khách hàng mới </button>     
-                    </div>              
+                    <button type="button" id="create-new-user" onclick="CreateAccount()" class="burger-btn"> Tạo khách hàng mới </button>
+                    </div>
                 </div>
         </div>
         </div>
@@ -555,9 +881,9 @@
                     <div class="window-change-photo">
                         <input type="file"   id="image-change" accept="image/**" onchange="previewImageChange()"> </input>
                         <i id="icon-add-photo" class="icon-add_a_photo"><p class="text-photo">Upload photo </p>  </i>
-                        <img id="background" src="../assets/img/avatar-placeholder.png"> 
-                        <!-- <p>Upload photo</p> --> 
-                    </div>                  
+                        <img id="background" src="../assets/img/avatar-placeholder.png">
+                        <!-- <p>Upload photo</p> -->
+                    </div>
                     <p class="text-photo-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
                     <img id="preview-image-change" src="" alt="">
                 </div>
@@ -587,9 +913,9 @@
                     <input type="password" id="change-confirm-password-user" name="confirm-password-user">
                     </div>
                     <div id="button-create-new-user">
-                    <button id="change-user" class="burger-btn"> Cập nhật thông tin </button>     
-                    </div>              
-                </div> 
+                    <button id="change-user" class="burger-btn"> Cập nhật thông tin </button>
+                    </div>
+                </div>
             </div>
             <div id="history-buying">
                <h4 id="title-history-buying"> Lịch sử mua hàng </h4>
@@ -602,17 +928,17 @@
                                 <th class="price"> Giá trị </th>
                             </tr>
                         </thead>
-                        <tbody id="table-history-buying-body"> 
+                        <tbody id="table-history-buying-body">
                         </tbody>
-                    </table>                   
+                    </table>
             </div>
             <div id="paginationOrder">
                 <span id="currentPageOder"></span>
-                <button class="style-button" onclick="prevPageOrder()"><i class="icon-chevron_left"> </i></button>    
+                <button class="style-button" onclick="prevPageOrder()"><i class="icon-chevron_left"> </i></button>
                 <button class="style-button" onclick="nextPageOrder()"><i class="icon-chevron_right"></i></button>
             </div>
         </div>
-            </div> 
+            </div>
         </div>
         <!-- USER DETAIL -->
     
@@ -626,8 +952,8 @@
                     <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Thông tin khách hàng </a></li>
                     <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i> Chi tiết hóa đơn </li>
                 </ul>
-            </div> 
-       <div id="user-order-container">             
+            </div>
+       <div id="user-order-container">
         <div id="table-order">
             <table id="user-order-table">
                     <tr id="user-order-table-title">
@@ -635,25 +961,25 @@
                         <th id="user-order-price"> Đơn giá </th>
                         <th id="user-order-amount"> Số Lượng </th>
                         <th id="user-order-money"> Thành tiền </th>
-                    </tr>    
+                    </tr>
                     <tbody id="user-order-table-body"></tbody>
             </table>
         </div>
-        <div id="ship">          
-            <div id="address-ship">  
-                <h5 class="text-title">  Địa chỉ giao hàng </h5>           
+        <div id="ship">
+            <div id="address-ship">
+                <h5 class="text-title">  Địa chỉ giao hàng </h5>
             </div>
             <div id="price-order">
                 <h5 class="text-title"> Thông tin đơn hàng </h5>
             </div>
 
         </div>
-    </div>  
+    </div>
     </div>
 </div>
 
         <!-- USER ORDER -->
-    
+
     <!-- MAIN BODY HERE -->
 
     <!-- FOOTER -->
@@ -693,4 +1019,5 @@
 
 <script src="interface.js"></script>
 <script src="../assets/scripts/business.js"></script>
+<script src="./ADproduct.js"></script>
 <script src="../assets/scripts/ADUser.js"></script>
