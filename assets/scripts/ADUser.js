@@ -1,4 +1,4 @@
-
+//comment
 function writeToLocalStorage(key,valueUrl){
     const localStorageData = localStorage.getItem(key);
     if (!localStorageData){
@@ -393,22 +393,38 @@ document.addEventListener("DOMContentLoaded",function(){
         }
     });
 });
+function getNextUserId(existingUsers) {
+    // Lấy ID của người dùng cuối cùng trong danh sách
+    const lastUserId = existingUsers.length > 0 ? existingUsers[existingUsers.length - 1].id : 0;
+
+    // Tạo ID mới
+    const nextUserId = lastUserId + 1;
+
+    // Chuyển định dạng ID theo mẫu AC00000x
+    const formattedUserId = `CA${String(nextUserId).padStart(6, '0')}`;
+
+    return formattedUserId;
+}
 function CreateAccount(){
     var username = document.getElementById('user-name').value;
     var address = document.getElementById('address-user').value;
     var phone = document.getElementById('phonenumeber-user').value;
     var email = document.getElementById('email-user').value;
     var password = document.getElementById('password-user').value;
-    var account = {
+    var existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    var newUserId = getNextUserId(existingUsers);
+    var mewuser = {
+        id: newUserId,
         username: username,
         address: address,
         phone: phone,
         email: email,
         password: password,
+        role: "cilent",
     }
-    var users = JSON.parse(localStorage.getItem("users"))|| [] ;
-    users.push(account);
-    localStorage.setItem("account", JSON.stringify(users));
+    var newusers = JSON.parse(localStorage.getItem("users"))|| [] ;
+    newusers.push(mewuser);
+    localStorage.setItem("users", JSON.stringify(newusers));
     alert("Account created successfully!"); 
 }
 
