@@ -90,6 +90,8 @@
 }
 .invoice-detail-table td.product img{
     border-radius: 12px;
+    width: 4rem;
+    height: 4rem;
 }
 .invoice-detail-table tr > :last-child{
     text-align: right;

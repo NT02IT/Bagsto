@@ -1,3 +1,28 @@
+// DATA HANDLER
+function IDGenerate() {
+    var ngayGioHienTai = new Date();
+    var chuoiNgayGio = ngayGioHienTai.toISOString().replace(/[-:T.]/g, "").slice(0, 14);
+    var ID = chuoiNgayGio.slice(0, 6);
+    return ID;
+}
+
+function getCurrentDate() {
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
+    return formattedDate;
+}
+
+function handleErrorPrdThumbnail(img){
+    img.src = '..\\assets\\img\\product_placeholder.png';
+}
+function handleErrorAvatar(img){
+    img.src = '..\\assets\\img\\avatar-placeholder.png';
+}
+// DATA HANDLER
+
 // VALIDATION
 //----------------------------------------------------------------
 /* ----------------------------
