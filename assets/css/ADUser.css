@@ -386,6 +386,9 @@
     border-radius: 16px;
     box-shadow: 2px 2px 2px 2px #919EAB33;
 }
+#detail-table-history-buying tr:hover{
+    background-color: #e9ebeb;
+}
 #history-buying-title{
     background-color: var(--color-grey-200);
 }   
