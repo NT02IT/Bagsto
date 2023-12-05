@@ -101,6 +101,35 @@ function checkAmount(kt){
 
 // STATISTIC ADMIN
 //----------------------------------------------------------------
+let totalProductSelled = 0;
+for(let i = 0; i < ordersList.length; i++){
+    for(let j = 0; j <  ordersList[i].products_order.length; j++){
+        totalProductSelled += parseInt(ordersList[i].products_order[j].quantity);
+    }
+}
+document.getElementById('totalProductSelled').textContent = totalProductSelled;
+
+let totalIncome = 0;
+for(let i = 0; i < ordersList.length; i++){
+    for(let j = 0; j <  ordersList[i].products_order.length; j++){
+        totalIncome += parseInt(ordersList[i].products_order[j].quantity) * parseInt(ordersList[i].products_order[j].price_sell);
+    }
+}
+document.getElementById('totalIncome').textContent = totalIncome + "đ";
+
+let totalVon = 0;
+for(let i = 0; i < ordersList.length; i++){
+    for(let j = 0; j <  ordersList[i].products_order.length; j++){
+        for(let k = 0; k < productsList.length; k++){
+            if(productsList[k].id == ordersList[i].products_order[j].id){
+                totalVon += parseInt(ordersList[i].products_order[j].quantity) * productsList[k].price_imported
+            }
+        }
+    }
+}
+let totalRevenue = totalIncome - totalVon;
+document.getElementById('totalRevenue').textContent = totalRevenue + "đ";
+
 function viewAdminInvoices(){
     const tableAdminInvoices = document.querySelector(".invoice-table__cont table");
     const tbodyAdminInvoices = tableAdminInvoices.querySelector("tbody");
