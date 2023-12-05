@@ -115,6 +115,7 @@ for(let i = 0; i < ordersList.length; i++){
         totalIncome += parseInt(ordersList[i].products_order[j].quantity) * parseInt(ordersList[i].products_order[j].price_sell);
     }
 }
+
 document.getElementById('totalIncome').textContent = totalIncome + "đ";
 
 let totalVon = 0;
