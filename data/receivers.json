@@ -75,6 +75,13 @@
         "name": "Nguyễn Anh Tuấn",
         "address": "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
         "phone": "0327431105"
+    },
+    {
+        "id_receiver": 12,
+        "id_ruser_create": "AC000011",
+        "name": "Nguyễn Anh Tuấn",
+        "address": "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
+        "phone": "0327431105"
     }
 
 ]

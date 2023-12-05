@@ -1,3 +1,29 @@
+// DATA HANDLER
+function IDGenerate() {
+    // Lấy thời gian hiện tại
+    var currentTime = new Date().getTime();
+    // Tạo mã từ thời gian và lấy 6 ký tự cuối cùng
+    var uniqueCode = currentTime.toString().slice(-6);
+    return uniqueCode;
+}
+
+function getCurrentDate() {
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year;
+    return formattedDate;
+}
+
+function handleErrorPrdThumbnail(img){
+    img.src = '..\\assets\\img\\product_placeholder.png';
+}
+function handleErrorAvatar(img){
+    img.src = '..\\assets\\img\\avatar-placeholder.png';
+}
+// DATA HANDLER
+
 // VALIDATION
 //----------------------------------------------------------------
 /* ----------------------------
@@ -150,7 +176,6 @@ function clearMainBody(){
 // HEADER INTERFACE
 const burgerBtn = document.getElementById('burger-btn')
 const mobileNav = document.getElementById('mobile-nav')
-
 const accountsName = document.querySelectorAll(".hello-account p")
 const helloAccounts = document.querySelectorAll(".hello-account")
 const headerAdminAvatar = document.querySelector('.header__avatar')
@@ -158,7 +183,6 @@ const accountPopover = document.querySelector('.account-popover')
 const logoutButtons = document.querySelectorAll(".logout_button")
 const navItems = document.querySelectorAll('.nav-item');
 const headerAdmin = document.querySelector('#header-admin');
-
 burgerBtn.addEventListener('click', function(){
     mobileNav.classList.toggle('collapsed');
 });
@@ -166,8 +190,18 @@ headerAdminAvatar.addEventListener('click', function () {
     accountPopover.classList.toggle('collapsed');
 });
 let userLogin = JSON.parse(localStorage.getItem("currentAdminUser"));
-for(let i = 0; i < accountsName.length; i++) {
-    accountsName[i].textContent = userLogin.name;
+if(userLogin) {
+    for(let i = 0; i < accountsName.length; i++) {
+        accountsName[i].textContent = userLogin.name;
+    }
+    for(let i = 0; i < logoutButtons.length; i++) {
+        logoutButtons[i].addEventListener('click', function(){
+            localStorage.removeItem("currentAdminUser");
+            window.location.href = ".\\index.html";
+        });
+    }
+} else{
+    clearMainBody();
 }
 
 // HEADER INTERFACE

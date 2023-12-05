@@ -59,11 +59,12 @@ function displayProducts(htmlContainer, productList, currentPage){
     const itemsToDisplay = productList.slice(start, end);
 
     for (const item of itemsToDisplay) {
+        console.log()
         const prdItem = document.createElement("li");
         prdItem.classList.add("product-card", "col-3");
         prdItem.innerHTML = `
             <div class="product-card__cont">
-                <img src=${item.thumbnail_stack[0]} onerror="handleErrorPrdThumbnail(this)" alt=${item.name} class="product__thumbnail">
+                <img src="${item.thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="${item.name}" class="product__thumbnail">
                 <div class="product__info">
                     <h6 class="product__name">${item.name}</h6>
                     <div class="stack">
@@ -95,6 +96,7 @@ function displayProducts(htmlContainer, productList, currentPage){
         });
         productItems[i].querySelector('.btn-add-prd').addEventListener('click', (e) => {
             e.stopPropagation();
+            localStorage.setItem('selectedProduct', JSON.stringify(productList[start+i]));
             addToCartHandler();
         });
     }
@@ -484,7 +486,6 @@ function showCartResume(){
     cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
     cartShippingPrice.textContent = cartShippingPriceValue + "đ";
     cartSumPrice.textContent = cartSumPriceValue + "đ";
-
 }
 
 const cartBtn = document.getElementById('header-cart');
@@ -512,6 +513,28 @@ cartBtn.onclick = function () {
     }
 };
 
+const cartCheckoutButton = document.getElementById('cart-checkout-btn');
+cartCheckoutButton.addEventListener("click", () => {
+    clearMainBody();
+    siteCheckoutAddress.classList.remove('hidden');
+    
+    const cartSubtotalPrice = document.getElementById('cartSubtotalPriceAdd');
+    const cartShippingPrice = document.getElementById('cartShippingPriceAdd');
+    const cartSumPrice = document.getElementById('cartSumPriceAdd');
+
+    let cartSubtotalPriceValue = 0;
+    let cartShippingPriceValue = 0;
+
+    let accountOrder = cartsList.filter(c => c.id_user == currentUser.id)[0].products_order;
+
+    for(let i = 0; i < accountOrder.length; i++){
+        cartSubtotalPriceValue += accountOrder[i].price_sell * accountOrder[i].quantity;
+    }
+    let cartSumPriceValue = cartSubtotalPriceValue + cartShippingPriceValue;
+    cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
+    cartShippingPrice.textContent = cartShippingPriceValue + "đ";
+    cartSumPrice.textContent = cartSumPriceValue + "đ";
+})
 //----------------------------------------------------------------
 // CART
 
@@ -575,9 +598,9 @@ function showAccountOrder(){
                         <img src="${filteredProductOrder[0].thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)" alt="">
                         <div class="product__info--detail">
                             <div class="product__name subtitle2">${filteredProductOrder[0].name}</div>
-                            <div class="product__info--order body2">
+                            <!--<div class="product__info--order body2">
                                 <p class="body2">Màu sắc: </p><div class="color-dot" style="background: ${filteredUseroder[i].products_order[k].colors};"></div><p></p>
-                            </div>
+                            </div>-->
                         </div>
                     </td>
                     <td><div class="body2">${filteredUseroder[i].products_order[k].price_sell}đ</div></td>
@@ -667,3 +690,40 @@ function changeAvatarImg() {
   }
 //----------------------------------------------------------------
 // ACCOUNT
+
+// CHECKOUT ADDRESS
+//----------------------------------------------------------------
+function showCustomerAddresses() {
+    var listAddresses = document.getElementById('listAddresses');
+    listAddresses.innerHTML = '';
+    var isFirstDefaultAdded = false;
+    
+    let userReceiver = [];
+    for(let i = 0; i < receiversList.length; i++) {
+        if(receiversList[i].id_ruser_create == currentUser.id){
+            userReceiver.push(receiversList[i]);
+        }
+    }
+    console.log(userReceiver);
+
+    userReceiver.forEach(function(customer, index) {
+      var customerDiv = document.createElement('div');
+      customerDiv.classList.add('customer-address');
+  
+      customerDiv.innerHTML = `
+        <div class="customer-info">
+          <p class="subtitle-1">${customer.name}</p>
+          <p class="body2 customer-address-text">${customer.address}</p>
+          <p class="body2 customer-phone">${customer.phone}</p>
+        </div>
+        <div class="button-on-address">
+            <button class="deleteButton type-inherit size-m">Xóa</button>
+            <button class="confirmButton type-primary style-soft size-m" id="">Giao đến địa chỉ này</button>
+        </div>
+      `;
+      listAddresses.appendChild(customerDiv);
+    })
+}
+showCustomerAddresses();
+//----------------------------------------------------------------
+// CHECKOUT ADDRESS
