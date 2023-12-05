@@ -89,6 +89,9 @@
     border-radius: 16px;
     box-shadow: 2px 2px 2px 2px #919EAB33;
 }
+#user-table-body tr:hover {
+    background-color: #e9ebeb;
+}
 #pagination{
     margin-top: -50px;
     display: flex;
@@ -138,11 +141,6 @@
 .create-user-body-row{
     display:none;
 }
-
-.user-table-body-cell{
-    padding: 20px;
-    margin-bottom: 20px;
-}
 .user-img{
     width: 40px;
     height: 40px;
@@ -150,13 +148,6 @@
     margin-right: 20px
 }
 
-.dividedIngredients{
-    display:    flex;
-    justify-content: flex-end;
-}
-.numberOfIngredients{
-    margin-top: 4px;
-}
 .btn-user{
     color:var(--color-divider);
     background-color:var(--color-common-white);
@@ -274,6 +265,10 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
+ }
+ #user-detail-page{
+    width: 1200px;
+    margin: auto;
  }
  #preview-image{
     width: 128px;
@@ -413,6 +408,13 @@
 }
 #change-data-user{
     display: flex;
+}
+#button-change-user{
+    margin-right: 10px ;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: right;
 }
 #change-photo{
     border: 1px solid black ;

@@ -162,17 +162,28 @@ function previewImageChange() {
     }
 }
 //button next order
+let NumberOrderLenghtCurrent;
 const itemsPerPageOrder = 5;
 let currentPageOrder = 1;
-const totalPagesOrder = Math.ceil(listOrder.length / itemsPerPageOrder);
-function loadOrder(){
+let totalPagesOrder;
+function loadOrder(a){
     const TableOrder = document.getElementById('table-history-buying-body');
-    const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
-    const endIndex = startIndex + itemsPerPageOrder;
-    const ordersToDisplay = listOrder.slice(startIndex, endIndex);
+    // const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
+    // const endIndex = startIndex + itemsPerPageOrder;
+    // const ordersToDisplay = listOrder.slice(startIndex, endIndex);
     TableOrder.innerHTML = '';  
+    let hasOrderToDisplay = false;
+    NumberOrderLenghtCurrent = 0;
     if (listOrder && Array.isArray(listOrder)){
-        ordersToDisplay.forEach( order =>{
+       const orderArray =  listOrder.filter( order => order.id_user == a)
+            if(orderArray && orderArray.length>0){ 
+                 NumberOrderLenghtCurrent = orderArray.length ;  
+                 totalPagesOrder = Math.ceil(  NumberOrderLenghtCurrent / itemsPerPageOrder)  
+                 console.log(NumberOrderLenghtCurrent)
+                 const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
+                 const endIndex = startIndex + itemsPerPageOrder;
+                 const ordersToDisplay = orderArray.slice(startIndex, endIndex);        
+                 ordersToDisplay.forEach(order => {
             const row = document.createElement('tr');
             const DateBuyingCell = document.createElement('td');
             const IDCell = document.createElement('td');
@@ -193,8 +204,16 @@ function loadOrder(){
             row.appendChild(PriceCell);
             TableOrder.appendChild(row);
         })
+        if (!hasOrderToDisplay) {
+            currentPageOrder = 1;  
     }
-}
+    
+    }
+ 
+    }
+   
+    }
+// totalPagesOrder = Math.ceil( NumberOrderLenghtCurrent / itemsPerPageOrder) ;
 //button next order
 function updatePaginationOrder() {
     const currentPageElement = document.getElementById('currentPageOder');
@@ -210,14 +229,14 @@ function updatePaginationOrder() {
 function prevPageOrder() {
     if (currentPageOrder > 1) {
         currentPageOrder--;
-        loadOrder();
+        loadOrder(AGlobal);
     }
 }
 
 function nextPageOrder() {
     if (currentPageOrder < totalPagesOrder) {
         currentPageOrder++;
-        loadOrder();
+        loadOrder(AGlobal);
     }
 }
 
@@ -249,10 +268,11 @@ function productName(a){
             }
         }
     }
-function loadUserOrder(){
+function loadUserOrder(a){
     const tableUserOrder = document.getElementById('user-order-table-body')
     if (listOrder && Array.isArray(listOrder)){
-        listOrder.forEach(order =>{
+        const test = listOrder.find(order => order.id == a)
+        if(test){
              if(Array.isArray(order.products_order) && order.products_order.length>0){
                 order.products_order.forEach(product =>{
                     const row = document.createElement('tr');
@@ -303,9 +323,9 @@ function loadUserOrder(){
                     UnitColor.style.marginLeft = "8px"
                 })
              }
-        })
+        } 
+        }
     }
-}
 writeToLocalStorage('receivers','../data/receivers.json')
 let listReceiver = readLocalStorage('receivers')
 function loadReceiver (a){
@@ -374,6 +394,95 @@ function loadPriceOrder(a){
         }
     } 
 }
+// Cập nhật thông tin
+let AGlobal
+let id
+document.addEventListener('DOMContentLoaded', function () {
+    var UserTableChange = document.getElementById("user-table-title");
+    AGlobal = 0;
+    if (UserTableChange) { 
+        var tbodyUserTable = UserTableChange.querySelector('tbody');
+        if(tbodyUserTable){
+            tbodyUserTable.addEventListener('click',function(e){
+            var targetElement = e.target;
+            // Tìm dòng cha chứa ô được click
+            var row = targetElement.closest("tr"); 
+            if(row){
+            console.log("clicked")
+            var idCellUser = row.querySelector('td:first-child');
+            id = idCellUser.textContent.trim();
+            AGlobal = parseInt(id.slice(-6))
+            console.log(id)
+            console.log(AGlobal)
+            loadOrder(AGlobal)
+        // })
+     }
+        const UserTablePage = document.getElementById("user-page")
+        const UserAdjust = document.getElementById("user-detail-page")
+            // Kiểm tra xem có chứa lớp "hidden-user" hay không
+        const isHidden = UserAdjust.classList.contains("hidden");
+            // Nếu đang ẩn, hiển thị và ngược lại
+            if (isHidden) {
+                UserAdjust.classList.remove("hidden");
+                UserTablePage.classList.add("hidden")
+    
+            } else {
+                UserAdjust.classList.add("hidden");      
+                UserTablePage.classList.remove("hidden")
+            }
+            
+    })}}});
+   function ChangeInformationUser(){
+    const ChangeInformation = listUser.find(user => user.id == id)
+    if(ChangeInformation){
+    var username = document.getElementById('change-user-name').value;
+    var address = document.getElementById('change-address-user').value;
+    var phone = document.getElementById('change-phonenumeber-user').value;
+    var email = document.getElementById('change-email-user').value;
+    var password = document.getElementById('change-password-user').value;
+    var confirmPassword = document.getElementById('change-confirm-password-user').value;
+     // Kiểm tra định dạng email
+     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(email)) {
+         alert('Email không hợp lệ.');
+         return;
+     }
+ 
+     // Kiểm tra định dạng số điện thoại
+     var phoneRegex = /^\d{10}$|^\d{13}$/;
+     if (!phoneRegex.test(phone)) {
+         alert('Số điện thoại không hợp lệ.');
+         return;
+     }
+ 
+     if (password !== confirmPassword) {
+         alert('Mật khẩu và xác nhận mật khẩu không khớp.');
+         return;
+     }
+    var AdjustUser = {
+        id: id,
+        name: username,
+        address: address,
+        phone: phone,
+        email: email,
+        password: password,
+        client: ChangeInformation.client,
+    }
+    const AdjustInformationUsers = JSON.parse(localStorage.getItem('users'))
+    const indexToUpdate = AdjustInformationUsers.findIndex(userChange => userChange.id == AdjustUser.id);
+    if(indexToUpdate !== -1)
+      {  AdjustInformationUsers[indexToUpdate] = AdjustUser;
+    localStorage.setItem('users',JSON.stringify(AdjustInformationUsers))
+    alert("Account changes information successfully!");
+    function reloadPage() {
+        location.reload(true);
+    }
+    reloadPage();}
+   }
+   else{
+    alert("Cannot change Account")
+   }
+}
 //Thêm người dùng
 document.addEventListener("DOMContentLoaded",function(){
     const UserTable = document.getElementById("user-page")
@@ -395,50 +504,77 @@ document.addEventListener("DOMContentLoaded",function(){
 });
 function getNextUserId(existingUsers) {
     // Lấy ID của người dùng cuối cùng trong danh sách
-    const lastUserId = existingUsers.length > 0 ? existingUsers[existingUsers.length - 1].id : 0;
+    // const lastUserId = existingUsers.length > 0 ? existingUsers[existingUsers.length - 1].id : 0;
 
     // Tạo ID mới
-    const nextUserId = lastUserId + 1;
+    const  nextUserId = existingUsers.length + 1;
 
     // Chuyển định dạng ID theo mẫu AC00000x
-    const formattedUserId = `CA${String(nextUserId).padStart(6, '0')}`;
+    const formattedUserId = `AC${String(nextUserId).padStart(6, '0')}`;
+    
 
     return formattedUserId;
 }
+
+
 function CreateAccount(){
     var username = document.getElementById('user-name').value;
     var address = document.getElementById('address-user').value;
     var phone = document.getElementById('phonenumeber-user').value;
     var email = document.getElementById('email-user').value;
     var password = document.getElementById('password-user').value;
-    var existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    var newUserId = getNextUserId(existingUsers);
+    var newUserId = getNextUserId(listUser);
+    var confirmPassword = document.getElementById('confirm-password-user').value;
+     // Kiểm tra định dạng email
+     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(email)) {
+         alert('Email không hợp lệ.');
+         return;
+     }
+ 
+     // Kiểm tra định dạng số điện thoại
+     var phoneRegex = /^\d{10}$|^\d{13}$/;
+     if (!phoneRegex.test(phone)) {
+         alert('Số điện thoại không hợp lệ.');
+         return;
+     }
+ 
+     if (password !== confirmPassword) {
+         alert('Mật khẩu và xác nhận mật khẩu không khớp.');
+         return;
+     }
     var mewuser = {
         id: newUserId,
-        username: username,
+        name: username,
         address: address,
         phone: phone,
         email: email,
         password: password,
         role: "cilent",
     }
+       
     var newusers = JSON.parse(localStorage.getItem("users"))|| [] ;
     newusers.push(mewuser);
     localStorage.setItem("users", JSON.stringify(newusers));
     alert("Account created successfully!"); 
+    function reloadPage() {
+        location.reload(true);
+    }
+    reloadPage();    
 }
-
+//Chi tiết hóa đơn
 window.onload = function(){
     console.log(listUser);
     console.log(listOrder);
     loadUserOrder()
     loadUser();
-    loadOrder();
+    // loadOrder(3);
    console.log(pricesShipping(2))
    console.log(productImg(2))
    console.log(productName(2))
    loadReceiver(2);
    loadPriceOrder(1);
+   console.log(NumberOrderLenghtCurrent);
+   console.log(getNextUserId(listUser));
+   
 }
- 
-
