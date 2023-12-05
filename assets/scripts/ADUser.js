@@ -497,7 +497,11 @@ document.addEventListener('DOMContentLoaded', function () {
          alert('Số điện thoại không hợp lệ.');
          return;
      }
- 
+     var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*\d).+$/;
+     if (!passwordRegex.test(password)) {
+        alert('Nhập mật khẩu không đúng định dạng');
+         return;
+     }
      if (password !== confirmPassword) {
          alert('Mật khẩu và xác nhận mật khẩu không khớp.');
          return;
@@ -581,7 +585,11 @@ function CreateAccount(){
          alert('Số điện thoại không hợp lệ.');
          return;
      }
- 
+     var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*\d).+$/;
+     if (!passwordRegex.test(password)) {
+        alert('Nhập mật khẩu không đúng định dạng');
+         return;
+     }
      if (password !== confirmPassword) {
          alert('Mật khẩu và xác nhận mật khẩu không khớp.');
          return;
