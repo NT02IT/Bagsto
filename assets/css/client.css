@@ -866,7 +866,7 @@ li[class^="pagination"].disable:hover{
 /* CHECKOUTPAYMENT */
 
 /* CHECKOUTSUCCESS */
-#checkoutSuccess .col-12{
+#checkoutSuccess-page .col-12{
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -885,6 +885,8 @@ li[class^="pagination"].disable:hover{
     margin: auto;
 }
 .image-container img{
+    width: 320px;
+    height: 240px;
     margin: auto;
 }
 /* CHECKOUTSUCCESS */

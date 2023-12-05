@@ -103,7 +103,8 @@ const siteAccount  =document.getElementById('account-page');
 const siteAccountOrder  =document.getElementById('account-order-page');
 const siteProductDetail  =document.getElementById('product-detail-page');
 const siteCheckoutAddress  =document.getElementById('checkoutAddress-page');
-
+const siteCheckoutPayment  =document.getElementById('checkoutPayment-page');
+const siteCheckoutSuccess  =document.getElementById('checkoutSuccess-page');
 
 headerLogo.addEventListener('click', () => {
   resetNavbar();
@@ -604,31 +605,18 @@ for(let i = 0; i < helloAccount.length; i++){
 //   checkoutAddress.classList.remove('hidden');
 // });
 
+document.querySelector('.option-transport input[type="radio"]').checked = true;
+document.querySelector('.option-payment input[type="radio"]').checked = true;
 
-document.addEventListener('DOMContentLoaded', function() {
-  const optionTransports = document.querySelectorAll('.option-transport');
+const optionPayments = document.querySelectorAll('.option-payment');
 
-  optionTransports.forEach(option => {
-      option.addEventListener('click', function(event) {
-          const radioBtn = option.querySelector('input[type="radio"]');
-          if (!radioBtn.checked) {
-              radioBtn.checked = true;
-          }
-      });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const optionTransports = document.querySelectorAll('.option-payment');
-
-  optionTransports.forEach(option => {
-      option.addEventListener('click', function(event) {
-          const radioBtn = option.querySelector('input[type="radio"]');
-          if (!radioBtn.checked) {
-              radioBtn.checked = true;
-          }
-      });
-  });
+optionPayments.forEach(option => {
+    option.addEventListener('click', function(event) {
+        const radioBtn = option.querySelector('input[type="radio"]');
+        if (!radioBtn.checked) {
+            radioBtn.checked = true;
+        }
+    });
 });
 
 

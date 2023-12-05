@@ -48,10 +48,12 @@ let cartsList = getFromStorage('carts');
 
 // PRODUCT DISPLAY
 //----------------------------------------------------------------
+const productQuantityRemain = document.getElementById('prd-detail-quantity-remain');
 const itemsPerPage = 12;
 const maxPaginationItem = 5;
 let productItems;
 let selectedProduct;
+let totalPrdQuantity;
 function displayProducts(htmlContainer, productList, currentPage){
     htmlContainer.innerHTML = "";
     const start = (currentPage - 1) * itemsPerPage;
@@ -129,6 +131,8 @@ function viewProductDetail(product){
         })
     }
 
+    totalPrdQuantity = getFromStorage("selectedProduct").quantity;
+    productQuantityRemain.innerText = `Còn lại ${totalPrdQuantity} sản phẩm`;
 }
 // PRODUCT DISPLAY
 
@@ -347,14 +351,11 @@ function searchProduct(searchPattern) {
 
 // PRODUCT DETAIL
 //----------------------------------------------------------------
-let totalPrdQuantity = 12;
 const productOrderElement = document.getElementById('prd-detail-quantity');
-const productQuantityRemain = document.getElementById('prd-detail-quantity-remain');
 const addQuantityBtn = document.getElementById('prd-detail-add-quantity');
 const subQuantityBtn = document.getElementById('prd-detail-sub-quantity');
 let quantityPrdOrder = 1;
-totalPrdQuantity--;
-productQuantityRemain.innerText = `Còn lại ${totalPrdQuantity} sản phẩm`;
+
 addQuantityBtn.addEventListener('click', () =>{
     if(quantityPrdOrder < totalPrdQuantity+quantityPrdOrder){
         quantityPrdOrder++;
@@ -693,12 +694,12 @@ function changeAvatarImg() {
 
 // CHECKOUT ADDRESS
 //----------------------------------------------------------------
+let userReceiver = [];
 function showCustomerAddresses() {
     var listAddresses = document.getElementById('listAddresses');
     listAddresses.innerHTML = '';
     var isFirstDefaultAdded = false;
     
-    let userReceiver = [];
     for(let i = 0; i < receiversList.length; i++) {
         if(receiversList[i].id_ruser_create == currentUser.id){
             userReceiver.push(receiversList[i]);
@@ -718,12 +719,101 @@ function showCustomerAddresses() {
         </div>
         <div class="button-on-address">
             <button class="deleteButton type-inherit size-m">Xóa</button>
-            <button class="confirmButton type-primary style-soft size-m" id="">Giao đến địa chỉ này</button>
+            <button class="button-ship-to-add confirmButton type-primary style-soft size-m" id="">Giao đến địa chỉ này</button>
         </div>
       `;
       listAddresses.appendChild(customerDiv);
     })
 }
 showCustomerAddresses();
+let ShippingPrice = 0;
+const listButtonShipToAddresses = document.querySelectorAll('.button-ship-to-add');
+for(let i = 0; i < listButtonShipToAddresses.length; i++){
+    listButtonShipToAddresses[i].addEventListener("click", (event) => {
+        let receiverSelected = userReceiver[i];
+        localStorage.setItem('receiverSelected', JSON.stringify(receiverSelected));
+        clearMainBody();
+        siteCheckoutPayment.classList.remove('hidden');
+        showCheckoutPayment();
+        showOrderResumePayment();
+    })
+}
+
+function showCheckoutPayment(){
+    let receiverSelected = getFromStorage("receiverSelected");
+    console.log(receiverSelected)
+    document.querySelector('.checkout-receiver-name').textContent = receiverSelected.name;
+    document.querySelector('.checkout-receiver-address').textContent = receiverSelected.address;
+    document.querySelector('.checkout-receiver-phone').textContent = receiverSelected.phone;
+}
+function showOrderResumePayment(){
+    const cartSubtotalPrice = document.getElementById('cartSubtotalPricePayment');
+    const cartShippingPrice = document.getElementById('cartShippingPricePayment');
+    const cartSumPrice = document.getElementById('cartSumPricePayment');
+
+    let cartSubtotalPriceValue = 0;
+    let accountOrder = cartsList.filter(c => c.id_user == currentUser.id)[0].products_order;
+
+    for(let i = 0; i < accountOrder.length; i++){
+        cartSubtotalPriceValue += accountOrder[i].price_sell * accountOrder[i].quantity;
+    }
+    let cartSumPriceValue = cartSubtotalPriceValue + ShippingPrice;
+    cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
+    cartShippingPrice.textContent = ShippingPrice + "đ";
+    cartSumPrice.textContent = cartSumPriceValue + "đ";
+}
+document.querySelector('.option-transport.opt-2').addEventListener('click', () => {
+    ShippingPrice = 30000;
+    showOrderResumePayment();
+    document.querySelector('.option-transport.opt-2 input[type="radio"]').checked = true;
+    document.querySelector('.option-transport.opt-1 input[type="radio"]').checked = false;
+})
+document.querySelector('.option-transport.opt-1').addEventListener('click', () => {
+    ShippingPrice = 0;
+    showOrderResumePayment();
+    document.querySelector('.option-transport.opt-1 input[type="radio"]').checked = true;
+    document.querySelector('.option-transport.opt-2 input[type="radio"]').checked = false;
+})
+
+document.getElementById("paymentButton").addEventListener("click", ()=>{
+    let shippingType;
+    if(ShippingPrice==0) shippingType = 0;
+    else shippingType = 1;
+    let prdOrder = cartsList.filter(c => c.id_user == currentUser.id)[0].products_order
+    let receiverSelected = getFromStorage("receiverSelected");
+    //taoj order
+    let order = {
+        "id": "OD"+IDGenerate(),
+        "id_user": currentUser.id,
+        "id_order_state": 1,
+        "id_receiver": receiverSelected.id_receiver,
+        "id_shipping_type": shippingType,
+        "id_payment_type": 1,
+        "day_order": getCurrentDate(),
+        "products_order": prdOrder
+    }
+    ordersList.push(order);
+    localStorage.setItem("orders", JSON.stringify(ordersList))
+
+    for(let i = 0; i < prdOrder.length; i++){
+        for(let j = 0; j < productsList.length; j++){
+            if(productsList[j].id == prdOrder[i].id){
+                productsList[j].quantity -= prdOrder[i].quantity
+                console.log(productsList[j].quantity)
+            }
+        }
+    }
+    localStorage.setItem("products", JSON.stringify(productsList))
+
+    for(let i = 0; i < cartsList.length; i++){
+        if(cartsList[i].id_user == currentUser.id){
+            cartsList.splice(i, 1);
+        }
+    }
+    localStorage.setItem("carts", JSON.stringify(cartsList))
+    //tru so luong san pham
+    clearMainBody();
+    siteCheckoutSuccess.classList.remove('hidden')
+});
 //----------------------------------------------------------------
 // CHECKOUT ADDRESS
