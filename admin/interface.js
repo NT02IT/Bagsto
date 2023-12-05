@@ -97,6 +97,7 @@ const headerTab3 = document.getElementById('header-tab-admin3');
 
 const siteAnalysis = document.getElementById('analysis-page');
 const siteInvoiceDetail = document.getElementById('invoice-detail-page');
+const UserAdmin = document.getElementById('user-page');
 
 headerLogo.addEventListener('click', () =>{
     resetNavbar();
@@ -119,6 +120,24 @@ headerTab1.addEventListener('click', () =>{
     }
 })
 
+headerTab2.addEventListener('click', () =>{
+    const siteInvoiceDetail = document.getElementById('product-page');
+    if(!headerTab2.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab2.classList.add('active');
+        siteInvoiceDetail.classList.remove('hidden');
+    }
+})
+
+headerTab3.addEventListener('click', () =>{
+    if(!headerTab3.classList.contains('active')){
+        resetNavbar();
+        clearMainBody();
+        headerTab3.classList.add('active');
+        UserAdmin.classList.remove('hidden');
+    }
+})
 function resetNavbar(){
     const headerTabs = document.querySelectorAll('#header-admin .tab');
     for(let i = 0; i < headerTabs.length; i++){

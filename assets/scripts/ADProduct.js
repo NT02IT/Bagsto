@@ -152,8 +152,6 @@ function load6Product(listProduct, j){
     currentIndex = j
     table.innerHTML = ListItem;
 }
-
-
 window.onload = function () {
     loadProduct(ListProduct);
 };

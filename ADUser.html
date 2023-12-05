@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/brand/logos/logo-icon.svg">
+    <link rel="stylesheet" href="./assets/brand/icons/style.css">
+    <link rel="stylesheet" href="assets\css\style.css">
+    <link rel="stylesheet" href="assets/css/ADUser.css">
+    <link rel="stylesheet" href="./assets/css/client.css">
+    <title> ADUser </title>
+</head>
+<div>
+<div id="header" class="section">
+    <div class="section__container">
+        <div class="row">
+            <div class="header__block--left col">
+                <img src="assets\brand\logos\logo-full.svg" alt="" class="logo" id="header-logo"> 
+            </div>
+            <div class="header__block--right col">
+                <a href="#" class="tab" class="header-tab-1"> Thống kê </a>
+                <a href="#" class="tab" class="header-tab-2"> Sản phẩm </a>
+                <a href="#" onclick="toggleVisibility()" class="tab" class="header-tab-3"> Khách hàng </a>
+                <div id="avatar">
+                    <img src="assets\img\avatar-placeholder.png" alt="" class="header__avatar" >
+                </div>
+                <div class="header__bugerbtn" id="burger-btn"><i class="icon-menu"></i></div>
+            </div>   
+        </div>
+    </div>
+    <!-- Main body -->
+    <div id="mainbody" class="section">
+        <div class="section__container">
+            <div class="user-body-row" id="user-data">
+                <div class="header-body">
+                    <div class="header-body--left col">
+                        <h4 class="body-tab" class="body-tab-1"> Khách hàng </h4>
+                    </div>    
+                    <div class="header-body--right col">  
+                        <button type="button" class="body-tab" class="body-tab-2"> <i class="icon-plus"></i> Khách hàng mới  </button>
+                    </div>
+                </div>
+                <div class="user-body-row-2">
+                    <div id="status" >
+                        <select name="status-selection" id="status-selection">
+                            <option selected disabled> Status </option>
+                            <option value="active"> Active </option>
+                            <option value="banned"> Banned </option>
+                            <option value="all"> All </option>
+                        </select>
+                    </div>
+                    <div id="cus-search">
+                        <i class="icon-search"></i>
+                        <input type="text" class="" id="search-input" placeholder="Search...">
+                    </div>
+                </div>
+                <div class="main-body__user-table row">
+                    <table class="user-table-title">
+                        <thead>
+                        <tr class="user-table-title-row">                    
+                            <th class="user-table-title-name"> Họ tên </th>
+                            <th class="user-table-title-address"> Địa chỉ </th>
+                            <th class="user-table-title-date-create"> Ngày tạo </th>
+                            <th class="user-table-title-status"> Trạng thái </th>
+                            <th class="user-table-title-switch"></th>
+                        </tr>
+                    </thead>
+                </table>
+                    <table class="user-table-body">
+                    </table>
+                </div>
+                <div class="dividedIngredients">
+                <div class="numberOfIngredients">1-6 of 10</div>
+                <button class="btn-user"> <i class="icon-chevron_left"></i></button>
+                <button class="btn-user"> <i class=" icon-chevron_right"></i></button>
+                
+            </div>
+        </div>
+        <div class="create-user-body-row" id="create-user-data">
+           
+            <div class="header-body-1">
+                <div id="hidden-form"> 
+            <div>
+                <h3 class="body-tab body-tab-3"> Khách hàng mới </h3>
+            </div> 
+            
+            <div >    
+                <ul class="item-user"  >
+                    <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
+                    <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
+                    <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i>Khách hàng mới </li>
+                </ul>
+            </div>    
+        
+                
+                <div id="create-user-form">               
+                <div id="add-photo">
+                    <div class="window-add-photo">  
+                                       
+                        <input type="file"   id="image-input" accept="image/**" onchange="previewImage()"> </input>
+                        <i id="icon-add" class="icon-add_a_photo"><p class="text-photo">Upload photo </p>  </i>
+                        <!-- <p>Upload photo</p> --> 
+                    </div>
+                    
+                    <p class="text-photo-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
+                    <img id="preview-image" src="" alt="">
+                </div>
+                <div id="input-information-user">
+                    <div class="input-information">
+                    <label for="user-name"> Họ và tên </label>
+                    <input type="text" id="user-name" name="user-name">
+                    </div>
+                    <div class="input-information">
+                    <label for="phonenumeber-user"> Số điện thoại </label>
+                    <input type="text" id="phonenumeber-user" name="phonenumeber-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="address-user"> Địa chỉ </label>
+                    <input type="text" id="address-user" name="address-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="email-user"> Email </label>
+                    <input type="text" id="email-user" name="email-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="password-user"> Mật khẩu </label>
+                    <input type="password" id="password-user" name="password-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="confirm-password-user"> Xác nhận lại mật khẩu </label>
+                    <input type="password" id="confirm-password-user" name="confirm-password-user">
+                    </div>
+                    <div id="button-create-new-user">
+                    <button id="create-new-user" class="burger-btn"> Tạo khách hàng mới </button>     
+                    </div>              
+                </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div id="hidden-detail-user">
+            <h4> Tài khoản khách hàng</h4>
+            <div>
+                <ul class="item-user"  >
+                    <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
+                    <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
+                    <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i> Tài khoản khách hàng </li>
+                </ul>
+            </div >
+            <div id="change-data-user">
+                <div id="change-photo">
+                    <div class="window-change-photo">
+                        <input type="file"   id="image-change" accept="image/**" onchange="previewImageChange()"> </input>
+                        <i id="icon-add-photo" class="icon-add_a_photo"><p class="text-photo">Upload photo </p>  </i>
+                        <img id="background" src="assets/img/avatar-placeholder.png"> 
+                        <!-- <p>Upload photo</p> --> 
+                    </div>                  
+                    <p class="text-photo-1"> Cho phép *.jpeg, *.jpg, *.png, *.gif </p>
+                    <img id="preview-image-change" src="" alt="">
+                </div>
+                <div id="input-information-user">
+                    <div class="input-information">
+                    <label for="user-name"> Họ và tên </label>
+                    <input type="text" id="user-name" name="user-name">
+                    </div>
+                    <div class="input-information">
+                    <label for="phonenumeber-user"> Số điện thoại </label>
+                    <input type="text" id="phonenumeber-user" name="phonenumeber-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="address-user"> Địa chỉ </label>
+                    <input type="text" id="address-user" name="address-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="email-user"> Email </label>
+                    <input type="text" id="email-user" name="email-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="password-user"> Mật khẩu </label>
+                    <input type="password" id=" " name="password-user">
+                    </div>
+                    <div class="input-information">
+                    <label for="confirm-password-user"> Xác nhận lại mật khẩu </label>
+                    <input type="password" id="confirm-password-user" name="confirm-password-user">
+                    </div>
+                    <div id="button-create-new-user">
+                    <button id="create-new-user" class="burger-btn"> Cập nhật thông tin </button>     
+                    </div>              
+                </div> 
+            </div>
+            <div id="history-buying">
+               <h4 id="title-history-buying"> Lịch sử mua hàng </h4>
+               <div id="table-history-buying">
+                    <table id="detail-table-history-buying">
+                        <thead>
+                            <tr id="history-buying-title">
+                                <th class="date-buying"> Ngày mua </th>
+                                <th class="bill"> Hóa đơn </th>
+                                <th class="price"> Giá trị </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="bill-user"></table>
+               </div>
+               <div class="dividedIngredients">
+                <div class="numberOfIngredients">1-6 of 10</div>
+                <button class="btn-user-history-buying"> <i class="icon-chevron_left"></i></button>
+                <button class="btn-user-history-buying"> <i class=" icon-chevron_right"></i></button>
+            </div>
+            </div> 
+        </div>
+        <div id="hidden-user-order">
+                <h4> Tài khoản khách hàng</h4>
+                <div>
+                    <ul class="item-user"  >
+                        <li class="body-item-user"><a href="http://127.0.0.1:5500/Bagsto/admin/index.html#" class="body-tab body-tab-4">Trang chủ </a> </li>
+                        <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Khách hàng </a></li>
+                        <li class="body-item-user"><a href="#" onclick="toggleVisibility()" class="body-tab body-tab-5" ><i class="icon-dot"></i> Thông tin khách hàng </a></li>
+                        <li class="body-item-user body-tab body-tab-6"><i style="color: var(--color-grey-500)" class="icon-dot"></i> Chi tiết hóa đơn </li>
+                    </ul>
+                </div> 
+           <div id="user-order-container">             
+            <div id="table-order">
+                <table id="user-order-table">
+                        <tr id="user-order-table-title">
+                            <th class="user-order-product">  Sản phẩm </th>
+                            <th class="user-order-price"> Đơn giá </th>
+                            <th class="user-order-amount"> Số Lượng </th>
+                            <th class="user-order-money"> Thành tiền </th>
+                        </tr>    
+                </table>
+                <table class="user-order-table-detail"> </table>
+            </div>
+            <div id="ship">
+                
+                    <h5 id="title-address">  Địa chỉ giao hàng </h5>    
+                    <div id="address-ship">
+                        <div> Clementine Bauch </div>
+                        <div> 375 Võ Trường Toản, Ngô Mây, Bình Định </div>
+                        <div> 05467882326 </div>          
+                </div>
+                <div id="information-order">
+                    <div id="prices">
+                    <p> Tạm tính </p>
+                    <p> $5.79 </p>
+                    </div>  
+                    <div id="ship-price">
+                        <p> Shipping </p>
+                        <p> - </p>
+                    </div>
+                    <div id="sum-price">
+                        <p> Tổng cộng </p>
+                        <p> $62.02 </p>
+                    </div>
+                    <p> (Đã bao gồm thuế VAT) </p>
+                </div>
+
+            </div>
+        </div>  
+        </div>
+    </div>
+</div>
+</div>
+     <!-- END MAIN BODY -->
+     <div id="footer" class="section">
+        <div class="section__container">
+            <div class="footer__about-brand">
+                <img src="assets\brand\logos\logo-full.svg" alt="" class="logo" id="footer-logo">
+                <p class="intro body2">Bagsto cung cấp các sản phẩm balo, ví, túi xách nam nữ. Chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng cao, thiết kế sang trọng, lịch lãm, phù hợp với mọi nhu cầu.</p>
+                <div class="socials">
+                    <a href="#" class="socials__item"><i class="icon-facebbook"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-instagram"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-linkedin"></i></a>
+                    <a href="#" class="socials__item"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Chính sách</li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo mật</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách bảo hành</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách đổi trả</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách khách hàng thân thiết</a></li>
+                <li class="nav__item body2"><a href="#">Chính sách vận chuyển</a></li>         
+            </ul>
+            <ul class="footer__nav">
+                <li class="nav__title overline">Liên hệ</li>
+                <li class="nav__item body2"><a href="mailto:cskh@bagsto.vn">cskh@bagsto.vn</a></li>
+                <li class="nav__item body2"><a href="tel:+84 9797 9797">+84 9797 9797</a></li>
+                <li class="nav__item body2"><a href="#">273 An Dương Vương, Quận 5, Tp.HCM</a></li>
+            </ul>
+        </div>
+        <div class="section__container"><p class="copyright body2">Bagsto © 2021. All rights reserved</p></div>   
+</div>
+
+</body>
+</html>
+<script src="assets/scripts/ADUser.js"></script>
