@@ -85,6 +85,7 @@ function displayProducts(htmlContainer, productList, currentPage){
         `;
         htmlContainer.appendChild(prdItem);
     }  
+
     productItems = htmlContainer.querySelectorAll('.product-card__cont');
     for (let i=0; i<productItems.length; i++){
         productItems[i].addEventListener('click', () =>{
@@ -475,7 +476,7 @@ function showCartResume(){
     const cartSubtotalPrice = document.getElementById('cartSubtotalPrice');
     const cartShippingPrice = document.getElementById('cartShippingPrice');
     const cartSumPrice = document.getElementById('cartSumPrice');
-    const allCartCellTotal = document.getElementsByClassName('cart-cell-total'); 
+    const allCartCellTotal = document.getElementsByClassName('cart-cell-total');
 
     let cartSubtotalPriceValue = 0;
     let cartShippingPriceValue = 0;
@@ -494,7 +495,7 @@ cartBtn.onclick = function () {
     resetNavbar();
     clearMainBody();
     document.getElementById("cart-page").classList.remove("hidden");
-    
+
     //Render data
     showCart();
     const RowOrderProductInCart = document.querySelectorAll('.cart-table tr');
@@ -503,7 +504,7 @@ cartBtn.onclick = function () {
         BtnDeleteOrderProductInCart[i].addEventListener('click', ()=>{
             RowOrderProductInCart[i+1].remove();
             showCartResume();
-    
+
             let iduser = currentUser.id;
             let filteredUserCart = cartsList.filter(item => item.id_user == iduser)[0];
             var index = cartsList.indexOf(filteredUserCart);
@@ -576,14 +577,14 @@ function showAccountOrder(){
             // Chuyển trang
             clearMainBody();
             siteAccountOrder.classList.remove("hidden");
-    
+
             // Fill data
             let receiverID = filteredUseroder[i].id_receiver;
             let filteredReceiver = receiversList.filter(item => item.id_receiver == receiverID);
             document.querySelector(".address-card__receiver").textContent = filteredReceiver[0].name;
             document.querySelector(".address-card__address").textContent = filteredReceiver[0].address;
             document.querySelector(".address-card__phonenumber").textContent = filteredReceiver[0].phone;
-    
+
             // Fill table
             let tableAccountInvoiceDetail = document.querySelector(".account-order-detail-table__cont table");
             let tbodyAccountInvoiceDetail = tableAccountInvoiceDetail.querySelector("tbody");
@@ -673,13 +674,13 @@ checkupdateInput.addEventListener('click', function(){
 //Thay đổi avatar
 function changeAvatarImg() {
     let input = document.getElementById("image-input-Avatar");
-  
+
     // Lấy tên của tệp
     var fileName = input.files[0].name;
     console.log("Tên của tệp: " + fileName);
     let urlNewAvatar = "./data/avatar/" + fileName;
     currentUser.avatar = urlNewAvatar;
-  
+
     // Kiểm tra xem người dùng đã chọn hình ảnh chưa
     if (input.files && input.files[0]) {
         var reader = new FileReader();

@@ -1,24 +1,23 @@
-
-
+//comment
 function writeToLocalStorage(key,valueUrl){
     const localStorageData = localStorage.getItem(key);
     if (!localStorageData){
         fetch(valueUrl)
-            .then(response => response.json())
-            .then(data =>
-            {localStorage.setItem(key,JSON.stringify(data));
-            })
-            .catch(error => console.error('Error reading JSON file:',error));
-    }
+        .then(response => response.json())
+        .then(data => 
+        {localStorage.setItem(key,JSON.stringify(data));
+        })
+        .catch(error => console.error('Error reading JSON file:',error));
+    } 
 }
 function readLocalStorage(key){
     const localStoredData = localStorage.getItem(key);
     if (localStoredData) {
-        const users = JSON.parse(localStoredData);
-        return users;
+      const users = JSON.parse(localStoredData);
+      return users;
     } else {
-        // console.log('No data found in localStorage.');
-        return null;
+      // console.log('No data found in localStorage.');
+      return null;
     };
 }
 writeToLocalStorage('users','../data/users.json');
@@ -38,8 +37,8 @@ function pricesShipping(a) {
         else{
             return 0;
         }
-    }
 }
+}   
 //previous and next button
 const itemsPerPageUser = 5;
 let currentPage = 1;
@@ -49,10 +48,10 @@ function loadUser(){
     const startIndex = (currentPage - 1) * itemsPerPageUser;
     const endIndex = startIndex + itemsPerPageUser;
     const usersToDisplay = listUser.slice(startIndex, endIndex);
-    tableUser.innerHTML = '';
+    tableUser.innerHTML = '';  
     if( listUser && Array.isArray(listUser)){
         // listUser.forEach(user => {
-        usersToDisplay.forEach(user => {
+            usersToDisplay.forEach(user => {
             const row = document.createElement('tr');
             const IDCell = document.createElement('td');
             const InformationCell = document.createElement('td')
@@ -141,7 +140,7 @@ function previewImage() {
     }
 }
 document.getElementById('preview-image-change').addEventListener("click",function(){
-    document.getElementById('image-change').click();
+    document.getElementById('image-change').click();   
 });
 function previewImageChange() {
     var input = document.getElementById('image-change');
@@ -151,7 +150,7 @@ function previewImageChange() {
 
     if (file) {
         var reader = new FileReader();
-
+        
         reader.onload = function(e) {
             preview.style.display="block";
             preview.src = e.target.result;
@@ -172,48 +171,91 @@ function loadOrder(a){
     // const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
     // const endIndex = startIndex + itemsPerPageOrder;
     // const ordersToDisplay = listOrder.slice(startIndex, endIndex);
-    TableOrder.innerHTML = '';
+    TableOrder.innerHTML = '';  
     let hasOrderToDisplay = false;
     NumberOrderLenghtCurrent = 0;
-    if (listOrder && Array.isArray(listOrder)){
-        const orderArray =  listOrder.filter( order => order.id_user == a)
-        if(orderArray && orderArray.length>0){
-            NumberOrderLenghtCurrent = orderArray.length ;
-            totalPagesOrder = Math.ceil(  NumberOrderLenghtCurrent / itemsPerPageOrder)
-            console.log(NumberOrderLenghtCurrent)
-            const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
-            const endIndex = startIndex + itemsPerPageOrder;
-            const ordersToDisplay = orderArray.slice(startIndex, endIndex);
-            ordersToDisplay.forEach(order => {
-                const row = document.createElement('tr');
-                const DateBuyingCell = document.createElement('td');
-                const IDCell = document.createElement('td');
-                const PriceCell = document.createElement('td');
-                const shipping = order.id_shipping_type;
-                // console.log(shipping)
-                DateBuyingCell.textContent = order.day_order;
-                IDCell.textContent = order.id;
-                if(Array.isArray(order.products_order) && order.products_order.length > 0){
-                    const total = order.products_order.reduce((acc,product) => acc + (parseFloat(product.price_sell) * parseFloat(product.quantity)),0);
-                    PriceCell.textContent = formatCurrency(total + pricesShipping(shipping))
-                }
-                else {
-                    PriceCell.textContent = "N/A";
-                }
-                row.appendChild(DateBuyingCell);
-                row.appendChild(IDCell);
-                row.appendChild(PriceCell);
-                TableOrder.appendChild(row);
-            })
-            if (!hasOrderToDisplay) {
-                currentPageOrder = 1;
+    if (listOrder && Array.isArray(listOrder)) {
+      const orderArray = listOrder.filter((order) => order.id_user == a);
+      if (orderArray && orderArray.length > 0) {
+        NumberOrderLenghtCurrent = orderArray.length;
+        totalPagesOrder = Math.ceil(
+          NumberOrderLenghtCurrent / itemsPerPageOrder
+        );
+        console.log(NumberOrderLenghtCurrent);
+        const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
+        const endIndex = startIndex + itemsPerPageOrder;
+        const ordersToDisplay = orderArray.slice(startIndex, endIndex);
+        ordersToDisplay.forEach((order) => {
+          const row = document.createElement("tr");
+          const DateBuyingCell = document.createElement("td");
+          const IDCell = document.createElement("td");
+          const PriceCell = document.createElement("td");
+          const shipping = order.id_shipping_type;
+          // console.log(shipping)
+          DateBuyingCell.textContent = order.day_order;
+          IDCell.textContent = order.id;
+          if (
+            Array.isArray(order.products_order) &&
+            order.products_order.length > 0
+          ) {
+            const total = order.products_order.reduce(
+              (acc, product) => acc + parseFloat(product.price_sell) * parseFloat(product.quantity), 0
+            );
+            PriceCell.textContent = formatCurrency(
+              total + pricesShipping(shipping)
+            );
+          } else {
+            PriceCell.textContent = "N/A";
+          }
+          row.appendChild(DateBuyingCell);
+          row.appendChild(IDCell);
+          row.appendChild(PriceCell);
+          TableOrder.appendChild(row);
+          row.addEventListener("click", () => {
+              console.log(row);
+              clearMainBody();
+            var UserTableOrder = document.getElementById("detail-table-history-buying");
+            if (UserTableOrder) {
+              var tbodyUserTableOrder = UserTableOrder.querySelector("tbody");
+              if (tbodyUserTableOrder) {
+                tbodyUserTableOrder.addEventListener("click", function (e) {
+                  var targetElement = e.target;
+                  // Tìm dòng cha chứa ô được click
+                  var rowOrder = targetElement.closest("tr");
+                  if (rowOrder) {
+                    console.log("clicked");
+                    var idCellUserOrder =
+                      rowOrder.querySelector("td:nth-child(2)");
+                    idUserOrderBill = idCellUserOrder.textContent.trim();
+                    console.log(idUserOrderBill);
+                    loadUserOrder(idUserOrderBill);
+                    // })
+                  }
+                  const UserTablePage = document.getElementById("user-page");
+                  const UserOrder = document.getElementById("user-order-page");
+                  // Kiểm tra xem có chứa lớp "hidden-user" hay không
+                  const isHidden = UserOrder.classList.contains("hidden");
+                  // Nếu đang ẩn, hiển thị và ngược lại
+                  if (isHidden) {
+                    UserOrder.classList.remove("hidden");
+                    UserTablePage.classList.add("hidden");
+                  } else {
+                    UserOrder.classList.add("hidden");
+                    UserTablePage.classList.remove("hidden");
+                  }
+                });
+              }
             }
-
+          });
+          })
+        };
+        if (!hasOrderToDisplay) {
+          currentPageOrder = 1;
         }
-
+      }
     }
+   
 
-}
 // totalPagesOrder = Math.ceil( NumberOrderLenghtCurrent / itemsPerPageOrder) ;
 //button next order
 function updatePaginationOrder() {
@@ -230,19 +272,19 @@ function updatePaginationOrder() {
 function prevPageOrder() {
     if (currentPageOrder > 1) {
         currentPageOrder--;
-        loadOrder(AGlobal);
+        loadOrder(id);
     }
 }
 
 function nextPageOrder() {
     if (currentPageOrder < totalPagesOrder) {
         currentPageOrder++;
-        loadOrder(AGlobal);
+        loadOrder(id);
     }
 }
 
 function formatCurrency(amount){
-    return amount.toLocaleString('vi',{style: 'currency', currency:'VND'});
+   return amount.toLocaleString('vi',{style: 'currency', currency:'VND'});
 // return amount.toLocaleString('vi-VN');
 }
 writeToLocalStorage('products','../data/products.json');
@@ -250,32 +292,32 @@ let listProduct = readLocalStorage('products');
 function productImg(a){
     if (listProduct && Array.isArray(listProduct)){
         const products = listProduct.find(product => product.id == a);
-        if(products){
-            return products.thumbnail_stack[0];
-        }
-        else {
-            return 0;
+            if(products){
+                return products.thumbnail_stack[0];
+            }
+            else {
+                return 0;
+            }
         }
     }
-}
 function productName(a){
     if (listProduct && Array.isArray(listProduct)){
         const products = listProduct.find(product => product.id == a);
-        if(products){
-            return products.name;
-        }
-        else {
-            return 0;
+            if(products){
+                return products.name;
+            }
+            else {
+                return 0;
+            }
         }
     }
-}
 function loadUserOrder(a){
     const tableUserOrder = document.getElementById('user-order-table-body')
     if (listOrder && Array.isArray(listOrder)){
         const test = listOrder.find(order => order.id == a)
         if(test){
-            if(Array.isArray(order.products_order) && order.products_order.length>0){
-                order.products_order.forEach(product =>{
+             if(Array.isArray(test.products_order) && test.products_order.length>0){
+                test.products_order.forEach(product =>{
                     const row = document.createElement('tr');
                     const ProductCell = document.createElement('td');
                     // const ProducImgCell = document.createElement('div');
@@ -323,17 +365,17 @@ function loadUserOrder(a){
                     ProductColor.style.alignItems = "center"
                     UnitColor.style.marginLeft = "8px"
                 })
-            }
+             }
+        } 
         }
     }
-}
 writeToLocalStorage('receivers','../data/receivers.json')
 let listReceiver = readLocalStorage('receivers')
 function loadReceiver (a){
     const AddressCell = document.getElementById('address-ship')
     if (listReceiver && Array.isArray(listReceiver)){
-        const Receivers =  listReceiver.find(receiver => receiver.id_receiver == a);
-        if(Receivers){
+       const Receivers =  listReceiver.find(receiver => receiver.id_receiver == a);
+       if(Receivers){
             const NameRow = document.createElement('div')
             const AddressRow = document.createElement('div')
             const PhoneRow = document.createElement('div')
@@ -343,17 +385,17 @@ function loadReceiver (a){
             AddressCell.appendChild(NameRow);
             AddressCell.appendChild(AddressRow);
             AddressCell.appendChild(PhoneRow);
-        }
-        else{
-            console.error('Cannot find reiceiver',error)
-        }
+       }
+       else{
+        console.error('Cannot find reiceiver',error)
+       }
     }
 }
 function loadPriceOrder(a){
     const PriceCell = document.getElementById('price-order');
     if(listOrder && Array.isArray(listOrder)){
-        const priceorders = listOrder.find(priceorder => priceorder.id == a);
-        const priceorders2 =  listOrder.find( priceorder2 => priceorder2.id == a)?.products_order || [];
+         const priceorders = listOrder.find(priceorder => priceorder.id == a);
+         const priceorders2 =  listOrder.find( priceorder2 => priceorder2.id == a)?.products_order || [];
         if (priceorders && priceorders2){
             const total = priceorders2.reduce((acc,product) => acc + (parseFloat(product.price_sell) * parseFloat(product.quantity)),0)
             console.log(total)
@@ -393,7 +435,7 @@ function loadPriceOrder(a){
             Sum.style.borderTop = "2px solid #919EAB33"
             Sum.style.paddingTop = "16px"
         }
-    }
+    } 
 }
 // Cập nhật thông tin
 let AGlobal
@@ -401,88 +443,92 @@ let id
 document.addEventListener('DOMContentLoaded', function () {
     var UserTableChange = document.getElementById("user-table-title");
     AGlobal = 0;
-    if (UserTableChange) {
+    if (UserTableChange) { 
         var tbodyUserTable = UserTableChange.querySelector('tbody');
         if(tbodyUserTable){
             tbodyUserTable.addEventListener('click',function(e){
-                var targetElement = e.target;
-                // Tìm dòng cha chứa ô được click
-                var row = targetElement.closest("tr");
-                if(row){
-                    console.log("clicked")
-                    var idCellUser = row.querySelector('td:first-child');
-                    id = idCellUser.textContent.trim();
-                    AGlobal = parseInt(id.slice(-6))
-                    console.log(id)
-                    console.log(AGlobal)
-                    loadOrder(AGlobal)
-                    // })
-                }
-                const UserTablePage = document.getElementById("user-page")
-                const UserAdjust = document.getElementById("user-detail-page")
-                // Kiểm tra xem có chứa lớp "hidden-user" hay không
-                const isHidden = UserAdjust.classList.contains("hidden");
-                // Nếu đang ẩn, hiển thị và ngược lại
-                if (isHidden) {
-                    UserAdjust.classList.remove("hidden");
-                    UserTablePage.classList.add("hidden")
-
-                } else {
-                    UserAdjust.classList.add("hidden");
-                    UserTablePage.classList.remove("hidden")
-                }
-
-            })}}});
-function ChangeInformationUser(){
+            var targetElement = e.target;
+            // Tìm dòng cha chứa ô được click
+            var row = targetElement.closest("tr"); 
+            if(row){
+            console.log("clicked")
+            var idCellUser = row.querySelector('td:first-child');
+            id = idCellUser.textContent.trim();
+            AGlobal = parseInt(id.slice(-6))
+            console.log(id)
+            console.log(AGlobal)
+            loadOrder(id)
+        // })
+     }
+        const UserTablePage = document.getElementById("user-page")
+        const UserAdjust = document.getElementById("user-detail-page")
+            // Kiểm tra xem có chứa lớp "hidden-user" hay không
+        const isHidden = UserAdjust.classList.contains("hidden");
+            // Nếu đang ẩn, hiển thị và ngược lại
+            if (isHidden) {
+                UserAdjust.classList.remove("hidden");
+                UserTablePage.classList.add("hidden")
+    
+            } else {
+                UserAdjust.classList.add("hidden");      
+                UserTablePage.classList.remove("hidden")
+            }
+            
+    })}}});
+   function ChangeInformationUser(){
     const ChangeInformation = listUser.find(user => user.id == id)
     if(ChangeInformation){
-        var username = document.getElementById('change-user-name').value;
-        var address = document.getElementById('change-address-user').value;
-        var phone = document.getElementById('change-phonenumeber-user').value;
-        var email = document.getElementById('change-email-user').value;
-        var password = document.getElementById('change-password-user').value;
-        var confirmPassword = document.getElementById('change-confirm-password-user').value;
-        // Kiểm tra định dạng email
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Email không hợp lệ.');
-            return;
-        }
-
-        // Kiểm tra định dạng số điện thoại
-        var phoneRegex = /^\d{10}$|^\d{13}$/;
-        if (!phoneRegex.test(phone)) {
-            alert('Số điện thoại không hợp lệ.');
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            alert('Mật khẩu và xác nhận mật khẩu không khớp.');
-            return;
-        }
-        var AdjustUser = {
-            id: id,
-            name: username,
-            address: address,
-            phone: phone,
-            email: email,
-            password: password,
-            client: ChangeInformation.client,
-        }
-        const AdjustInformationUsers = JSON.parse(localStorage.getItem('users'))
-        const indexToUpdate = AdjustInformationUsers.findIndex(userChange => userChange.id == AdjustUser.id);
-        if(indexToUpdate !== -1)
-        {  AdjustInformationUsers[indexToUpdate] = AdjustUser;
-            localStorage.setItem('users',JSON.stringify(AdjustInformationUsers))
-            alert("Account changes information successfully!");
-            function reloadPage() {
-                location.reload(true);
-            }
-            reloadPage();}
+    var username = document.getElementById('change-user-name').value;
+    var address = document.getElementById('change-address-user').value;
+    var phone = document.getElementById('change-phonenumeber-user').value;
+    var email = document.getElementById('change-email-user').value;
+    var password = document.getElementById('change-password-user').value;
+    var confirmPassword = document.getElementById('change-confirm-password-user').value;
+     // Kiểm tra định dạng email
+     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(email)) {
+         alert('Email không hợp lệ.');
+         return;
+     }
+ 
+     // Kiểm tra định dạng số điện thoại
+     var phoneRegex = /^\d{10}$|^\d{13}$/;
+     if (!phoneRegex.test(phone)) {
+         alert('Số điện thoại không hợp lệ.');
+         return;
+     }
+     var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*\d).+$/;
+     if (!passwordRegex.test(password)) {
+        alert('Nhập mật khẩu không đúng định dạng');
+         return;
+     }
+     if (password !== confirmPassword) {
+         alert('Mật khẩu và xác nhận mật khẩu không khớp.');
+         return;
+     }
+    var AdjustUser = {
+        id: id,
+        name: username,
+        address: address,
+        phone: phone,
+        email: email,
+        password: password,
+        client: ChangeInformation.client,
     }
-    else{
-        alert("Cannot change Account")
+    const AdjustInformationUsers = JSON.parse(localStorage.getItem('users'))
+    const indexToUpdate = AdjustInformationUsers.findIndex(userChange => userChange.id == AdjustUser.id);
+    if(indexToUpdate !== -1)
+      {  AdjustInformationUsers[indexToUpdate] = AdjustUser;
+    localStorage.setItem('users',JSON.stringify(AdjustInformationUsers))
+    alert("Account changes information successfully!");
+    function reloadPage() {
+        location.reload(true);
     }
+    reloadPage();}
+   }
+   else{
+    alert("Cannot change Account")
+   }
 }
 //Thêm người dùng
 document.addEventListener("DOMContentLoaded",function(){
@@ -498,7 +544,7 @@ document.addEventListener("DOMContentLoaded",function(){
             UserTable.classList.add("hidden")
 
         } else {
-            UserCreate.classList.add("hidden");
+            UserCreate.classList.add("hidden");      
             UserTable.classList.remove("hidden")
         }
     });
@@ -512,7 +558,7 @@ function getNextUserId(existingUsers) {
 
     // Chuyển định dạng ID theo mẫu AC00000x
     const formattedUserId = `AC${String(nextUserId).padStart(6, '0')}`;
-
+    
 
     return formattedUserId;
 }
@@ -526,24 +572,28 @@ function CreateAccount(){
     var password = document.getElementById('password-user').value;
     var newUserId = getNextUserId(listUser);
     var confirmPassword = document.getElementById('confirm-password-user').value;
-    // Kiểm tra định dạng email
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Email không hợp lệ.');
-        return;
-    }
-
-    // Kiểm tra định dạng số điện thoại
-    var phoneRegex = /^\d{10}$|^\d{13}$/;
-    if (!phoneRegex.test(phone)) {
-        alert('Số điện thoại không hợp lệ.');
-        return;
-    }
-
-    if (password !== confirmPassword) {
-        alert('Mật khẩu và xác nhận mật khẩu không khớp.');
-        return;
-    }
+     // Kiểm tra định dạng email
+     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(email)) {
+         alert('Email không hợp lệ.');
+         return;
+     }
+ 
+     // Kiểm tra định dạng số điện thoại
+     var phoneRegex = /^\d{10}$|^\d{13}$/;
+     if (!phoneRegex.test(phone)) {
+         alert('Số điện thoại không hợp lệ.');
+         return;
+     }
+     var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*\d).+$/;
+     if (!passwordRegex.test(password)) {
+        alert('Nhập mật khẩu không đúng định dạng');
+         return;
+     }
+     if (password !== confirmPassword) {
+         alert('Mật khẩu và xác nhận mật khẩu không khớp.');
+         return;
+     }
     var mewuser = {
         id: newUserId,
         name: username,
@@ -553,29 +603,70 @@ function CreateAccount(){
         password: password,
         role: "cilent",
     }
-
+       
     var newusers = JSON.parse(localStorage.getItem("users"))|| [] ;
     newusers.push(mewuser);
     localStorage.setItem("users", JSON.stringify(newusers));
-    alert("Account created successfully!");
+    alert("Account created successfully!"); 
     function reloadPage() {
         location.reload(true);
     }
-    reloadPage();
+    reloadPage();    
 }
 //Chi tiết hóa đơn
+let idUserOrderBill;
+var UserSearchInput = document.getElementById('search-input-user');
+UserSearchInput.addEventListener('change',()=>{
+    listUser  = readLocalStorage('users');
+    var input = UserSearchInput.value;
+    listUser = listUser.filter(element=>element.name.includes(input));
+    n=1;
+    clearTable();
+    loadUser('next');
+})
+// document.addEventListener('DOMContentLoaded', function () {
+//     var UserTableOrder = document.getElementById("detail-table-history-buying");
+//     if (UserTableOrder) { 
+//         var tbodyUserTableOrder = UserTableOrder.querySelector('tbody');
+//         if(tbodyUserTableOrder){
+//             tbodyUserTableOrder.addEventListener('click',function(e){
+//             var targetElement = e.target;
+//             // Tìm dòng cha chứa ô được click
+//             var row = targetElement.closest("tr"); 
+//             if(row){
+//             console.log("clicked")
+//             var idCellUserOrder = row.querySelector('td:nth-child(2)');
+//             idUserOrderBill = idCellUserOrder.textContent.trim();
+//             console.log(idUserOrderBill)
+//             loadUserOrder(idUserOrderBill)
+//         // })
+//      }
+//         const UserTablePage = document.getElementById("user-page")
+//         const UserOrder = document.getElementById("user-order-page")
+//             // Kiểm tra xem có chứa lớp "hidden-user" hay không
+//         const isHidden =  UserOrder.classList.contains("hidden");
+//             // Nếu đang ẩn, hiển thị và ngược lại
+//             if (isHidden) {
+//                 UserOrder.classList.remove("hidden");
+//                 UserTablePage.classList.add("hidden")
+    
+//             } else {
+//                 UserOrder.classList.add("hidden");      
+//                 UserTablePage.classList.remove("hidden")
+//             }
+            
+//     })}}});
 window.onload = function(){
     console.log(listUser);
     console.log(listOrder);
-    loadUserOrder()
+    // loadUserOrder()
     loadUser();
     // loadOrder(3);
-    console.log(pricesShipping(2))
-    console.log(productImg(2))
-    console.log(productName(2))
-    loadReceiver(2);
-    loadPriceOrder(1);
-    console.log(NumberOrderLenghtCurrent);
-    console.log(getNextUserId(listUser));
-
+   console.log(pricesShipping(2))
+   console.log(productImg(2))
+   console.log(productName(2))
+   loadReceiver(2);
+   loadPriceOrder(1);
+   console.log(NumberOrderLenghtCurrent);
+   console.log(getNextUserId(listUser));
 }
