@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "id_user": 1,
+        "id_user": "AC000009",
         "id_order_state": 1,
         "id_receiver": 1,
         "id_shipping_type": 1,
@@ -10,21 +10,19 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         },
         {
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         }]
     },
     {
         "id": 2,
-        "id_user": 2,
+        "id_user": "AC000008",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
@@ -33,14 +31,13 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         }]
     },
     {
         "id": 3,
-        "id_user": 3,
+        "id_user": "AC000008",
         "id_order_state": 2,
         "id_receiver": 2,
         "id_shipping_type": 1,
@@ -49,9 +46,96 @@
         "products_order": [{
             "id": 1,
             "colors" : "#000000",
-            "sizes" : "S",
             "price_sell" : 600000,
             "quantity" : 2
         }]
+    },
+    {
+        "id": 4,
+        "id_user": "AC000008",
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2002",
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        },
+        {
+            "id": 1,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        }
+    ]
+    },
+    {
+        "id": 4,
+        "id_user": "AC000007",
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2002",
+        "products_order": [{
+            "id": 1,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        },
+        {
+            "id": 1,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        }
+    ]
+    },
+    {
+        "id": 4,
+        "id_user": "AC000007",
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2023",
+        "products_order": [{
+            "id": 2,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        },
+        {
+            "id": 2,
+            "colors" : "#000000",
+            "price_sell" : 700000,
+            "quantity" : 1
+        }
+    ]
+    },
+    {
+        "id": 5,
+        "id_user": "AC000011",
+        "id_order_state": 2,
+        "id_receiver": 2,
+        "id_shipping_type": 1,
+        "id_payment_type": 1,
+        "day_order": "19/11/2023",
+        "products_order": [{
+            "id": 2,
+            "colors" : "#000000",
+            "price_sell" : 600000,
+            "quantity" : 1
+        },
+        {
+            "id": 3,
+            "colors" : "#581F1F",
+            "price_sell" : 700000,
+            "quantity" : 2
+        }
+    ]
     }
 ]
