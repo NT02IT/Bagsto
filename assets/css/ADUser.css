@@ -567,3 +567,7 @@
     display: inline-block;
     margin-right: 10px; /* hoặc bất kỳ khoảng cách nào bạn muốn */
 }
+#user-order-page{
+    margin: auto;
+    max-width: 1200px;
+}
