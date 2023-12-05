@@ -174,45 +174,88 @@ function loadOrder(a){
     TableOrder.innerHTML = '';  
     let hasOrderToDisplay = false;
     NumberOrderLenghtCurrent = 0;
-    if (listOrder && Array.isArray(listOrder)){
-       const orderArray =  listOrder.filter( order => order.id_user == a)
-            if(orderArray && orderArray.length>0){ 
-                 NumberOrderLenghtCurrent = orderArray.length ;  
-                 totalPagesOrder = Math.ceil(  NumberOrderLenghtCurrent / itemsPerPageOrder)  
-                 console.log(NumberOrderLenghtCurrent)
-                 const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
-                 const endIndex = startIndex + itemsPerPageOrder;
-                 const ordersToDisplay = orderArray.slice(startIndex, endIndex);        
-                 ordersToDisplay.forEach(order => {
-            const row = document.createElement('tr');
-            const DateBuyingCell = document.createElement('td');
-            const IDCell = document.createElement('td');
-            const PriceCell = document.createElement('td');
-            const shipping = order.id_shipping_type;
-            // console.log(shipping)
-            DateBuyingCell.textContent = order.day_order;
-            IDCell.textContent = order.id;
-            if(Array.isArray(order.products_order) && order.products_order.length > 0){
-                    const total = order.products_order.reduce((acc,product) => acc + (parseFloat(product.price_sell) * parseFloat(product.quantity)),0);
-                    PriceCell.textContent = formatCurrency(total + pricesShipping(shipping)) 
-                }
-                else {
-                    PriceCell.textContent = "N/A";
-                }
-            row.appendChild(DateBuyingCell);
-            row.appendChild(IDCell);
-            row.appendChild(PriceCell);
-            TableOrder.appendChild(row);
-        })
+    if (listOrder && Array.isArray(listOrder)) {
+      const orderArray = listOrder.filter((order) => order.id_user == a);
+      if (orderArray && orderArray.length > 0) {
+        NumberOrderLenghtCurrent = orderArray.length;
+        totalPagesOrder = Math.ceil(
+          NumberOrderLenghtCurrent / itemsPerPageOrder
+        );
+        console.log(NumberOrderLenghtCurrent);
+        const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
+        const endIndex = startIndex + itemsPerPageOrder;
+        const ordersToDisplay = orderArray.slice(startIndex, endIndex);
+        ordersToDisplay.forEach((order) => {
+          const row = document.createElement("tr");
+          const DateBuyingCell = document.createElement("td");
+          const IDCell = document.createElement("td");
+          const PriceCell = document.createElement("td");
+          const shipping = order.id_shipping_type;
+          // console.log(shipping)
+          DateBuyingCell.textContent = order.day_order;
+          IDCell.textContent = order.id;
+          if (
+            Array.isArray(order.products_order) &&
+            order.products_order.length > 0
+          ) {
+            const total = order.products_order.reduce(
+              (acc, product) => acc + parseFloat(product.price_sell) * parseFloat(product.quantity), 0
+            );
+            PriceCell.textContent = formatCurrency(
+              total + pricesShipping(shipping)
+            );
+          } else {
+            PriceCell.textContent = "N/A";
+          }
+          row.appendChild(DateBuyingCell);
+          row.appendChild(IDCell);
+          row.appendChild(PriceCell);
+          TableOrder.appendChild(row);
+          row.addEventListener("click", () => {
+              console.log(row);
+              clearMainBody();
+            var UserTableOrder = document.getElementById("detail-table-history-buying");
+            if (UserTableOrder) {
+              var tbodyUserTableOrder = UserTableOrder.querySelector("tbody");
+              if (tbodyUserTableOrder) {
+                tbodyUserTableOrder.addEventListener("click", function (e) {
+                  var targetElement = e.target;
+                  // Tìm dòng cha chứa ô được click
+                  var rowOrder = targetElement.closest("tr");
+                  if (rowOrder) {
+                    console.log("clicked");
+                    var idCellUserOrder =
+                      rowOrder.querySelector("td:nth-child(2)");
+                    idUserOrderBill = idCellUserOrder.textContent.trim();
+                    console.log(idUserOrderBill);
+                    loadUserOrder(idUserOrderBill);
+                    // })
+                  }
+                  const UserTablePage = document.getElementById("user-page");
+                  const UserOrder = document.getElementById("user-order-page");
+                  // Kiểm tra xem có chứa lớp "hidden-user" hay không
+                  const isHidden = UserOrder.classList.contains("hidden");
+                  // Nếu đang ẩn, hiển thị và ngược lại
+                  if (isHidden) {
+                    UserOrder.classList.remove("hidden");
+                    UserTablePage.classList.add("hidden");
+                  } else {
+                    UserOrder.classList.add("hidden");
+                    UserTablePage.classList.remove("hidden");
+                  }
+                });
+              }
+            }
+          });
+          })
+        };
         if (!hasOrderToDisplay) {
-            currentPageOrder = 1;  
-    }
-    
-    }
- 
+          currentPageOrder = 1;
+        }
+      }
     }
    
-    }
+
 // totalPagesOrder = Math.ceil( NumberOrderLenghtCurrent / itemsPerPageOrder) ;
 //button next order
 function updatePaginationOrder() {
@@ -229,14 +272,14 @@ function updatePaginationOrder() {
 function prevPageOrder() {
     if (currentPageOrder > 1) {
         currentPageOrder--;
-        loadOrder(AGlobal);
+        loadOrder(id);
     }
 }
 
 function nextPageOrder() {
     if (currentPageOrder < totalPagesOrder) {
         currentPageOrder++;
-        loadOrder(AGlobal);
+        loadOrder(id);
     }
 }
 
@@ -273,8 +316,8 @@ function loadUserOrder(a){
     if (listOrder && Array.isArray(listOrder)){
         const test = listOrder.find(order => order.id == a)
         if(test){
-             if(Array.isArray(order.products_order) && order.products_order.length>0){
-                order.products_order.forEach(product =>{
+             if(Array.isArray(test.products_order) && test.products_order.length>0){
+                test.products_order.forEach(product =>{
                     const row = document.createElement('tr');
                     const ProductCell = document.createElement('td');
                     // const ProducImgCell = document.createElement('div');
@@ -414,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function () {
             AGlobal = parseInt(id.slice(-6))
             console.log(id)
             console.log(AGlobal)
-            loadOrder(AGlobal)
+            loadOrder(id)
         // })
      }
         const UserTablePage = document.getElementById("user-page")
@@ -563,10 +606,52 @@ function CreateAccount(){
     reloadPage();    
 }
 //Chi tiết hóa đơn
+let idUserOrderBill;
+var UserSearchInput = document.getElementById('search-input-user');
+UserSearchInput.addEventListener('change',()=>{
+    listUser  = readLocalStorage('users');
+    var input = UserSearchInput.value;
+    listUser = listUser.filter(element=>element.name.includes(input));
+    n=1;
+    clearTable();
+    loadUser('next');
+})
+// document.addEventListener('DOMContentLoaded', function () {
+//     var UserTableOrder = document.getElementById("detail-table-history-buying");
+//     if (UserTableOrder) { 
+//         var tbodyUserTableOrder = UserTableOrder.querySelector('tbody');
+//         if(tbodyUserTableOrder){
+//             tbodyUserTableOrder.addEventListener('click',function(e){
+//             var targetElement = e.target;
+//             // Tìm dòng cha chứa ô được click
+//             var row = targetElement.closest("tr"); 
+//             if(row){
+//             console.log("clicked")
+//             var idCellUserOrder = row.querySelector('td:nth-child(2)');
+//             idUserOrderBill = idCellUserOrder.textContent.trim();
+//             console.log(idUserOrderBill)
+//             loadUserOrder(idUserOrderBill)
+//         // })
+//      }
+//         const UserTablePage = document.getElementById("user-page")
+//         const UserOrder = document.getElementById("user-order-page")
+//             // Kiểm tra xem có chứa lớp "hidden-user" hay không
+//         const isHidden =  UserOrder.classList.contains("hidden");
+//             // Nếu đang ẩn, hiển thị và ngược lại
+//             if (isHidden) {
+//                 UserOrder.classList.remove("hidden");
+//                 UserTablePage.classList.add("hidden")
+    
+//             } else {
+//                 UserOrder.classList.add("hidden");      
+//                 UserTablePage.classList.remove("hidden")
+//             }
+            
+//     })}}});
 window.onload = function(){
     console.log(listUser);
     console.log(listOrder);
-    loadUserOrder()
+    // loadUserOrder()
     loadUser();
     // loadOrder(3);
    console.log(pricesShipping(2))
@@ -576,5 +661,4 @@ window.onload = function(){
    loadPriceOrder(1);
    console.log(NumberOrderLenghtCurrent);
    console.log(getNextUserId(listUser));
-   
 }
