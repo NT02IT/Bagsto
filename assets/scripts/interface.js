@@ -102,6 +102,8 @@ const siteProduct = document.getElementById('product-page');
 const siteAccount  =document.getElementById('account-page');
 const siteAccountOrder  =document.getElementById('account-order-page');
 const siteProductDetail  =document.getElementById('product-detail-page');
+const siteCheckoutAddress  =document.getElementById('checkoutAddress-page');
+
 
 headerLogo.addEventListener('click', () => {
   resetNavbar();
@@ -558,3 +560,177 @@ for(let i = 0; i < helloAccount.length; i++){
 // ACCOUNT SITE
 
 // ACCOUNT SITE
+
+// CHECKOUT SITE
+//checkout//
+
+// })
+
+// const checkoutAddress = document.getElementById('checkoutAddress');
+// const checkoutPayment = document.getElementById('checkoutPayment');
+// const checkoutSuccess = document.getElementById('checkoutSuccess');
+// const mainbody = document.querySelector("#index-page");
+// const bodyCheckout = document.querySelector("#checkoutPayment");
+// const buttonBackMain = document.querySelector("#backHomePageButton");
+// const continueShoppingButton = document.querySelector("#paymentSuccessButton");
+// const backToAddressButton = document.getElementById('backButton');
+
+// document.getElementById('listAddresses').addEventListener('click', function (event) {
+//   if (event.target.classList.contains('confirmButton')) {
+//     checkoutAddress.classList.add('hidden');
+//     checkoutPayment.classList.remove('hidden');
+//     document.querySelector('.step-two .step-circle').classList.add('step-circle-active');
+//   }
+// });
+
+// const paymentButton = document.getElementById('paymentButton');
+// paymentButton.addEventListener('click', function() {
+//   checkoutPayment.classList.add('hidden');
+//   checkoutSuccess.classList.remove('hidden');
+// });
+
+// buttonBackMain.addEventListener('click', () =>{
+//   mainbody.classList.remove('hidden');
+//   bodyCheckout.classList.add('hidden');
+//   checkoutSuccess.classList.add('hidden'); 
+// });
+
+// continueShoppingButton.addEventListener('click', () => {
+//   mainbody.classList.remove('hidden');
+//   checkoutSuccess.classList.add('hidden'); 
+// });
+// backToAddressButton.addEventListener('click', function () {
+//   checkoutPayment.classList.add('hidden');
+//   checkoutAddress.classList.remove('hidden');
+// });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const optionTransports = document.querySelectorAll('.option-transport');
+
+  optionTransports.forEach(option => {
+      option.addEventListener('click', function(event) {
+          const radioBtn = option.querySelector('input[type="radio"]');
+          if (!radioBtn.checked) {
+              radioBtn.checked = true;
+          }
+      });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const optionTransports = document.querySelectorAll('.option-payment');
+
+  optionTransports.forEach(option => {
+      option.addEventListener('click', function(event) {
+          const radioBtn = option.querySelector('input[type="radio"]');
+          if (!radioBtn.checked) {
+              radioBtn.checked = true;
+          }
+      });
+  });
+});
+
+
+
+
+
+//checkout//
+
+
+
+
+/*checkoutpayment*/
+document.addEventListener('DOMContentLoaded', function() {
+  const customRadios = document.querySelectorAll('.custom-radio');
+
+  customRadios.forEach(customRadio => {
+    customRadio.addEventListener('change', function() {
+      const radioLabel = this.nextElementSibling.querySelector('label');
+      if (this.checked) {
+        radioLabel.style.backgroundColor = '#4CAF50'; 
+      } else {
+        radioLabel.style.backgroundColor = ''; 
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const listAddresses = document.getElementById('listAddresses');
+  const contentAddress = document.getElementById('contentAddress');
+  const editAddressButton = document.querySelector('.edit-address .edit-button');
+
+  // Lấy danh sách các địa chỉ
+  const addresses = listAddresses.querySelectorAll('.customer-address');
+
+  // Kiểm tra xem danh sách có địa chỉ hay không và lấy địa chỉ đầu tiên
+  if (addresses.length > 0) {
+      const firstAddressData = addresses[0].innerHTML;
+
+      // Gán dữ liệu vào contentAddress
+      contentAddress.innerHTML = firstAddressData;
+
+      // Thêm sự kiện khi click vào nút "Chỉnh sửa"
+      editAddressButton.addEventListener('click', function() {
+          // Hiển thị địa chỉ đầu tiên khi click vào nút "Chỉnh sửa"
+          contentAddress.innerHTML = firstAddressData;
+      });
+  }
+});
+
+
+
+/*checkoutpayment*/
+// const cartToCheckout = document.getElementById('cart-page');
+// const checkoutAddress = document.getElementById('checkoutAddress');
+// const checkoutPayment = document.getElementById('checkoutPayment');
+// const checkoutSuccess = document.getElementById('checkoutSuccess');
+// const mainbody = document.querySelector("#index-page");
+// const bodyCheckout = document.querySelector("#checkoutPayment");
+// const continueShoppingToCheckout = document.getElementById('paymentButton');
+// const continueShoppingButton = document.querySelector("#paymentSuccessButton");
+// const backToAddressButton = document.getElementById('backButton');
+// const buttonBackMain = document.querySelector("#backHomePageButton");
+
+// continueShoppingToCheckout.addEventListener('click', () => {
+//   cartToCheckout.classList.add('hidden');
+//   checkoutAddress.classList.remove('hidden');
+// });
+
+// document.getElementById('listAddresses').addEventListener('click', function (event) {
+//   if (event.target.classList.contains('confirmButton')) {
+//     checkoutAddress.classList.add('hidden');
+//     checkoutPayment.classList.remove('hidden');
+//     document.querySelector('.step-two .step-circle').classList.add('step-circle-active');
+//   }
+// });
+
+// const paymentButton = document.getElementById('paymentButton');
+// paymentButton.addEventListener('click', function() {
+//   checkoutPayment.classList.add('hidden');
+//   checkoutSuccess.classList.remove('hidden');
+// });
+
+// buttonBackMain.addEventListener('click', () => {
+//   mainbody.classList.remove('hidden');
+//   bodyCheckout.classList.add('hidden');
+//   checkoutSuccess.classList.add('hidden');
+//   checkoutPayment.classList.add('hidden');
+//   checkoutAddress.classList.add('hidden');
+//   cartToCheckout.classList.remove('hidden');
+// });
+
+// continueShoppingButton.addEventListener('click', () => {
+//   mainbody.classList.remove('hidden');
+//   checkoutSuccess.classList.add('hidden');
+//   checkoutPayment.classList.add('hidden');
+//   checkoutAddress.classList.add('hidden');
+//   cartToCheckout.classList.remove('hidden');
+// });
+
+// backToAddressButton.addEventListener('click', () => {
+//   checkoutPayment.classList.add('hidden');
+//   checkoutAddress.classList.remove('hidden');
+// });
+// CHECKOUT SITE

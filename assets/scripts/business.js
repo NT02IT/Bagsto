@@ -487,7 +487,6 @@ function showCartResume(){
     cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
     cartShippingPrice.textContent = cartShippingPriceValue + "đ";
     cartSumPrice.textContent = cartSumPriceValue + "đ";
-
 }
 
 const cartBtn = document.getElementById('header-cart');
@@ -515,6 +514,28 @@ cartBtn.onclick = function () {
     }
 };
 
+const cartCheckoutButton = document.getElementById('cart-checkout-btn');
+cartCheckoutButton.addEventListener("click", () => {
+    clearMainBody();
+    siteCheckoutAddress.classList.remove('hidden');
+    
+    const cartSubtotalPrice = document.getElementById('cartSubtotalPriceAdd');
+    const cartShippingPrice = document.getElementById('cartShippingPriceAdd');
+    const cartSumPrice = document.getElementById('cartSumPriceAdd');
+
+    let cartSubtotalPriceValue = 0;
+    let cartShippingPriceValue = 0;
+
+    let accountOrder = cartsList.filter(c => c.id_user == currentUser.id)[0].products_order;
+
+    for(let i = 0; i < accountOrder.length; i++){
+        cartSubtotalPriceValue += accountOrder[i].price_sell * accountOrder[i].quantity;
+    }
+    let cartSumPriceValue = cartSubtotalPriceValue + cartShippingPriceValue;
+    cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
+    cartShippingPrice.textContent = cartShippingPriceValue + "đ";
+    cartSumPrice.textContent = cartSumPriceValue + "đ";
+})
 //----------------------------------------------------------------
 // CART
 
@@ -670,3 +691,40 @@ function changeAvatarImg() {
   }
 //----------------------------------------------------------------
 // ACCOUNT
+
+// CHECKOUT ADDRESS
+//----------------------------------------------------------------
+function showCustomerAddresses() {
+    var listAddresses = document.getElementById('listAddresses');
+    listAddresses.innerHTML = '';
+    var isFirstDefaultAdded = false;
+    
+    let userReceiver = [];
+    for(let i = 0; i < receiversList.length; i++) {
+        if(receiversList[i].id_ruser_create == currentUser.id){
+            userReceiver.push(receiversList[i]);
+        }
+    }
+    console.log(userReceiver);
+
+    userReceiver.forEach(function(customer, index) {
+      var customerDiv = document.createElement('div');
+      customerDiv.classList.add('customer-address');
+  
+      customerDiv.innerHTML = `
+        <div class="customer-info">
+          <p class="subtitle-1">${customer.name}</p>
+          <p class="body2 customer-address-text">${customer.address}</p>
+          <p class="body2 customer-phone">${customer.phone}</p>
+        </div>
+        <div class="button-on-address">
+            <button class="deleteButton type-inherit size-m">Xóa</button>
+            <button class="confirmButton type-primary style-soft size-m" id="">Giao đến địa chỉ này</button>
+        </div>
+      `;
+      listAddresses.appendChild(customerDiv);
+    })
+}
+showCustomerAddresses();
+//----------------------------------------------------------------
+// CHECKOUT ADDRESS
