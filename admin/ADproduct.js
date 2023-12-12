@@ -6,24 +6,48 @@ function handleImageClick(imgId){
         document.getElementById(imgId).remove();
     }
 }
-
+//search bar
+var ProductSearchInput = document.getElementById('Product-search-input');
+ProductSearchInput.addEventListener('change',()=>{
+    var statusSelected = ProductStatusSelection.options[ProductStatusSelection.selectedIndex].value;
+    console.log(statusSelected);
+    if (statusSelected==='All'){
+        filterAllStatus();
+    }else if (statusSelected==='InStock'){
+        filterInStockStatus();
+    }else if (statusSelected==='LowStock'){
+        filterLowStockStatus();
+    }else if (statusSelected==='OutOfStock'){
+        filterOutOfStockStatus();
+    }
+    var input = ProductSearchInput.value;
+    productsList = productsList.filter(element=>element.name.includes(input));
+    n=1;
+    clearTable();
+    load6Product(productsList,'next');
+})
 //load bảng với 6 dòng
 var n = 1;
 var table_product = document.getElementById("table_product");
 function load6Product(productsList, check) {
     // Lấy reference đến table
     if (check === 'back') {
-        if (n <= 13) {
-            n = 1;
+        if ((n - 1) % 6 === 0) {
+            n -= 12;
         } else {
-            // Nếu n không phải là bội số của 6, đặt n về trang bắt đầu của trang hiện tại
-            n = n - (n % 6 === 0 ? 11 : (n % 6) + 5);
+            n = n - 6 - ((n - 1) % 6);
         }
     }
-    var m = n + 5;
-    if (m > productsList.length){
-        m = productsList.length;
-    }
+
+    let m = Math.min(n + 5, productsList.length);
+    var indexProduct = document.getElementById('index--product');
+    indexProduct.innerHTML="";
+    indexProduct.innerHTML=`${n} - ${m} trên ${productsList.length} sản phẩm`;
+    // console.log(n);
+    // var m = n + 5;
+    // if (m > productsList.length){
+    //     m = productsList.length;
+    // }
     var j=0;
     for (let i = n-1; i<m; i++) {
         // Tạo một hàng mới
@@ -154,6 +178,11 @@ class Product {
         this.description = description;
         this.thumbnail_stack = thumbnail_stack;
     }
+}
+function loadJSonProduct(){
+    productsList = JSON.parse(localStorage.getItem('products'))
+    load6Product(productsList,'next');
+    console.log(productsList);
 }
 function filterInStockStatus(){
     loadJSonProduct();
