@@ -97,6 +97,8 @@ const headerTab3 = document.getElementById('header-tab-admin3');
 
 const siteAnalysis = document.getElementById('analysis-page');
 const siteInvoiceDetail = document.getElementById('invoice-detail-page');
+const siteUserOrders = document.getElementById('user-order-page');
+const siteUserCreate = document.getElementById('user-create-page');
 const UserAdmin = document.getElementById('user-page');
 
 headerLogo.addEventListener('click', () =>{

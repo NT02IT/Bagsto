@@ -147,11 +147,11 @@ burgerBtn.addEventListener('click', function () {
   mobileNav.classList.toggle('collapsed');
 });
 
-headerClientAvatar.src = userLogin.avatar;
-headerClientAvatarMobile.src = userLogin.avatar;
-headerClientAvatar.addEventListener('click', function () {
-  accountPopover.classList.toggle('collapsed');
-});
+// headerClientAvatar.src = userLogin.avatar;
+// headerClientAvatarMobile.src = userLogin.avatar;
+// headerClientAvatar.addEventListener('click', function () {
+//   accountPopover.classList.toggle('collapsed');
+// });
 
 for(let i = 0; i < signinSignupBtns.length; i++) {
   signinSignupBtns[i].addEventListener('click', function(){
@@ -165,6 +165,11 @@ siteIndex.classList.remove('hidden');
 function isLoggedIn() {
   userLogin = JSON.parse(localStorage.getItem("currentUser"));
   headerClientAvatar.classList.remove('hidden');
+  headerClientAvatar.src = userLogin.avatar;
+  headerClientAvatarMobile.src = userLogin.avatar;
+  headerClientAvatar.addEventListener('click', function () {
+    accountPopover.classList.toggle('collapsed');
+  });
   for(let i = 0; i < signinSignupBtns.length; i++){
     signinSignupBtns[i].classList.add('hidden');
   }
@@ -383,6 +388,7 @@ signinSubmit.addEventListener("click", () => {
       accountsName[i].textContent = u.name;
     }
     isLoggedIn();
+    window.location.reload();
   }
   else {
     alert("Không có tài khoản")
@@ -512,30 +518,40 @@ signupSubmit.addEventListener("click", () => {
   if (u) {
     alert("Email đã được sử dụng");
   }
-  if(validateSignupForm()) {     
-      const newuser = {
-        id: "AC" + IDGenerate(),
-        name: document.getElementById("signup-fullname").value,
-        email: document.getElementById("signup-email").value,
-        password: document.getElementById("signup-password").value,
-        address: document.getElementById("signup-address").value,        
-        phone: document.getElementById("signup-phonenum").value,
-        role: "client",
-        avatar: ""
-      }
-      usersList.push(newuser);
-      localStorage.setItem("users",JSON.stringify(usersList));
-      localStorage.setItem("currentUser",JSON.stringify(newuser));
-      isLoggedIn();
-      clearMainBody();
-      siteIndex.classList.remove('hidden');
-      
-      for(let i = 0; i < accountsName.length; i++) {
-        accountsName[i].textContent = u.name;
-      }
+  if(validateSignupForm()) {   
+    let userID = "AC" + IDGenerate();
+    const newuser = {
+      id: userID,
+      name: document.getElementById("signup-fullname").value,
+      email: document.getElementById("signup-email").value,
+      password: document.getElementById("signup-password").value,
+      address: document.getElementById("signup-address").value,        
+      phone: document.getElementById("signup-phonenum").value,
+      role: "client",
+      avatar: ""
+    }
+    usersList.push(newuser);
+    localStorage.setItem("users",JSON.stringify(usersList));
+    localStorage.setItem("currentUser",JSON.stringify(newuser));
 
+    const newreceiver = {
+      "id_receiver": "RC" + IDGenerate(),
+      "id_user_create": userID,
+      "name": document.getElementById("signup-fullname").value,
+      "address": document.getElementById("signup-address").value,
+      "phone": document.getElementById("signup-phonenum").value
+    }
+    receiversList.push(newreceiver);
+    localStorage.setItem("receivers", JSON.stringify(receiversList));
+
+    isLoggedIn();
+    clearMainBody();
+    siteIndex.classList.remove('hidden');
     
-     
+    for(let i = 0; i < accountsName.length; i++) {
+      accountsName[i].textContent = u.name;
+    }
+    window.location.reload();
   }
 
 });

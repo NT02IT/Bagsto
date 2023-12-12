@@ -1,4 +1,3 @@
-//comment
 function writeToLocalStorage(key,valueUrl){
     const localStorageData = localStorage.getItem(key);
     if (!localStorageData){
@@ -20,101 +19,16 @@ function readLocalStorage(key){
       return null;
     };
 }
-writeToLocalStorage('users','../data/users.json');
-let listUser  = readLocalStorage('users');
-writeToLocalStorage('orders','../data/orders.json');
-let listOrder = readLocalStorage('orders');
-writeToLocalStorage('promotions','../data/promotions.json');
-let listPromotion = readLocalStorage('promotions');
-writeToLocalStorage('shipping_types','../data/shipping_types.json')
+
 let kindOfShipping = readLocalStorage('shipping_types')
 function pricesShipping(a) {
     if (kindOfShipping && Array.isArray(kindOfShipping)){
         const IDShipping = kindOfShipping.find(shipping => shipping.id == a);
-        if (IDShipping){
-            return IDShipping.price;
-        }
-        else{
-            return 0;
-        }
-}
+        if (IDShipping) return IDShipping.price;
+        else return 0;
+    }
 }   
 //previous and next button
-const itemsPerPageUser = 5;
-let currentPage = 1;
-const totalPages = Math.ceil(listUser.length / itemsPerPageUser);
-function loadUser(){
-    const tableUser = document.getElementById('user-table-body')
-    const startIndex = (currentPage - 1) * itemsPerPageUser;
-    const endIndex = startIndex + itemsPerPageUser;
-    const usersToDisplay = listUser.slice(startIndex, endIndex);
-    tableUser.innerHTML = '';  
-    if( listUser && Array.isArray(listUser)){
-        // listUser.forEach(user => {
-            usersToDisplay.forEach(user => {
-            const row = document.createElement('tr');
-            const IDCell = document.createElement('td');
-            const InformationCell = document.createElement('td')
-            const AvatarCell = document.createElement('div');
-            const NameCell = document.createElement('div');
-            const AddressCell = document.createElement('td');
-            const PhoneCell = document.createElement('td');
-            // const MoreIconCell = document.createElement('td');
-            IDCell.textContent = user.id;
-            NameCell.textContent = user.name;
-            AddressCell.textContent = user.address;
-            PhoneCell.textContent = user.phone;
-            // AvatarCell.textContent = user.avatar;
-            const AvatarImg = document.createElement('img');
-            AvatarImg.src = user.avatar;
-            AvatarImg.alt = "Avatar";
-            AvatarImg.width = 40;
-            AvatarImg.height = 40;
-            AvatarImg.style.borderRadius = '100%';
-            AvatarCell.appendChild(AvatarImg);
-            // const EditMoreButton = document.createElement('button');
-            // EditMoreButton.textContent = 'Edit';
-            // EditMoreButton.addEventListener('click', () =>{
-            //     alert ('Edit button');
-            // })
-            // MoreIconCell.appendChild(EditMoreButton);
-            InformationCell.appendChild(AvatarCell);
-            InformationCell.appendChild(NameCell)
-            row.appendChild(IDCell);
-            row.appendChild(InformationCell);
-            row.appendChild(AddressCell);
-            row.appendChild(PhoneCell);
-            tableUser.appendChild(row);
-            InformationCell.style.display = "flex";
-            InformationCell.style.alignItems = "center";
-            NameCell.style.marginLeft = "10px";
-        })
-    }
-}
-function updatePagination() {
-    const currentPageElement = document.getElementById('currentPage');
-    currentPageElement.textContent = currentPage;
-
-    const prevButton = document.querySelector('#pagination button:nth-child(1)');
-    const nextButton = document.querySelector('#pagination button:nth-child(3)');
-
-    prevButton.disabled = currentPage === 1;
-    nextButton.disabled = currentPage === totalPages;
-}
-
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        loadUser();
-    }
-}
-
-function nextPage() {
-    if (currentPage < totalPages) {
-        currentPage++;
-        loadUser();
-    }
-}
 
 
 document.getElementById('preview-image').addEventListener("click",function(){
@@ -162,98 +76,7 @@ function previewImageChange() {
     }
 }
 //button next order
-let NumberOrderLenghtCurrent;
-const itemsPerPageOrder = 5;
-let currentPageOrder = 1;
-let totalPagesOrder;
-function loadOrder(a){
-    const TableOrder = document.getElementById('table-history-buying-body');
-    // const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
-    // const endIndex = startIndex + itemsPerPageOrder;
-    // const ordersToDisplay = listOrder.slice(startIndex, endIndex);
-    TableOrder.innerHTML = '';  
-    let hasOrderToDisplay = false;
-    NumberOrderLenghtCurrent = 0;
-    if (listOrder && Array.isArray(listOrder)) {
-      const orderArray = listOrder.filter((order) => order.id_user == a);
-      if (orderArray && orderArray.length > 0) {
-        NumberOrderLenghtCurrent = orderArray.length;
-        totalPagesOrder = Math.ceil(
-          NumberOrderLenghtCurrent / itemsPerPageOrder
-        );
-        console.log(NumberOrderLenghtCurrent);
-        const startIndex = (currentPageOrder - 1) * itemsPerPageOrder;
-        const endIndex = startIndex + itemsPerPageOrder;
-        const ordersToDisplay = orderArray.slice(startIndex, endIndex);
-        ordersToDisplay.forEach((order) => {
-          const row = document.createElement("tr");
-          const DateBuyingCell = document.createElement("td");
-          const IDCell = document.createElement("td");
-          const PriceCell = document.createElement("td");
-          const shipping = order.id_shipping_type;
-          // console.log(shipping)
-          DateBuyingCell.textContent = order.day_order;
-          IDCell.textContent = order.id;
-          if (
-            Array.isArray(order.products_order) &&
-            order.products_order.length > 0
-          ) {
-            const total = order.products_order.reduce(
-              (acc, product) => acc + parseFloat(product.price_sell) * parseFloat(product.quantity), 0
-            );
-            PriceCell.textContent = formatCurrency(
-              total + pricesShipping(shipping)
-            );
-          } else {
-            PriceCell.textContent = "N/A";
-          }
-          row.appendChild(DateBuyingCell);
-          row.appendChild(IDCell);
-          row.appendChild(PriceCell);
-          TableOrder.appendChild(row);
-          row.addEventListener("click", () => {
-              console.log(row);
-              clearMainBody();
-            var UserTableOrder = document.getElementById("detail-table-history-buying");
-            if (UserTableOrder) {
-              var tbodyUserTableOrder = UserTableOrder.querySelector("tbody");
-              if (tbodyUserTableOrder) {
-                tbodyUserTableOrder.addEventListener("click", function (e) {
-                  var targetElement = e.target;
-                  // Tìm dòng cha chứa ô được click
-                  var rowOrder = targetElement.closest("tr");
-                  if (rowOrder) {
-                    console.log("clicked");
-                    var idCellUserOrder =
-                      rowOrder.querySelector("td:nth-child(2)");
-                    idUserOrderBill = idCellUserOrder.textContent.trim();
-                    console.log(idUserOrderBill);
-                    loadUserOrder(idUserOrderBill);
-                    // })
-                  }
-                  const UserTablePage = document.getElementById("user-page");
-                  const UserOrder = document.getElementById("user-order-page");
-                  // Kiểm tra xem có chứa lớp "hidden-user" hay không
-                  const isHidden = UserOrder.classList.contains("hidden");
-                  // Nếu đang ẩn, hiển thị và ngược lại
-                  if (isHidden) {
-                    UserOrder.classList.remove("hidden");
-                    UserTablePage.classList.add("hidden");
-                  } else {
-                    UserOrder.classList.add("hidden");
-                    UserTablePage.classList.remove("hidden");
-                  }
-                });
-              }
-            }
-          });
-          })
-        };
-        if (!hasOrderToDisplay) {
-          currentPageOrder = 1;
-        }
-      }
-    }
+
    
 
 // totalPagesOrder = Math.ceil( NumberOrderLenghtCurrent / itemsPerPageOrder) ;
@@ -268,24 +91,21 @@ function updatePaginationOrder() {
     prevButton.disabled = currentPageOrder === 1;
     nextButton.disabled = currentPageOrder === totalPagesOrder;
 }
-
 function prevPageOrder() {
     if (currentPageOrder > 1) {
         currentPageOrder--;
-        loadOrder(id);
+        loadOrder(rowSelectedAccountID);
     }
 }
-
 function nextPageOrder() {
     if (currentPageOrder < totalPagesOrder) {
         currentPageOrder++;
-        loadOrder(id);
+        loadOrder(rowSelectedAccountID);
     }
 }
 
 function formatCurrency(amount){
    return amount.toLocaleString('vi',{style: 'currency', currency:'VND'});
-// return amount.toLocaleString('vi-VN');
 }
 writeToLocalStorage('products','../data/products.json');
 let listProduct = readLocalStorage('products');
@@ -313,8 +133,8 @@ function productName(a){
     }
 function loadUserOrder(a){
     const tableUserOrder = document.getElementById('user-order-table-body')
-    if (listOrder && Array.isArray(listOrder)){
-        const test = listOrder.find(order => order.id == a)
+    if (ordersList && Array.isArray(ordersList)){
+        const test = ordersList.find(order => order.id == a)
         if(test){
              if(Array.isArray(test.products_order) && test.products_order.length>0){
                 test.products_order.forEach(product =>{
@@ -393,9 +213,9 @@ function loadReceiver (a){
 }
 function loadPriceOrder(a){
     const PriceCell = document.getElementById('price-order');
-    if(listOrder && Array.isArray(listOrder)){
-         const priceorders = listOrder.find(priceorder => priceorder.id == a);
-         const priceorders2 =  listOrder.find( priceorder2 => priceorder2.id == a)?.products_order || [];
+    if(ordersList && Array.isArray(ordersList)){
+         const priceorders = ordersList.find(priceorder => priceorder.id == a);
+         const priceorders2 =  ordersList.find( priceorder2 => priceorder2.id == a)?.products_order || [];
         if (priceorders && priceorders2){
             const total = priceorders2.reduce((acc,product) => acc + (parseFloat(product.price_sell) * parseFloat(product.quantity)),0)
             console.log(total)
@@ -438,98 +258,62 @@ function loadPriceOrder(a){
     } 
 }
 // Cập nhật thông tin
-let AGlobal
-let id
-document.addEventListener('DOMContentLoaded', function () {
-    var UserTableChange = document.getElementById("user-table-title");
-    AGlobal = 0;
-    if (UserTableChange) { 
-        var tbodyUserTable = UserTableChange.querySelector('tbody');
-        if(tbodyUserTable){
-            tbodyUserTable.addEventListener('click',function(e){
-            var targetElement = e.target;
-            // Tìm dòng cha chứa ô được click
-            var row = targetElement.closest("tr"); 
-            if(row){
-            console.log("clicked")
-            var idCellUser = row.querySelector('td:first-child');
-            id = idCellUser.textContent.trim();
-            AGlobal = parseInt(id.slice(-6))
-            console.log(id)
-            console.log(AGlobal)
-            loadOrder(id)
-        // })
-     }
-        const UserTablePage = document.getElementById("user-page")
-        const UserAdjust = document.getElementById("user-detail-page")
-            // Kiểm tra xem có chứa lớp "hidden-user" hay không
-        const isHidden = UserAdjust.classList.contains("hidden");
-            // Nếu đang ẩn, hiển thị và ngược lại
-            if (isHidden) {
-                UserAdjust.classList.remove("hidden");
-                UserTablePage.classList.add("hidden")
-    
-            } else {
-                UserAdjust.classList.add("hidden");      
-                UserTablePage.classList.remove("hidden")
-            }
-            
-    })}}});
-   function ChangeInformationUser(){
-    const ChangeInformation = listUser.find(user => user.id == id)
-    if(ChangeInformation){
-    var username = document.getElementById('change-user-name').value;
-    var address = document.getElementById('change-address-user').value;
-    var phone = document.getElementById('change-phonenumeber-user').value;
-    var email = document.getElementById('change-email-user').value;
-    var password = document.getElementById('change-password-user').value;
-    var confirmPassword = document.getElementById('change-confirm-password-user').value;
-     // Kiểm tra định dạng email
-     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-     if (!emailRegex.test(email)) {
-         alert('Email không hợp lệ.');
-         return;
-     }
+
+//    function ChangeInformationUser(){
+//     const ChangeInformation = usersList.find(user => user.id == rowSelectedAccountID)
+//     if(ChangeInformation){
+//     var username = document.getElementById('change-user-name').value;
+//     var address = document.getElementById('change-address-user').value;
+//     var phone = document.getElementById('change-phonenumeber-user').value;
+//     var email = document.getElementById('change-email-user').value;
+//     var password = document.getElementById('change-password-user').value;
+//     var confirmPassword = document.getElementById('change-confirm-password-user').value;
+//      // Kiểm tra định dạng email
+//      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//      if (!emailRegex.test(email)) {
+//          alert('Email không hợp lệ.');
+//          return;
+//      }
  
-     // Kiểm tra định dạng số điện thoại
-     var phoneRegex = /^\d{10}$|^\d{13}$/;
-     if (!phoneRegex.test(phone)) {
-         alert('Số điện thoại không hợp lệ.');
-         return;
-     }
-     var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*\d).+$/;
-     if (!passwordRegex.test(password)) {
-        alert('Nhập mật khẩu không đúng định dạng');
-         return;
-     }
-     if (password !== confirmPassword) {
-         alert('Mật khẩu và xác nhận mật khẩu không khớp.');
-         return;
-     }
-    var AdjustUser = {
-        id: id,
-        name: username,
-        address: address,
-        phone: phone,
-        email: email,
-        password: password,
-        client: ChangeInformation.client,
-    }
-    const AdjustInformationUsers = JSON.parse(localStorage.getItem('users'))
-    const indexToUpdate = AdjustInformationUsers.findIndex(userChange => userChange.id == AdjustUser.id);
-    if(indexToUpdate !== -1)
-      {  AdjustInformationUsers[indexToUpdate] = AdjustUser;
-    localStorage.setItem('users',JSON.stringify(AdjustInformationUsers))
-    alert("Account changes information successfully!");
-    function reloadPage() {
-        location.reload(true);
-    }
-    reloadPage();}
-   }
-   else{
-    alert("Cannot change Account")
-   }
-}
+//      // Kiểm tra định dạng số điện thoại
+//      var phoneRegex = /^\d{10}$|^\d{13}$/;
+//      if (!phoneRegex.test(phone)) {
+//          alert('Số điện thoại không hợp lệ.');
+//          return;
+//      }
+//      var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*\d).+$/;
+//      if (!passwordRegex.test(password)) {
+//         alert('Nhập mật khẩu không đúng định dạng');
+//          return;
+//      }
+//      if (password !== confirmPassword) {
+//          alert('Mật khẩu và xác nhận mật khẩu không khớp.');
+//          return;
+//      }
+//     var AdjustUser = {
+//         id: rowSelectedAccountID,
+//         name: username,
+//         address: address,
+//         phone: phone,
+//         email: email,
+//         password: password,
+//         client: ChangeInformation.client,
+//     }
+//     const AdjustInformationUsers = JSON.parse(localStorage.getItem('users'))
+//     const indexToUpdate = AdjustInformationUsers.findIndex(userChange => userChange.id == AdjustUser.id);
+//     if(indexToUpdate !== -1)
+//       {  AdjustInformationUsers[indexToUpdate] = AdjustUser;
+//     localStorage.setItem('users',JSON.stringify(AdjustInformationUsers))
+//     alert("Account changes information successfully!");
+//     function reloadPage() {
+//         location.reload(true);
+//     }
+//     reloadPage();}
+//    }
+//    else{
+//     alert("Cannot change Account")
+//    }
+// }
 //Thêm người dùng
 document.addEventListener("DOMContentLoaded",function(){
     const UserTable = document.getElementById("user-page")
@@ -558,8 +342,6 @@ function getNextUserId(existingUsers) {
 
     // Chuyển định dạng ID theo mẫu AC00000x
     const formattedUserId = `AC${String(nextUserId).padStart(6, '0')}`;
-    
-
     return formattedUserId;
 }
 
@@ -570,7 +352,7 @@ function CreateAccount(){
     var phone = document.getElementById('phonenumeber-user').value;
     var email = document.getElementById('email-user').value;
     var password = document.getElementById('password-user').value;
-    var newUserId = getNextUserId(listUser);
+    var newUserId = getNextUserId(usersList);
     var confirmPassword = document.getElementById('confirm-password-user').value;
      // Kiểm tra định dạng email
      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -617,9 +399,9 @@ function CreateAccount(){
 let idUserOrderBill;
 var UserSearchInput = document.getElementById('search-input-user');
 UserSearchInput.addEventListener('change',()=>{
-    listUser  = readLocalStorage('users');
+    usersList  = readLocalStorage('users');
     var input = UserSearchInput.value;
-    listUser = listUser.filter(element=>element.name.includes(input));
+    usersList = usersList.filter(element=>element.name.includes(input));
     n=1;
     clearTable();
     loadUser('next');
@@ -657,8 +439,8 @@ UserSearchInput.addEventListener('change',()=>{
             
 //     })}}});
 window.onload = function(){
-    console.log(listUser);
-    console.log(listOrder);
+    console.log(usersList);
+    console.log(ordersList);
     // loadUserOrder()
     loadUser();
     // loadOrder(3);
@@ -668,5 +450,5 @@ window.onload = function(){
    loadReceiver(2);
    loadPriceOrder(1);
    console.log(NumberOrderLenghtCurrent);
-   console.log(getNextUserId(listUser));
+   console.log(getNextUserId(usersList));
 }

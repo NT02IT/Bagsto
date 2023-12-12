@@ -98,9 +98,13 @@ function displayProducts(htmlContainer, productList, currentPage){
             viewProductDetail(productList[start+i]);
         });
         productItems[i].querySelector('.btn-add-prd').addEventListener('click', (e) => {
-            e.stopPropagation();
-            localStorage.setItem('selectedProduct', JSON.stringify(productList[start+i]));
-            addToCartHandler();
+            if(currentUser){
+                e.stopPropagation();
+                localStorage.setItem('selectedProduct', JSON.stringify(productList[start+i]));
+                addToCartHandler();
+            } else{
+                alert("Đăng nhập trước khi mua hàng");
+            }
         });
     }
 }
@@ -376,7 +380,8 @@ subQuantityBtn.addEventListener('click', () =>{
 
 const buttonAddToCart = document.getElementById('product-detail-addToCart');
 buttonAddToCart.addEventListener('click', () =>{
-    addToCartHandler();
+    if(currentUser) addToCartHandler();
+    else alert("Đăng nhập trước khi mua hàng")
 });
 
 function addToCartHandler(){
@@ -454,9 +459,9 @@ function showCart(){
             <td>
                 <div class="body2">
                     <div class="quantity-btn-group">
-                        <button><i class="icon-minus"></i></button>
-                        <button>${filteredUserCart.products_order[j].quantity}</button>
-                        <button><i class="icon-plus"></i></button>
+                        <button id="giam-so-luong-${filteredUserCart.products_order[j].id}"><i class="icon-minus"></i></button>
+                        <button id="so-luong-${filteredUserCart.products_order[j].id}">${filteredUserCart.products_order[j].quantity}</button>
+                        <button id="tang-so-luong-${filteredUserCart.products_order[j].id}"><i class="icon-plus"></i></button>
                     </div>
                     <div></div>
                 </div>
@@ -500,6 +505,11 @@ cartBtn.onclick = function () {
     showCart();
     const RowOrderProductInCart = document.querySelectorAll('.cart-table tr');
     let BtnDeleteOrderProductInCart = document.querySelectorAll('.cart-table .delete-btn')
+    let buttonGiamSL = document.querySelectorAll('[id^="giam-so-luong-"]')
+    let buttonTangSL = document.querySelectorAll('[id^="tang-so-luong-"]')
+    let labelSoluong = document.querySelectorAll('[id^="so-luong-"]')
+    let cartCellTotal = document.querySelectorAll('.cart-cell-total')
+    
     for(let i=0; i<BtnDeleteOrderProductInCart.length; i++) {
         BtnDeleteOrderProductInCart[i].addEventListener('click', ()=>{
             RowOrderProductInCart[i+1].remove();
@@ -511,6 +521,43 @@ cartBtn.onclick = function () {
             filteredUserCart.products_order.splice(i, 1);
             cartsList[index] = filteredUserCart;
             localStorage.setItem('carts', JSON.stringify(cartsList));
+        });
+
+        
+        let soluong = labelSoluong[i].textContent;
+        let iduser = currentUser.id;
+        let filteredUserCart = cartsList.filter(item => item.id_user == iduser)[0];
+        var index = cartsList.indexOf(filteredUserCart);
+        buttonGiamSL[i].addEventListener('click', ()=>{
+            if(soluong > 1) soluong--;
+            labelSoluong[i].textContent = soluong
+            
+            let filteredProduct = productList.filter(item => item.id == filteredUserCart.products_order[i].id)[0];
+            let cellTotal = filteredProduct.price_sell * soluong;
+            console.log(cellTotal)
+            cartCellTotal[i].textContent = cellTotal
+
+            filteredUserCart.products_order[i].quantity = soluong
+            cartsList[index] = filteredUserCart;
+            localStorage.setItem('carts', JSON.stringify(cartsList));
+            showCartResume();
+        });
+        buttonTangSL[i].addEventListener('click', ()=>{
+            
+            let filteredProduct = productList.filter(item => item.id == filteredUserCart.products_order[i].id)[0];
+            let cellTotal = filteredProduct.price_sell * soluong;
+            console.log(cellTotal)
+            cartCellTotal[i].textContent = cellTotal
+            
+            let remainQuantity = filteredProduct.quantity;
+            if(soluong < remainQuantity) soluong++;
+            else alert("Lượng hàng quá lớn")
+            labelSoluong[i].textContent = soluong
+
+            filteredUserCart.products_order[i].quantity = soluong
+            cartsList[index] = filteredUserCart;
+            localStorage.setItem('carts', JSON.stringify(cartsList));
+            showCartResume();
         });
     }
 };
@@ -536,6 +583,8 @@ cartCheckoutButton.addEventListener("click", () => {
     cartSubtotalPrice.textContent = cartSubtotalPriceValue + "đ";
     cartShippingPrice.textContent = cartShippingPriceValue + "đ";
     cartSumPrice.textContent = cartSumPriceValue + "đ";
+
+    showCustomerAddresses();
 })
 //----------------------------------------------------------------
 // CART
@@ -650,8 +699,22 @@ function updateUserInfo() {
         currentUser.phone = updatedPhoneNumber;
         currentUser.email = updatedEmail;
         currentUser.address = updatedaddress;
-        currentUser.password = updatedpass ;
+        currentUser.password = updatedpass;
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+        for(let i = 0; i < usersList.length; i++){
+            console.log(usersList[i]);
+            if(usersList[i].id == currentUser.id){
+                usersList[i].name = updatedFullName;
+                usersList[i].phone = updatedPhoneNumber;
+                usersList[i].email = updatedEmail;
+                usersList[i].address = updatedaddress;
+                usersList[i].password = updatedpass ;
+                usersList[i].avatar = currentUser.avatar ;
+                localStorage.setItem("users", JSON.stringify(usersList));
+                break;
+            }
+        }
 
         // Display updated user info in input fields
         document.getElementById("user_fullName").value = updatedFullName;
@@ -685,7 +748,9 @@ function changeAvatarImg() {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            accountInfoAvatar.src = e.target.result;
+            // accountInfoAvatar.src = e.target.result;
+            // currentUser.avatar = e.target.result;
+            accountInfoAvatar.src = urlNewAvatar;
         };
         reader.readAsDataURL(input.files[0]);
     }
@@ -696,49 +761,54 @@ function changeAvatarImg() {
 // CHECKOUT ADDRESS
 //----------------------------------------------------------------
 let userReceiver = [];
+let listButtonShipToAddresses;
 function showCustomerAddresses() {
     var listAddresses = document.getElementById('listAddresses');
     listAddresses.innerHTML = '';
     var isFirstDefaultAdded = false;
     
     for(let i = 0; i < receiversList.length; i++) {
-        if(receiversList[i].id_ruser_create == currentUser.id){
+        if(receiversList[i].id_user_create == currentUser.id){
             userReceiver.push(receiversList[i]);
         }
     }
-    console.log(userReceiver);
 
     userReceiver.forEach(function(customer, index) {
-      var customerDiv = document.createElement('div');
-      customerDiv.classList.add('customer-address');
-  
-      customerDiv.innerHTML = `
-        <div class="customer-info">
-          <p class="subtitle-1">${customer.name}</p>
-          <p class="body2 customer-address-text">${customer.address}</p>
-          <p class="body2 customer-phone">${customer.phone}</p>
-        </div>
-        <div class="button-on-address">
-            <button class="deleteButton type-inherit size-m">Xóa</button>
-            <button class="button-ship-to-add confirmButton type-primary style-soft size-m" id="">Giao đến địa chỉ này</button>
-        </div>
-      `;
-      listAddresses.appendChild(customerDiv);
+        var customerDiv = document.createElement('div');
+        customerDiv.classList.add('customer-address');
+    
+        customerDiv.innerHTML = `
+            <div class="customer-info">
+            <p class="subtitle-1">${customer.name}</p>
+            <p class="body2 customer-address-text">${customer.address}</p>
+            <p class="body2 customer-phone">${customer.phone}</p>
+            </div>
+            <div class="button-on-address">
+                <button class="deleteButton type-inherit size-m">Xóa</button>
+                <button class="button-ship-to-add confirmButton type-primary style-soft size-m" id="">Giao đến địa chỉ này</button>
+            </div>
+        `;
+        listAddresses.appendChild(customerDiv);
     })
+    
+    listButtonShipToAddresses = document.querySelectorAll('.button-ship-to-add');
+    for(let i = 0; i < listButtonShipToAddresses.length; i++){
+        listButtonShipToAddresses[i].addEventListener("click", (event) => {
+            let receiverSelected = userReceiver[i];
+            localStorage.setItem('receiverSelected', JSON.stringify(receiverSelected));
+            clearMainBody();
+            siteCheckoutPayment.classList.remove('hidden');
+            showCheckoutPayment();
+            showOrderResumePayment();
+        })
+    }
 }
-showCustomerAddresses();
 let ShippingPrice = 0;
-const listButtonShipToAddresses = document.querySelectorAll('.button-ship-to-add');
-for(let i = 0; i < listButtonShipToAddresses.length; i++){
-    listButtonShipToAddresses[i].addEventListener("click", (event) => {
-        let receiverSelected = userReceiver[i];
-        localStorage.setItem('receiverSelected', JSON.stringify(receiverSelected));
-        clearMainBody();
-        siteCheckoutPayment.classList.remove('hidden');
-        showCheckoutPayment();
-        showOrderResumePayment();
-    })
-}
+
+document.getElementById('backHomePageButton').addEventListener("click", (event) => {
+    clearMainBody();
+    siteIndex.classList.remove('hidden');
+});  
 
 function showCheckoutPayment(){
     let receiverSelected = getFromStorage("receiverSelected");

@@ -64,21 +64,21 @@
     },
     {
         "id_receiver": 10,
-        "id_ruser_create": 10,
+        "id_user_create": 10,
         "name": "Clementina DuBuque",
         "address": "32 Bình Qưới, Thanh Đa, Q.Bình Thạnh, Tp.HCM",
         "phone": "05643524454"
     },
     {
         "id_receiver": 11,
-        "id_ruser_create": 11,
+        "id_user_create": 11,
         "name": "Nguyễn Anh Tuấn",
         "address": "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
         "phone": "0327431105"
     },
     {
         "id_receiver": 12,
-        "id_ruser_create": "AC000011",
+        "id_user_create": "AC000011",
         "name": "Nguyễn Anh Tuấn",
         "address": "967/98 Trần Xuân Soạn, Quận 7, Tp.HCM",
         "phone": "0327431105"

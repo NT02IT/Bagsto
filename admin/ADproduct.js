@@ -9,136 +9,214 @@ function handleImageClick(imgId){
 
 //load bảng với 6 dòng
 var n = 1;
-var table_product = document.getElementById("table_product");
-function load6Product(productsList, check) {
+var table_product = document.querySelector("#table_product tbody");
+// function load6Product(productsList, check) {
+//     // Lấy reference đến table
+//     if (check === 'back') {
+//         if (n <= 13) {
+//             n = 1;
+//         } else {
+//             // Nếu n không phải là bội số của 6, đặt n về trang bắt đầu của trang hiện tại
+//             n = n - (n % 6 === 0 ? 11 : (n % 6) + 5);
+//         }
+//     }
+//     var m = n + 5;
+//     if (m > productsList.length){
+//         m = productsList.length;
+//     }
+//     var j=0;
+//     for (let i = n-1; i<m; i++) {
+//         // Tạo một hàng mới
+//         var newRow = document.createElement("tr");
+//         newRow.className = "productTable__row product__row canhover";
+//         newRow.id = `product__row--${j}`;
+//         // Tạo các ô (cột) cho hàng mới
+//         var cell1 = document.createElement("td");
+//         cell1.className = "productTable__cell col1";
+
+//         var checkbox = document.createElement("input");
+//         checkbox.type = "checkbox";
+//         checkbox.id = "checkBox--" + j;
+
+//         var img = document.createElement("img");
+//         img.className = "Product__img";
+//         img.src = productsList[i].thumbnail_stack[0];
+//         img.alt = "";
+//         var productName = document.createElement("p");
+//         productName.className = "product__name";
+//         productName.textContent = productsList[i].name;
+
+//         // Gắn các phần tử con vào cell1
+//         cell1.appendChild(checkbox);
+//         cell1.appendChild(img);
+//         cell1.appendChild(productName);
+
+//         // Tạo và gắn các ô khác vào hàng mới
+//         var cell2 = document.createElement("td");
+//         cell2.className = "productTable__cell col2";
+//         cell2.innerHTML = "<p>" + productsList[i].day_import + "</p>";
+
+//         var cell3 = document.createElement("td");
+//         cell3.className = "productTable__cell col3";
+//         cell3.innerHTML = "<p>$ " + productsList[i].price_sell + "</p>";
+
+//         var cell4 = document.createElement("td");
+//         cell4.className = "productTable__cell col4";
+//         var statusProduct="In stock";
+//         if (productsList[i].quantity===0){
+//             statusProduct="Out of stock"
+//             cell4.innerHTML = "<p class='OutOfStock'>" + statusProduct + "</p>";
+//         }else if(productsList[i].quantity<20) {
+//             statusProduct = "Low stock"
+//             cell4.innerHTML = "<p class='LowStock'>" + statusProduct + "</p>";
+//         }else{
+//             cell4.innerHTML = "<p class='InStock'>" + statusProduct + "</p>";
+//         }
+
+//         // Gắn các ô vào hàng mới
+//         newRow.appendChild(cell1);
+//         newRow.appendChild(cell2);
+//         newRow.appendChild(cell3);
+//         newRow.appendChild(cell4);
+
+//         // Gắn hàng mới vào table
+//         table_product.appendChild(newRow);
+//         n++;
+//         j++;
+//     }
+
+//     //click xem chi tiet san pham
+//     let myTableRowProduct1 = document.getElementById("product__row--0");
+//     myTableRowProduct1.addEventListener('click', function() {
+//         var detailProduct = document.getElementById('DetailProduct-page');
+//         resetNavbar();
+//         clearMainBody();
+//         detailProduct.classList.remove('hidden');
+//         loadDetail(n-7);
+//     });
+//     var myTableRowProduct2 = document.getElementById("product__row--1");
+//     myTableRowProduct2.addEventListener('click', function() {
+//         var detailProduct = document.getElementById('DetailProduct-page');
+//         // console.log('hello');
+//         resetNavbar();
+//         clearMainBody();
+//         detailProduct.classList.remove('hidden');
+//         loadDetail(n-6);
+//     });
+//     var myTableRowProduct3 = document.getElementById("product__row--2");
+//     myTableRowProduct3.addEventListener('click', function() {
+//         var detailProduct = document.getElementById('DetailProduct-page');
+//         // console.log('hello');
+//         resetNavbar();
+//         clearMainBody();
+//         detailProduct.classList.remove('hidden');
+//         loadDetail(n-5);
+//     });
+//     var myTableRowProduct4 = document.getElementById("product__row--3");
+//     myTableRowProduct4.addEventListener('click', function() {
+//         var detailProduct = document.getElementById('DetailProduct-page');
+//         // console.log('hello');
+//         resetNavbar();
+//         clearMainBody();
+//         detailProduct.classList.remove('hidden');
+//         loadDetail(n-4);
+//     });
+//     var myTableRowProduct5 = document.getElementById("product__row--4");
+//     myTableRowProduct5.addEventListener('click', function() {
+//         var detailProduct = document.getElementById('DetailProduct-page');
+//         // console.log('hello');
+//         resetNavbar();
+//         clearMainBody();
+//         detailProduct.classList.remove('hidden');
+//         loadDetail(n-3);
+//     });
+//     var myTableRowProduct6 = document.getElementById("product__row--5");
+//     myTableRowProduct6.addEventListener('click', function() {
+//         var detailProduct = document.getElementById('DetailProduct-page');
+//         // console.log('hello');
+//         resetNavbar();
+//         clearMainBody();
+//         detailProduct.classList.remove('hidden');
+//         loadDetail(n-2);
+//     });
+// }
+
+// 0->5 6->11 12->13
+// lenght = 14 => max = 13
+// max = 6*(Math.floor(lenght/6))-1 + length%6
+let pageOfView = 6;
+let startProductIndex = -pageOfView;
+let endProductIndex = startProductIndex + pageOfView - 1;
+function load6Product(list, check){
+    let max = 6*(list.length/6)-1 + list.length%6 - 1;
+    table_product.innerHTML = `
+    <tr class="table__header productTable__row">
+        <th class="productTable__cell col1">Product</th>
+        <th class="productTable__cell col2">Import date</th>
+        <th class="productTable__cell col3">Price</th>
+        <th class="productTable__cell col4">Status</th>
+    </tr>
+    `;
     // Lấy reference đến table
-    if (check === 'back') {
-        if (n <= 13) {
-            n = 1;
-        } else {
-            // Nếu n không phải là bội số của 6, đặt n về trang bắt đầu của trang hiện tại
-            n = n - (n % 6 === 0 ? 11 : (n % 6) + 5);
+    if (check == 'next') {
+        if (endProductIndex>=max){
+            return;
+        }
+        startProductIndex += 6;
+        endProductIndex = startProductIndex + 5;
+        if(endProductIndex >= max) endProductIndex = max-1;
+        console.log(startProductIndex + ' ' + endProductIndex);
+        for(let i = startProductIndex; i <= endProductIndex; i++) {
+            console.log(list[i]);
+            table_product.innerHTML += `
+            <tr class="productTable__row product__row canhover" id="${list[i].id}">
+                <td class="productTable__cell col1"><input type="checkbox" id="checkBox--0"><img class="Product__img"
+                        src="${list[i].thumbnail_stack[0]}"
+                        alt="">
+                    <p class="product__name">${list[i].name}</p>
+                </td>
+                <td class="productTable__cell col2">
+                    <p>${list[i].day_import}</p>
+                </td>
+                <td class="productTable__cell col3">
+                    <p>${list[i].price_sell}đ</p>
+                </td>
+                <td class="productTable__cell col4">
+                    <p class="LowStock">Low stock</p>
+                </td>
+            </tr>
+            `;
+        }
+    } else{
+        if (startProductIndex<=0){
+            return;
+        }
+        startProductIndex -= 6;
+        endProductIndex = startProductIndex + 5;
+        if(startProductIndex <= 0) startProductIndex = 0;
+        console.log(startProductIndex + ' ' + endProductIndex);
+        for(let i = startProductIndex; i <= endProductIndex; i++) {
+            console.log(list[i]);
+            table_product.innerHTML += `
+            <tr class="productTable__row product__row canhover" id="${list[i].id}">
+                <td class="productTable__cell col1"><input type="checkbox" id="checkBox--0"><img class="Product__img"
+                        src="${list[i].thumbnail_stack[0]}" onerror="handleErrorPrdThumbnail(this)"
+                        alt="">
+                    <p class="product__name">${list[i].name}</p>
+                </td>
+                <td class="productTable__cell col2">
+                    <p>${list[i].day_import}</p>
+                </td>
+                <td class="productTable__cell col3">
+                    <p>${list[i].price_sell}đ</p>
+                </td>
+                <td class="productTable__cell col4">
+                    <p class="LowStock">Low stock</p>
+                </td>
+            </tr>
+            `;
         }
     }
-    var m = n + 5;
-    if (m > productsList.length){
-        m = productsList.length;
-    }
-    var j=0;
-    for (let i = n-1; i<m; i++) {
-        // Tạo một hàng mới
-        var newRow = document.createElement("tr");
-        newRow.className = "productTable__row product__row canhover";
-        newRow.id = `product__row--${j}`;
-        // Tạo các ô (cột) cho hàng mới
-        var cell1 = document.createElement("td");
-        cell1.className = "productTable__cell col1";
-
-        var checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = "checkBox--" + j;
-
-        var img = document.createElement("img");
-        img.className = "Product__img";
-        img.src = productsList[i].thumbnail_stack[0];
-        img.alt = "";
-        var productName = document.createElement("p");
-        productName.className = "product__name";
-        productName.textContent = productsList[i].name;
-
-        // Gắn các phần tử con vào cell1
-        cell1.appendChild(checkbox);
-        cell1.appendChild(img);
-        cell1.appendChild(productName);
-
-        // Tạo và gắn các ô khác vào hàng mới
-        var cell2 = document.createElement("td");
-        cell2.className = "productTable__cell col2";
-        cell2.innerHTML = "<p>" + productsList[i].day_import + "</p>";
-
-        var cell3 = document.createElement("td");
-        cell3.className = "productTable__cell col3";
-        cell3.innerHTML = "<p>$ " + productsList[i].price_sell + "</p>";
-
-        var cell4 = document.createElement("td");
-        cell4.className = "productTable__cell col4";
-        var statusProduct="In stock";
-        if (productsList[i].quantity===0){
-            statusProduct="Out of stock"
-            cell4.innerHTML = "<p class='OutOfStock'>" + statusProduct + "</p>";
-        }else if(productsList[i].quantity<20) {
-            statusProduct = "Low stock"
-            cell4.innerHTML = "<p class='LowStock'>" + statusProduct + "</p>";
-        }else{
-            cell4.innerHTML = "<p class='InStock'>" + statusProduct + "</p>";
-        }
-
-        // Gắn các ô vào hàng mới
-        newRow.appendChild(cell1);
-        newRow.appendChild(cell2);
-        newRow.appendChild(cell3);
-        newRow.appendChild(cell4);
-
-        // Gắn hàng mới vào table
-        table_product.appendChild(newRow);
-        n++;
-        j++;
-    }
-
-    //click xem chi tiet san pham
-    let myTableRowProduct1 = document.getElementById("product__row--0");
-    myTableRowProduct1.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-7);
-    });
-    var myTableRowProduct2 = document.getElementById("product__row--1");
-    myTableRowProduct2.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-6);
-    });
-    var myTableRowProduct3 = document.getElementById("product__row--2");
-    myTableRowProduct3.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-5);
-    });
-    var myTableRowProduct4 = document.getElementById("product__row--3");
-    myTableRowProduct4.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-4);
-    });
-    var myTableRowProduct5 = document.getElementById("product__row--4");
-    myTableRowProduct5.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-3);
-    });
-    var myTableRowProduct6 = document.getElementById("product__row--5");
-    myTableRowProduct6.addEventListener('click', function() {
-        var detailProduct = document.getElementById('DetailProduct-page');
-        // console.log('hello');
-        resetNavbar();
-        clearMainBody();
-        detailProduct.classList.remove('hidden');
-        loadDetail(n-2);
-    });
 }
 class Product {
     constructor(id, name, category, brand_name, day_import, quantity, price_imported, price_sell, for_gender, description, thumbnail_stack) {
@@ -200,8 +278,11 @@ headerTab2.addEventListener('click', () =>{
     }
     
     n=1;
+    startProductIndex = -6;
+    endProductIndex = startProductIndex + 5;
     clearTable();
     load6Product(productsList, "next");
+    prdTableEventHandler();
     var containerDetailProductImg = document.getElementById('containerDetailProduct--img');
     var imgElements = containerDetailProductImg.getElementsByTagName('img');
     // Lặp qua danh sách các thẻ img và xóa
@@ -221,23 +302,30 @@ newProduct_Btn.addEventListener('click', ()=>{
     ProductIdDetail.textContent = "PD" + IDGenerate();
 })
 
-//Status Filter
-var ProductStatusSelection = document.getElementById('Product-status-selection');
-ProductStatusSelection.addEventListener('change',()=>{
-    var statusSelected = ProductStatusSelection.options[ProductStatusSelection.selectedIndex].value;
-    if (statusSelected==='All'){
-        filterAllStatus();
-    }else if (statusSelected==='InStock'){
-        filterInStockStatus();
-    }else if (statusSelected==='LowStock'){
-        filterLowStockStatus();
-    }else if (statusSelected==='OutOfStock'){
-        filterOutOfStockStatus();
+// Search product
+let searchPrdInput = document.getElementById('Product-search-input');
+searchPrdInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        console.log('Enter');
+        searchProduct(searchPrdInput.value.toUpperCase());
+        prdTableEventHandler()
     }
-    n=1;
-    clearTable();
-    load6Product(productsList, 'next');
-})
+});
+function searchProduct(searchPattern){
+    let result = [];
+    for (i = 0; i < productsList.length; i++) {
+        txtValue = productsList[i].name;
+        console.log(txtValue)
+        if (txtValue.toUpperCase().indexOf(searchPattern) > -1) {
+            result.push(productsList[i]);
+        }
+    }  
+    console.log(result);  
+    startProductIndex = -pageOfView;
+    endProductIndex = startProductIndex + pageOfView - 1;
+    load6Product(result, "next");
+}
+// Search product
 // ----------------------------------------------------------------
 // PRODUCT
 
@@ -245,69 +333,79 @@ ProductStatusSelection.addEventListener('change',()=>{
 // PRODUCT DETAIL
 // ----------------------------------------------------------------
 //hien chi tiet san pham vao web
-function loadDetail(i){
-    //product-info--1
-    var DetailProductNametxtField = document.getElementById('DetailProduct-Name--txtField');
-    DetailProductNametxtField.value = productsList[i].name;
+function loadDetail(id){
+    for(let i = 0; i < productsList.length; i++){
+        if(id == productsList[i].id){
+            //product-info--1
+            var DetailProductNametxtField = document.getElementById('DetailProduct-Name--txtField');
+            DetailProductNametxtField.value = productsList[i].name;
 
-    var DetailProductday_importtxtField = document.getElementById('DetailProduct-DayImport--txtField');
-    DetailProductday_importtxtField.textContent = productsList[i].day_import;
+            var DetailProductday_importtxtField = document.getElementById('DetailProduct-DayImport--txtField');
+            DetailProductday_importtxtField.textContent = productsList[i].day_import;
 
-    var DetailProductdescribetxtField = document.getElementById('DetailProduct-describe--txtField');
-    DetailProductdescribetxtField.value = productsList[i].description;
+            var DetailProductdescribetxtField = document.getElementById('DetailProduct-describe--txtField');
+            DetailProductdescribetxtField.value = productsList[i].description;
 
-    var containerDetailProductImg = document.getElementById('containerDetailProduct--img');
-    for (let j=0; j<productsList[i].thumbnail_stack.length;j++){
-        let newImg = document.createElement("img");
-        newImg.classList.add("imageDetailProduct");
-        newImg.src = productsList[i].thumbnail_stack[j];
-        newImg.id = "image" + i + "_" + j;
-        containerDetailProductImg.prepend(newImg);
-        newImg.addEventListener('click', function (){
-            handleImageClick(newImg.id);
-        })
+            var containerDetailProductImg = document.getElementById('containerDetailProduct--img');
+            for (let j=0; j<productsList[i].thumbnail_stack.length;j++){
+                let newImg = document.createElement("img");
+                newImg.classList.add("imageDetailProduct");
+                newImg.src = productsList[i].thumbnail_stack[j];
+                newImg.id = "image" + i + "_" + j;
+                containerDetailProductImg.prepend(newImg);
+                newImg.addEventListener('click', function (){
+                    handleImageClick(newImg.id);
+                })
+            }
+            //product-info--2
+            var ProductIdDetail = document.getElementById('ProductId--detail');
+            ProductIdDetail.textContent = productsList[i].id;
+            var Detailproductradio1 = document.getElementById('Detailproduct--radio1');
+            var Detailproductradio2 = document.getElementById('Detailproduct--radio2');
+            var Detailproductradio3 = document.getElementById('Detailproduct--radio3');
+            Detailproductradio1.checked=false;
+            Detailproductradio2.checked=false;
+            Detailproductradio3.checked=false;
+            if (productsList[i].for_gender==="Nam" || productsList[i].for_gender==="Men"){
+                Detailproductradio1.checked=true;
+            }else
+            if (productsList[i].for_gender==="Nữ" || productsList[i].for_gender==="Women" || productsList[i].for_gender==="Nu"){
+                Detailproductradio2.checked=true;
+            }else
+            if (productsList[i].for_gender==="Tre em" || productsList[i].for_gender==="Kid" || productsList[i].for_gender==="Trẻ em"){
+                Detailproductradio3.checked=true;
+            }
+            var DetailProductInfoCategory = document.getElementById('DetailProduct-info-category');
+            if (productsList[i].category==="Balo"){
+                DetailProductInfoCategory.value = "Balo";
+            }else if (productsList[i].category==="tui"){
+                    DetailProductInfoCategory.value = "tui";
+            }else if(productsList[i].category==="vi"){
+                    DetailProductInfoCategory.value = "vi";
+            }
+            var DetailProductBrandTextField = document.getElementById('DetailProduct__Brand-textField');
+            DetailProductBrandTextField.value = productsList[i].brand_name;
+
+            //product-info--2-2
+            var DetailProductPriceImportTextField = document.getElementById('DetailProduct__PriceImport-textField');
+            DetailProductPriceImportTextField.value = productsList[i].price_imported;
+            var DetailProductPriceExportTextField = document.getElementById('DetailProduct__PriceExport-textField');
+            DetailProductPriceExportTextField.value = productsList[i].price_sell;
+            var DetailProductAmountTextField = document.getElementById('DetailProduct__Amount-textField');
+            DetailProductAmountTextField.value = productsList[i].quantity;
+            break;
+        }
     }
-    //product-info--2
-    var ProductIdDetail = document.getElementById('ProductId--detail');
-    ProductIdDetail.textContent = productsList[i].id;
-    var Detailproductradio1 = document.getElementById('Detailproduct--radio1');
-    var Detailproductradio2 = document.getElementById('Detailproduct--radio2');
-    var Detailproductradio3 = document.getElementById('Detailproduct--radio3');
-    Detailproductradio1.checked=false;
-    Detailproductradio2.checked=false;
-    Detailproductradio3.checked=false;
-    if (productsList[i].for_gender==="Nam" || productsList[i].for_gender==="Men"){
-        Detailproductradio1.checked=true;
-    }else
-    if (productsList[i].for_gender==="Nữ" || productsList[i].for_gender==="Women" || productsList[i].for_gender==="Nu"){
-        Detailproductradio2.checked=true;
-    }else
-    if (productsList[i].for_gender==="Tre em" || productsList[i].for_gender==="Kid" || productsList[i].for_gender==="Trẻ em"){
-        Detailproductradio3.checked=true;
-    }
-    var DetailProductInfoCategory = document.getElementById('DetailProduct-info-category');
-    if (productsList[i].category==="Balo"){
-        DetailProductInfoCategory.value = "Balo";
-    }else if (productsList[i].category==="tui"){
-            DetailProductInfoCategory.value = "tui";
-    }else if(productsList[i].category==="vi"){
-            DetailProductInfoCategory.value = "vi";
-    }
-    var DetailProductBrandTextField = document.getElementById('DetailProduct__Brand-textField');
-    DetailProductBrandTextField.value = productsList[i].brand_name;
-
-    //product-info--2-2
-    var DetailProductPriceImportTextField = document.getElementById('DetailProduct__PriceImport-textField');
-    DetailProductPriceImportTextField.value = productsList[i].price_imported;
-    var DetailProductPriceExportTextField = document.getElementById('DetailProduct__PriceExport-textField');
-    DetailProductPriceExportTextField.value = productsList[i].price_sell;
-    var DetailProductAmountTextField = document.getElementById('DetailProduct__Amount-textField');
-    DetailProductAmountTextField.value = productsList[i].quantity;
 }
 
 //Update product
 var saveProductButtonRepair = document.getElementById('saveProduct--button--repair');
 saveProductButtonRepair.addEventListener('click', ()=>{
+    if (!checkPriceImport() || !checkPriceSell() || !checkAmount() ){
+        alert("Thêm sản phẩm thất bại. Vui lòng kiểm tra lại thông tin.")
+        return;
+    }
+
     var DetailProductNametxtField = document.getElementById('DetailProduct-Name--txtField');
     var ProductName = DetailProductNametxtField.value;
     var DetailProductday_importtxtField = document.getElementById('DetailProduct-DayImport--txtField');
@@ -375,7 +473,6 @@ saveProductButtonDelete.addEventListener('click',() =>{
 // ----------------------------------------------------------------
 var saveProductButtonCreate = document.getElementById('saveProduct--button--create');
 saveProductButtonCreate.addEventListener('click', ()=>{
-
     if (!checkPriceImport(0) || !checkPriceSell(0) || !checkAmount(0) ){
         alert("Thêm sản phẩm thất bại. Vui lòng kiểm tra lại thông tin.")
         return;
@@ -396,8 +493,6 @@ saveProductButtonCreate.addEventListener('click', ()=>{
     });
 
     //product-info--2
-    var ProductIdDetail = "PD" + IDGenerate();
-
     var Gender;
     var Detailproductradio1 = document.getElementById('product--radio1').checked;
     var Detailproductradio2 = document.getElementById('product--radio2').checked;
@@ -416,13 +511,23 @@ saveProductButtonCreate.addEventListener('click', ()=>{
     var DetailProductAmountTextField = parseInt(document.getElementById('Amount-textField').value);
     if (DetailProductAmountTextField===null) DetailProductAmountTextField=0;
 
-
-
-    product = new Product(ProductIdDetail, ProductName, DetailProductInfoCategory, DetailProductBrandTextField,
-        day_import, DetailProductAmountTextField, DetailProductPriceImportTextField,
-        DetailProductPriceExportTextField, Gender, describe, listDetailImgSrc);
-    productList.push(product);
-    localStorage.setItem('products', JSON.stringify(productList));
+    product = {
+        "id": "PD" + IDGenerate(),
+        "name": ProductName,
+        "brand_name": DetailProductBrandTextField,
+        "day_import": getCurrentDate(),
+        "category": DetailProductInfoCategory,
+        "colors" : ["#000000", "#111111"],
+        "quantity" : DetailProductAmountTextField,
+        "price_imported" : DetailProductPriceImportTextField,
+        "price_sell" : DetailProductPriceExportTextField,
+        "for_gender" : Gender,
+        "description" : describe,
+        "thumbnail_stack" : listDetailImgSrc
+    }
+    productsList.push(product);
+    console.log(productsList);
+    localStorage.setItem('products', JSON.stringify(productsList));
     alert("Đã thêm sản phẩm");
     location.reload();
 })
@@ -439,11 +544,16 @@ function showImage(input) {
     // Kiểm tra xem đã chọn file hay chưa
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-
+        
         reader.onload = function (e) {
+            // Lấy tên của tệp
+            var fileName = input.files[0].name;
+            console.log("Tên của tệp: " + fileName);
+            let image = "../data/product_thumb/" + fileName;
             // Hiển thị ảnh đã chọn trong div
             var imgElement = document.createElement('img');
-            imgElement.src = e.target.result;
+            // imgElement.src = e.target.result;
+            imgElement.src = image;
             imgElement.classList.add('imageDetailProduct');
             imgElement.id = 'Img'+Date.now();
             document.getElementById('containerDetailProduct--img').prepend(imgElement);
@@ -459,7 +569,13 @@ var CreateProductInfoBtnImg = document.getElementById('containerCreateProduct--i
 CreateProductInfoBtnImg.addEventListener('click', ()=>{
     document.getElementById('fileInput--Product').click();
 })
+
 function showCreateImage(input) {
+    // Lấy tên của tệp
+    var fileName = input.files[0].name;
+    console.log("Tên của tệp: " + fileName);
+    let image = "../data/product_thumb/" + fileName;
+
     // Kiểm tra xem đã chọn file hay chưa
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -467,7 +583,7 @@ function showCreateImage(input) {
         reader.onload = function (e) {
             // Hiển thị ảnh đã chọn trong div
             var imgElement = document.createElement('img');
-            imgElement.src = e.target.result;
+            imgElement.src = image;
             imgElement.classList.add('imageProduct');
             imgElement.id = 'Img'+Date.now();
             document.getElementById('containerCreateProduct--img').prepend(imgElement);
@@ -478,9 +594,6 @@ function showCreateImage(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
-
 
  // Xóa tất cả các hàng có sản phẩm trong table
 function clearTable() {
@@ -494,17 +607,35 @@ var btnNext = document.getElementById("loadNextProduct");
 var btnBack = document.getElementById("loadBackProduct");
 
 btnNext.addEventListener('click', ()=>{
-    if (n>=productsList.length){
+    if (endProductIndex>=productsList.length){
         return;
+    }else{
+        clearTable();
+        load6Product(productsList, "next");
+        prdTableEventHandler();
     }
-    clearTable();
-    load6Product(productsList, "next");
 })
 btnBack.addEventListener('click', ()=>{
-    if (n<6){
+    if (startProductIndex<6){
         return;
     }
     clearTable();
     load6Product(productsList, "back");
+    prdTableEventHandler();
 });
+
+function prdTableEventHandler(){
+    console.log("Đã thêm event")
+    let rows = document.querySelectorAll('.productTable__row.product__row');
+    for(let k = 0; k < rows.length; k++) {
+        rows[k].addEventListener('click', function() {
+            console.log("click")
+            var detailProduct = document.getElementById('DetailProduct-page');
+            resetNavbar();
+            clearMainBody();
+            detailProduct.classList.remove('hidden');
+            loadDetail(rows[k].id);
+        });
+    }
+}
 

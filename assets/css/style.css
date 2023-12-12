@@ -1197,6 +1197,105 @@ On desktop
 }
 /* Signup */
 
+/* ACCOUNT */
+.account-info__avatar--container{
+    height: 363px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+}
+.account-info__avatar{
+    position: relative;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    outline: 1px dashed var(--color-grey-trans32);
+    outline-offset: 0.5rem;
+}
+.account-info__avatar input[type="file"]{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.account-info__avatar img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+}
+.account-info__avatar .overlay-container{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: var(--color-grey-trans32);
+    color: var(--color-common-white);
+}
+.account-info__avatar .overlay-container i{
+    font-size: 24px;
+    color: var(--color-common-white);
+}
+.account-info__avatar--container .type-accepted{
+    color: var(--color-text-sec);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.account-info__avatar:hover .overlay-container{
+    opacity: 1;
+}
+
+.account-info__detail--container{
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    justify-content: center;
+}
+.account-info__detail_editor{
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    width: calc((100% - 0.5rem) / 2 - 8px);
+    min-width: 200px;
+}
+.account-info__detail_editor input[type="submit"]{
+    width: fit-content;
+}
+
+.account-invoice-table__cont table{
+    width: 100%;
+    text-align: left;
+}
+.account-invoice-table__cont {
+    position: relative;
+    overflow: auto;   
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+}
+/* ACCOUNT */
+
 /* 
 On desktop 
 */
